@@ -1,4 +1,4 @@
-# oui_chef
-This project focuses on automation, organization, and efficiency in the culinary space, using python, sql, html, terraform and javascript.
-The goal is to create a system where I can easily automate certain aspects of being a chef, like creating prep lists, check list, writting emails for ordering and organizing menus.
-This system will eventually hosted in the cloud via AWS cloud services and routinely updated and improved via terraform.
+# purveyor_project
+This is a passion project of mine. It originally started as a way to automate the creation of repetitive emails for placing orders to purveyors, but has since evolved into something much more. Here's a little background: I'am a Chef by trade, and decided to teach himself how to code during the pandemic. I've been struggling to find a good project idea, till now. I started a new job as a Banquet Sous Chef in April 2024 for a hotel in NYC. I immediately saw the benefits that automation and digitization could bring in order to create a more efficient workflow.
+
+The idea is to create a system where I can partially/fully automate certain aspects of being a chef, by querying a database using sql, and then automatically creating prep-lists, checklists, and email templates via python in the form of html code. I will then transfer it in the cloud via AWS cloud services and routinely updated and improve it using terraform.
