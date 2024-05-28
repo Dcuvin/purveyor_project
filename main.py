@@ -209,15 +209,11 @@ def prep_and_checklist(item_id):
         for mise in mise_list:
             mise_en_place_list.append(mise)
     
-    for i, mise in enumerate(mise_en_place_list):
-        if i % 2 == 0:
-            checkboxes_html += "<tr>\n"
-            checkboxes_html += f"""<td><input type="checkbox" id="{mise.lower()}" name="mise" value="{mise.capitalize()}">\n"""
-            checkboxes_html += f"""<label for="{mise.lower()}">{mise.capitalize()}</label></td>\n"""
-        if i % 2 != 0:
-            checkboxes_html += "</tr>\n"
-    if len(mise_en_place_list) % 2 != 0:
-        checkboxes_html += "<td></td></tr>\n"
+   
+    for mise in mise_en_place_list:
+        checkboxes_html += f"""<input type="checkbox" id="{mise.lower()}" name="mise" value="{mise.capitalize()}">
+                                <label for="{mise.lower()}">{mise.capitalize()}</label><br><br>"""
+       
 
     procedure_and_checklist_html_template = f"""
         
@@ -227,7 +223,7 @@ def prep_and_checklist(item_id):
     <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Procedures</title>
+    <title>Prep list and Checklist</title>
     </head>
     <body id="email_template"> 
     <h3>Prep: {current_date}</h3>
@@ -239,9 +235,7 @@ def prep_and_checklist(item_id):
     <h3>Mise en Place Checklist</h3>
     <br>
         <form>
-            <table>
-                {checkboxes_html}
-            </table>
+            {checkboxes_html}
         </form>      
     </body>
     </html>
