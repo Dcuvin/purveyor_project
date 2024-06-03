@@ -181,12 +181,52 @@ def prep_and_checklist(item_id):
             for item in tuple_item:
                 procedure_list.append(item.split(','))
     # Create a procedure_bullet_points variable to hold updated html strings            
-    procedure_bullet_points = ""
-    
+    procedure_row_count = 0
+    procedure_html = ""
+    unpacked_procedure_list = []
+    procedure_col_1 = []
+    procedure_col_2 = []
+    longest_proc_list_length = 0
+
     for procedures in procedure_list:
         for procedure in procedures:
-            procedure_bullet_points += f"""<li>{procedure.capitalize()}</li><br>"""
+            unpacked_procedure_list.append(procedure)
+
+    len_unpacked_procedure_list = len(unpacked_procedure_list)
+
+    for i in range(len_unpacked_procedure_list):
+            if i % 2 != 0:
+                procedure_col_1.append(unpacked_procedure_list[i])
+            else:
+                procedure_col_2.append(unpacked_procedure_list[i])
+
+    
+    if len(procedure_col_1) > len(procedure_col_2):
+            longest_proc_list_length = len(procedure_col_1)
+    else:
+            longest_proc_list_length = len(procedure_col_2)
+    for i in range(longest_proc_list_length):
+        try:
+            procedure_html += f"""<tr>
+                                    <td><li>{procedure_col_1[i].capitalize()}</li></td>
+                                    <td><li>{procedure_col_2[i].capitalize()}</li></td>
+                                </tr>"""
+        except IndexError:
+        # Handle cases where procedure does not have at least two elements
+            if len(procedure_col_1) > len(procedure_col_2):   
+                procedure_html += f"""<tr>
+                                        <td><li>{procedure_col_1[i].capitalize()}</li></td>
+                                        <td></td>
         
+                                    </tr>"""
+            else:
+                procedure_html += f"""<tr>
+                                    <td><li>{procedure_col_2[i].capitalize()}</li></td>
+                                    <td></td>
+     
+                                </tr>"""
+    
+   
     mise_en_place_list_of_lists= []
     for i in item_id:
         cursor.execute(f"""
@@ -203,39 +243,58 @@ def prep_and_checklist(item_id):
                 mise_en_place_list_of_lists.append(item.split(','))
         
     # Create a checkboxes variable to hold updated html strings
-    checkboxes_html = ""
-    mise_en_place_list = []
+    mise_row_count = 0
+    mise_en_place_col_1= []
+    mise_en_place_col_2 = []
     for mise_list in mise_en_place_list_of_lists:
         for mise in mise_list:
-            mise_en_place_list.append(mise)
-    
-   
-    for mise in mise_en_place_list:
-        checkboxes_html += f"""<input type="checkbox" id="{mise.lower()}" name="mise" value="{mise.capitalize()}">
-                                <label for="{mise.lower()}">{mise.capitalize()}</label><br><br>"""
+            mise_row_count += 1
+            if mise_row_count % 2 == 0:
+                mise_en_place_col_2.append(mise)
+            else:
+                mise_en_place_col_1.append(mise)
+    col_1_html = ""
+    col_2_html= ""
+    for mise in mise_en_place_col_1:
+        col_1_html += f""" <tr><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
+       <label for="{mise.lower()}">{mise.capitalize()}</label></tr>"""
        
-
+    for mise in mise_en_place_col_2:
+        col_2_html += f"""<tr><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
+        <label for="{mise.lower()}">{mise.capitalize()}</label></tr>"""
+       
     procedure_and_checklist_html_template = f"""
         
     <!DOCTYPE html>
 
     <html lang="en">
     <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Prep list and Checklist</title>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <title>Prep list and Checklist</title>
+            <link rel="stylesheet" href="../styles.css">
+
     </head>
     <body id="email_template"> 
     <h3>Prep: {current_date}</h3>
     <br>
         <form>
-            {procedure_bullet_points}
-        </form> 
+            <table>
+                {procedure_html}
+            </table> 
+        </form>      
     <br><br>
     <h3>Mise en Place Checklist</h3>
     <br>
         <form>
-            {checkboxes_html}
+            <table>
+                 <td>
+                    {col_1_html}
+                </td>
+                <td>
+                    {col_2_html}
+                </td>
+            </table>
         </form>      
     </body>
     </html>
