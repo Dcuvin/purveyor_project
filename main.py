@@ -29,6 +29,9 @@ def main():
         #convert string into an iterable list to pass into new_prep_list
         arg_list = function_arg_1.split()
         prep_and_checklist(arg_list)
+    elif function_name == 'order_sheet':
+        arg_list = function_arg_1.split()
+        order_sheet(arg_list)
     else:
         print("Invalid function name")  # Print an error message if the function name is unrecognized
     #Function that appends to purveyor_contact.db
@@ -167,12 +170,14 @@ def prep_and_checklist(item_id):
     procedure_list = []
     for i in item_id:
         cursor.execute(f""" 
-            SELECT procedures.item_procedure
-            FROM procedures
-            JOIN menu_procedures ON procedures.proc_id = menu_procedures.proc_id
-            WHERE menu_procedures.menu_item_id = {i};
+                        SELECT procedures.item_procedure
+                        FROM procedures
+                        JOIN menu_procedures ON procedures.proc_id = menu_procedures.proc_id
+                        WHERE menu_procedures.menu_item_id = {i};
             
-            """)   
+                        """)   
+    
+
         
         #.fetchall() is a list of tuples
         procedures = cursor.fetchall()
@@ -180,6 +185,7 @@ def prep_and_checklist(item_id):
         for tuple_item in procedures:
             for item in tuple_item:
                 procedure_list.append(item.split(','))
+
     # Create a procedure_bullet_points variable to hold updated html strings            
     procedure_row_count = 0
     procedure_html = ""
@@ -209,20 +215,42 @@ def prep_and_checklist(item_id):
         try:
             procedure_html += f"""<tr>
                                     <td><li>{procedure_col_1[i].capitalize()}</li></td>
+                                    <td>
+                                            <form action="/action_page.php">
+                                                <label for="need"></label>
+                                                <input type="text" id="need" name="need">
+                                            </form>
+                                    </td>
                                     <td><li>{procedure_col_2[i].capitalize()}</li></td>
+                                    <td>
+                                            <form action="/action_page.php">
+                                                <label for="need"></label>
+                                                <input type="text" id="need" name="need">
+                                            </form>
+                                    </td>
                                 </tr>"""
         except IndexError:
         # Handle cases where procedure does not have at least two elements
             if len(procedure_col_1) > len(procedure_col_2):   
                 procedure_html += f"""<tr>
                                         <td><li>{procedure_col_1[i].capitalize()}</li></td>
-                                        <td></td>
+                                        <td>
+                                            <form action="/action_page.php">
+                                                <label for="need"></label>
+                                                <input type="text" id="need" name="need">
+                                            </form>
+                                        </td>
         
                                     </tr>"""
             else:
                 procedure_html += f"""<tr>
                                     <td><li>{procedure_col_2[i].capitalize()}</li></td>
-                                    <td></td>
+                                    <td>
+                                            <form action="/action_page.php">
+                                                <label for="need"></label>
+                                                <input type="text" id="need" name="need">
+                                            </form>
+                                    </td>
      
                                 </tr>"""
     
@@ -246,22 +274,29 @@ def prep_and_checklist(item_id):
     mise_row_count = 0
     mise_en_place_col_1= []
     mise_en_place_col_2 = []
+    mise_en_place = []
+    mise_en_place_html = ""
     for mise_list in mise_en_place_list_of_lists:
         for mise in mise_list:
-            mise_row_count += 1
-            if mise_row_count % 2 == 0:
-                mise_en_place_col_2.append(mise)
-            else:
-                mise_en_place_col_1.append(mise)
-    col_1_html = ""
-    col_2_html= ""
-    for mise in mise_en_place_col_1:
-        col_1_html += f""" <tr><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
-       <label for="{mise.lower()}">{mise.capitalize()}</label></tr>"""
+            mise_en_place.append(mise)
+            #mise_row_count += 1
+            #if mise_row_count % 2 == 0:
+            #    mise_en_place_col_2.append(mise)
+            #else:
+            #    mise_en_place_col_1.append(mise)
+    #col_1_html = ""
+    #col_2_html= ""
+    #for mise in mise_en_place_col_1:
+    #    col_1_html += f""" <li><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
+    #   <label for="{mise.lower()}">{mise.capitalize()}</label></li>"""
        
-    for mise in mise_en_place_col_2:
-        col_2_html += f"""<tr><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
-        <label for="{mise.lower()}">{mise.capitalize()}</label></tr>"""
+    #for mise in mise_en_place_col_2:
+    #    col_2_html += f"""<li><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
+    #    <label for="{mise.lower()}">{mise.capitalize()}</label></li>"""
+
+    for mise in mise_en_place:
+         mise_en_place_html += f"""<li><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
+        <label for="{mise.lower()}">{mise.capitalize()}</label></li>"""
        
     procedure_and_checklist_html_template = f"""
         
@@ -275,11 +310,17 @@ def prep_and_checklist(item_id):
             <link rel="stylesheet" href="../styles.css">
 
     </head>
-    <body id="email_template"> 
+    <body id="prep_and_checklist"> 
     <h3>Prep: {current_date}</h3>
     <br>
         <form>
             <table>
+            <tr>
+                <td>Item</td>
+                <td>Need</td>
+                <td>Item</td>
+                <td>Need</td>
+            </tr>
                 {procedure_html}
             </table> 
         </form>      
@@ -287,14 +328,9 @@ def prep_and_checklist(item_id):
     <h3>Mise en Place Checklist</h3>
     <br>
         <form>
-            <table>
-                 <td>
-                    {col_1_html}
-                </td>
-                <td>
-                    {col_2_html}
-                </td>
-            </table>
+            
+          {mise_en_place_html}          
+             
         </form>      
     </body>
     </html>
@@ -329,18 +365,21 @@ def prep_and_checklist(item_id):
 
     
     #doc.save(prep_list_file_path)
-    #print("Prep list created!")    
+    #print("Prep list created!")
+       
     # Save the HTML to a file
+
     with open(prep_list_file_path, "w") as file:
         file.write(procedure_and_checklist_html_template)
 
     conn.close()
 
     print("HTML prep_and_checklist file successfuly created!")
-    
+        
 
 #------------------------------------------------------------------------------------------
-  
+def order_sheet():
+    pass
 
 
 #------------------------------------------------------------------------------------------
