@@ -88,6 +88,5 @@ CREATE TABLE menu_mise_checklist(
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
     FOREIGN KEY (checklist_id) REFERENCES mise_checklist(checklist_id)   
 );
-
-
+            
             

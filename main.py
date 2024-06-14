@@ -28,10 +28,10 @@ def main():
         #function_arg_1 must look like this: ' 1 2 3 '
         #convert string into an iterable list to pass into new_prep_list
         arg_list = function_arg_1.split()
-        prep_and_checklist(arg_list)
+        prep_and_checklist(arg_list, function_arg_2)
     elif function_name == 'order_sheet':
         arg_list = function_arg_1.split()
-        order_sheet(arg_list)
+        order_sheet(arg_list, function_arg_2)
     else:
         print("Invalid function name")  # Print an error message if the function name is unrecognized
     #Function that appends to purveyor_contact.db
@@ -84,6 +84,7 @@ def upload_excel(name_of_excel_file):
     #                placeholders = ', '.join('?' * len(new_data.columns))
     #                insert_query = f"INSERT OR REPLACE INTO {name} ({columns}) VALUES ({placeholders})"
     #                cursor.execute(insert_query, tuple(new_row))
+        conn.close()
         
     # Commit the transaction
     conn.commit()
@@ -93,74 +94,13 @@ def upload_excel(name_of_excel_file):
     conn.close()
     print("Excel file upload successful!")
 #------------------------------------------------------------------------------------------
-    
-def checklist(item_id):
-    conn = sqlite3.connect('purveyor_project_db.db', timeout=30)
-    cursor = conn.cursor()
-    
-    mise_en_place_list = []
-    for i in item_id:
-        cursor.execute(f"""
-                       SELECT mise_checklist.mise_en_place
-                       FROM mise_checklist
-                       JOIN menu_mise_checklist ON mise_checklist.checklist_id = menu_mise_checklist.checklist_id
-                       WHERE menu_mise_checklist.menu_item_id = {i};
-                       """)
-        #.fetchall() is a list of tuples
-        mise_en_place = cursor.fetchall()
-        # access the tuples inside the list
-        for mise_tuple in mise_en_place:
-            for item in mise_tuple:
-                mise_en_place_list.append(item.split(','))
-        
-    # Create a checkboxes variable to hold updated html strings
-    checkboxes = ""
-    
-    for mise_list in mise_en_place_list:
-        for mise in mise_list:
-            checkboxes += f"""<input type="checkbox" id="{mise.lower()}" name="mise" value="{mise.capitalize()}">
-                            <label for="{mise.lower()}">{mise.capitalize()}</label><br>"""
-
-    conn.close()
-    
-    checkboxes = ""
-    
-    checklist_html_template = f"""
-    
-    <!DOCTYPE html>
-
-    <html lang="en">
-    <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Checklist</title>
-    </head>
-    <body id="email_template"> 
-    <h1>Mise en Place Checklist</h1>
-    <br>
-       <form>
-        {checkboxes}
-       </form>     
-    </body>
-    </html>
-        
-    
-    """
-    
-    for mise in mise_en_place_list:
-        checkboxes += f"""<input type="checkbox" id="{mise.lower()}" name="mise" value="{mise.capitalize()}">
-                          <label for="{mise.lower()}">{mise.capitalize()}</label><br>"""
+ 
    
-    
-    # Save the HTML to a file
-    with open("checkboxes.html", "w") as file:
-        file.write(checklist_html_template)
-
-    print("HTML file created successfully.")
 #------------------------------------------------------------------------------------------
     
-def prep_and_checklist(item_id):
+def prep_and_checklist(item_id, event_name):
     
+    event_name = event_name
     conn = sqlite3.connect('purveyor_project_db.db')
     # Cursor to execute commands
     cursor = conn.cursor()
@@ -256,12 +196,12 @@ def prep_and_checklist(item_id):
     
    
     mise_en_place_list_of_lists= []
-    for i in item_id:
+    for id in item_id:
         cursor.execute(f"""
                        SELECT mise_checklist.mise_en_place
                        FROM mise_checklist
                        JOIN menu_mise_checklist ON mise_checklist.checklist_id = menu_mise_checklist.checklist_id
-                       WHERE menu_mise_checklist.menu_item_id = {i};
+                       WHERE menu_mise_checklist.menu_item_id = {id};
                        """)
         #.fetchall() is a list of tuples
         mise_en_place = cursor.fetchall()
@@ -311,6 +251,7 @@ def prep_and_checklist(item_id):
 
     </head>
     <body id="prep_and_checklist"> 
+    <h1>{event_name}</h1>
     <h3>Prep: {current_date}</h3>
     <br>
         <form>
@@ -378,8 +319,25 @@ def prep_and_checklist(item_id):
         
 
 #------------------------------------------------------------------------------------------
-def order_sheet():
-    pass
+def order_sheet(item_id, event_name):
+    event_name = event_name
+    current_date = date.today
+    conn = sqlite3.connect('purveyor_contact.db')  # Specify your database file here
+    cursor = conn.cursor()
+    # Query the database
+    to_order_list = []
+    for id in item_id:
+
+        cursor.execute(f"""SELECT ingredients.ingredient_name, ingredients.brand, ingredients.purveyor, ingredients.item_code
+                        FROM ingredients
+                        JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
+                        WHERE menu_ingredients.menu_item_id = {id}""") 
+        to_order = cursor.fetchall()
+    
+    
+    
+    print(to_order_list)
+    
 
 
 #------------------------------------------------------------------------------------------
