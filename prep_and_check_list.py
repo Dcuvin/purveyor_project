@@ -11,6 +11,7 @@ import os #This statement is used to include the functionality of
 
 def chai_prep_list(item_id, event_name):
     
+    current_date = date.today()
     event_name = event_name
     conn = sqlite3.connect('purveyor_project_db.db')
     # Cursor to execute commands
@@ -36,10 +37,18 @@ def chai_prep_list(item_id, event_name):
             for item in tuple_item:
                 mise_list.append({'item_name':tuple_item[0], 'mise':tuple_item[1]})
 
-    print(event_name)
-    print(mise_list)
+    #print(event_name)
+    #print(mise_list)
 
-    excel_file = ""
+    #  Create DataFrame from mise_list, which is a list of dictionaries
+
+    df = pd.DataFrame(mise_list)
+
+    # Create an excel file
+    excel_file = f"{event_name}_{current_date}.xlsx"
+
+    with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
+        df.to_excel(writer, sheet_name='Table1', index=False)
 
 #---------------------------------------------------------------------------------
 
