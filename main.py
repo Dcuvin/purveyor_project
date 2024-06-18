@@ -1,12 +1,17 @@
 from datetime import date
 import pandas as pd
 import sqlite3
-import openpyxl #imports python library for reading and writting excel files
+from openpyxl import load_workbook #imports python library for reading and writting excel files
+from openpyxl.styles import Font, PatternFill, Border, Side
+from openpyxl.worksheet.datavalidation import DataValidation
 import sys #import sys modulet o access command-line arguments
 import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from bs4 import BeautifulSoup
-from docx import Document
+#from docx import Document
+from prep_and_check_list import chai_prep_list
+from database import upload_excel
+#------------------------------------------------------------------------------------------
 
 def main():
     if len(sys.argv) == 0:  # Check if the required arguments are provided
@@ -14,9 +19,17 @@ def main():
         return  # Exit the function if not enough arguments
     function_name = sys.argv[1]  # Get the function name from the first command line argument
     function_arg_1 = sys.argv[2]  # Get the name from the second command line argument
-    #if len(sys.argv) == 4:
-    #    function_arg_2 = sys.argv[3]
-    #    function_arg_3 = sys.argv[4]
+    function_arg_2 = ""
+    function_arg_3 = ""
+    try:
+        function_arg_2 = sys.argv[3]
+    except:
+        pass
+
+    try:
+        function_arg_3 = sys.argv[4]
+    except:
+        pass
 
     if function_name == 'upload_excel':  # Check if the function name is ' upload_purveyor_contact'
         upload_excel(function_arg_1)  # Call the  upload_purveyor_contact function
@@ -28,79 +41,27 @@ def main():
         #function_arg_1 must look like this: ' 1 2 3 '
         #convert string into an iterable list to pass into new_prep_list
         arg_list = function_arg_1.split()
-        prep_and_checklist(arg_list, function_arg_2)
+        prep_and_checklist(arg_list)
+    elif function_name == 'chai_prep_list':
+    #function_arg_1 must look like this: ' 1 2 3 '
+    #convert string into an iterable list to pass into new_prep_list
+        arg_list = function_arg_1.split()
+        chai_prep_list(arg_list, function_arg_2)
     elif function_name == 'order_sheet':
         arg_list = function_arg_1.split()
-        order_sheet(arg_list, function_arg_2)
+        order_sheet(arg_list)
     else:
         print("Invalid function name")  # Print an error message if the function name is unrecognized
     #Function that appends to purveyor_contact.db
-#------------------------------------------------------------------------------------------
-    
-def upload_excel(name_of_excel_file):
-    
-    table_name = [ 'menu_items', 'menu_restrictions', 'restrictions', 'ingredients', 'menu_ingredients', 'menu_procedures', 'procedures', 'vendors']
-    # Connect to the SQLite database
-    conn = sqlite3.connect('purveyor_project_db.db')
-    cursor = conn.cursor()
-    # Load the Excel file
-    # To read all sheets, use sheet_name=None
-    #.read_excel creates a dictionaryseke
-    excel_data = pd.read_excel(name_of_excel_file, sheet_name= None)
-    # Replace NaN values with 'n/a'. This is done iteratively due to the excel file having several sheets.
-    for key in excel_data:
-        excel_data[key].fillna('n/a', inplace=True)
-        
-    # Check if tables in the database exists
-    table_names = []
-    for name in table_name:
-        
-        try:
-            cursor.execute(f'SELECT * FROM {name}')
-            table_names.append('y')
-        except sqlite3.OperationalError:
-            continue
-    print(table_names)
-    
-    
-   
-    if len(table_names) == 8:
-    
-        for sheet_name, df in excel_data.items():
-            print(f"Uploading sheet: {sheet_name}")
-            df.to_sql(sheet_name, conn, if_exists='replace', index=False)    
-    else: 
-        print("Error with uploading excel file!")
-    #else:
-        # overide and update all the current data in the existing tables
-    #    for name in table_name:
-    #        existing_data = pd.read_sql_query(f'SELECT * FROM {name}', conn)
-    #        new_data = df[name]
-            # Check to see if the row exists in the existing data
-    #        for _, new_row in new_data.iterrows(): 
-    #            if not ((existing_data == new_row).all(axis=1)).any():
-                    # If the row does not exist, insert the new record
-    #                columns = ', '.join(new_data.columns)
-    #                placeholders = ', '.join('?' * len(new_data.columns))
-    #                insert_query = f"INSERT OR REPLACE INTO {name} ({columns}) VALUES ({placeholders})"
-    #                cursor.execute(insert_query, tuple(new_row))
-        conn.close()
-        
-    # Commit the transaction
-    conn.commit()
-        
 
-    # Close the connection
-    conn.close()
-    print("Excel file upload successful!")
 #------------------------------------------------------------------------------------------
+    
+
  
    
-#------------------------------------------------------------------------------------------
     
-def prep_and_checklist(item_id, event_name):
+def prep_and_checklist(item_id):
     
-    event_name = event_name
     conn = sqlite3.connect('purveyor_project_db.db')
     # Cursor to execute commands
     cursor = conn.cursor()
@@ -251,7 +212,7 @@ def prep_and_checklist(item_id, event_name):
 
     </head>
     <body id="prep_and_checklist"> 
-    <h1>{event_name}</h1>
+    <h1>Prep and Checklist</h1>
     <h3>Prep: {current_date}</h3>
     <br>
         <form>
@@ -317,12 +278,13 @@ def prep_and_checklist(item_id, event_name):
 
     print("HTML prep_and_checklist file successfuly created!")
         
+#------------------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------------------
-def order_sheet(item_id, event_name):
-    event_name = event_name
+def order_sheet(item_id):
+    
     current_date = date.today
-    conn = sqlite3.connect('purveyor_contact.db')  # Specify your database file here
+    conn = sqlite3.connect('purveyor_project_db.db')  # Specify your database file here
     cursor = conn.cursor()
     # Query the database
     to_order_list = []
@@ -333,11 +295,14 @@ def order_sheet(item_id, event_name):
                         JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
                         WHERE menu_ingredients.menu_item_id = {id}""") 
         to_order = cursor.fetchall()
+        to_order_list.append(to_order)
     
     
     
     print(to_order_list)
     
+
+
 
 
 #------------------------------------------------------------------------------------------
