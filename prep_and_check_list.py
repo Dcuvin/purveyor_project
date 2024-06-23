@@ -10,7 +10,7 @@ import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 #----------------------------------------------------------------------------
 
-def chai_prep_list(item_id, event_name):
+def excel_prep_list(item_id, event_name):
     
     current_date = date.today()
     event_name = event_name
@@ -22,7 +22,7 @@ def chai_prep_list(item_id, event_name):
     #It will then query a junction table and pull all procedures associated with the id.          
     mise_list = []
     unique_item_names = []
-    final_mise_list= []
+    mise_list_2= []
     for id in item_id:
         cursor.execute(f"""
                        SELECT menu_mise_checklist.item_name, mise_checklist.mise_en_place
@@ -36,32 +36,41 @@ def chai_prep_list(item_id, event_name):
         #.fetchall() is a list of tuples
         mise = cursor.fetchall()
         # access the tuple inside the list
-    for tuple_item in mise:
-        
-        mise_list.append({'item_name':tuple_item[0], 'mise':tuple_item[1]})
+        for tuple_item in mise:
+            
+            mise_list.append({'Item':tuple_item[0], 'Mise':tuple_item[1], 'Need':'  '})
+            # Create a list of items
+            if tuple_item[0] not in unique_item_names:
+                unique_item_names.append(tuple_item[0])
 
-        if tuple_item[0] not in unique_item_names :
-            unique_item_names.append(tuple_item[0])
+    # Create a dict of items with a list of mise
+    for name in unique_item_names:
+        mise_list_2.append({'Item': name, 'Mise':[], 'Need':' '})
 
-    for item_name in unique_item_names:
-        final_mise_list.append({'item_name':item_name, 'mise':[]})
-
-    for dict_item_1 in mise_list:
-        for dict_item_2 in final_mise_list: 
-            if dict_item_1['item_name'] == dict_item_2['item_name']:
-                dict_item_2['mise'].append(dict_item_1['mise'])
-        
-    
-
+    # Iteratively add the mise form mise_list to mise_list_2
+    for item_1 in mise_list:
+        for item_2 in mise_list_2:
+            if item_1['Item'] == item_2['Item']:
+                item_2['Mise'].append(item_1['Mise'])
 
     conn.close()
-    print(final_mise_list)
-    #print(mise_list)
+   
+    # Function that creates a dataframe
+    def create_df(data):
 
-    #  Create DataFrame from mise_list, which is a list of dictionaries
+        df= pd.DataFrame(data)
+        return df
 
-    df = pd.DataFrame(mise_list)
-    #print(df)
+    df_list =[]  
+    for dict_item in mise_list_2:
+        df_list.append(create_df(dict_item))
+
+    pivot_list = []
+    def create_pivot(data):    
+        pivot = pd.pivot(data, columns='Item', index ='Mise', values= 'Need')
+        return pivot
+    for data_frame in df_list:
+        pivot_list.append(create_pivot(data_frame))
 
     excel_file_count = 0
     # Create an excel file
@@ -71,7 +80,7 @@ def chai_prep_list(item_id, event_name):
         excel_file_count += 1
         # This updates the file_count, allowing for it to be checked again in the while loop
         excel_file = f"prep_and_checklists/{event_name}_{current_date}_{excel_file_count}.xlsx"
-
+    
     #print(excel_file)
     # Function to format the headers and add borders
     def format_headers_and_borders(sheet, start_row, start_col, end_col):
@@ -91,46 +100,35 @@ def chai_prep_list(item_id, event_name):
         for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):
             for cell in row:
                 cell.border = thin_border
-
     # Function to set print options
     def set_print_options(sheet):
         sheet.print_options.gridLines = False
         sheet.page_setup.orientation = 'portrait'
 
-    # Function to add DataFrame to sheet at a specific location
-    def add_df_to_sheet(sheet, df, start_row, start_col):
-        for r_idx, row in enumerate(dataframe_to_rows(df, index=False, header=True), start_row):
-            for c_idx, value in enumerate(row, start_col):
-                sheet.cell(row=r_idx, column=c_idx, value=value)
-        
-        end_col = start_col + len(df.columns) - 1
-        format_headers_and_borders(sheet, start_row, start_col, end_col)
 
-
+    # Creates an unfinished excel file
     with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
-        df.to_excel(writer, sheet_name=f'{event_name}', index=False)
-    
+        current_row = 0
+        for pivot in pivot_list:
+            pivot.to_excel(writer, sheet_name= event_name, startrow=current_row, startcol=0)
+            current_row += len(pivot) + 3  # Add space between tables
+
     # Load the workbook and access the sheet
     workbook = load_workbook(excel_file)
-    sheet = workbook[f'{event_name}']
-
-    #Get unique values in the 'item_name' column
-    unique_values = df['item_name'].unique()
+    sheet = workbook[event_name]
 
     # Start row for the first table
     start_row = 1
-
-    # Add separate tables for each unique value
-    for value in unique_values:
-        subset_df = df[df['item_name'] == value]
-        add_df_to_sheet(sheet, subset_df, start_row, 1)
-        start_row += len(subset_df) + 2  # Add some space between tables
-    
+    start_col = 1
+    for df in pivot_list:
+        format_headers_and_borders(sheet, start_row, start_col, 2)
+        start_row += len(df) + 3  # Add some space between tables
+        
     # Set print options
     set_print_options(sheet)
 
     # Save the workbook with formatting
-    #workbook.save(excel_file)
+    workbook.save(excel_file)
 #---------------------------------------------------------------------------------
 
 def prep_and_checklist(item_id, event_name):

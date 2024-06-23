@@ -9,7 +9,7 @@ import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from bs4 import BeautifulSoup
 #from docx import Document
-from prep_and_check_list import chai_prep_list
+from prep_and_check_list import excel_prep_list
 from database import upload_excel
 #------------------------------------------------------------------------------------------
 
@@ -42,11 +42,11 @@ def main():
         #convert string into an iterable list to pass into new_prep_list
         arg_list = function_arg_1.split()
         prep_and_checklist(arg_list)
-    elif function_name == 'chai_prep_list':
+    elif function_name == 'excel_prep_list':
     #function_arg_1 must look like this: ' 1 2 3 '
     #convert string into an iterable list to pass into new_prep_list
         arg_list = function_arg_1.split()
-        chai_prep_list(arg_list, function_arg_2)
+        excel_prep_list(arg_list, function_arg_2)
     elif function_name == 'order_sheet':
         arg_list = function_arg_1.split()
         order_sheet(arg_list)
