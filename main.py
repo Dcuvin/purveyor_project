@@ -30,6 +30,15 @@ def main():
         function_arg_3 = sys.argv[4]
     except:
         pass
+    try:
+        function_arg_4 = sys.argv[5]
+    except:
+        pass
+
+    try:
+        function_arg_5 = sys.argv[6]
+    except:
+        pass
 
     if function_name == 'upload_excel':  # Check if the function name is ' upload_purveyor_contact'
         upload_excel(function_arg_1)  # Call the  upload_purveyor_contact function
@@ -46,7 +55,7 @@ def main():
     #function_arg_1 must look like this: ' 1 2 3 '
     #convert string into an iterable list to pass into new_prep_list
         arg_list = function_arg_1.split()
-        excel_prep_list(arg_list, function_arg_2)
+        excel_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
     elif function_name == 'order_sheet':
         arg_list = function_arg_1.split()
         order_sheet(arg_list)

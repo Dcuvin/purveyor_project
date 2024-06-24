@@ -1,6 +1,7 @@
 import pandas as pd
 from openpyxl import load_workbook #imports python library for reading and writting excel files
 import sqlite3
+import time
 
 
 def upload_excel(name_of_excel_file):
@@ -35,6 +36,9 @@ def upload_excel(name_of_excel_file):
     
         for sheet_name, df in excel_data.items():
             print(f"Uploading sheet: {sheet_name}")
+            # Drop the table if it exists before replacing it with new data
+            # this helped solve the locked table that kept occuring
+            cursor.execute(f'DROP TABLE IF EXISTS {sheet_name}')
             df.to_sql(sheet_name, conn, if_exists='replace', index=False)    
     else: 
         print("Error with uploading excel file!")

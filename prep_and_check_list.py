@@ -10,10 +10,9 @@ import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 #----------------------------------------------------------------------------
 
-def excel_prep_list(item_id, event_name):
+def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
     
     current_date = date.today()
-    event_name = event_name
     conn = sqlite3.connect('purveyor_project_db.db')
     # Cursor to execute commands
     cursor = conn.cursor()
@@ -42,7 +41,7 @@ def excel_prep_list(item_id, event_name):
             # Create a list of items
             if tuple_item[0] not in unique_item_names:
                 unique_item_names.append(tuple_item[0])
-
+    conn.close()
     # Create a dict of items with a list of mise
     for name in unique_item_names:
         mise_list_2.append({'Item': name, 'Mise':[], 'Need':' '})
@@ -51,9 +50,7 @@ def excel_prep_list(item_id, event_name):
     for item_1 in mise_list:
         for item_2 in mise_list_2:
             if item_1['Item'] == item_2['Item']:
-                item_2['Mise'].append(item_1['Mise'])
-
-    conn.close()
+                item_2['Mise'].append(item_1['Mise'].capitalize())
    
     # Function that creates a dataframe
     def create_df(data):
@@ -89,21 +86,35 @@ def excel_prep_list(item_id, event_name):
                             top=Side(style='thin'),
                             bottom=Side(style='thin'))
         
+        # Define the font for non-header cells
+        cell_font = Font(name="Arial", size=12)
+        
+     # Apply font to the entire table
+        for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):
+             for cell in row:
+                cell.font = cell_font
+
         # Format headers
         for cell in sheet.iter_cols(min_row=start_row, max_row=start_row, min_col=start_col, max_col=end_col):
             for c in cell:
-                c.font = Font(bold=True, color="FFFFFF")
-                c.fill = PatternFill(start_color="0000FF", end_color="0000FF", fill_type="solid")
+                c.font = Font(bold=True, name='Arial', size=14, color="000000")
+                c.fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
                 c.border = thin_border
 
         # Apply borders to the entire table
-        for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):
+        for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):      
             for cell in row:
                 cell.border = thin_border
+               
+                
     # Function to set print options
     def set_print_options(sheet):
         sheet.print_options.gridLines = False
         sheet.page_setup.orientation = 'portrait'
+    
+    # Function to insert unformatted rows
+    def insert_blank_rows(sheet, start_row):
+        sheet.insert_rows(start_row, 2)
 
 
     # Creates an unfinished excel file
@@ -111,18 +122,29 @@ def excel_prep_list(item_id, event_name):
         current_row = 0
         for pivot in pivot_list:
             pivot.to_excel(writer, sheet_name= event_name, startrow=current_row, startcol=0)
-            current_row += len(pivot) + 3  # Add space between tables
+            current_row += len(pivot)  # Add space between tables
 
     # Load the workbook and access the sheet
     workbook = load_workbook(excel_file)
     sheet = workbook[event_name]
 
-    # Start row for the first table
+    # Format the tables in the file
     start_row = 1
     start_col = 1
     for df in pivot_list:
+        insert_blank_rows(sheet, start_row)
+        start_row += 2
         format_headers_and_borders(sheet, start_row, start_col, 2)
-        start_row += len(df) + 3  # Add some space between tables
+        start_row += len(df)
+
+    # Insert Event Info
+    title = sheet.cell(row=1, column=1, value=f"{event_name} {guest_count} Guests {event_start} {event_date}")
+    title.font = Font(name='Arial', size=16, bold=True, underline='single', color='000000')
+
+
+    
+    
+    
         
     # Set print options
     set_print_options(sheet)
