@@ -8,6 +8,10 @@ from openpyxl.worksheet.datavalidation import DataValidation
 import sys #import sys modulet o access command-line arguments
 import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
+from docx import Document
+from docx.shared import Pt
+from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
 #----------------------------------------------------------------------------
 
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
@@ -37,7 +41,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
         # access the tuple inside the list
         for tuple_item in mise:
             
-            mise_list.append({'Item':tuple_item[0], 'Mise':tuple_item[1], 'Need':'  '})
+            mise_list.append({'Item':str(tuple_item[0]), 'Mise':tuple_item[1], 'Need':'  '})
             # Create a list of items
             if tuple_item[0] not in unique_item_names:
                 unique_item_names.append(tuple_item[0])
@@ -51,7 +55,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
         for item_2 in mise_list_2:
             if item_1['Item'] == item_2['Item']:
                 item_2['Mise'].append(item_1['Mise'].capitalize())
-   
+
     # Function that creates a dataframe
     def create_df(data):
 
@@ -69,14 +73,16 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
     for data_frame in df_list:
         pivot_list.append(create_pivot(data_frame))
 
+    #print(pivot_list)
+
     excel_file_count = 0
     # Create an excel file
-    excel_file = f"prep_and_checklists/{event_name}_{current_date}_{excel_file_count}.xlsx"
+    excel_file = f"prep_and_checklists/{event_name}/{event_name}_{current_date}_{excel_file_count}.xlsx"
     # Continously checks until it finds a non-existent file name
     while os.path.exists(excel_file):
         excel_file_count += 1
         # This updates the file_count, allowing for it to be checked again in the while loop
-        excel_file = f"prep_and_checklists/{event_name}_{current_date}_{excel_file_count}.xlsx"
+        excel_file = f"prep_and_checklists/{event_name}/{event_name}_{current_date}_{excel_file_count}.xlsx"
     
     #print(excel_file)
     # Function to format the headers and add borders
@@ -114,38 +120,33 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
     
     # Function to insert unformatted rows
     def insert_blank_rows(sheet, start_row):
-        sheet.insert_rows(start_row, 2)
+        sheet.insert_rows(start_row, 1)
 
 
     # Creates an unfinished excel file
     with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
-        current_row = 0
+        current_row = 3
         for pivot in pivot_list:
             pivot.to_excel(writer, sheet_name= event_name, startrow=current_row, startcol=0)
-            current_row += len(pivot)  # Add space between tables
+            current_row += len(pivot) + 2 # Add space between tables
 
     # Load the workbook and access the sheet
     workbook = load_workbook(excel_file)
     sheet = workbook[event_name]
 
     # Format the tables in the file
-    start_row = 1
+    start_row = 4
     start_col = 1
     for df in pivot_list:
         insert_blank_rows(sheet, start_row)
-        start_row += 2
+        start_row += 1
         format_headers_and_borders(sheet, start_row, start_col, 2)
-        start_row += len(df)
+        start_row += len(df) + 2
 
     # Insert Event Info
     title = sheet.cell(row=1, column=1, value=f"{event_name} {guest_count} Guests {event_start} {event_date}")
     title.font = Font(name='Arial', size=16, bold=True, underline='single', color='000000')
-
-
-    
-    
-    
-        
+   
     # Set print options
     set_print_options(sheet)
 
@@ -153,9 +154,8 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
     workbook.save(excel_file)
 #---------------------------------------------------------------------------------
 
-def prep_and_checklist(item_id, event_name):
+def word_prep_and_checklist(item_id, event_name, guest_count, event_start, event_date):
     
-    event_name = event_name
     conn = sqlite3.connect('purveyor_project_db.db')
     # Cursor to execute commands
     cursor = conn.cursor()
@@ -163,25 +163,35 @@ def prep_and_checklist(item_id, event_name):
     #the updated version will take a list of menu_item_ids
     #It will then query a junction table and pull all procedures associated with the id.          
     procedure_list = []
+    unique_item_list =[]
+    final_proc_list =[]
     for i in item_id:
         cursor.execute(f""" 
-                        SELECT procedures.item_procedure
-                        FROM procedures
-                        JOIN menu_procedures ON procedures.proc_id = menu_procedures.proc_id
+                        SELECT menu_items.item_name, procedures.item_procedure
+                        FROM menu_procedures
+                        JOIN menu_items ON menu_procedures.menu_item_id = menu_items.menu_item_id
+                        JOIN procedures ON procedures.proc_id = menu_procedures.proc_id
                         WHERE menu_procedures.menu_item_id = {i};
             
                         """)   
     
-
-        
         #.fetchall() is a list of tuples
         procedures = cursor.fetchall()
         # access the tuple inside the list
         for tuple_item in procedures:
             for item in tuple_item:
-                procedure_list.append(item.split(','))
+                procedure_list.append({'item':item[0], 'proc': item[1]})
+                if item[0] not in unique_item_list:
+                    unique_item_list.append(item[0])
 
-    # Create a procedure_bullet_points variable to hold updated html strings            
+    for item in unique_item_list:
+        final_proc_list.append({'item':item, 'proc':[]})
+
+    for proc_1 in procedure_list:
+        for proc_2 in final_proc_list:
+            if proc_1['item'] == proc_2['item']:
+                proc_2['proc'].append(proc_1['proc']) 
+    # Create a procedure checklist for menu items         
     procedure_row_count = 0
     procedure_html = ""
     unpacked_procedure_list = []
@@ -282,20 +292,7 @@ def prep_and_checklist(item_id, event_name):
     for mise_list in mise_en_place_list_of_lists:
         for mise in mise_list:
             mise_en_place.append(mise)
-            #mise_row_count += 1
-            #if mise_row_count % 2 == 0:
-            #    mise_en_place_col_2.append(mise)
-            #else:
-            #    mise_en_place_col_1.append(mise)
-    #col_1_html = ""
-    #col_2_html= ""
-    #for mise in mise_en_place_col_1:
-    #    col_1_html += f""" <li><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
-    #   <label for="{mise.lower()}">{mise.capitalize()}</label></li>"""
-       
-    #for mise in mise_en_place_col_2:
-    #    col_2_html += f"""<li><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
-    #    <label for="{mise.lower()}">{mise.capitalize()}</label></li>"""
+         
 
     for mise in mise_en_place:
          mise_en_place_html += f"""<li><input type="checkbox" id="{mise.lower()}" name="{mise.lower()}" value= "{mise.lower()}">
