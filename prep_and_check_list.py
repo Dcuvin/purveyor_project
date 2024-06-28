@@ -191,6 +191,8 @@ def word_prep_and_checklist(item_id, event_name, guest_count, event_start, event
         for proc_2 in final_proc_list:
             if proc_1['item'] == proc_2['item']:
                 proc_2['proc'].append(proc_1['proc']) 
+
+    print(final_proc_list)
     # Create a procedure checklist for menu items         
     procedure_row_count = 0
     procedure_html = ""
