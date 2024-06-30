@@ -293,17 +293,17 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date):
     # Check for any duplicate html files
     docx_file_count = 0
 
-    prep_list_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{docx_file_count}.docx'
+    checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{docx_file_count}.docx'
     
     #continously checks until it finds a non-existent file name
-    while os.path.exists(prep_list_file_path):
+    while os.path.exists(checklist_file_path):
         file_count += 1
         # this updates the file_count, allowing for it to be checked again in the while loop
-        prep_list_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{docx_file_count}.docx'
+        checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{docx_file_count}.docx'
 
     
-    doc.save(prep_list_file_path)
-    print("Prep list created!")
+    doc.save(checklist_file_path)
+    print("Checklist created!")
     
 
     conn.close()
