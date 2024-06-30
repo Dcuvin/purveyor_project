@@ -9,7 +9,7 @@ import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from bs4 import BeautifulSoup
 #from docx import Document
-from prep_and_check_list import excel_prep_list, word_prep_and_checklist, prep_and_checklist
+from prep_and_check_list import excel_prep_list, word_prep_list, word_checklist, prep_and_checklist
 from database import upload_excel
 #------------------------------------------------------------------------------------------
 
@@ -60,9 +60,13 @@ def main():
     #convert string into an iterable list to pass into new_prep_list
         arg_list = function_arg_1.split()
         excel_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
-    elif function_name == 'word_prep_and_checklist':
+    elif function_name == 'excel_prep_list':
         arg_list = function_arg_1.split()
-        word_prep_and_checklist(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
+        excel_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
+    elif function_name == 'word_prep_list':
+        arg_list = function_arg_1.split()
+        word_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
+
     elif function_name == 'order_sheet':
         arg_list = function_arg_1.split()
         order_sheet(arg_list)
@@ -95,6 +99,7 @@ def master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, f
         print(f"An error occurred: {e}")
     
     excel_prep_list(item_id, event_name, guest_count, event_start, event_date)
+    word_prep_list(item_id, event_name, guest_count, event_start, event_date)
 #------------------------------------------------------------------------------------------
 def order_sheet(item_id):
     

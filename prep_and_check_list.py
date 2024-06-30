@@ -154,7 +154,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
     workbook.save(excel_file)
 #---------------------------------------------------------------------------------
 
-def word_prep_and_checklist(item_id, event_name, guest_count, event_start, event_date):
+def word_prep_list(item_id, event_name, guest_count, event_start, event_date):
     
     conn = sqlite3.connect('purveyor_project_db.db')
     # Cursor to execute commands
@@ -233,7 +233,81 @@ def word_prep_and_checklist(item_id, event_name, guest_count, event_start, event
 
 #------------------------------------------------------------------------------------------
 
+def word_checklist(item_id, event_name, guest_count, event_start, event_date):
+    conn = sqlite3.connect('purveyor_project_db.db')
+    # Cursor to execute commands
+    cursor = conn.cursor()
+    current_date = date.today()
+    #the updated version will take a list of menu_item_ids
+    #It will then query a junction table and pull all procedures associated with the id.          
+    mise_list = []
+    unique_item_list =[]
+    final_mise_list =[]
+    for i in item_id:
+        cursor.execute(f""" 
+                        SELECT menu_mise_checklist.item_name, mise_checklist.mise_en_place
+                        FROM menu_mise_checklist
+                        JOIN mise_checklist ON menu_mise_checklist.checklist_id = mise_checklist.checklist_id
+                        WHERE menu_mise_checklist.menu_item_id = {i};
+            
+                        """)   
+    
+        #.fetchall() is a list of tuples
+        mise_en_place = cursor.fetchall()
+        # access the tuple inside the list
+        for tuple_item in mise_en_place:
+            mise_list.append({'item':tuple_item[0], 'mise': tuple_item[1]})
+            if tuple_item[0] not in unique_item_list:
+                unique_item_list.append(tuple_item[0])
 
+    for item in unique_item_list:
+        final_mise_list.append({'item':item, 'mise':[]})
+
+    for mise_1 in mise_list:
+        for mise_2 in final_mise_list:
+            if mise_1['item'] == mise_2['item']:
+                mise_2['mise'].append(mise_1['mise']) 
+
+    #print(final_proc_list)
+    
+                
+    # Create a new Word document
+    file_count = 0
+    doc = Document()
+    doc.add_heading(f'{event_name} {event_date}', 0)
+    doc.add_heading(f'Guests: {guest_count}', level=2)
+    doc.add_heading(f'Start: {event_start}', level=2)
+
+    # Create datetime variable
+    current_date = date.today()
+    
+    for dict in final_mise_list:
+        doc.add_heading(f"{dict['item']}", level=2)
+
+        # Add items as paragraphs with a checkbox
+        for mise in dict['mise']:
+            doc.add_paragraph(mise.capitalize() + '\u2610')
+            
+        
+    
+    # Check for any duplicate html files
+    docx_file_count = 0
+
+    prep_list_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{docx_file_count}.docx'
+    
+    #continously checks until it finds a non-existent file name
+    while os.path.exists(prep_list_file_path):
+        file_count += 1
+        # this updates the file_count, allowing for it to be checked again in the while loop
+        prep_list_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{docx_file_count}.docx'
+
+    
+    doc.save(prep_list_file_path)
+    print("Prep list created!")
+    
+
+    conn.close()
+#------------------------------------------------------------------------------------------
 
 def prep_and_checklist(item_id):
     
