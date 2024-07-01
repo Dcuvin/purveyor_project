@@ -66,6 +66,9 @@ def main():
     elif function_name == 'word_prep_list':
         arg_list = function_arg_1.split()
         word_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
+    elif function_name == 'word_checklist':
+        arg_list = function_arg_1.split()
+        word_checklist(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
 
     elif function_name == 'order_sheet':
         arg_list = function_arg_1.split()

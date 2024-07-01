@@ -9,9 +9,7 @@ import sys #import sys modulet o access command-line arguments
 import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from docx import Document
-from docx.shared import Pt
-from docx.oxml.ns import qn
-from docx.oxml import OxmlElement
+
 #----------------------------------------------------------------------------
 
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
@@ -286,7 +284,7 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date):
 
         # Add items as paragraphs with a checkbox
         for mise in dict['mise']:
-            doc.add_paragraph(mise.capitalize() + '\u2610')
+            doc.add_paragraph('\u2610' + ' ' + mise.capitalize())
             
         
     
