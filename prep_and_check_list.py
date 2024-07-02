@@ -150,6 +150,8 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
 
     # Save the workbook with formatting
     workbook.save(excel_file)
+
+    print("Excel Prep List Created!")
 #---------------------------------------------------------------------------------
 
 def word_prep_list(item_id, event_name, guest_count, event_start, event_date):
@@ -222,7 +224,7 @@ def word_prep_list(item_id, event_name, guest_count, event_start, event_date):
 
     
     doc.save(prep_list_file_path)
-    print("Prep list created!")
+    print("Prep List Created!")
     
 
     conn.close()
@@ -301,7 +303,7 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date):
 
     
     doc.save(checklist_file_path)
-    print("Checklist created!")
+    print("Checklist Created!")
     
 
     conn.close()
