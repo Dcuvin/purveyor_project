@@ -2,7 +2,7 @@ from datetime import date
 import pandas as pd
 import sqlite3
 from openpyxl import load_workbook #imports python library for reading and writting excel files
-from openpyxl.styles import Font, PatternFill, Border, Side
+from openpyxl.styles import Font, PatternFill, Border, Side, Alignment
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.worksheet.datavalidation import DataValidation
 import sys #import sys modulet o access command-line arguments
@@ -92,12 +92,17 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
         
         # Define the font for non-header cells
         cell_font = Font(name="Arial", size=12)
+
+        # Define the alignment for all cells
+        cell_alignment = Alignment(horizontal='center', vertical='center')
+
         
-     # Apply font to the entire table
+        # Apply font to the entire table
         for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):
              for cell in row:
                 cell.font = cell_font
-
+                # Center all data
+                cell.alignment = cell_alignment
         # Format headers
         for cell in sheet.iter_cols(min_row=start_row, max_row=start_row, min_col=start_col, max_col=end_col):
             for c in cell:

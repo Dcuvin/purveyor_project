@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_prep_list, word_checklist, prep_and_checklist
 from database import upload_excel
+from purveyor import order_list
 #------------------------------------------------------------------------------------------
 
 def main():
@@ -70,9 +71,6 @@ def main():
         arg_list = function_arg_1.split()
         word_checklist(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
 
-    elif function_name == 'order_sheet':
-        arg_list = function_arg_1.split()
-        order_sheet(arg_list)
     else:
         print("Invalid function name")  # Print an error message if the function name is unrecognized
     #Function that appends to purveyor_contact.db
@@ -101,28 +99,10 @@ def master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, f
     except Exception as e:
         print(f"An error occurred: {e}")
     
-    excel_prep_list(item_id, event_name, guest_count, event_start, event_date)
+    excel_prep_list(item_id, event_name, guest_count, event_start, event_date) 
     word_prep_list(item_id, event_name, guest_count, event_start, event_date)
-#------------------------------------------------------------------------------------------
-def order_sheet(item_id):
-    
-    current_date = date.today
-    conn = sqlite3.connect('purveyor_project_db.db')  # Specify your database file here
-    cursor = conn.cursor()
-    # Query the database
-    to_order_list = []
-    for id in item_id:
-
-        cursor.execute(f"""SELECT ingredients.ingredient_name, ingredients.brand, ingredients.purveyor, ingredients.item_code
-                        FROM ingredients
-                        JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
-                        WHERE menu_ingredients.menu_item_id = {id}""") 
-        to_order = cursor.fetchall()
-        to_order_list.append(to_order)
-    
-    
-    
-    print(to_order_list)
+    word_checklist(item_id, event_name, guest_count, event_start, event_date)
+   #order_list(item_id, event_name, guest_count, event_start, event_date) 
 #------------------------------------------------------------------------------------------
     
 def generate_email_html(purveyor_name):
