@@ -5,7 +5,7 @@ import sqlite3
 from datetime import date
 
 
-def order_sheet(item_id):
+def order_list(item_id):
     
     current_date = date.today
     conn = sqlite3.connect('purveyor_project_db.db')  # Specify your database file here

@@ -213,7 +213,7 @@ def word_prep_list(item_id, event_name, guest_count, event_start, event_date):
         doc.add_heading(f"{dict['item']}", level=2)
 
         for proc in dict['proc']:
-            doc.add_paragraph(proc.capitalize(), style='List Bullet')
+            doc.add_paragraph(proc.capitalize() +' ' + '\u2610', style='List Bullet')
         
     
     # Check for any duplicate html files

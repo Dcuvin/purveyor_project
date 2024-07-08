@@ -61,9 +61,6 @@ def main():
     #convert string into an iterable list to pass into new_prep_list
         arg_list = function_arg_1.split()
         excel_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
-    elif function_name == 'excel_prep_list':
-        arg_list = function_arg_1.split()
-        excel_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
     elif function_name == 'word_prep_list':
         arg_list = function_arg_1.split()
         word_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
@@ -84,6 +81,8 @@ def master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, f
     guest_count = function_arg_3
     event_start = function_arg_4
     event_date = function_arg_5
+
+
 
     # Specify the path of the new directory
     new_folder_path = f"prep_and_checklists/{event_name}"
