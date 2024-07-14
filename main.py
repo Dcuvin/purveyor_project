@@ -8,69 +8,77 @@ import sys #import sys modulet o access command-line arguments
 import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from bs4 import BeautifulSoup
+import openai
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_prep_list, word_checklist, prep_and_checklist
 from database import upload_excel
-from purveyor import order_list
+from openapi import get_chatgpt_response
+#from purveyor import order_list
 #------------------------------------------------------------------------------------------
 
 def main():
-    if len(sys.argv) == 0:  # Check if the required arguments are provided
-        print("Usage: python functions.py <function> <name>")  # Provide usage instructions
-        return  # Exit the function if not enough arguments
-    function_name = sys.argv[1]  # Get the function name from the first command line argument
-    function_arg_1 = sys.argv[2]  # Get the name from the second command line argument
-    function_arg_2 = ""
-    function_arg_3 = ""
-    try:
-        function_arg_2 = sys.argv[3]
-    except:
-        pass
-
-    try:
-        function_arg_3 = sys.argv[4]
-    except:
-        pass
-    try:
-        function_arg_4 = sys.argv[5]
-    except:
-        pass
-
-    try:
-        function_arg_5 = sys.argv[6]
-    except:
-        pass
-
-    if function_name == 'upload_excel':  # Check if the function name is ' upload_purveyor_contact'
-        upload_excel(function_arg_1)  # Call the  upload_purveyor_contact function
-        
-    elif function_name == 'generate_email_html':
-        generate_email_html(function_arg_1)
+    if sys.argv[1] == 'get_chatgpt_response':
+        # Prompt the user for input
+        prompt = input("Please enter your prompt: ")
+        get_chatgpt_response(prompt)
+    else:
     
-    elif function_name == 'prep_and_checklist':
+        if len(sys.argv) == 0:  # Check if the required arguments are provided
+            print("Usage: python functions.py <function> <name>")  # Provide usage instructions
+            return  # Exit the function if not enough arguments
+        function_name = sys.argv[1]  # Get the function name from the first command line argument
+        function_arg_1 = sys.argv[2]  # Get the name from the second command line argument
+        function_arg_2 = ""
+        function_arg_3 = ""
+        try:
+            function_arg_2 = sys.argv[3]
+        except:
+            pass
+
+        try:
+            function_arg_3 = sys.argv[4]
+        except:
+            pass
+        try:
+            function_arg_4 = sys.argv[5]
+        except:
+            pass
+
+        try:
+            function_arg_5 = sys.argv[6]
+        except:
+            pass
+
+        if function_name == 'upload_excel':  # Check if the function name is ' upload_purveyor_contact'
+            upload_excel(function_arg_1)  # Call the  upload_purveyor_contact function
+            
+        elif function_name == 'generate_email_html':
+            generate_email_html(function_arg_1)
+        
+        elif function_name == 'prep_and_checklist':
+            #function_arg_1 must look like this: ' 1 2 3 '
+            #convert string into an iterable list to pass into new_prep_list
+            arg_list = function_arg_1.split()
+            prep_and_checklist(arg_list)
+
+        elif function_name == 'master_prep_list':
+            arg_list = function_arg_1.split()
+            master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
+        elif function_name == 'excel_prep_list':
         #function_arg_1 must look like this: ' 1 2 3 '
         #convert string into an iterable list to pass into new_prep_list
-        arg_list = function_arg_1.split()
-        prep_and_checklist(arg_list)
+            arg_list = function_arg_1.split()
+            excel_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
+        elif function_name == 'word_prep_list':
+            arg_list = function_arg_1.split()
+            word_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
+        elif function_name == 'word_checklist':
+            arg_list = function_arg_1.split()
+            word_checklist(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
 
-    elif function_name == 'master_prep_list':
-        arg_list = function_arg_1.split()
-        master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
-    elif function_name == 'excel_prep_list':
-    #function_arg_1 must look like this: ' 1 2 3 '
-    #convert string into an iterable list to pass into new_prep_list
-        arg_list = function_arg_1.split()
-        excel_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
-    elif function_name == 'word_prep_list':
-        arg_list = function_arg_1.split()
-        word_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
-    elif function_name == 'word_checklist':
-        arg_list = function_arg_1.split()
-        word_checklist(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
-
-    else:
-        print("Invalid function name")  # Print an error message if the function name is unrecognized
-    #Function that appends to purveyor_contact.db
+        else:
+            print("Invalid function name")  # Print an error message if the function name is unrecognized
+        #Function that appends to purveyor_contact.db
 
 #------------------------------------------------------------------------------------------
        
@@ -97,11 +105,11 @@ def master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, f
         print(f"Parent directory does not exist")
     except Exception as e:
         print(f"An error occurred: {e}")
-    
+    #32 37 38 43
     excel_prep_list(item_id, event_name, guest_count, event_start, event_date) 
     word_prep_list(item_id, event_name, guest_count, event_start, event_date)
     word_checklist(item_id, event_name, guest_count, event_start, event_date)
-   #order_list(item_id, event_name, guest_count, event_start, event_date) 
+    #order_list(item_id, event_name, guest_count, event_start, event_date) 
 #------------------------------------------------------------------------------------------
     
 def generate_email_html(purveyor_name):

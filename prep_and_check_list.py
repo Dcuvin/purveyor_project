@@ -9,9 +9,9 @@ import sys #import sys modulet o access command-line arguments
 import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from docx import Document
+#import openai
 
 #----------------------------------------------------------------------------
-
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
     
     current_date = date.today()
@@ -158,7 +158,6 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
 
     print("Excel Prep List Created!")
 #---------------------------------------------------------------------------------
-
 def word_prep_list(item_id, event_name, guest_count, event_start, event_date):
     
     conn = sqlite3.connect('purveyor_project_db.db')
@@ -233,11 +232,7 @@ def word_prep_list(item_id, event_name, guest_count, event_start, event_date):
     
 
     conn.close()
-
-    
-
 #------------------------------------------------------------------------------------------
-
 def word_checklist(item_id, event_name, guest_count, event_start, event_date):
     conn = sqlite3.connect('purveyor_project_db.db')
     # Cursor to execute commands
@@ -313,7 +308,6 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date):
 
     conn.close()
 #------------------------------------------------------------------------------------------
-
 def prep_and_checklist(item_id):
     
     conn = sqlite3.connect('purveyor_project_db.db')
