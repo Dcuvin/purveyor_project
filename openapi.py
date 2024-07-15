@@ -21,14 +21,17 @@ def get_chatgpt_response(prompt):
 
     response = client.chat.completions.create(
                 messages=[
-                {
-                    "role": "user",
-                    "content": prompt,
-                }
+                {"role": "system", "content": "Identify the food items that have capital letters and output them each on its own separate line"},
+                { "role": "user","content": prompt,}
             ],
             model="gpt-3.5-turbo",
     )
-    print(response)
+
+    content = response.choices[0].message.content
+    content_list =content.split('\n')
+    
+
+    print(content_list) 
     #try:
     #    print("Sending request to OpenAI API...")  # Logging request
         # Make a request to the OpenAI API
