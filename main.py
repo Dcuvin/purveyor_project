@@ -12,15 +12,23 @@ import openai
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_prep_list, word_checklist, prep_and_checklist
 from database import upload_excel
-from openapi import get_chatgpt_response
+from openapi import get_chatgpt_menu_items, get_chatgpt_event_info, get_chatgpt_master
 #from purveyor import order_list
 #------------------------------------------------------------------------------------------
 
 def main():
-    if sys.argv[1] == 'get_chatgpt_response':
+
+    if sys.argv[1] == 'get_chatgpt_master':
+        event_info = input('Copy and Paste the Event Information here: ')
+        menu_items = input('Copy and Paste the Menu here: ')
+        get_chatgpt_master(event_info, menu_items)
+    elif sys.argv[1] == 'get_chatgpt_menu_items':
         # Prompt the user for input
         prompt = input("Please enter your prompt: ")
-        get_chatgpt_response(prompt)
+        get_chatgpt_menu_items(prompt)
+    elif sys.argv[1] =='get_chatgpt_event_info':
+        prompt = input("Please enter your prompt: ")
+        get_chatgpt_event_info(prompt)
     else:
     
         if len(sys.argv) == 0:  # Check if the required arguments are provided
@@ -80,6 +88,9 @@ def main():
             print("Invalid function name")  # Print an error message if the function name is unrecognized
         #Function that appends to purveyor_contact.db
 
+#------------------------------------------------------------------------------------------
+def automate_prep_list():
+    pass
 #------------------------------------------------------------------------------------------
        
 def master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5):
