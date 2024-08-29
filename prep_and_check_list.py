@@ -23,7 +23,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
     #It will then query a junction table and pull all procedures associated with the id.          
     mise_list = []
     unique_item_names = []
-    mise_list_2= []
+    mise_list_final= []
     for id in item_id:
         cursor.execute(f"""
                        SELECT menu_mise_checklist.item_name, mise_checklist.mise_en_place
@@ -46,13 +46,18 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
     conn.close()
     # Create a dict of items with a list of mise
     for name in unique_item_names:
-        mise_list_2.append({'Item': name, 'Mise':[], 'Need':' '})
+        mise_list_final.append({'Item': name, 'Mise':[], 'Need':' '})
 
     # Iteratively add the mise form mise_list to mise_list_2
     for item_1 in mise_list:
-        for item_2 in mise_list_2:
+        for item_2 in mise_list_final:
             if item_1['Item'] == item_2['Item']:
                 item_2['Mise'].append(item_1['Mise'].capitalize())
+
+    # Iteratively title() each item name
+
+    for item in mise_list_final:
+        item['Item'] = item['Item'].title()
 
     # Function that creates a dataframe
     def create_df(data):
@@ -61,7 +66,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
         return df
 
     df_list =[]  
-    for dict_item in mise_list_2:
+    for dict_item in mise_list_final:
         df_list.append(create_df(dict_item))
 
     pivot_list = []

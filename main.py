@@ -1,6 +1,7 @@
 from datetime import date
 import pandas as pd
 import sqlite3
+import re
 from openpyxl import load_workbook #imports python library for reading and writting excel files
 from openpyxl.styles import Font, PatternFill, Border, Side
 from openpyxl.worksheet.datavalidation import DataValidation
@@ -12,16 +13,22 @@ import openai
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_prep_list, word_checklist, prep_and_checklist
 from database import upload_excel
-from openapi import get_chatgpt_menu_items, get_chatgpt_event_info, get_chatgpt_master
+from openapi import get_chatgpt_menu_items, get_chatgpt_event_info, get_chatgpt_master, get_chatgpt_all_info
 #from purveyor import order_list
 #------------------------------------------------------------------------------------------
 
 def main():
 
-    if sys.argv[1] == 'get_chatgpt_master':
-        event_info = input('Copy and Paste the Event Information here: ')
-        menu_items = input('Copy and Paste the Menu here: ')
-        get_chatgpt_master(event_info, menu_items)
+    
+    if sys.argv[1] == 'gpt_prep_list_2':
+       gpt_prep_list_2()
+    elif sys.argv[1] == 'gpt_prep_list':
+        event_info_input = input('Copy and Paste the Event Information here: ')
+        menu_items_input = input('Copy and Paste the Menu here: ')
+        event_info = get_chatgpt_event_info(event_info_input)
+        menu_items = get_chatgpt_menu_items(menu_items_input)
+        gpt_prep_list(event_info, menu_items)
+
     elif sys.argv[1] == 'get_chatgpt_menu_items':
         # Prompt the user for input
         prompt = input("Please enter your prompt: ")
@@ -88,9 +95,62 @@ def main():
             print("Invalid function name")  # Print an error message if the function name is unrecognized
         #Function that appends to purveyor_contact.db
 
+# Work in prpogress...
+def gpt_prep_list_2():
+
+#Check filepath
+    file_path = "prompt_file.txt"
+    if os.path.exists(file_path):
+        print("file_path is correct")
+    else:
+        print("ERROR")
+          
+    # Read the existing content
+    read_file = ""
+    with open("prompt_file.txt", 'r') as file:
+        content = file.read()
+        read_file += content
+        #print(content)
+    #print(read_file)
+
+    get_chatgpt_all_info(read_file)
+
+
 #------------------------------------------------------------------------------------------
-def automate_prep_list():
-    pass
+def gpt_prep_list(event_info, menu_items):
+
+    event_name = event_info[0]
+    guest_count = event_info[1]
+    event_start = event_info[2]
+    event_date = event_info[3]
+    menu_items_lower = []
+
+    for item in menu_items:
+        menu_items_lower.append(item.lower())
+    
+    menu_item_id = []
+    for item in menu_items_lower:
+        try:
+            conn = sqlite3.connect('purveyor_project_db.db')
+            cursor = conn.cursor()
+            # Use parameterized query to avoid SQL injection
+            cursor.execute("SELECT menu_item_id FROM menu_items WHERE item_name = ?", (item,))
+            result = cursor.fetchone()
+            # Prevent appending None if "item" does not exist in the database
+            if result is not None:
+                menu_item_id.append(result[0])
+        except sqlite3.Error as e:
+            continue
+    
+    #print(menu_item_id)
+    print(event_info)
+    print(event_name)     
+    #print(menu_items)
+    print(menu_items_lower)
+    print(menu_item_id)
+
+    #master_prep_list(menu_item_id, event_name, guest_count, event_start, event_date)
+
 #------------------------------------------------------------------------------------------
        
 def master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5):
