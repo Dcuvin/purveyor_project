@@ -5,7 +5,6 @@ CREATE TABLE ingredients (
     ingredient_id INTEGER PRIMARY KEY AUTOINCREMENT,
     ingredient TEXT NOT NULL,
     ingredient_name TEXT NOT NULL,
-    brand TEXT,
     purveyor TEXT,
     ingredient_type TEXT,
     item_code TEXT,
@@ -89,4 +88,13 @@ CREATE TABLE menu_mise_checklist(
     FOREIGN KEY (checklist_id) REFERENCES mise_checklist(checklist_id)   
 );
             
-            
+-- Create table for master_product_catalog imported from xtraCHEF
+CREATE TABLE master_product_catalog (
+    item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    item_name TEXT NOT NULL,
+    item_description TEXT NOT NULL,
+    vendor TEXT NOT NULL,
+    item_code TEXT NOT NULL,
+    pack_size_unit TEXT NOT NULL
+);
+

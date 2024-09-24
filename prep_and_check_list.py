@@ -96,7 +96,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
                             bottom=Side(style='thin'))
         
         # Define the font for non-header cells
-        cell_font = Font(name="Arial", size=12)
+        cell_font = Font(name="Calibri", size=12)
 
         # Define the alignment for all cells
         cell_alignment = Alignment(horizontal='center', vertical='center')
@@ -111,7 +111,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
         # Format headers
         for cell in sheet.iter_cols(min_row=start_row, max_row=start_row, min_col=start_col, max_col=end_col):
             for c in cell:
-                c.font = Font(bold=True, name='Arial', size=14, color="000000")
+                c.font = Font(bold=True, name='Calibri', size=14, color="000000")
                 c.fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
                 c.border = thin_border
 
@@ -153,7 +153,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
 
     # Insert Event Info
     title = sheet.cell(row=1, column=1, value=f"{event_name} {guest_count} Guests {event_start} {event_date}")
-    title.font = Font(name='Arial', size=16, bold=True, underline='single', color='000000')
+    title.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
    
     # Set print options
     set_print_options(sheet)
@@ -274,8 +274,9 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date):
                 mise_2['mise'].append(mise_1['mise']) 
 
     #print(final_proc_list)
-    
-                
+    final_mise_list.append({'item': 'Dry Goods/Tools', 'mise':['C-folds', 'Sani-wipes','Gloves', 'Tasting Spoons','Piping Bags', 'Quarts','Pints']})
+    # Adding dry-goods/ tools section to checklist
+           
     # Create a new Word document
     file_count = 0
     doc = Document()
@@ -569,13 +570,118 @@ def prep_and_checklist(item_id):
 
     print("HTML prep_and_checklist file successfuly created!")
 #--------------------------------------------------------------------------------------   
-# Check if the script is run as the main module
-if __name__ == "__new_prep_and_cheklist__":
-    # Print a message before calling main to indicate the script status
-    print("Calling __new_prep_and_cheklist__")
-    # Call the main function if this script is executed directly
-    prep_and_checklist()
+def get_order_list(item_id, event_name, event_date):
+
+    conn = sqlite3.connect('purveyor_project_db.db')
+    # Cursor to execute commands
+    cursor = conn.cursor()
+    current_date = date.today()
+    result_list = []
+    for id in item_id:
+        cursor.execute("""
+                SELECT ingredients.ingredient, ingredients.purveyor, ingredients.item_code, ingredients.item_size
+                FROM ingredients
+                JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
+                WHERE menu_ingredients.menu_item_id = ?;
+            """, (id,)
+        )
+        
+        results = cursor.fetchall()
+        for tuple_item in results:
+            result_list.append({'Ingredient': tuple_item[0], 'Purveyor':tuple_item[1], 'Code': tuple_item[2], 'Size': tuple_item[3], 'Qty':" "})
+
+    print(result_list)
+    #count = 0
+    #final_to_order =[]    
+    #for ingredient in to_order:
+    #    count += 1
+    #    final_to_order.append({'Ingredient': ingredient,'Qty': ''})
+    #print(final_to_order)
+
+    # Function that creates a dataframe
+    def create_df(data):
+
+        df= pd.DataFrame.from_dict(data, orient='index').T
+        return df
+
+    df_order_list =[]  
+    for item in result_list:
+        # If you're using scalar values directly, you can specify the orientation as index to tell pandas to treat the keys as row labels:
+        df_order_list.append(create_df(item))
+    #print(df_list)
+
+    excel_file_count = 0
+    # Create an excel file
+    excel_file = f"prep_and_checklists/{event_name}/Order_List_{event_name}_{current_date}_{excel_file_count}.xlsx"
+    # Continously checks until it finds a non-existent file name
+    while os.path.exists(excel_file):
+        excel_file_count += 1
+        # This updates the file_count, allowing for it to be checked again in the while loop
+        excel_file = f"prep_and_checklists/{event_name}/Order_list_{event_name}_{current_date}_{excel_file_count}.xlsx"
     
-#If you run a script directly from the command line (or an IDE, etc.), 
-#Python sets __name__ to "__main__". This indicates that the script is 
-#the main program being executed. 
+    #print(excel_file)
+    # Function to format the headers and add borders
+    def format_headers_and_borders(sheet, start_row, start_col, end_col):
+        thin_border = Border(left=Side(style='thin'),
+                            right=Side(style='thin'),
+                            top=Side(style='thin'),
+                            bottom=Side(style='thin'))
+        
+        # Define the font for non-header cells
+        cell_font = Font(name="Calibri", size=12)
+
+        # Define the alignment for all cells
+        cell_alignment = Alignment(horizontal='center', vertical='center')
+
+        
+        # Apply font to the entire table
+        for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):
+             for cell in row:
+                cell.font = cell_font
+                # Center all data
+                cell.alignment = cell_alignment
+        # Format headers
+        for cell in sheet.iter_cols(min_row=start_row, max_row=start_row, min_col=start_col, max_col=end_col):
+            for c in cell:
+                c.font = Font(bold=True, name='Calibri', size=14, color="000000")
+                c.fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+                c.border = thin_border
+
+        # Apply borders to the entire table
+        for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):      
+            for cell in row:
+                cell.border = thin_border
+               
+                
+    # Function to set print options
+    def set_print_options(sheet):
+        sheet.print_options.gridLines = False
+        sheet.page_setup.orientation = 'portrait'
+    
+    # Function to insert unformatted rows
+    def insert_blank_rows(sheet, start_row):
+        sheet.insert_rows(start_row, 1)
+
+
+    # Creates an unfinished excel file
+    with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
+        current_row = 3
+        for ingredient in df_order_list:
+            df_order_list.to_excel(writer, sheet_name= event_name, startrow=current_row, startcol=0)
+
+    # Load the workbook and access the sheet
+    workbook = load_workbook(excel_file)
+    sheet = workbook[event_name]
+
+    
+    # Insert Event Info
+    title = sheet.cell(row=1, column=1, value=f"{event_name} {event_date}")
+    title.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
+   
+    # Set print options
+    set_print_options(sheet)
+
+    # Save the workbook with formatting
+    workbook.save(excel_file)
+    
+    pass

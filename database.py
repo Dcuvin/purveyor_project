@@ -2,11 +2,12 @@ import pandas as pd
 from openpyxl import load_workbook #imports python library for reading and writting excel files
 import sqlite3
 import time
+import os
 
 
 def upload_excel(name_of_excel_file):
     
-    table_name = [ 'menu_items', 'menu_restrictions', 'restrictions', 'ingredients', 'menu_ingredients', 'menu_procedures', 'procedures', 'vendors']
+    table_name = [ 'menu_items', 'menu_restrictions', 'restrictions', 'ingredients', 'menu_ingredients', 'menu_procedures', 'procedures', 'vendors', 'master_product_catalog']
     # Connect to the SQLite database
     conn = sqlite3.connect('purveyor_project_db.db')
     cursor = conn.cursor()
@@ -32,7 +33,7 @@ def upload_excel(name_of_excel_file):
             continue
     print(table_names)
     
-    if len(table_names) == 8:
+    if len(table_names) == 9:
     
         for sheet_name, df in excel_data.items():
             print(f"Uploading sheet: {sheet_name}")
@@ -51,3 +52,22 @@ def upload_excel(name_of_excel_file):
     # Close the connection
     conn.close()
     print("Excel file upload successful!")
+
+# ------------------------------------------------------------------------------------------
+
+def input_new_data():
+
+    #Check filepath
+    file_path = "db_input_file.txt"
+    if os.path.exists(file_path):
+        print("file_path is correct")
+    else:
+        print("ERROR")
+          
+    # Read the existing content
+    read_file = ""
+    with open("db_input_file.txt", 'r') as file:
+        content = file.read()
+        read_file += content
+        #print(content)
+    #print(read_file)

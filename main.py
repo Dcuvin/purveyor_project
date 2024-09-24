@@ -11,9 +11,9 @@ import os #This statement is used to include the functionality of
 from bs4 import BeautifulSoup
 import openai
 #from docx import Document
-from prep_and_check_list import excel_prep_list, word_prep_list, word_checklist, prep_and_checklist
+from prep_and_check_list import excel_prep_list, word_prep_list, word_checklist, prep_and_checklist, get_order_list
 from database import upload_excel
-from openapi import get_chatgpt_menu_items, get_chatgpt_event_info, get_chatgpt_master, get_chatgpt_all_info
+from openapi import get_chatgpt_menu_items, get_chatgpt_event_info, get_chatgpt_all_info,  chatgpt_generated_prep_list
 #from purveyor import order_list
 #------------------------------------------------------------------------------------------
 
@@ -21,7 +21,9 @@ def main():
 
     
     if sys.argv[1] == 'gpt_prep_list_2':
-       gpt_prep_list_2()
+        gpt_prep_list_2()
+    elif sys.argv[1] == 'gpt_prep_list_3':
+       gpt_prep_list_3()
     elif sys.argv[1] == 'gpt_prep_list':
         event_info_input = input('Copy and Paste the Event Information here: ')
         menu_items_input = input('Copy and Paste the Menu here: ')
@@ -90,6 +92,9 @@ def main():
         elif function_name == 'word_checklist':
             arg_list = function_arg_1.split()
             word_checklist(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5)
+        elif function_name == 'get_order_list':
+            arg_list = function_arg_1.split()
+            get_order_list(arg_list, function_arg_2, function_arg_3)
 
         else:
             print("Invalid function name")  # Print an error message if the function name is unrecognized
@@ -113,9 +118,34 @@ def gpt_prep_list_2():
         #print(content)
     #print(read_file)
 
-    get_chatgpt_all_info(read_file)
 
+    # Put the function into a variable inorder to access the returned tuple
+    all_info = get_chatgpt_all_info(read_file)
 
+    item_ids = all_info[0]
+    event_name = all_info[1]
+    guest_count = all_info[2]
+    event_time = all_info[3]
+    event_date = all_info[4]
+
+    # Call the master_prep_list function using the returned variables
+    master_prep_list(item_ids, event_name, guest_count, event_time, event_date)
+#------------------------------------------------------------------------------------------
+def gpt_prep_list_3():
+    #Check filepath
+    file_path = "prompt_file.txt"
+    if os.path.exists(file_path):
+        print("file_path is correct")
+    else:
+        print("ERROR")
+          
+    # Read the existing content
+    read_file = ""
+    with open("prompt_file.txt", 'r') as file:
+        content = file.read()
+        read_file += content
+
+    chatgpt_generated_prep_list(read_file)
 #------------------------------------------------------------------------------------------
 def gpt_prep_list(event_info, menu_items):
 
@@ -153,16 +183,9 @@ def gpt_prep_list(event_info, menu_items):
 
 #------------------------------------------------------------------------------------------
        
-def master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, function_arg_5):
+def master_prep_list(item_ids, event_name, guest_count, event_time, event_date):
     
-    item_id = arg_list
-    event_name = function_arg_2
-    guest_count = function_arg_3
-    event_start = function_arg_4
-    event_date = function_arg_5
-
-
-
+ 
     # Specify the path of the new directory
     new_folder_path = f"prep_and_checklists/{event_name}"
 
@@ -177,10 +200,10 @@ def master_prep_list(arg_list, function_arg_2, function_arg_3, function_arg_4, f
     except Exception as e:
         print(f"An error occurred: {e}")
     #32 37 38 43
-    excel_prep_list(item_id, event_name, guest_count, event_start, event_date) 
-    word_prep_list(item_id, event_name, guest_count, event_start, event_date)
-    word_checklist(item_id, event_name, guest_count, event_start, event_date)
-    #order_list(item_id, event_name, guest_count, event_start, event_date) 
+    excel_prep_list(item_ids, event_name, guest_count, event_time, event_date) 
+    word_prep_list(item_ids, event_name, guest_count, event_time, event_date)
+    word_checklist(item_ids, event_name, guest_count, event_time, event_date)
+    #order_list(item_ids, event_name, guest_count, event_time, event_date) 
 #------------------------------------------------------------------------------------------
     
 def generate_email_html(purveyor_name):
