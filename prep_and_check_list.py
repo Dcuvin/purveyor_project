@@ -273,8 +273,14 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date):
             if mise_1['item'] == mise_2['item']:
                 mise_2['mise'].append(mise_1['mise']) 
 
+    # capitalize the first letter 
+    for menu_item in final_mise_list:
+        menu_item['item'].title()
+        for mise in menu_item['mise']:
+            mise.title()
+
     #print(final_proc_list)
-    final_mise_list.append({'item': 'Dry Goods/Tools', 'mise':['C-folds', 'Sani-wipes','Gloves', 'Tasting Spoons','Piping Bags', 'Quarts','Pints']})
+    final_mise_list.append({'item': 'Dry Goods/Tools', 'mise':['C-folds', 'Sani-wipes','Gloves', 'Tasting Spoons','Piping Bags', 'Quarts','Pints', 'Lids']})
     # Adding dry-goods/ tools section to checklist
            
     # Create a new Word document

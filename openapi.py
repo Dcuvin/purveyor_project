@@ -48,7 +48,7 @@ def get_chatgpt_all_info(text_file):
     response = client.chat.completions.create(
                 messages=[
                 {"role": "system", "content": """Output the name of the event, 
-                 the guest count, the event start and end time, and the date of that event, 
+                 the guest count, the event start and end time, the date of that event, the event type,
                  as well as all the food items in that order each on their own separate line. Do not label them.
                  Make sure that the event title and canapes
                  does not include a special character as the first letter, and that the canapes are not numbered or contain an empty space. """},
@@ -65,7 +65,7 @@ def get_chatgpt_all_info(text_file):
     guest_count = content_list[1]
     event_time = content_list[2]
     event_date = content_list[3]
-
+    event_type = content_list[4]
     menu_items = content_list[4:len(content_list)]
 
     menu_items_lower = [i.lower() for i in menu_items]
@@ -85,7 +85,7 @@ def get_chatgpt_all_info(text_file):
 
     #print(content_list)
     #print(menu_items_lower)
-    #print(final_menu_items)
+    print(final_menu_items)
     does_it_work = []
     results = []
     conn = sqlite3.connect('purveyor_project_db.db')
@@ -116,8 +116,8 @@ def get_chatgpt_all_info(text_file):
     item_ids = [i[0][0] for i in results]
     #print(does_it_work)
     #print(results)
-    #print(item_ids)
-    return item_ids, event_name, guest_count, event_time, event_date
+    print(item_ids)
+    return item_ids, event_name, guest_count, event_time, event_date, event_type
 #------------------------------------------------------------------------------------------
 
 def get_chatgpt_menu_items(prompt):

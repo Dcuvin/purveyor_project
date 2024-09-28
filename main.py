@@ -127,6 +127,12 @@ def gpt_prep_list_2():
     guest_count = all_info[2]
     event_time = all_info[3]
     event_date = all_info[4]
+    event_type = all_info[5].lower()
+
+    # if event_type is a seated dinner...
+    event_type_list = ['seated dinner', 'seated meal', 'seated', ' ']
+    if event_type in event_type_list:
+        item_ids.append(83)
 
     # Call the master_prep_list function using the returned variables
     master_prep_list(item_ids, event_name, guest_count, event_time, event_date)
@@ -201,7 +207,7 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date):
         print(f"An error occurred: {e}")
     #32 37 38 43
     excel_prep_list(item_ids, event_name, guest_count, event_time, event_date) 
-    word_prep_list(item_ids, event_name, guest_count, event_time, event_date)
+    #word_prep_list(item_ids, event_name, guest_count, event_time, event_date)
     word_checklist(item_ids, event_name, guest_count, event_time, event_date)
     #order_list(item_ids, event_name, guest_count, event_time, event_date) 
 #------------------------------------------------------------------------------------------
