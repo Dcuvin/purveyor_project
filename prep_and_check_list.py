@@ -161,7 +161,29 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date):
     # Save the workbook with formatting
     workbook.save(excel_file)
 
-    print("Excel Prep List Created!")
+    # Reformat the file because Chai is being a b$%^h...
+
+    # Load the workbook and select the active worksheet
+    workbook = load_workbook(excel_file)
+    sheet = workbook[event_name]
+    #---------------------------------------------------------------------------------
+
+    # Iterate over each row and column in the sheet
+    for row in sheet.iter_rows():
+        for cell in row:
+            # Check if the cell contains 'Mise'
+            if cell.value and isinstance(cell.value, str) and 'Mise' in cell.value:
+                right_cell = sheet.cell(row=cell.row, column=cell.column + 1)
+                if right_cell.value:
+                    # Replace the cell with 'Mise' with the content of the immediate right cell
+                    cell.value = right_cell.value
+                    # Replace the content of the right cell with 'Need'
+                    right_cell.value = 'Need'
+
+    # Save the workbook with formatting
+    workbook.save(excel_file)
+
+    print("Excel Prep List Created and Reformatted!")
 #---------------------------------------------------------------------------------
 def word_prep_list(item_id, event_name, guest_count, event_start, event_date):
     

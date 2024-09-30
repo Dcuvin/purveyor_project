@@ -48,10 +48,11 @@ def get_chatgpt_all_info(text_file):
     response = client.chat.completions.create(
                 messages=[
                 {"role": "system", "content": """Output the name of the event, 
-                 the guest count, the event start and end time, the date of that event, the event type,
+                 the guest count, the event start and end time, the date of that event, event_type,
                  as well as all the food items in that order each on their own separate line. Do not label them.
                  Make sure that the event title and canapes
-                 does not include a special character as the first letter, and that the canapes are not numbered or contain an empty space. """},
+                 does not include a special character as the first letter, and that the canapes are not numbered or contain an empty space. 
+                 ."""},
                 { "role": "user","content": text_file,}
             ],
             model="gpt-3.5-turbo",
@@ -66,8 +67,7 @@ def get_chatgpt_all_info(text_file):
     event_time = content_list[2]
     event_date = content_list[3]
     event_type = content_list[4]
-    menu_items = content_list[4:len(content_list)]
-
+    menu_items = content_list[5:len(content_list)]
     menu_items_lower = [i.lower() for i in menu_items]
 
     #modified_menu_items = []
