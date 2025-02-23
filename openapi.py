@@ -50,8 +50,8 @@ def get_chatgpt_all_info(text_file):
                 {"role": "system", "content": """Output the name of the event, 
                  the guest count, the event start and end time, the date of that event, event_type,
                  as well as all the food items in that order each on their own separate line. Do not label them.
-                 Make sure that the event title and canapes
-                 does not include a special character as the first letter, and that the canapes are not numbered or contain an empty space. 
+                 Make sure that the event title
+                 does not include a special character, and that the canapes are not numbered or contain an empty space. 
                  ."""},
                 { "role": "user","content": text_file,}
             ],
@@ -70,10 +70,6 @@ def get_chatgpt_all_info(text_file):
     menu_items = content_list[5:len(content_list)]
     menu_items_lower = [i.lower() for i in menu_items]
 
-    #modified_menu_items = []
-    #for item in menu_items_lower:
-    #    modified_item = item.replace("&", "and")
-    #    modified_menu_items.append(modified_item)
 
     final_menu_items = []
     for item in menu_items_lower:
@@ -85,9 +81,12 @@ def get_chatgpt_all_info(text_file):
 
     #print(content_list)
     #print(menu_items_lower)
+    print(event_name)
     print(final_menu_items)
-    does_it_work = []
+
+    #does_it_work = []
     results = []
+    new_menu_item = []
     conn = sqlite3.connect('purveyor_project_db.db')
     # Cursor to execute commands
     cursor = conn.cursor()
@@ -104,7 +103,7 @@ def get_chatgpt_all_info(text_file):
                 #does_it_work.append("Y")
                 results.append(result)
             else:
-                continue
+                new_menu_item.append(item)
                 #does_it_work.append("N")
             #does_it_work.append("Y")
 
@@ -117,6 +116,7 @@ def get_chatgpt_all_info(text_file):
     #print(does_it_work)
     #print(results)
     print(item_ids)
+    print(new_menu_item)
     return item_ids, event_name, guest_count, event_time, event_date, event_type
 #------------------------------------------------------------------------------------------
 
