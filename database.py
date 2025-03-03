@@ -5,11 +5,11 @@ import time
 import os
 
 
-def upload_excel(name_of_excel_file):
+def upload_excel(name_of_excel_file, db):
     
     table_name = [ 'menu_items', 'menu_restrictions', 'restrictions', 'ingredients', 'menu_ingredients', 'menu_procedures', 'procedures', 'vendors', 'master_product_catalog']
     # Connect to the SQLite database
-    conn = sqlite3.connect('purveyor_project_db.db')
+    conn = sqlite3.connect(db)
     cursor = conn.cursor()
     # Load the Excel file
     # To read all sheets, use sheet_name=None
