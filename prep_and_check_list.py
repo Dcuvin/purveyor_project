@@ -61,13 +61,15 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     for item in mise_list_final:
         item['Item'] = item['Item'].title()
 
+    print(mise_list_final)
+
     # Function that creates a dataframe
     def create_df(data):
 
         df= pd.DataFrame(data)
         return df
 
-    df_list =[]  
+    df_list =[] 
     for dict_item in mise_list_final:
         df_list.append(create_df(dict_item))
 
@@ -140,7 +142,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
         current_row = 3
         for pivot in pivot_list:
-            pivot.to_excel(writer, sheet_name= event_name, startrow=current_row, startcol=0)
+            pivot.to_excel(writer, sheet_name= 'prep_sheet', startrow=current_row, startcol=0)
             current_row += len(pivot) + 2 # Add space between tables
 
         # Create an empty (blank) order_sheet by writing an empty DataFrame
@@ -149,8 +151,8 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
 
     # Load the workbook and access the sheet
     workbook = load_workbook(excel_file)
-    prep_sheet= workbook["Prep_Sheet"]
-    order_sheet= workbook["Order_Sheet"]
+    prep_sheet= workbook["prep_sheet"]
+    order_sheet= workbook["order_sheet"]
 
     # Format the tables in the file
     start_row = 4
@@ -174,7 +176,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
 
     # Load the workbook and select the active worksheet
     workbook = load_workbook(excel_file)
-    prep_sheet= workbook[event_name]
+    prep_sheet= workbook["prep_sheet"]
     #---------------------------------------------------------------------------------
 
     # Iterate over each row and column in the sheet

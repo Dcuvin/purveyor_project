@@ -62,7 +62,7 @@ def get_chatgpt_all_info(text_file, db):
     for item in final_menu_items:
         try:
             cursor.execute("""
-                SELECT menu_item_id
+                SELECT CAST(menu_item_id AS INTEGER) as menu_item_id
                 FROM menu_items
                 WHERE item_name = ?;
             """, (item,))
