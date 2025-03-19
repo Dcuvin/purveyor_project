@@ -272,8 +272,8 @@ def word_prep_list(item_id, event_name, guest_count, event_start, event_date,db)
 
     conn.close()
 #------------------------------------------------------------------------------------------
-def word_checklist(item_id, event_name, guest_count, event_start, event_date):
-    conn = sqlite3.connect('purveyor_project_db.db')
+def word_checklist(item_id, event_name, guest_count, event_start, event_date,db):
+    conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
     current_date = date.today()
@@ -314,7 +314,7 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date):
             mise.title()
 
     #print(final_proc_list)
-    final_mise_list.append({'item': 'Dry Goods/Tools', 'mise':['Maldon','EVOO','C-folds','Vodka Spray','Quarter Sheet Trays','Half Sheet Trays','Catering Trays','Mixing Bowls', 'Sani-wipes','Gloves', 'Tasting Spoons','Piping Bags', 'Quarts','Pints', 'Lids']})
+    final_mise_list.append({'item': 'Dry Goods/Tools', 'mise':['Maldon','EVOO','C-folds','Vodka Spray','Quarter Sheet Trays','Half Sheet Trays','Catering Trays', 'Cutting boards', 'Mixing Bowls', 'Sani-wipes','Gloves', 'Tasting Spoons','Piping Bags', 'Quarts','Pints', 'Lids']})
     # Adding dry-goods/ tools section to checklist
            
     # Create a new Word document
@@ -403,9 +403,12 @@ def get_order_list(item_id,event_name,db):
     order_sheet = workbook[order_sheet]
 
     # Add event title in the first cell
-    sheet['A1'] = f"Order List: {event_name} {event_date}"
-    sheet['A1'].font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
+    order_sheet['A1'] = f"Order List: {event_name}"
+    order_sheet['A1'].font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
 
+    # Input values based on purveyor
+
+    
     # Save the workbook with formatting
     workbook.save(excel_file)
     print('Order sheet succesfully created!')

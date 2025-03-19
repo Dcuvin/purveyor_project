@@ -94,7 +94,7 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date, 
     except Exception as e:
         print(f"An error occurred: {e}")
     excel_prep_list(item_ids, event_name, guest_count, event_time, event_date,db) 
-    #word_checklist(item_ids, event_name, guest_count, event_time, event_date,db)
+    word_checklist(item_ids, event_name, guest_count, event_time, event_date,db)
     #get_order_list(item_ids,event_name,db)
 #------------------------------------------------------------------------------------------
     
