@@ -7,7 +7,7 @@ import os
 
 def upload_excel(name_of_excel_file, db):
     
-    table_name = [ 'menu_items', 'menu_restrictions', 'restrictions', 'ingredients', 'menu_ingredients', 'menu_procedures', 'procedures', 'vendors', 'master_product_catalog']
+    table_name = [ 'menu_items', 'menu_restrictions', 'restrictions', 'ingredients', 'menu_ingredients', 'menu_procedures', 'procedures', 'vendors', 'master_product_catalog', 'menu_prep_list','prep_list']
     # Connect to the SQLite database
     conn = sqlite3.connect(db)
     cursor = conn.cursor()
@@ -33,7 +33,7 @@ def upload_excel(name_of_excel_file, db):
             continue
     print(table_names)
     
-    if len(table_names) == 9:
+    if len(table_names) == 11:
     
         for sheet_name, df in excel_data.items():
             print(f"Uploading sheet: {sheet_name}")

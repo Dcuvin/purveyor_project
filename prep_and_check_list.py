@@ -26,10 +26,10 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     mise_list_final= []
     for id in item_id:
         cursor.execute(f"""
-                       SELECT menu_mise_checklist.item_name, mise_checklist.mise_en_place
-                       FROM mise_checklist
-                       JOIN menu_mise_checklist ON mise_checklist.checklist_id = menu_mise_checklist.checklist_id
-                       WHERE menu_mise_checklist.menu_item_id = {id};
+                       SELECT menu_prep_list.item_name, prep_list.prep
+                       FROM prep_list
+                       JOIN menu_prep_list ON prep_list.prep_id = menu_prep_list.prep_id
+                       WHERE menu_prep_list.menu_item_id = {id};
                        """)  
     
 
@@ -259,7 +259,7 @@ def word_prep_list(item_id, event_name, guest_count, event_start, event_date,db)
 
     prep_list_file_path = f'prep_and_checklists/{event_name}/{event_name}_Prep List_{current_date}_{docx_file_count}.docx'
     
-    #continously checks until it finds a non-existent file name
+    # continously checks until it finds a non-existent file name
     while os.path.exists(prep_list_file_path):
         docx_file_count += 1
         # this updates the file_count, allowing for it to be checked again in the while loop

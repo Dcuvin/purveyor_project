@@ -12,8 +12,9 @@ from bs4 import BeautifulSoup
 import openai
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_checklist
-from database import upload_excel
+from database import upload_excel, import_new_data
 from openapi import get_chatgpt_all_info
+from check_file import find_db
 #from purveyor import order_list
 #------------------------------------------------------------------------------------------
 
@@ -23,16 +24,31 @@ def main():
     if len(sys.argv) == 0:  # Check if the required arguments are provided
         print("python3 functions.py 'function_name'...")  # Provide usage instructions
         return  # Exit the function if not enough arguments
+    
     elif sys.argv[1] == 'gpt_prep_list':
         #prompt user to specify database
         db = input('Specify database...')
         gpt_prep_list(db)
+
     elif sys.argv[1] == 'upload_excel':
-        print("Current databases:\npurveyor_project_db_1.db\npurveyor_project_db_2.db")
-        excel_file_to_upload = input('Specify excel file...')
-        db = input('Specify which database to update...')
+        print("Current databases:")
+        find_db()
+        excel_file_to_upload = input('Specify excel file:')
+        db = input('Specify which database to update:')
         upload_excel(excel_file_to_upload, db)
-    
+
+    elif sys.argv[1] == 'input_new_data':
+        print("Current databases:")
+        find_db()
+        excel_file_to_upload = input('Specify excel file:')
+        db = input('Specify which database to update:')
+        upload_excel(excel_file_to_upload, db)
+
+    elif sys.argv[1] == 'find_db':
+        find_db()
+
+    elif sys.argv[1] == 'input_new_data':
+        input_new_data()
     else:
         print("Invalid function name")  
 

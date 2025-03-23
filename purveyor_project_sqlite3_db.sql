@@ -81,7 +81,8 @@ CREATE TABLE mise_checklist (
 --Create a junction table linkikng mise_checklist and menu_items
 
 CREATE TABLE menu_mise_checklist(
-    menu_item_id INTEGER,
+    menu_item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    item_name TEXT NOT NULL,
     checklist_id INTEGER,
     PRIMARY KEY (menu_item_id, checklist_id),
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
@@ -97,4 +98,23 @@ CREATE TABLE master_product_catalog (
     item_code TEXT NOT NULL,
     pack_size_unit TEXT NOT NULL
 );
+
+-- Create table for all menu items with their corresponding prep
+CREATE TABLE prep_list (
+    prep_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    prep TEXT NOT NULL
+);
+--Create a junction table linkikng prep_list and menu_items
+
+CREATE TABLE menu_prep_list(
+    menu_item_id INTEGER,
+    prep_id INTEGER,
+    PRIMARY KEY (menu_item_id, prep_id),
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
+    FOREIGN KEY (prep_id) REFERENCES prep_list(prep_id)   
+);
+
+--Delete a table
+
+DROP TABLE table_name;
 
