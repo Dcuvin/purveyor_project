@@ -1,24 +1,42 @@
-Event:  Fora Travel (VIP)	Date:  Thursday, March 20, 2025
-Account:  Julie Garces Client	Time:  6:00 PM - 9:00 PM
-Contact:  Julie	Location:  Greenhouse
-Phone: 	Event Type: seated dinner
-Email: 	Guests:  15
- 	
+Event:  Towards Zero	Date:  Wednesday, April 9, 2025
+Account:  Britbox	Time:  8:00 PM - 11:00 PM
+Contact:  Alana McGaughey	Location:  Greenhouse
+Phone: 	Event Type:  Cocktail Reception
+Email:  Alana.McGaughey@britbox.com	Guests:  190
+BritBox, LLC
+
+1120 Ave of the Americas, 5th Floor
+
+New York, NY 10036
+
+Deposit Payment Date/ Invoice Date: March 5, 2025
+
 Account Owner:  Julie Garces	
 Phone/Email:  917-620-6578 / julie.garces@nineorchard.com
 
 
 
+OCEAN TROUT TARTARE, 
 
-	
+LOBSTER ROLL,  
+
+CRISPY BURRATA, 
+
+VEGETABLE AGUACHILE, 
+
+QUINOA FALAFEL, 
+
+CAVIAR, 
+
+CHICKPEA BEIGNET, 
+
+BRAISED SHORT RIB, 
 
 
-Tuna Tartare, 
+Orecchiette Pomodoro,
 
-Golden Beets, 
+Corner Bar Burger Sliders,
 
-beef tenderloin,
+Tomato Salad, 
 
-Halibut, 
-
-Lasagna, 
+Shrimp Cocktail, 

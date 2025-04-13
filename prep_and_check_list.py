@@ -9,8 +9,7 @@ import sys #import sys modulet o access command-line arguments
 import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from docx import Document
-#import openai
-
+from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows
 #----------------------------------------------------------------------------
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db):
     
@@ -19,7 +18,6 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     # Cursor to execute commands
     cursor = conn.cursor()
     current_date = date.today()
-    #the updated version will take a list of menu_item_ids
     #It will then query a junction table and pull all procedures associated with the id.          
     mise_list = []
     unique_item_names = []
@@ -50,7 +48,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     for name in unique_item_names: 
         mise_list_final.append({'Item': name, 'Mise':[], 'Need':' '})
 
-    # Iteratively add the mise form mise_list to mise_list_2
+    # Iteratively add the mise from mise_list to mise_list_2
     for item_1 in mise_list:
         for item_2 in mise_list_final:
             if item_1['Item'] == item_2['Item']:
@@ -73,6 +71,8 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     for dict_item in mise_list_final:
         df_list.append(create_df(dict_item))
 
+    print(df_list)
+
     pivot_list = []
     def create_pivot(data):    
         #pivot = pd.pivot(data, columns='Item', index ='Mise', values= 'Need')
@@ -94,65 +94,18 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
         excel_file = f"prep_and_checklists/{event_name}/{event_name}_{current_date}_{excel_file_count}.xlsx"
     
     #print(excel_file)
-    # Function to format the headers and add borders
-    def format_headers_and_borders(sheet, start_row, start_col, end_col):
-        thin_border = Border(left=Side(style='thin'),
-                            right=Side(style='thin'),
-                            top=Side(style='thin'),
-                            bottom=Side(style='thin'))
-        
-        # Define the font for non-header cells
-        cell_font = Font(name="Calibri", size=12)
-
-        # Define the alignment for all cells
-        cell_alignment = Alignment(horizontal='center', vertical='center')
-
-        
-        # Apply font to the entire table
-        for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):
-             for cell in row:
-                cell.font = cell_font
-                # Center all data
-                cell.alignment = cell_alignment
-        # Format headers
-        for cell in sheet.iter_cols(min_row=start_row, max_row=start_row, min_col=start_col, max_col=end_col):
-            for c in cell:
-                c.font = Font(bold=True, name='Calibri', size=14, color="000000")
-                c.fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
-                c.border = thin_border
-
-        # Apply borders to the entire table
-        for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):      
-            for cell in row:
-                cell.border = thin_border
-               
-                
-    # Function to set print options
-    def set_print_options(sheet):
-        sheet.print_options.gridLines = False
-        sheet.page_setup.orientation = 'portrait'
-    
-    # Function to insert unformatted rows
-    def insert_blank_rows(sheet, start_row):
-        sheet.insert_rows(start_row, 1)
-
     
 
-    # Creates an unfinished excel file
-    with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
+    # Fills-out the excel file
+    with pd.ExcelWriter(excel_file, engine='openpyxl',mode = 'w') as writer:
         current_row = 3
         for pivot in pivot_list:
             pivot.to_excel(writer, sheet_name= 'prep_sheet', startrow=current_row, startcol=0)
             current_row += len(pivot) + 2 # Add space between tables
 
-        # Create an empty (blank) order_sheet by writing an empty DataFrame
-        pd.DataFrame().to_excel(writer, sheet_name="order_sheet", index=False)
-
-
     # Load the workbook and access the sheet
     workbook = load_workbook(excel_file)
     prep_sheet= workbook["prep_sheet"]
-    order_sheet= workbook["order_sheet"]
 
     # Format the tables in the file
     start_row = 4
@@ -169,7 +122,6 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
    
     # Set print options
     set_print_options(prep_sheet)
-    set_print_options(order_sheet)
 
     # Save the workbook with formatting
     workbook.save(excel_file)
@@ -191,11 +143,19 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
                     # Replace the content of the right cell with 'Need'
                     right_cell.value = 'Need'
 
+    
+    
     # Save the workbook with formatting
     workbook.save(excel_file)
-    return excel_file
-
+    
+#---------------------------------------------------------------------------------
+    # Fill out order_sheet
+    get_order_list(item_id, db, excel_file)
+    
+    
     print("Excel Prep List Created and Reformatted!")
+    #return excel_file
+
 #---------------------------------------------------------------------------------
 def word_prep_list(item_id, event_name, guest_count, event_start, event_date,db):
     
@@ -336,7 +296,7 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date,db)
             
         
     
-    # Check for any duplicate html files
+    # Check for any duplicate files
     docx_file_count = 0
 
     checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{docx_file_count}.docx'
@@ -345,7 +305,7 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date,db)
     while os.path.exists(checklist_file_path):
         file_count += 1
         # this updates the file_count, allowing for it to be checked again in the while loop
-        checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{docx_file_count}.docx'
+        checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{file_count}.docx'
 
     
     doc.save(checklist_file_path)
@@ -354,13 +314,13 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date,db)
 
     conn.close()
 #------------------------------------------------------------------------------------------
-def get_order_list(item_id,event_name,db):
+def get_order_list(item_id,db, excel_file_path):
 
     conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
     current_date = date.today()
-    result_list = []
+    result_dict= {'Ingredient': [],'QTY':'', 'Purveyor':[]}
     for id in item_id:
         cursor.execute("""
                 SELECT ingredients.ingredient_name, ingredients.purveyor
@@ -372,43 +332,46 @@ def get_order_list(item_id,event_name,db):
         
         results = cursor.fetchall()
         #print(results)
+
+        # Remove duplicate ingredients
         for tuple_item in results:
-        #    result_list.append({'Ingredient': tuple_item[0], 'Purveyor':tuple_item[1]})
-             result_list.append([tuple_item[0], tuple_item[1]])
+            capitalized_ingredient = tuple_item[0].capitalize()
+            if tuple_item[0].capitalize() not in result_dict['Ingredient']:
+                result_dict['Ingredient'].append(capitalized_ingredient)
+                result_dict['Purveyor'].append(tuple_item[1].capitalize())
+
     #print(result_list)
-    final_result_list = {'Ingredient':[], 'Purveyor':[]}
-    for result in result_list:
-        final_result_list['Ingredient'].append(result[0])
-        final_result_list['Purveyor'].append(result[1])
-        
-    print(final_result_list)
 
-    # Convert the final_result_list to a DataFrame
-    df = pd.DataFrame(final_result_list)
+    print(result_dict)
+    # Function that creates a dataframe
+    def create_df(data):
 
-    # Check for file existence and update the file name accordingly
-    excel_file_count = 0
-    excel_file = f"prep_and_checklists/{event_name}/{event_name}_{current_date}_{excel_file_count}.xlsx"
-
-    while os.path.exists(excel_file):
-        excel_file_count += 1
-        excel_file = f"prep_and_checklists/{event_name}/Order_List_{event_name}_{current_date}_{excel_file_count}.xlsx"
-
-    # Write the DataFrame to Excel
-    with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
-        df.to_excel(writer, sheet_name=event_name, startrow= 2, index=False)
-
-    # Optionally, load the workbook and apply formatting
-    workbook = load_workbook(excel_file)
-    order_sheet = workbook[order_sheet]
-
-    # Add event title in the first cell
-    order_sheet['A1'] = f"Order List: {event_name}"
-    order_sheet['A1'].font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
-
-    # Input values based on purveyor
-
+        df= pd.DataFrame(data)
+        return df
     
-    # Save the workbook with formatting
-    workbook.save(excel_file)
-    print('Order sheet succesfully created!')
+    
+    df_list =[] 
+    df_list.append(create_df(result_dict))
+
+    print(df_list)
+    # Create an empty(blank) order_sheet by writing an empty DataFrame
+
+    with pd.ExcelWriter(excel_file_path, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
+        sheet_name = "order_sheet"
+        pd.DataFrame().to_excel(writer, sheet_name=sheet_name, index=False)
+        current_row = 1
+        for item in df_list:
+            item.to_excel(writer, sheet_name= 'order_sheet', startrow=current_row, startcol=0, index=False)
+            current_row += len(item.index) + 1  # Increment to avoid overlap
+
+    # Reload the workbook with openpyxl to apply the formatting.
+    workbook = load_workbook(excel_file_path)
+
+    format_headers_and_borders(workbook['order_sheet'], 2, 1, 3)
+
+    workbook.save(excel_file_path)
+
+
+    print("Order Sheet Created!")
+    
+    
