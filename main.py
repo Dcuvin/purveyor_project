@@ -14,7 +14,7 @@ import openai
 from prep_and_check_list import excel_prep_list, word_checklist, get_order_list
 from database import upload_excel, input_new_data
 from openapi import get_chatgpt_all_info
-from check_file import find_db
+from check_file import find_db, find_xlsx_db
 #from purveyor import order_list
 #------------------------------------------------------------------------------------------
 
@@ -27,24 +27,34 @@ def main():
     
     elif sys.argv[1] == 'gpt_prep_list':
         #prompt user to specify database
-        db = input('Specify database...')
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to use by typing the corresponding number:')
+
+        if db_input == '1':
+            db = 'purveyor_project_db_1.db'
+        elif db_input == '2':
+            db = 'purveyor_project_db_2.db'        
         gpt_prep_list(db)
 
     elif sys.argv[1] == 'upload_excel':
-        print("Current databases:")
-        find_db()
-        excel_file_to_upload = input('Specify excel file:')
 
-        if excel_file_to_upload == 1:
-            excel_file_to_upload = 'nine_orchard_events_db_1.db'
-        elif excel_file_to_upload == 2:
-            excel_file_to_upload = 'nine_orchard_events_db_2.db'
+        print(find_xlsx_db())
+        excel_file_to_upload = ''
+        excel_file_input = input('Specify excel file by typing the corresponding number:')
+
+        if excel_file_input == '1':
+            excel_file_to_upload = 'nine_orchard_events_db_1.xlsx'
+        elif excel_file_input == '2':
+            excel_file_to_upload = 'nine_orchard_events_db_2.xlsx'
         
-        db = input('Specify which database to update:')
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to update by typing the corresponding number:')
 
-        if db == 1:
+        if db_input == '1':
             db = 'purveyor_project_db_1.db'
-        elif db == 2:
+        elif db_input == '2':
             db = 'purveyor_project_db_2.db'
         upload_excel(excel_file_to_upload, db)
 
@@ -119,8 +129,13 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date, 
         print(f"Parent directory does not exist")
     except Exception as e:
         print(f"An error occurred: {e}")
+    #Create excel prep and order list
     excel_prep_list(item_ids, event_name, guest_count, event_time, event_date,db) 
+    # Create word doc checklist for mise en place by dish
     word_checklist(item_ids, event_name, guest_count, event_time, event_date,db)
+    # Fill out prep requisition sheet
+    #req_prep(item_id, new_folder_path, event_date, event_name)
+    
 #------------------------------------------------------------------------------------------
     
     

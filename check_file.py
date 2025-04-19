@@ -1,19 +1,24 @@
 import os
 
 current_directory = os.getcwd()
-
+db_files = []
 def find_db():
     """Walk through directory and yield full paths of files ending with '.db'."""
     for root, _, files in os.walk(current_directory):
         for file in files:
             if file.endswith('.db'):
-                yield os.path.join(root, file)
+                db_files.append(os.path.join(root, file))
+    return db_files
 
-db_files = list(find_db())
+#------------------------------------------------------------------------------------------
+xlsx_files = []
+def find_xlsx_db():
+    """Walk through directory and yield full paths of xlsx files ending with 'db'."""
+    for root, _, files in os.walk(current_directory):
+        for file in files:
+            if "nine_orchard_events_db" in file and file.endswith('.xlsx'):
+                xlsx_files.append(os.path.join(root, file))
+    return xlsx_files
 
-if db_files:
-    # Print each .db file found on a new line
-    for file in db_files:
-        print(file)
-else:
-    print("No .db files found.")    
+#------------------------------------------------------------------------------------------
+

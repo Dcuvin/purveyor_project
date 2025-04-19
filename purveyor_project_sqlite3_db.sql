@@ -102,7 +102,8 @@ CREATE TABLE master_product_catalog (
 -- Create table for all menu items with their corresponding prep
 CREATE TABLE prep_list (
     prep_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    prep TEXT NOT NULL
+    prep TEXT NOT NULL,
+    rec_prep BOOLEAN NOT NULL DEFAULT 0
 );
 --Create a junction table linkikng prep_list and menu_items
 
@@ -113,7 +114,21 @@ CREATE TABLE menu_prep_list(
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
     FOREIGN KEY (prep_id) REFERENCES prep_list(prep_id)   
 );
+--Create a table with prep items that can be requisitioned from the AM prep team, using the main prep items in prep_list as reference.
+CREATE TABLE req_prep (
+    req_prep_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    prep TEXT NOT NULL
+);
 
+-- Create a junction linking menu_items with requisition_prep
+
+CREATE TABLE req_menu_prep_list(
+    menu_item_id INTEGER,
+    req_prep_id INTEGER,
+    PRIMARY KEY (menu_item_id , req_prep_id),
+    FOREIGN KEY (menu_item_id) REFERENCES menu_item(menu_item_id),
+    FOREIGN KEY (rec_prep_id) REFERENCES requisitioned_prep(rec_prep_id)   
+);
 --Delete a table
 
 DROP TABLE table_name;

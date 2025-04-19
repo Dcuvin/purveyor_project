@@ -13,7 +13,7 @@ def upload_excel(name_of_excel_file, db):
     cursor = conn.cursor()
     # Load the Excel file
     # To read all sheets, use sheet_name=None
-    #.read_excel creates a dictionaryseke
+    #.read_excel creates a dictionary
     excel_data = pd.read_excel(name_of_excel_file, sheet_name= None)
     # Replace NaN values with 'n/a'. This is done iteratively due to the excel file having several sheets.
     for key in excel_data:
@@ -39,8 +39,12 @@ def upload_excel(name_of_excel_file, db):
             print(f"Uploading sheet: {sheet_name}")
             # Drop the table if it exists before replacing it with new data
             # this helped solve the locked table that kept occuring
-            cursor.execute(f'DROP TABLE IF EXISTS {sheet_name}')
-            df.to_sql(sheet_name, conn, if_exists='replace', index=False)    
+            #cursor.execute(f'DROP TABLE IF EXISTS {sheet_name}')
+            # Clear all data from the table while keeping its schema intact.
+            cursor.execute(f'DELETE FROM {sheet_name}')
+            # Append the new data to the existing (now empty) table.
+            df.to_sql(sheet_name, conn, if_exists='append', index=False)
+            #df.to_sql(sheet_name, conn, if_exists='replace', index=False)    
     else: 
         print("Error with uploading excel file!")
     

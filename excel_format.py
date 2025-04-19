@@ -42,8 +42,8 @@ def set_print_options(sheet):
         sheet.print_options.gridLines = False
         sheet.page_setup.orientation = 'portrait'
         # Set print settings to fit on one page
-        sheet.page_setup.fitToWidth = 0
-        sheet.page_setup.fitToHeight = 0  # 0 means "as many as needed"
+        sheet.page_setup.fitToWidth = 1
+        sheet.page_setup.fitToHeight = 1  # 0 means "as many as needed"
     
 # Function to insert unformatted rows
 def insert_blank_rows(sheet, start_row):
