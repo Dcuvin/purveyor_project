@@ -103,7 +103,8 @@ CREATE TABLE master_product_catalog (
 CREATE TABLE prep_list (
     prep_id INTEGER PRIMARY KEY AUTOINCREMENT,
     prep TEXT NOT NULL,
-    rec_prep BOOLEAN NOT NULL DEFAULT 0
+    rec_prep BOOLEAN NOT NULL DEFAULT 0,
+    sous_prep BOOLEAN NOT NULL DEFAULT 0
 );
 --Create a junction table linkikng prep_list and menu_items
 

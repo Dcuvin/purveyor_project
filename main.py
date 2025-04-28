@@ -15,6 +15,7 @@ from prep_and_check_list import excel_prep_list, word_checklist, get_order_list
 from database import upload_excel, input_new_data
 from openapi import get_chatgpt_all_info
 from check_file import find_db, find_xlsx_db
+from prep_req import req_prep
 #from purveyor import order_list
 #------------------------------------------------------------------------------------------
 
@@ -134,7 +135,7 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date, 
     # Create word doc checklist for mise en place by dish
     word_checklist(item_ids, event_name, guest_count, event_time, event_date,db)
     # Fill out prep requisition sheet
-    #req_prep(item_id, new_folder_path, event_date, event_name)
+    req_prep(item_ids, new_folder_path, event_date, event_name,db)
     
 #------------------------------------------------------------------------------------------
     

@@ -12,7 +12,7 @@ def format_headers_and_borders(sheet, start_row, start_col, end_col):
                         bottom=Side(style='thin'))
         
     # Define the font for non-header cells
-    cell_font = Font(name="Calibri", size=12)
+    cell_font = Font(name="Calibri", size=14)
 
     # Define the alignment for all cells
     cell_alignment = Alignment(horizontal='center', vertical='center')

@@ -10,7 +10,7 @@ import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from docx import Document
 from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows
-from am_prep_req import req_prep
+from prep_req import req_prep
 #----------------------------------------------------------------------------
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db):
     
@@ -375,3 +375,9 @@ def get_order_list(item_id,db, excel_file_path):
 
     print("Order Sheet Created!")
     
+def old_excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db):
+    pass
+
+#----------------------------------------------------------------------------
+def old_word_checklist(item_id, event_name, guest_count, event_start, event_date,db):
+    pass
