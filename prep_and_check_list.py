@@ -9,7 +9,7 @@ import sys #import sys modulet o access command-line arguments
 import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from docx import Document
-from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows
+from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows, format_order_sheet
 from prep_req import req_prep
 #----------------------------------------------------------------------------
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db):
@@ -151,7 +151,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     
 #---------------------------------------------------------------------------------
     # Fill out order_sheet
-    get_order_list(item_id, db, excel_file)
+    get_order_list(item_id,db,excel_file,event_name,guest_count,event_date)
 
     
     print("Excel Prep List Created and Reformatted!")
@@ -315,7 +315,7 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date,db)
 
     conn.close()
 #------------------------------------------------------------------------------------------
-def get_order_list(item_id,db, excel_file_path):
+def get_order_list(item_id,db,excel_file_path,event_name,guest_count,event_date):
 
     conn = sqlite3.connect(db)
     # Cursor to execute commands
@@ -355,12 +355,21 @@ def get_order_list(item_id,db, excel_file_path):
     df_list.append(create_df(result_dict))
 
     print(df_list)
-    # Create an empty(blank) order_sheet by writing an empty DataFrame
+
+   
+    # Create the order_sheet and populate with data.
 
     with pd.ExcelWriter(excel_file_path, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
         sheet_name = "order_sheet"
         pd.DataFrame().to_excel(writer, sheet_name=sheet_name, index=False)
-        current_row = 1
+
+        # Add event info to the top of the order sheet.
+
+        workbook = writer.book
+        worksheet = writer.sheets[sheet_name]
+        worksheet["A1"] = f"Order List for {event_name} - {event_date} - Guest:{guest_count}"  # Customize your title here
+
+        current_row = 3
         for item in df_list:
             item.to_excel(writer, sheet_name= 'order_sheet', startrow=current_row, startcol=0, index=False)
             current_row += len(item.index) + 1  # Increment to avoid overlap
@@ -368,7 +377,8 @@ def get_order_list(item_id,db, excel_file_path):
     # Reload the workbook with openpyxl to apply the formatting.
     workbook = load_workbook(excel_file_path)
 
-    format_headers_and_borders(workbook['order_sheet'], 2, 1, 3)
+
+    format_order_sheet(workbook['order_sheet'], 2, 1, 3)
 
     workbook.save(excel_file_path)
 

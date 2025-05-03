@@ -28,13 +28,10 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     # Complet file path of newly copied and renamed events req file > event folder
     dest_path = os.path.join(dest_dir, new_file_name)
 
-    # 3. Sanity check that the source exists
+    # Sanity check that the source exists
     if not os.path.isfile(event_req_template_file_path ):
         raise FileNotFoundError(f"Source file not found: {event_req_template_file_path }")
-
-    # 4. Create destination folder if needed
-    #os.makedirs(dest_dir, exist_ok=True)
-
+    
     while os.path.exists(dest_path):
         file_count += 1
 
@@ -72,7 +69,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     # Populate new template with prep items that can be requisitioned from the AM Prep Team
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['AM Prep']
-    ws['A1'] = f"EVENT PREP {current_date}"         
+    ws['A1'] = f"AM EVENT PREP {current_date}"         
     print(am_prep_req_list)
     
     # Write each item into its own row (column A)
@@ -101,7 +98,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
 
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['Sous Prep']
-    ws['A1'] = f"EVENT PREP {current_date}"         
+    ws['A1'] = f"SOUS EVENT PREP {current_date}"         
     print(sous_prep_req_list)
 
     # Write each item into its own row (column A)

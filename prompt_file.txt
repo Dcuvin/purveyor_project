@@ -1,22 +1,12 @@
-Event:  Fora Travel Dinner	Date:  Monday, April 28, 2025
-Account:  Fora Travel	Time:  6:00 PM - 9:00 PM
-Contact:  Yarden Shuminer	Location:  Greenhouse
-Phone:  332-232-5371	Event Type:  Seated Dinner
-Email:  yarden@fora.travel	Guests:  20
+Event:  Jeanette Subkhanberdina	Date:  Saturday, May 10, 2025
+Account:  Jeanette Subkhanberdina	Time:  7:30 PM - 11:30 PM
+Contact:  Jeanette Subkhanberdina	Location:  Greenhouse
+Phone:  9172881302	Event Type:  Cocktail Reception
+Email:  zsubkhanberdina@gmail.com	Guests:  40
  	
 Account Owner:  James Godfrey	
-Phone/Email:  / james.godfrey@nineorchard.com
+Phone/Email:  / james.godfrey@nineorchard.com	
 
 
 
-
-
-
-Hamachi Crudo,
-
-
-Ribeye Loin, 
-
-Halibut,
-
-
+cheese and charcuterie,
