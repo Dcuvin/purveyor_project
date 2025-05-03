@@ -73,6 +73,11 @@ def format_order_sheet(sheet, start_row, start_col, end_col):
     # Format headers for cell 'A1' only.
     for cell in sheet.iter_cols(min_row=1, max_row=1, min_col=1, max_col=1):
         for c in cell:
+            c.font = Font(bold=True, name='Calibri', size=16, color="000000")
+            c.border = thin_border
+    # Format headers for cell 'A2' only.
+    for cell in sheet.iter_cols(min_row=2, max_row=2, min_col=1, max_col=3):
+        for c in cell:
             c.font = Font(bold=True, name='Calibri', size=14, color="000000")
             c.fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
             c.border = thin_border
@@ -82,3 +87,19 @@ def format_order_sheet(sheet, start_row, start_col, end_col):
         for cell in row:
             cell.border = thin_border
                
+
+def format_prep_sheet (sheet, start_row, start_col, end_col):
+
+    # Define the font for non-header cells
+    cell_font = Font(name="Calibri", size=14)
+
+    # Define the alignment for all cells
+    cell_alignment = Alignment(horizontal='center', vertical='center')
+
+        
+    # Apply font to the entire table
+    for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):
+        for cell in row:
+            cell.font = cell_font
+            # Center all data
+            cell.alignment = cell_alignment

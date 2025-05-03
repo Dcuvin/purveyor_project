@@ -369,7 +369,7 @@ def get_order_list(item_id,db,excel_file_path,event_name,guest_count,event_date)
         worksheet = writer.sheets[sheet_name]
         worksheet["A1"] = f"Order List for {event_name} - {event_date} - Guest:{guest_count}"  # Customize your title here
 
-        current_row = 3
+        current_row = 2
         for item in df_list:
             item.to_excel(writer, sheet_name= 'order_sheet', startrow=current_row, startcol=0, index=False)
             current_row += len(item.index) + 1  # Increment to avoid overlap
