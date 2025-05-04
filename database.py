@@ -75,3 +75,9 @@ def input_new_data():
         read_file += content
         #print(content)
     #print(read_file)
+
+
+
+# ------------------------------------------------------------------------------------------
+# Create a function that automatically updates the a separate database that matches the standard menu item name to alternative names
+

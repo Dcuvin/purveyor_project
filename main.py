@@ -16,7 +16,7 @@ from database import upload_excel, input_new_data
 from openapi import get_chatgpt_all_info
 from check_file import find_db, find_xlsx_db
 from prep_req import req_prep
-#from purveyor import order_list
+from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu
 #------------------------------------------------------------------------------------------
 
 def main():
@@ -71,32 +71,38 @@ def main():
 
     elif sys.argv[1] == 'input_new_data':
         input_new_data()
+
+    elif sys.argv[1] == 'fuzzy_test':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        if db_input == '1':
+            db = 'purveyor_project_db_1.db'
+        elif db_input == '2':
+            db = 'purveyor_project_db_2.db'
+        update_standard_menu(db)
+        get_chatgpt_all_info(db)
+        get_standard_menu()
+
+    elif sys.argv[1] == 'update_standard_menu':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        if db_input == '1':
+            db = 'purveyor_project_db_1.db'
+        elif db_input == '2':
+            db = 'purveyor_project_db_2.db'
+        update_standard_menu(db)
+
     else:
         print("Invalid function name")  
-
+#------------------------------------------------------------------------------------------
 def gpt_prep_list(db):
 
-#save chosen database
-    database = db
-#Check filepath
-    file_path = "prompt_file.txt"
-    if os.path.exists(file_path):
-        print("file_path is correct")
-    else:
-        print("ERROR")
-          
-    # Read the existing content
-    read_file = ""
-    with open("prompt_file.txt", 'r') as file:
-        content = file.read()
-        read_file += content
-        #print(content)
-    #print(read_file)
-
-    
-
     # Put the function into a variable inorder to access the returned tuple
-    all_info = get_chatgpt_all_info(read_file, database)
+    all_info = get_chatgpt_all_info(db)
 
     item_ids = all_info[0]
     event_name = all_info[1]
