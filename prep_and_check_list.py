@@ -19,6 +19,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     # Cursor to execute commands
     cursor = conn.cursor()
     current_date = date.today()
+    formatted_date = current_date.strftime("%m-%d-%Y")
     #It will then query a junction table and pull all procedures associated with the id.          
     mise_list = []
     unique_item_names = []
@@ -87,12 +88,12 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
 
     excel_file_count = 0
     # Create an excel file
-    excel_file = f"prep_and_checklists/{event_name}/{event_name}_{current_date}_{excel_file_count}.xlsx"
+    excel_file = f"prep_and_checklists/{event_name}/{event_name}_{formatted_date}_{excel_file_count}.xlsx"
     # Continously checks until it finds a non-existent file name
     while os.path.exists(excel_file):
         excel_file_count += 1
         # This updates the file_count, allowing for it to be checked again in the while loop
-        excel_file = f"prep_and_checklists/{event_name}/{event_name}_{current_date}_{excel_file_count}.xlsx"
+        excel_file = f"prep_and_checklists/{event_name}/{event_name}_{formatted_date}_{excel_file_count}.xlsx"
     
     #print(excel_file)
     
@@ -164,6 +165,8 @@ def word_prep_list(item_id, event_name, guest_count, event_start, event_date,db)
     # Cursor to execute commands
     cursor = conn.cursor()
     current_date = date.today()
+    formatted_date = current_date.strftime("%m-%d-%Y")
+
     #the updated version will take a list of menu_item_ids
     #It will then query a junction table and pull all procedures associated with the id.          
     procedure_list = []
@@ -238,6 +241,8 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date,db)
     # Cursor to execute commands
     cursor = conn.cursor()
     current_date = date.today()
+    formatted_date = current_date.strftime("%m-%d-%Y")
+
     #the updated version will take a list of menu_item_ids
     #It will then query a junction table and pull all procedures associated with the id.          
     mise_list = []
@@ -287,7 +292,8 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date,db)
 
     # Create datetime variable
     current_date = date.today()
-    
+    formatted_date = current_date.strftime("%m-%d-%Y")
+
     for dict in final_mise_list:
         doc.add_heading(f"{dict['item']}", level=2)
 
@@ -300,13 +306,13 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date,db)
     # Check for any duplicate files
     docx_file_count = 0
 
-    checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{docx_file_count}.docx'
+    checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{formatted_date}_{docx_file_count}.docx'
     
     #continously checks until it finds a non-existent file name
     while os.path.exists(checklist_file_path):
         file_count += 1
         # this updates the file_count, allowing for it to be checked again in the while loop
-        checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{current_date}_{file_count}.docx'
+        checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{formatted_date}_{file_count}.docx'
 
     
     doc.save(checklist_file_path)
@@ -321,6 +327,8 @@ def get_order_list(item_id,db,excel_file_path,event_name,guest_count,event_date)
     # Cursor to execute commands
     cursor = conn.cursor()
     current_date = date.today()
+    formatted_date = current_date.strftime("%m-%d-%Y")
+
     result_dict= {'Ingredient': [],'QTY':'', 'Purveyor':[]}
     for id in item_id:
         cursor.execute("""

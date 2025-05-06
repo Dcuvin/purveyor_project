@@ -48,6 +48,8 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     # Cursor to execute commands
     cursor = conn.cursor()
     current_date = date.today()
+    formatted_date = current_date.strftime("%m-%d-%Y")
+
     am_prep_req_list = []
     sous_prep_req_list = []
     for id in item_ids:
@@ -69,7 +71,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     # Populate new template with prep items that can be requisitioned from the AM Prep Team
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['AM Prep']
-    ws['A1'] = f"AM EVENT PREP {current_date}"         
+    ws['A1'] = f"AM EVENT PREP {formatted_date}"         
     print(am_prep_req_list)
     
     # Write each item into its own row (column A)
@@ -98,7 +100,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
 
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['Sous Prep']
-    ws['A1'] = f"SOUS EVENT PREP {current_date}"         
+    ws['A1'] = f"SOUS EVENT PREP {formatted_date}"         
     print(sous_prep_req_list)
 
     # Write each item into its own row (column A)
