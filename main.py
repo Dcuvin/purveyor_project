@@ -15,7 +15,7 @@ from prep_and_check_list import excel_prep_list, word_checklist, get_order_list
 from database import upload_excel, input_new_data
 from openapi import get_chatgpt_all_info
 from check_file import find_db, find_xlsx_db
-from prep_req import req_prep
+from prep_req import req_prep, test_prep_req
 from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu
 #------------------------------------------------------------------------------------------
 
@@ -96,6 +96,19 @@ def main():
             db = 'purveyor_project_db_2.db'
         update_standard_menu(db)
 
+    elif sys.argv[1] == 'test_prep_req':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        if db_input == '1':
+            db = 'purveyor_project_db_1.db'
+        elif db_input == '2':
+            db = 'purveyor_project_db_2.db'
+
+        beo_info = get_chatgpt_all_info(db)
+        test_prep_req(beo_info[0], db)
+
     else:
         print("Invalid function name")  
 #------------------------------------------------------------------------------------------
@@ -136,7 +149,10 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date, 
         print(f"Parent directory does not exist")
     except Exception as e:
         print(f"An error occurred: {e}")
-    #Create excel prep and order list
+
+    # Update standard_menu names for fuzzy logic
+    update_standard_menu(db)
+    # Create excel prep and order list
     excel_prep_list(item_ids, event_name, guest_count, event_time, event_date,db) 
     # Create word doc checklist for mise en place by dish
     word_checklist(item_ids, event_name, guest_count, event_time, event_date,db)

@@ -31,7 +31,7 @@ def get_chatgpt_all_info(db):
     response = client.chat.completions.create(
                 messages=[
                 {"role": "system", "content": """Output the name of the event, 
-                 the guest count, the event start and end time, the date of that event, event type,
+                 the guest count, the event start and end time, the date of that event, event type, location
                  as well as all the food items in that order each on their own separate line. Do not label them.
                  Make sure that the event title
                  does not include a special character, and that the canapes are not numbered or contain an empty space. 
@@ -50,7 +50,8 @@ def get_chatgpt_all_info(db):
     event_time = content_list[2]
     event_date = content_list[3]
     event_type = content_list[4]
-    menu_items = content_list[5:len(content_list)]
+    event_location = content_list[5]
+    menu_items = content_list[6:len(content_list)]
     #menu_items_normalize = [i.normalize() for i in menu_items]
 
 
@@ -100,4 +101,4 @@ def get_chatgpt_all_info(db):
     #print(results)
     print(f"item_ids:{item_ids}")
     print(final_menu_items)
-    return item_ids, event_name, guest_count, event_time, event_date, event_type
+    return item_ids, event_name, guest_count, event_time, event_date, event_type, event_location

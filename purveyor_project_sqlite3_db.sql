@@ -117,18 +117,23 @@ CREATE TABLE menu_prep_list(
 );
 --Create a table with prep items that can be requisitioned from the AM prep team, using the main prep items in prep_list as reference.
 CREATE TABLE req_prep (
-    req_prep_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    prep TEXT NOT NULL
+    req_prep_id INTEGER,
+    prep TEXT NOT NULL,
+    am_prep_team BOOLEAN NOT NULL DEFAULT 0,
+    sous_prep BOOLEAN NOT NULL DEFAULT 0,
+    category TEXT NOT NULL
 );
 
 -- Create a junction linking menu_items with requisition_prep
 
-CREATE TABLE req_menu_prep_list(
+CREATE TABLE menu_req_prep_list(
     menu_item_id INTEGER,
+    item_name TEXT NOT NULL,   
     req_prep_id INTEGER,
-    PRIMARY KEY (menu_item_id , req_prep_id),
-    FOREIGN KEY (menu_item_id) REFERENCES menu_item(menu_item_id),
-    FOREIGN KEY (rec_prep_id) REFERENCES requisitioned_prep(rec_prep_id)   
+    PRIMARY KEY (menu_item_id, req_prep_id),
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
+    FOREIGN kEY (item_name) REFERENCES menu_items(item_name),
+    FOREIGN KEY (req_prep_id) REFERENCES req_prep(req_prep_id)   
 );
 --Delete a table
 

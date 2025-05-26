@@ -5,9 +5,21 @@ import time
 import os
 
 
+
+def check_excel(name_of_excel_file):
+# loop through the joint tables in the database to look for duplicates prior to uploading.
+
+    # joint tables list
+
+    joint_tables = ['menu_req_prep', 'menu_prep_list', 'menu_mise_checklist', 'menu_procedures', 'menu_ingredients']
+
+    pass
+    
+# ------------------------------------------------------------------------------------------
+
 def upload_excel(name_of_excel_file, db):
     
-    table_name = [ 'menu_items', 'menu_restrictions', 'restrictions', 'ingredients', 'menu_ingredients', 'menu_procedures', 'procedures', 'vendors', 'master_product_catalog', 'menu_prep_list','prep_list']
+    table_name = [ 'menu_items', 'menu_restrictions', 'restrictions', 'ingredients', 'menu_ingredients', 'menu_procedures', 'procedures', 'vendors', 'master_product_catalog', 'menu_prep_list','prep_list', 'req_prep', 'menu_req_prep_list']
     # Connect to the SQLite database
     conn = sqlite3.connect(db)
     cursor = conn.cursor()
@@ -32,8 +44,8 @@ def upload_excel(name_of_excel_file, db):
 
             continue
     print(table_names)
-    
-    if len(table_names) == 11:
+
+    if len(table_names) == 13:
     
         for sheet_name, df in excel_data.items():
             print(f"Uploading sheet: {sheet_name}")

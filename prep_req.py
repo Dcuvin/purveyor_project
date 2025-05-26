@@ -9,6 +9,7 @@ import sqlite3
 from datetime import date
 import os
 import shutil
+from excel_format import format_prep_sheet
 
 
 def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
@@ -53,18 +54,20 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     am_prep_req_list = []
     sous_prep_req_list = []
     for id in item_ids:
-        cursor.execute(f"""
-                       SELECT menu_prep_list.item_name, prep_list.prep
-                       FROM prep_list
-                       JOIN menu_prep_list ON prep_list.prep_id = menu_prep_list.prep_id
-                       WHERE menu_prep_list.menu_item_id = {id} AND prep_list.req_prep = 1;
+        cursor.execute(
+                       f"""
+                       SELECT req_prep.prep
+                       FROM req_prep
+                       JOIN menu_req_prep_list ON req_prep.req_prep_id = menu_req_prep_list.req_prep_id
+                       WHERE menu_req_prep_list.menu_item_id = {id} AND req_prep.am_prep_team = 1;
                        """)  
         
         #.fetchall() is a list of tuples
         mise = cursor.fetchall()
         # access the tuple inside the list
         for tuple_item in mise:
-             am_prep_req_list.append(tuple_item[1])
+             print(f"tuple_item{tuple_item}")
+             am_prep_req_list.append(tuple_item[0])
 
     print( am_prep_req_list)
 
@@ -79,24 +82,27 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     for row_idx, prep_items in enumerate(am_prep_req_list, start=3):   # start=1 → Excel’s first row
         ws.cell(row=row_idx, column=1, value=prep_items)
 
+    # format AM prep reauisition sheet
+    format_prep_sheet (ws, 3, 1, 5)
     # Save
     wb.save(f"{dest_dir}/{new_file_name}")
 
     #Query db for all prep that only Sous Team / AM,PM line cookcs can do for Events
 
     for id in item_ids:
-        cursor.execute(f"""
-                       SELECT menu_prep_list.item_name, prep_list.prep
-                       FROM prep_list
-                       JOIN menu_prep_list ON prep_list.prep_id = menu_prep_list.prep_id
-                       WHERE menu_prep_list.menu_item_id = {id} AND prep_list.sous_prep = 1;
+        cursor.execute(
+                       f"""
+                       SELECT req_prep.prep
+                       FROM req_prep
+                       JOIN menu_req_prep_list ON req_prep.req_prep_id = menu_req_prep_list.req_prep_id
+                       WHERE menu_req_prep_list.menu_item_id = {id} AND req_prep.sous_prep = 1;
                        """)  
         
         #.fetchall() is a list of tuples
         mise = cursor.fetchall()
         # access the tuple inside the list
         for tuple_item in mise:
-            sous_prep_req_list.append(tuple_item[1])
+            sous_prep_req_list.append(tuple_item[0])
 
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['Sous Prep']
@@ -108,8 +114,56 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     for row_idx, prep_items in enumerate(sous_prep_req_list, start=3):   # start=1 → Excel’s first row
         ws.cell(row=row_idx, column=1, value=prep_items)
 
+    # format AM prep reauisition sheet
+    format_prep_sheet (ws, 3, 1, 5)
+
     # Save
     wb.save(f"{dest_dir}/{new_file_name}")
 
     
           
+# ------------------------------------------------------------------------------------------
+def test_prep_req(item_ids, db):
+
+ # Query db for all prep that can be requisitioned from AM prep team for Events
+    #unpacked_item_ids = [id for id in item_ids[0]]
+    conn = sqlite3.connect(db)
+    # Cursor to execute commands
+    cursor = conn.cursor()
+
+    am_prep_req_list = []
+    sous_prep_req_list = []
+    for id in item_ids:
+        cursor.execute(
+                       f"""
+                       SELECT req_prep.prep
+                       FROM req_prep
+                       JOIN menu_req_prep_list ON req_prep.req_prep_id = menu_req_prep_list.req_prep_id
+                       WHERE menu_req_prep_list.menu_item_id = {id} AND req_prep.am_prep_team = 1;
+                       """)  
+        
+        #.fetchall() is a list of tuples
+        mise = cursor.fetchall()
+        # access the tuple inside the list
+        for tuple_item in mise:
+             print(f"tuple_item{tuple_item}")
+             am_prep_req_list.append(tuple_item[0])
+
+    print( f"am_prep_req_list: {am_prep_req_list}")
+
+    for id in item_ids:
+        cursor.execute(
+                       f"""
+                       SELECT req_prep.prep
+                       FROM req_prep
+                       JOIN menu_req_prep_list ON req_prep.req_prep_id = menu_req_prep_list.req_prep_id
+                       WHERE menu_req_prep_list.menu_item_id = {id} AND req_prep.sous_prep = 1;
+                       """)  
+        
+        #.fetchall() is a list of tuples
+        mise = cursor.fetchall()
+        # access the tuple inside the list
+        for tuple_item in mise:
+            sous_prep_req_list.append(tuple_item[0])
+
+    print( f"sous_prep_req_list: {sous_prep_req_list}")
