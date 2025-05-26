@@ -123,6 +123,7 @@ def gpt_prep_list(db):
     event_time = all_info[3]
     event_date = all_info[4]
     event_type = all_info[5].lower()
+    event_location = all_info[6]
     #print(item_ids)
     # if event_type is a seated dinner...
     event_type_list = ['seated dinner', 'seated meal', 'seated', ' ']
@@ -131,10 +132,10 @@ def gpt_prep_list(db):
         item_ids.append(37)
 
     # Call the master_prep_list function using the returned variables
-    master_prep_list(item_ids, event_name, guest_count, event_time, event_date, db)
+    master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db)
 #------------------------------------------------------------------------------------------
        
-def master_prep_list(item_ids, event_name, guest_count, event_time, event_date, db):
+def master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db):
     
     # Specify the path of the new directory
     new_folder_path = f"prep_and_checklists/{event_name}"
@@ -153,9 +154,9 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date, 
     # Update standard_menu names for fuzzy logic
     update_standard_menu(db)
     # Create excel prep and order list
-    excel_prep_list(item_ids, event_name, guest_count, event_time, event_date,db) 
+    excel_prep_list(item_ids, event_name, guest_count, event_time, event_date, event_location, db) 
     # Create word doc checklist for mise en place by dish
-    word_checklist(item_ids, event_name, guest_count, event_time, event_date,db)
+    word_checklist(item_ids, event_name, guest_count, event_time, event_date, event_location,db)
     # Fill out prep requisition sheet
     req_prep(item_ids, new_folder_path, event_date, event_name,db)
     

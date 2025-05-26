@@ -12,7 +12,7 @@ from docx import Document
 from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows, format_order_sheet
 from prep_req import req_prep
 #----------------------------------------------------------------------------
-def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db):
+def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, event_location, db):
     
     current_date = date.today()
     conn = sqlite3.connect(db)
@@ -121,7 +121,9 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     # Insert Event Info
     title = prep_sheet.cell(row=1, column=1, value=f"{event_name} {guest_count} Guests {event_start} {event_date}")
     title.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
-   
+    event_info = prep_sheet.cell(row=2, column=2, value =f"Location: {event_location}")
+    event_info.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
+
     # Set print options
     set_print_options(prep_sheet)
 
@@ -159,7 +161,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db
     #return excel_file
 
 #---------------------------------------------------------------------------------
-def word_prep_list(item_id, event_name, guest_count, event_start, event_date,db):
+def word_prep_list(item_id, event_name, guest_count, event_start, event_date, event_location,db):
     
     conn = sqlite3.connect(db)
     # Cursor to execute commands
@@ -236,7 +238,7 @@ def word_prep_list(item_id, event_name, guest_count, event_start, event_date,db)
 
     conn.close()
 #------------------------------------------------------------------------------------------
-def word_checklist(item_id, event_name, guest_count, event_start, event_date,db):
+def word_checklist(item_id, event_name, guest_count, event_start, event_date, event_location,db):
     conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
@@ -289,6 +291,7 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date,db)
     doc.add_heading(f'{event_name} {event_date}', 0)
     doc.add_heading(f'Guests: {guest_count}', level=2)
     doc.add_heading(f'Start: {event_start}', level=2)
+    doc.add_heading(f'Loction: {event_location}', level = 2)
 
     # Create datetime variable
     current_date = date.today()
