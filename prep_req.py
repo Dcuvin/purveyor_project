@@ -11,7 +11,7 @@ import os
 import shutil
 from excel_format import format_prep_sheet
 
-def need_by_date(event_date):
+def need_by(event_date):
    
 
     # Parse it into a date object
@@ -63,7 +63,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     cursor = conn.cursor()
     current_date = date.today()
     formatted_date = current_date.strftime("%m-%d-%Y")
-    need_by_date= (need_by_date(event_date))
+    need_by_date= need_by(event_date)
     am_prep_req_list = []
     sous_prep_req_list = []
     for id in item_ids:
@@ -80,7 +80,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
         # access the tuple inside the list
         for tuple_item in mise:
              print(f"tuple_item{tuple_item}")
-             am_prep_req_list.append({tuple_item[0], tuple_item[1]})
+             am_prep_req_list.append({"prep":tuple_item[0],"category":tuple_item[1]})
 
     print( am_prep_req_list)
 
@@ -93,9 +93,9 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     # Write each item into its own row (column A)
    # start = 3, becuase I want to start filling in the cells in the third row (rows 1-2 are titles and headings)
     for row_idx, prep_items in enumerate(am_prep_req_list, start=3):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=1, value=prep_items[0])
-        ws.cell(row=row_idx, column=3, value=prep_items[1])
-        ws.cell(row=row_idx, column=4, value=need_by_date)
+        ws.cell(row=row_idx, column=1, value=prep_items["prep"])
+        ws.cell(row=row_idx, column=3, value=prep_items["category"])
+        ws.cell(row=row_idx, column=4, value=f"{need_by_date}, by 4pm")
 
 
 
@@ -119,7 +119,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
         mise = cursor.fetchall()
         # access the tuple inside the list
         for tuple_item in mise:
-            sous_prep_req_list.append({tuple_item[0], tuple_item[1]})
+            sous_prep_req_list.append({"prep": tuple_item[0],"category": tuple_item[1]})
 
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['Sous Prep']
@@ -129,9 +129,9 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     # Write each item into its own row (column A)
     row_idx = 3
     for row_idx, prep_items in enumerate(sous_prep_req_list, start=3):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=1, value=prep_items[0])
-        ws.cell(row=row_idx, column=3, value=prep_items[1])
-        ws.cell(row=row_idx, column=4, value=need_by_date)
+        ws.cell(row=row_idx, column=1, value=prep_items["prep"])
+        ws.cell(row=row_idx, column=3, value=prep_items["category"])
+        ws.cell(row=row_idx, column=4, value=f"{need_by_date}, by 4pm")
 
 
     # format AM prep reauisition sheet
