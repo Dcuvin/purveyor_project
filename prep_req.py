@@ -6,11 +6,24 @@
 import pandas as pd
 from openpyxl import load_workbook #imports python library for reading and writting excel files
 import sqlite3
-from datetime import date
+from datetime import date, datetime, timedelta
 import os
 import shutil
 from excel_format import format_prep_sheet
 
+def need_by_date(event_date):
+   
+
+    # Parse it into a date object
+    need_by_date = datetime.strptime(event_date, "%A, %B %d, %Y").date()
+
+    # Subtract one day
+    prior_date = need_by_date - timedelta(days=1)
+
+    # Format prior_date back into a readable string
+    prior_date_str = prior_date.strftime("%A, %B %d, %Y")
+
+    return prior_date_str
 
 def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     
@@ -50,13 +63,13 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     cursor = conn.cursor()
     current_date = date.today()
     formatted_date = current_date.strftime("%m-%d-%Y")
-
+    need_by_date= (need_by_date(event_date))
     am_prep_req_list = []
     sous_prep_req_list = []
     for id in item_ids:
         cursor.execute(
                        f"""
-                       SELECT req_prep.prep
+                       SELECT req_prep.prep, req_prep.category
                        FROM req_prep
                        JOIN menu_req_prep_list ON req_prep.req_prep_id = menu_req_prep_list.req_prep_id
                        WHERE menu_req_prep_list.menu_item_id = {id} AND req_prep.am_prep_team = 1;
@@ -67,7 +80,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
         # access the tuple inside the list
         for tuple_item in mise:
              print(f"tuple_item{tuple_item}")
-             am_prep_req_list.append(tuple_item[0])
+             am_prep_req_list.append({tuple_item[0], tuple_item[1]})
 
     print( am_prep_req_list)
 
@@ -80,7 +93,11 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     # Write each item into its own row (column A)
    # start = 3, becuase I want to start filling in the cells in the third row (rows 1-2 are titles and headings)
     for row_idx, prep_items in enumerate(am_prep_req_list, start=3):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=1, value=prep_items)
+        ws.cell(row=row_idx, column=1, value=prep_items[0])
+        ws.cell(row=row_idx, column=3, value=prep_items[1])
+        ws.cell(row=row_idx, column=4, value=need_by_date)
+
+
 
     # format AM prep reauisition sheet
     format_prep_sheet (ws, 3, 1, 5)
@@ -92,7 +109,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     for id in item_ids:
         cursor.execute(
                        f"""
-                       SELECT req_prep.prep
+                       SELECT req_prep.prep, req_prep.category
                        FROM req_prep
                        JOIN menu_req_prep_list ON req_prep.req_prep_id = menu_req_prep_list.req_prep_id
                        WHERE menu_req_prep_list.menu_item_id = {id} AND req_prep.sous_prep = 1;
@@ -102,7 +119,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
         mise = cursor.fetchall()
         # access the tuple inside the list
         for tuple_item in mise:
-            sous_prep_req_list.append(tuple_item[0])
+            sous_prep_req_list.append({tuple_item[0], tuple_item[1]})
 
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['Sous Prep']
@@ -112,7 +129,10 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     # Write each item into its own row (column A)
     row_idx = 3
     for row_idx, prep_items in enumerate(sous_prep_req_list, start=3):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=1, value=prep_items)
+        ws.cell(row=row_idx, column=1, value=prep_items[0])
+        ws.cell(row=row_idx, column=3, value=prep_items[1])
+        ws.cell(row=row_idx, column=4, value=need_by_date)
+
 
     # format AM prep reauisition sheet
     format_prep_sheet (ws, 3, 1, 5)
@@ -136,7 +156,7 @@ def test_prep_req(item_ids, db):
     for id in item_ids:
         cursor.execute(
                        f"""
-                       SELECT req_prep.prep
+                       SELECT req_prep.prep, req_prep.category
                        FROM req_prep
                        JOIN menu_req_prep_list ON req_prep.req_prep_id = menu_req_prep_list.req_prep_id
                        WHERE menu_req_prep_list.menu_item_id = {id} AND req_prep.am_prep_team = 1;
@@ -154,7 +174,7 @@ def test_prep_req(item_ids, db):
     for id in item_ids:
         cursor.execute(
                        f"""
-                       SELECT req_prep.prep
+                       SELECT req_prep.prep, req_prep.category
                        FROM req_prep
                        JOIN menu_req_prep_list ON req_prep.req_prep_id = menu_req_prep_list.req_prep_id
                        WHERE menu_req_prep_list.menu_item_id = {id} AND req_prep.sous_prep = 1;
