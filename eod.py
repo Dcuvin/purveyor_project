@@ -1,1 +1,0 @@
-#creates eod template for every event that is pre-loaded with repeated information

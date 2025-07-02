@@ -20,8 +20,7 @@ def get_chatgpt_all_info(db):
         content = file.read()
         read_file += content
 
-    #save chosen database into a string
-    database = db
+    
      # Get the API key from the environment variable
     client = OpenAI(
         # This is the default and can be omitted
@@ -30,11 +29,11 @@ def get_chatgpt_all_info(db):
 
     response = client.chat.completions.create(
                 messages=[
-                {"role": "system", "content": """Output the name of the event, 
-                 the guest count, the event start and end time, the date of that event, event type, location
-                 as well as all the food items in that order each on their own separate line. Do not label them.
+                {"role": "system", "content": """Isolate the following: Name of the event, 
+                 the guest count, the event start and end time, the date of that event, the event type, the event location,
+                 and all the food items, each on their own separate line. Do not label them, and
                  Make sure that the event title
-                 does not include a special character, and that the canapes are not numbered or contain an empty space. 
+                 does not include a special character, numbers or contain an empty space. 
                  ."""},
                 { "role": "user","content": read_file,}
             ],
@@ -73,30 +72,31 @@ def get_chatgpt_all_info(db):
     #print(f"final_standard_menu_items: {final_standard_menu_items}")
 
     #does_it_work = []
-    results = []
+    item_ids = []
     final_menu_items = []
-    conn = sqlite3.connect(database)
+    conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
     #for item in extracted_menu_items:
     for item in final_standard_menu_items:
+        print(item)
         try:
             cursor.execute("""
-                SELECT CAST(menu_item_id AS INTEGER) as menu_item_id
+               SELECT menu_item_id
                 FROM menu_items
                 WHERE item_name = ?;
-            """, (item,))
-            #fetch the result
+                """, (item,))
+            #fetch the result, a list of tuples
             result = cursor.fetchall()
+            #print(result)
             if result:
-                results.append(result)
-            else:
+                item_ids.append(result[0][0])
                 final_menu_items.append(item)
+           
         except sqlite3.DatabaseError:
             continue
     conn.close()
-    # list comprehension to access the list of lists of tuples that contain item_ids
-    item_ids = [i[0][0] for i in results]
+    
     #print(does_it_work)
     #print(results)
     print(f"item_ids:{item_ids}")

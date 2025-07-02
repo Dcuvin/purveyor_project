@@ -11,6 +11,8 @@ import os #This statement is used to include the functionality of
 from docx import Document
 from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows, format_order_sheet
 from prep_req import req_prep
+from collections import defaultdict
+
 #----------------------------------------------------------------------------
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, event_location, db):
     
@@ -88,12 +90,12 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, e
 
     excel_file_count = 0
     # Create an excel file
-    excel_file = f"prep_and_checklists/{event_name}/{event_name}_{formatted_date}_{excel_file_count}.xlsx"
+    excel_file = f"prep_and_checklists/{event_name}/PREPLIST_{event_name}_{formatted_date}_{excel_file_count}.xlsx"
     # Continously checks until it finds a non-existent file name
     while os.path.exists(excel_file):
         excel_file_count += 1
         # This updates the file_count, allowing for it to be checked again in the while loop
-        excel_file = f"prep_and_checklists/{event_name}/{event_name}_{formatted_date}_{excel_file_count}.xlsx"
+        excel_file = f"prep_and_checklists/{event_name}/PREPLIST_{event_name}_{formatted_date}_{excel_file_count}.xlsx"
     
     #print(excel_file)
     
@@ -121,7 +123,7 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, e
     # Insert Event Info
     title = prep_sheet.cell(row=1, column=1, value=f"{event_name} {guest_count} Guests {event_start} {event_date}")
     title.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
-    event_info = prep_sheet.cell(row=2, column=2, value =f"Location: {event_location}")
+    event_info = prep_sheet.cell(row=2, column=1, value =f"Location: {event_location}")
     event_info.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
 
     # Set print options
@@ -152,7 +154,6 @@ def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, e
     # Save the workbook with formatting
     workbook.save(excel_file)
     
-#---------------------------------------------------------------------------------
     # Fill out order_sheet
     get_order_list(item_id,db,excel_file,event_name,guest_count,event_date)
 
@@ -309,13 +310,13 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date, ev
     # Check for any duplicate files
     docx_file_count = 0
 
-    checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{formatted_date}_{docx_file_count}.docx'
+    checklist_file_path = f'prep_and_checklists/{event_name}/CHECKLIST_{event_name}_{formatted_date}_{docx_file_count}.docx'
     
     #continously checks until it finds a non-existent file name
     while os.path.exists(checklist_file_path):
         file_count += 1
         # this updates the file_count, allowing for it to be checked again in the while loop
-        checklist_file_path = f'prep_and_checklists/{event_name}/{event_name}_Checklist_{formatted_date}_{file_count}.docx'
+        checklist_file_path = f'prep_and_checklists/{event_name}/CHECKLIST_{event_name}_{formatted_date}_{file_count}.docx'
 
     
     doc.save(checklist_file_path)
@@ -396,9 +397,67 @@ def get_order_list(item_id,db,excel_file_path,event_name,guest_count,event_date)
 
     print("Order Sheet Created!")
     
+#----------------------------------------------------------------------------
+
 def old_excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db):
     pass
 
 #----------------------------------------------------------------------------
 def old_word_checklist(item_id, event_name, guest_count, event_start, event_date,db):
     pass
+
+#----------------------------------------------------------------------------
+
+def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_date, event_location, db):
+
+
+    current_date = date.today()
+    conn = sqlite3.connect(db)
+    # Cursor to execute commands
+    cursor = conn.cursor()
+    current_date = date.today()
+    formatted_date = current_date.strftime("%m-%d-%Y")
+    #It will then query a junction table and pull all procedures associated with the id.       
+    menu_item_list =[]   
+    mise_list = []
+
+    for id in item_id:
+        cursor.execute(f"""
+                       SELECT menu_items.item_name, menu_items.category
+                       FROM menu_items
+                       WHERE menu_items.menu_item_id = {id};
+                       """)  
+         #.fetchall() is a list of tuples
+        menu_items = cursor.fetchall()
+        # access the tuple inside the list
+        for tuple_item in menu_items:
+            
+            menu_item_list.append({'Id':id,'Item':str(tuple_item[0]), 'Category':tuple_item[1],'Mise':[], 'Need': ''})
+    
+    
+    for id in item_id:
+        cursor.execute(f"""
+                       SELECT menu_prep_list.item_name, prep_list.prep
+                       FROM prep_list
+                       JOIN menu_prep_list ON prep_list.prep_id = menu_prep_list.prep_id
+                       WHERE menu_prep_list.menu_item_id = {id};
+                       """)  
+    
+
+        
+        #.fetchall() is a list of tuples
+        mise = cursor.fetchall()
+        # access the tuple inside the list
+        for tuple_item in mise:
+            for menu_item in menu_item_list:
+                if str(tuple_item[0]) == menu_item['Item']:
+                        menu_item['Mise'].append(tuple_item[1])
+            
+    conn.close()
+
+    # Iteratively title() each item name
+
+    for item in menu_item_list:
+        item['Item'] = item['Item'].title()
+
+    print(menu_item_list)

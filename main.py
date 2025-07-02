@@ -11,11 +11,11 @@ import os #This statement is used to include the functionality of
 from bs4 import BeautifulSoup
 import openai
 #from docx import Document
-from prep_and_check_list import excel_prep_list, word_checklist, get_order_list
+from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2
 from database import upload_excel, input_new_data
 from openapi import get_chatgpt_all_info
 from check_file import find_db, find_xlsx_db
-from prep_req import req_prep, test_prep_req
+from prep_req import req_prep, test_prep_req, req_prep_ver_2
 from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu
 #------------------------------------------------------------------------------------------
 
@@ -109,6 +109,19 @@ def main():
         beo_info = get_chatgpt_all_info(db)
         test_prep_req(beo_info[0], db)
 
+    elif sys.argv[1] == 'test_excel_prep_list_ver_2':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        if db_input == '1':
+            db = 'purveyor_project_db_1.db'
+        elif db_input == '2':
+            db = 'purveyor_project_db_2.db'
+
+        all_info = get_chatgpt_all_info(db)
+        excel_prep_list_ver_2(all_info[0], all_info[1], all_info[2], all_info[3], all_info[4], all_info[6], db)
+
     else:
         print("Invalid function name")  
 #------------------------------------------------------------------------------------------
@@ -158,8 +171,9 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date,e
     # Create word doc checklist for mise en place by dish
     word_checklist(item_ids, event_name, guest_count, event_time, event_date, event_location,db)
     # Fill out prep requisition sheet
-    req_prep(item_ids, new_folder_path, event_date, event_name,db)
-    
+    #req_prep(item_ids, new_folder_path, event_date, event_name,db)
+    req_prep_ver_2(item_ids, new_folder_path, event_date, event_name,db)
+
 #------------------------------------------------------------------------------------------
     
     

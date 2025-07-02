@@ -1,19 +1,58 @@
-Event:  Conde Nast	Date:  Wednesday, June 4, 2025
-Account:  Conde Nast	Time:  6:00 PM - 8:30 PM
-Contact:  Derv Gernon	Location:  Greenhouse
-Phone: 	Event Type:  Cocktail Reception
-Email:  derv.gernon@condenast.com	Guests:  60
- 	
+
+Event:  Test
+
+Date:  Wednesday, July 9, 2025
+
+Account:  TOYOTA MOTOR NORTH AMERICA	
+
+Time:  5:30 PM - 7:30 PM
+
+Contact:  Anabelle Bacon	
+
+Location: Greenhouse
+
+Phone:  202-718-9675	
+
+Event Type: Cocktail reception
+
+Email:  anabelle.bacon@toyota.com	
+
+Guests: 40
 
 
 
-Fava Bean Hummus, 
-Radish & Goat Cheese,
 
-Hamachi,
 
-Caviar with HashBrown,
 
-Risotto Fritter,
 
-Braised Short Rib
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Braised Short Rib, corn cake, piquillo pepper puree, pickled red onion
+
+Beef Tenderloin canape, horseradish cream, chives, brioche
+
+Lobster Roll, lobster salad, tarragon, brioche bun
+
+Hamachi, avocado, red onion, serrano, tortilla chip
+
+Caviar with Hash Brown, crème fraîche, chives
+
+Risotto Fritter, parmesan, basil aioli
+
+Crispy Burrata, smashed peas, mint, olive oil jam
+
+Quinoa Falafel, herbed labneh, pickled salad
