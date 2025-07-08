@@ -11,6 +11,9 @@ def update_standard_menu(db):
     
     cursor.execute("SELECT item_name FROM menu_items;")
     item_names = [row[0] for row in cursor.fetchall()]  # Cleaner list comprehension
+
+    cursor.execute("SELECT station_name FROM stations;")
+    station_names = [row[0] for row in cursor.fetchall()]
     conn.close()
 
     #print(item_names)
@@ -19,12 +22,23 @@ def update_standard_menu(db):
     if os.path.exists(file_path):
         print("file_path is correct")
     else:
-        print("ERROR: standard_menu.json does not exist, will be created.")
+        print("❌ ERROR: standard_menu.json does not exist, will be created.")
 
     # Write the menu list to the JSON file
     with open(file_path, 'w') as file:
         json.dump(item_names, file, indent=4)
-        print("standard_menu.json has been updated!")
+        print("✅ standard_menu.json has been updated!")
+
+    file_path = "standard_station_menu.json"
+    if os.path.exists(file_path):
+        print("file_path is correct")
+    else:
+        print("❌ ERROR: standard_staion_menu.json does not exist, will be created.")
+
+    # Write the staion_names list to the JSON file
+    with open(file_path, 'w') as file:
+        json.dump(station_names, file, indent=4)
+        print("✅ standard_menu.json has been updated!")
 #----------------------------------------------------------------------------
 
 def get_standard_menu():
@@ -32,7 +46,7 @@ def get_standard_menu():
     if os.path.exists(file_path):
         print("file_path is correct")
     else:
-        print("ERROR: standard_menu.json does not exist, will be created.")
+        print("❌ ERROR: standard_menu.json does not exist, will be created.")
 
     # Write the menu list to the JSON file
     data = " "
@@ -42,6 +56,25 @@ def get_standard_menu():
     return data
 
     #print(data)
+    #----------------------------------------------------------------------------
+
+def get_standard_station_menu():
+    file_path = "standard_station_menu.json"
+    if os.path.exists(file_path):
+        print("✅  file_path is correct")
+    else:
+        print("❌ ERROR: standard_menu.json does not exist, will be created.")
+
+    # Write the menu list to the JSON file
+    data = " "
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+    
+    return data
+
+    #print(data)
+
+
 #----------------------------------------------------------------------------
 
 def normalize(text):

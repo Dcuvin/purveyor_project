@@ -1,0 +1,48 @@
+[
+    "menu_items":[
+
+        {
+            "item_name":"",
+            "category":"",
+            "sub_category": "" 
+
+        }          
+    ],
+    
+    "prep_list":[
+        {
+            "prep": []
+        }
+    ],
+
+    "req_prep":[
+        {
+            "prep":[],
+            "am_prep_team":0,
+            "sous_prep":0,
+            "category": ""
+        }
+    ],
+
+    "mise_checklist":[
+        {
+            "mise_en_place": []
+        }
+    ],
+
+    "ingredients": [
+        {
+            "ingredient_name":"",
+            "purveyor":"",
+            "ingredient_code":"",
+            "uom":"",
+            "purchase_price":0.0,
+            "ingredient_type":""
+        }
+    ],
+
+    
+
+   
+
+]   

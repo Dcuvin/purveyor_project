@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Nine Orchard Events - BEO Input
+  </title>
+  <style>
+   body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      margin-bottom: 20px;
+      border-collapse: collapse;
+    }
+    td {
+      vertical-align: top;
+      padding: 6px;
+    }
+    h2 {
+      background-color: #dfdfdf;
+      padding: 10px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #528c9e;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3b6f7f;
+    }
+
+    #submitBtn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #528c9e;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #submitBtn:hover {
+      background-color: #3b6f7f;
+    }
+  </style>
+  <h1> Nine Orchard Events </h1>
+  <h3>BEO ➡️ Prep List Generator</h3>
+ </head>
+ <body>
+  <form action="/submit" method="POST">
+   <table border="1">
+    <tr>
+     <td colspan="4">
+      <strong>
+       Event:
+      </strong>
+      <input name="event_name" type="text"/>
+     </td>
+    </tr>
+    <tr>
+     <td >
+      <strong>Day of the Week:</strong>
+  <!-- Days of the week -->
+      <select id ="day" name="day_of_week">
+        <option value="">-- Day --</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+        <option>Sunday</option>
+      </select>
+    </td>
+  
+  <td>
+    <strong>Month:</strong>
+
+    <!-- Month -->
+    <select name="month">
+      <option value="">-- Month --</option>
+      <option>January</option>
+      <option>February</option>
+      <option>March</option>
+      <option>April</option>
+      <option>May</option>
+      <option>June</option>
+      <option>July</option>
+      <option>August</option>
+      <option>September</option>
+      <option>October</option>
+      <option>November</option>
+      <option>December</option>
+    </select>
+  </td>
+  <td>
+        <!-- Day -->
+      <strong>Day:</strong>
+      <br>
+      <input id="day" type="number" name="day" placeholder="ex: 1-31" min="1" max="31" style="width: 80px; min-width: 60px;">
+  </td>
+  <td>
+    <strong>Year:</strong>
+    <br>    
+    <input type="number" name="year" placeholder="ex: 2025" min="2025" max="2050" style="width: 80px; min-width: 60px;">
+  </td>
+     </td>
+ 
+    <tr>
+      <td colspan="4">
+        <!-- Event Time-->
+        <strong>
+        Time:
+        </strong>
+        <input name="event_name" placeholder="ex: 5:30pm"t ype="text"/>
+        <span class="dash">–</span>
+        <input name="event_name" placeholder="ex: 10:30pm" type="text"/>
+      </td>
+    </tr>
+     
+ 
+
+    <tr>
+     <td colspan="4">        
+      <!-- Event Location-->
+      <strong>
+       Location:
+      </strong>
+      <select name="canapes[]">
+        <option value="">-- Select Location --</option>
+        <option value="location">Greenhouse</option>
+        <option value="location">West Room</option>
+        <option value="location">Blue Room</option>
+        <option value="location">West Room / Greenhouse</option>
+
+      </select>
+     </td>
+     
+
+    </tr>
+
+    <tr>
+      <td  colspan="4">
+        <strong>
+        <!-- Event Type-->
+        Event Type:
+        </strong>
+        <select>
+          <option value="event_type">-- Select Type --</option>
+          <option value="event_type">Cocktail Reception</option>
+          <option value="event_type">Seated Dinner</option>
+          <option value="event_type">Family Style Dinner</option>
+          <option value="event_type">Cocktail Reception / Seated Dinner</option>
+          <option value="event_type">Cocktail Reception / Family Style Dinner</option>
+          <option value="event_type">Cocktail Reception / Stations</option>
+          <option value="event_type">Conference</option>
+          <option value="event_type">Stations</option>
+        </select>
+      </td>   
+    </tr>
+
+    <tr>
+     <td colspan="4">
+      <strong>
+      <!-- Guest Count-->
+       Guests:
+      </strong>
+      <input id="guest_cout" type="number" name="guest_count" placeholder="ex: 1-200" min="1" max="200" style="width: 80px; min-width: 60px;">
+     </td>
+    </tr>
+    
+   </table>
+   <div class="menu-section" id="canapes">
+    <!-- Canape -->
+      <h2>
+      Canapés
+      </h2>
+      
+      <select name="canapes[]">
+        <option value="">-- Select Canapé --</option>
+          {% for item in canapes %}
+            <option value="{{ item }}">{{ item }}</option>
+          {% endfor %}
+      </select>
+    
+     
+      <button type="button" onclick="addDropdown('canapes')">
+      Add Another Canape
+      </button>
+   </div>
+   <div class="menu-section" id="starter">
+   <!-- Starter -->
+
+    <h2>
+     Starter
+    </h2>
+    <select name="starter">
+     <option value="">
+      -- Select Starter --
+     </option>
+      {% for item in starters %}
+        <option value="{{ item }}">
+        {{ item }}
+      {% endfor %}
+     </option>
+    </select>
+      <button type="button" onclick="addDropdown('starter')">
+      Add Another Starter
+      </button>
+   </div>
+   <div class="menu-section" id="entrees">
+    <!-- Entree -->
+    <h2>
+      Entrees
+    </h2>
+    <select name="entrees[]">
+      <option value="">
+      -- Select Entrée --
+      </option>
+      {% for item in starters %}
+        <option value="{{ item }}">
+        {{ item }}
+      {% endfor %}
+
+      </option>
+    </select>
+    <button type="button"  onclick="addDropdown('entrees')">
+      Add Another Entree
+      </button>
+      <div class="menu-section" id="entrees">
+        <!-- Station -->
+        <h2>
+          Stations
+        </h2>
+        <select name="stations[]">
+          <option value="">
+          -- Select Station --
+          </option>
+          {% for item in stations %}
+            <option value="{{ item }}">
+            {{ item }}
+          {% endfor %}
+    
+          </option>
+        </select>
+        <button type="button"  onclick="addDropdown('stations')">
+          Add Another Entree
+          </button>
+    <button id="submitBtn" type="submit">
+      Create Prep and Order List
+    </button>
+   </div>
+  </form>
+
+  <!-- Duplicates Dropdown Menu-->
+  <script>
+    function addDropdown(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) {
+        console.error(`No container #${containerId} found`);
+        return;
+      }
+      // Clone the first select in that container
+      const firstSelect = container.querySelector('select');
+      const newSelect   = firstSelect.cloneNode(true);
+      // Reset the value on the clone
+      newSelect.value = '';
+      // Insert it before the button
+      const btn = container.querySelector('button');
+      container.insertBefore(newSelect, btn);
+    }
+    </script>
+ </body>
+</html>

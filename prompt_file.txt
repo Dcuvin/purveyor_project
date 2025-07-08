@@ -1,23 +1,11 @@
 
-Event:  Test
-
+Event:  Test	
 Date:  Wednesday, July 9, 2025
-
-Account:  TOYOTA MOTOR NORTH AMERICA	
-
 Time:  5:30 PM - 7:30 PM
-
-Contact:  Anabelle Bacon	
-
-Location: Greenhouse
-
-Phone:  202-718-9675	
-
-Event Type: Cocktail reception
-
-Email:  anabelle.bacon@toyota.com	
-
-Guests: 40
+Location:  Greenhouse
+Event Type:  Cocktail Reception
+Guests:  40
+ 	
 
 
 
@@ -26,33 +14,25 @@ Guests: 40
 
 
 
+corner bar burger sliders,
+fried chicken slider,
+lamb chop,
+flatbread,
+hamachi crudo,
+tuna tartare,
+golden beets,
+beef tenderloin,
+halibut,
+lasagna,
+ocean trout carpaccio,
+cauliflower steak,
+roast chicken,
+bread and butter,
+ribeye loin,
+green salad,
+vegetable aguachile,
+broccolini,
+dry-aged ribeye,
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Braised Short Rib, corn cake, piquillo pepper puree, pickled red onion
-
-Beef Tenderloin canape, horseradish cream, chives, brioche
-
-Lobster Roll, lobster salad, tarragon, brioche bun
-
-Hamachi, avocado, red onion, serrano, tortilla chip
-
-Caviar with Hash Brown, crème fraîche, chives
-
-Risotto Fritter, parmesan, basil aioli
-
-Crispy Burrata, smashed peas, mint, olive oil jam
-
-Quinoa Falafel, herbed labneh, pickled salad
+CONTINENTAL BREAKFAST

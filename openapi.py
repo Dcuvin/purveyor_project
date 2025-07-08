@@ -2,7 +2,7 @@ import os
 import re
 import sqlite3
 from openai import OpenAI
-from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu
+from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu, get_standard_station_menu
 
 
 def get_chatgpt_all_info(db):
@@ -29,15 +29,15 @@ def get_chatgpt_all_info(db):
 
     response = client.chat.completions.create(
                 messages=[
-                {"role": "system", "content": """Isolate the following: Name of the event, 
+                {"role": "system", "content": """Extract and Isolate the following: Name of the event, 
                  the guest count, the event start and end time, the date of that event, the event type, the event location,
-                 and all the food items, each on their own separate line. Do not label them, and
-                 Make sure that the event title
-                 does not include a special character, numbers or contain an empty space. 
+                 and all the food items, each on their own separate line. Do not label any of the extracted information, and
+                 make sure that the event title
+                 does not include a special character, numbers or contain an empty space. If any info is blank, replace with N/A.
                  ."""},
                 { "role": "user","content": read_file,}
             ],
-            model="gpt-3.5-turbo",
+            model="gpt-4o",
     )
 
     content = response.choices[0].message.content
@@ -61,9 +61,16 @@ def get_chatgpt_all_info(db):
                 extracted_menu_items.append(item)
 
     choices = get_standard_menu()
-    final_standard_menu_items = []
+    final_menu_items_choices = []
     for item in extracted_menu_items:
-        final_standard_menu_items.append(match_menu_items(item, choices))
+         final_menu_items_choices.append(match_menu_items(item, choices))
+    print(final_menu_items_choices)
+    
+    station_choices = get_standard_station_menu()
+    final_stations_choices = []
+    for item in extracted_menu_items:
+        final_stations_choices.append(match_menu_items(item, station_choices))
+    print(final_stations_choices)
 
     #print(content_list)
     #print(menu_items_lower)
@@ -73,13 +80,15 @@ def get_chatgpt_all_info(db):
 
     #does_it_work = []
     item_ids = []
+    station_ids = []
     final_menu_items = []
+    final_stations = []
     conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
     #for item in extracted_menu_items:
-    for item in final_standard_menu_items:
-        print(item)
+    for item in final_menu_items_choices:
+        #print(item)
         try:
             cursor.execute("""
                SELECT menu_item_id
@@ -89,9 +98,31 @@ def get_chatgpt_all_info(db):
             #fetch the result, a list of tuples
             result = cursor.fetchall()
             #print(result)
-            if result:
+            if not result:
+                continue
+            else:
                 item_ids.append(result[0][0])
                 final_menu_items.append(item)
+           
+        except sqlite3.DatabaseError:
+            continue
+
+    for station in  final_stations_choices:
+        #print(item)
+        try:
+            cursor.execute("""
+               SELECT station_id
+                FROM stations
+                WHERE station_name = ?;
+                """, (station,))
+            #fetch the result, a list of tuples
+            result = cursor.fetchall()
+            #print(result)
+            if not result:
+                continue
+            else:
+                station_ids.append(result[0][0])
+                final_stations.append(station)
            
         except sqlite3.DatabaseError:
             continue
@@ -99,6 +130,8 @@ def get_chatgpt_all_info(db):
     
     #print(does_it_work)
     #print(results)
-    print(f"item_ids:{item_ids}")
+    print(f"item_ids: {item_ids}")
     print(final_menu_items)
-    return item_ids, event_name, guest_count, event_time, event_date, event_type, event_location
+    print(f"station_ids: {station_ids}")
+    print(final_stations)
+    return item_ids, event_name, guest_count, event_time, event_date, event_type, event_location, station_ids

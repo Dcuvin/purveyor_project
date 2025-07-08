@@ -55,7 +55,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     # 5. Copy (using copy2 to preserve metadata)
     shutil.copy2(event_req_template_file_path , dest_path)
 
-    print(f"Copied:\n  {event_req_template_file_path }\n→ {dest_path}")
+    print(f"✅ Copied:\n  {event_req_template_file_path }\n→ {dest_path}")
 
     # Query db for all prep that can be requisitioned from AM prep team for Events
     conn = sqlite3.connect(db)
@@ -82,13 +82,13 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
              print(f"tuple_item{tuple_item}")
              am_prep_req_list.append({"prep":tuple_item[0],"category":tuple_item[1]})
 
-    print( am_prep_req_list)
+    #print( am_prep_req_list)
 
     # Populate new template with prep items that can be requisitioned from the AM Prep Team
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['AM Prep']
     ws['A1'] = f"AM EVENT PREP {formatted_date}"         
-    print(am_prep_req_list)
+    #print(am_prep_req_list)
     
     # Write each item into its own row (column A)
    # start = 3, becuase I want to start filling in the cells in the third row (rows 1-2 are titles and headings)
@@ -228,7 +228,7 @@ def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db):
     cursor = conn.cursor()
     current_date = date.today()
     formatted_date = current_date.strftime("%m-%d-%Y")
-    need_by_date= need_by(event_date)
+    need_by_date = datetime.strptime(event_date.strip(), "%A, %B %d, %Y").date()
     prep_req_list = []
     for id in item_ids:
         cursor.execute(
@@ -246,13 +246,12 @@ def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db):
              print(f"tuple_item{tuple_item}")
              prep_req_list.append({"prep":tuple_item[0],"category":tuple_item[1]})
 
-    print(prep_req_list)
 
     # Populate new template with prep items that can be requisitioned.
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['Prep Req']
     ws['A1'] = f"EVENT PREP {formatted_date}"         
-    print(prep_req_list)
+    print(f"🍽️ Mise en Place to Requisition: {prep_req_list}")
     
     # Write each item into its own row (column A)
    # start = 3, becuase I want to start filling in the cells in the third row (rows 1-2 are titles and headings)
@@ -267,6 +266,7 @@ def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db):
     format_prep_sheet (ws, 3, 1, 5)
     # Save
     wb.save(f"{dest_dir}/{new_file_name}")
+    print("✅ Event Requisition Sheet Created!")
 
     
           
