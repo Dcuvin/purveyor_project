@@ -18,6 +18,7 @@ from check_file import find_db, find_xlsx_db
 from prep_req import req_prep, test_prep_req, req_prep_ver_2
 from beo import update_dropdown_menu_selection
 from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu,get_standard_station_menu
+from scan_excel import update_product_catalog
 #------------------------------------------------------------------------------------------
 
 def main():
@@ -152,6 +153,8 @@ def main():
             db = 'purveyor_project_db_2.db'
         update_dropdown_menu_selection(db)
 
+    elif sys.argv[1] == 'test_update_product_catalog':
+        update_product_catalog()
 #------------------------------------------------------------------------------------------
 def gpt_prep_list(db):
 

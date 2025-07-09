@@ -71,7 +71,7 @@ CREATE TABLE ingredients (
     ingredient_name TEXT NOT NULL,
     purveyor TEXT NOT NULL,
     item_code TEXT UNIQUE,
-    uom TEXT NOT NULL,
+    pack_size_unit TEXT NOT NULL,
     purchase_price TEXT NOT NULL,
     ingredient_type TEXT NOT NULL
 
@@ -137,3 +137,7 @@ ADD COLUMN column_name;
 
 --Show table structure
 PRAGMA table_info(menu_items);
+
+--Rename a table column
+ALTER TABLE table_name RENAME COLUMN old_column_name TO new_column_name;
+ALTER TABLE ingredients RENAME COLUMN uom TO pack_size_unit;

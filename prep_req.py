@@ -134,7 +134,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
         ws.cell(row=row_idx, column=4, value=f"{need_by_date}, by 4pm")
 
 
-    # format AM prep reauisition sheet
+    # format AM prep requisition sheet
     format_prep_sheet (ws, 3, 1, 5)
 
     # Save
