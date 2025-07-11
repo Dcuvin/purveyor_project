@@ -28,7 +28,7 @@ def update_standard_menu(db):
     with open(file_path, 'w') as file:
         json.dump(item_names, file, indent=4)
         print("✅ standard_menu.json has been updated!")
-
+    # Updates standard_station_menu.json
     file_path = "standard_station_menu.json"
     if os.path.exists(file_path):
         print("file_path is correct")

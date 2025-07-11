@@ -4,7 +4,7 @@ import sqlite3
 import time
 import os
 import json
-
+import shutil
 
 
 
@@ -65,6 +65,15 @@ def upload_excel(name_of_excel_file, db):
     conn.close()
     print("✅ Excel file upload successful!")
 
+    # Make a copy of db excel file just in case
+    cwd = os.getcwd()
+    backup_name = f"copy_{name_of_excel_file}"
+    dest_path = os.path.join(cwd, backup_name)
+
+    shutil.copy2(name_of_excel_file, dest_path)
+
+    print(f"✅ Copied:\n  {name_of_excel_file}\n→ {dest_path}")
+
 # ------------------------------------------------------------------------------------------
 
 def input_new_data(db):
@@ -112,4 +121,9 @@ def input_new_data(db):
             print(f"✅ New entry:{menu_item_id} ; {item_name}")
         conn.close()
 
-    
+# Function that creates a dataframe
+def create_df(data):
+
+    df= pd.DataFrame(data)
+    return df
+      

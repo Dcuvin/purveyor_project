@@ -13,6 +13,7 @@ from docx import Document
 from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows, format_order_sheet, format_table
 from prep_req import req_prep
 from collections import defaultdict
+from database import create_df
 
 #----------------------------------------------------------------------------
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, event_location, db, station_ids):
@@ -408,7 +409,7 @@ def old_word_checklist(item_id, event_name, guest_count, event_start, event_date
 
 #----------------------------------------------------------------------------
 
-def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_date, event_location, db, station_ids):
+def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_date, event_location, db, station_ids, event_type):
 
 
     current_date = date.today()
@@ -510,16 +511,6 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
             
     #print(f"Number of Categories: {category_count}")
 
-
-    # Function that creates a dataframe
-    def create_df(data):
-
-        df= pd.DataFrame(data)
-        return df
-   
-
-
-
     # Create a list df based on menu_item category
 
     df_list = [{'Category': category, 'DataFrame': []} for category in category_list]
@@ -527,6 +518,10 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
         for df_item in df_list:
             if menu_item['Category'] ==  df_item['Category']:
                 df_item['DataFrame'].append(create_df(menu_item).pivot(index='Mise', columns='Item', values='Need'))
+    
+    #title each category
+    for dict_item in df_list:
+        dict_item["Category"].title()
 
     print(df_list)
     

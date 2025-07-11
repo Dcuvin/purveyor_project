@@ -18,7 +18,7 @@ from check_file import find_db, find_xlsx_db
 from prep_req import req_prep, test_prep_req, req_prep_ver_2
 from beo import update_dropdown_menu_selection
 from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu,get_standard_station_menu
-from scan_excel import update_product_catalog
+from product_catalog import update_product_catalog, input_menu_ingredient, get_menu_item_ingredients
 #------------------------------------------------------------------------------------------
 
 def main():
@@ -60,6 +60,7 @@ def main():
         elif db_input == '2':
             db = 'purveyor_project_db_2.db'
         upload_excel(excel_file_to_upload, db)
+        update_standard_menu(db)
 
     elif sys.argv[1] == 'input_new_data':
         print("Current databases:")
@@ -153,8 +154,51 @@ def main():
             db = 'purveyor_project_db_2.db'
         update_dropdown_menu_selection(db)
 
-    elif sys.argv[1] == 'test_update_product_catalog':
-        update_product_catalog()
+    elif sys.argv[1] == 'update_product_catalog':
+        
+        print(find_xlsx_db())
+        excel_file_to_upload = ''
+        excel_file_input = input('Specify excel file by typing the corresponding number:')
+
+        if excel_file_input == '1':
+            excel_file_to_upload = 'nine_orchard_events_db_1.xlsx'
+        elif excel_file_input == '2':
+            excel_file_to_upload = 'nine_orchard_events_db_2.xlsx'
+        
+        update_product_catalog(excel_file_to_upload)
+    
+    elif sys.argv[1] == "input_menu_ingredient":
+        print(find_xlsx_db())
+        excel_file_to_upload = ''
+        excel_file_input = input('Specify excel file by typing the corresponding number:')
+
+        if excel_file_input == '1':
+            excel_file_to_upload = 'nine_orchard_events_db_1.xlsx'
+        elif excel_file_input == '2':
+            excel_file_to_upload = 'nine_orchard_events_db_2.xlsx'
+        
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        if db_input == '1':
+            db = 'purveyor_project_db_1.db'
+        elif db_input == '2':
+            db = 'purveyor_project_db_2.db'
+        input_menu_ingredient(excel_file_to_upload,db)
+
+    elif sys.argv[1] == 'get_menu_item_ingredients':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        if db_input == '1':
+            db = 'purveyor_project_db_1.db'
+        elif db_input == '2':
+            db = 'purveyor_project_db_2.db'
+
+        get_menu_item_ingredients(db)
+
 #------------------------------------------------------------------------------------------
 def gpt_prep_list(db):
 
@@ -173,14 +217,14 @@ def gpt_prep_list(db):
     # if event_type is a seated dinner...
     event_type_list = ['seated dinner', 'seated meal', 'seated', ' ']
     # Adds Bread and butter
-    if event_type in event_type_list:
-        item_ids.append(37)
+    #if event_type in event_type_list:
+    #    item_ids.append(37)
 
     # Call the master_prep_list function using the returned variables
-    master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db, station_ids)
+    master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db, station_ids,event_type)
 #------------------------------------------------------------------------------------------
        
-def master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db, station_ids):
+def master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db, station_ids, event_type):
     
     # Specify the path of the new directory
     new_folder_path = f"prep_and_checklists/{event_name}"
@@ -200,7 +244,7 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date,e
     update_standard_menu(db)
     # Create excel prep and order list
     #excel_prep_list(item_ids, event_name, guest_count, event_time, event_date, event_location, db) 
-    excel_prep_list_ver_2(item_ids, event_name, guest_count, event_time, event_date, event_location, db, station_ids)
+    excel_prep_list_ver_2(item_ids, event_name, guest_count, event_time, event_date, event_location, db, station_ids,event_type)
     # Create word doc checklist for mise en place by dish
     word_checklist(item_ids, event_name, guest_count, event_time, event_date, event_location,db, station_ids)
     # Fill out prep requisition sheet

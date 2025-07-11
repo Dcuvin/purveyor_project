@@ -71,9 +71,9 @@ CREATE TABLE ingredients (
     ingredient_name TEXT NOT NULL,
     purveyor TEXT NOT NULL,
     item_code TEXT UNIQUE,
-    pack_size_unit TEXT NOT NULL,
-    purchase_price TEXT NOT NULL,
-    ingredient_type TEXT NOT NULL
+    pack_size_unit TEXT,
+    purchase_price REAL NOT NULL DEFAULT 0.0,
+    ingredient_type TEXT
 
 );
 
@@ -141,3 +141,12 @@ PRAGMA table_info(menu_items);
 --Rename a table column
 ALTER TABLE table_name RENAME COLUMN old_column_name TO new_column_name;
 ALTER TABLE ingredients RENAME COLUMN uom TO pack_size_unit;
+
+--menu_items:ingredeints query
+
+SELECT ingredients.ingredient_name, ingredients.purveyor
+FROM ingredients
+JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
+WHERE menu_ingredients.menu_item_id = 1;
+
+SELECT ingredient_id FROM menu_ingredients WHERE menu_item_id = 1;
