@@ -15,7 +15,7 @@ def need_by(event_date):
    
 
     # Parse it into a date object
-    need_by_date = datetime.strptime(event_date, "%A, %B %d, %Y").date()
+    need_by_date = datetime.strptime(event_date.strip(), "%A, %B %d, %Y").date()
 
     # Subtract one day
     prior_date = need_by_date - timedelta(days=1)
@@ -228,7 +228,7 @@ def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db):
     cursor = conn.cursor()
     current_date = date.today()
     formatted_date = current_date.strftime("%m-%d-%Y")
-    need_by_date = datetime.strptime(event_date.strip(), "%A, %B %d, %Y").date()
+    need_by_date= need_by(event_date)
     prep_req_list = []
     for id in item_ids:
         cursor.execute(

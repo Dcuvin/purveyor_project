@@ -46,7 +46,7 @@ def get_chatgpt_all_info(db):
 
     event_name = content_list[0]
     guest_count = content_list[1]
-    event_time = content_list[2]
+    event_time =f"{content_list[2]}"
     event_date = content_list[3]
     event_type = content_list[4]
     event_location = content_list[5]
@@ -134,4 +134,6 @@ def get_chatgpt_all_info(db):
     print(final_menu_items)
     print(f"station_ids: {station_ids}")
     print(final_stations)
+    print(f"Time: {event_time}")
+    print(f"Date: {event_date}")
     return item_ids, event_name, guest_count, event_time, event_date, event_type, event_location, station_ids

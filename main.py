@@ -18,7 +18,7 @@ from check_file import find_db, find_xlsx_db
 from prep_req import req_prep, test_prep_req, req_prep_ver_2
 from beo import update_dropdown_menu_selection
 from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu,get_standard_station_menu
-from product_catalog import update_product_catalog, input_menu_ingredient, get_menu_item_ingredients
+from product_catalog import update_product_catalog, input_menu_ingredient, get_menu_item_ingredients, menu_cost
 #------------------------------------------------------------------------------------------
 
 def main():
@@ -199,6 +199,17 @@ def main():
 
         get_menu_item_ingredients(db)
 
+    elif sys.argv[1] == 'menu_cost':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        if db_input == '1':
+            db = 'purveyor_project_db_1.db'
+        elif db_input == '2':
+            db = 'purveyor_project_db_2.db'
+
+        menu_cost(db)
 #------------------------------------------------------------------------------------------
 def gpt_prep_list(db):
 

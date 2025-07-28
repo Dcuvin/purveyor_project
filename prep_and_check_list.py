@@ -493,8 +493,10 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
 
     for item in menu_item_list:
         item['Item'] = item['Item'].title()
+        for i in range(len(item['Mise'])):
+            item['Mise'][i].title()
             
-    print(menu_item_list)
+    print(f"menu_item_list: {menu_item_list}")
 
     
 
@@ -523,7 +525,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
     for dict_item in df_list:
         dict_item["Category"].title()
 
-    print(df_list)
+    print(f"df_list: {df_list}")
     
     excel_file_count = 0
     # Create an excel file
@@ -612,7 +614,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
 
 
     # Insert Event Info
-    title = prep_sheet.cell(row=1, column=1, value=f"{event_name} {guest_count} Guests {event_start} {event_date}")
+    title = prep_sheet.cell(row=1, column=1, value=f"{event_name}, Guests: {guest_count} , {event_start} ,{event_date}")
     title.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
     event_info = prep_sheet.cell(row=2, column=1, value =f"Location: {event_location}")
     event_info.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')

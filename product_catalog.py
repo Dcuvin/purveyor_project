@@ -1,10 +1,15 @@
 import pandas as pd
 import os
-from openpyxl import load_workbook
-from openpyxl.styles import numbers
+from openpyxl import load_workbook, Workbook
+from openpyxl.styles import numbers, Font, PatternFill, Border, Side, Alignment
 import sqlite3
 import json
 from fuzzy import match_menu_items
+from datetime import date
+from excel_format import format_table
+from database import create_df
+from openpyxl.utils import get_column_letter
+from excel_format import format_table_ver_2
 
 
 
@@ -251,3 +256,155 @@ def get_menu_item_ingredients(db):
 
     workbook.save(excel_file)
     print("✅ updated_menu_ingredient_list.xlsx has been updated!")
+
+#----------------------------------------------------------------------------------------
+
+def menu_cost(db):
+    current_date = date.today()
+    conn = sqlite3.connect(db)
+    # Cursor to execute commands
+    cursor = conn.cursor()
+    current_date = date.today()
+    menu_item_cost = []
+    cursor.execute(
+        """ SELECT *
+            FROM menu_items;
+        """)
+    item_id_tuple = cursor.fetchall()
+    for id in item_id_tuple:
+       menu_item_cost.append({"item_id":id[0], "item_name":id[1], "ingredients":[]})
+
+    #print(menu_item_cost)
+
+    for item in menu_item_cost:
+        cursor.execute(f"""
+                       SELECT ingredients.ingredient_id,  ingredients.ingredient_name, ingredients.purveyor, ingredients.ingredient_code, ingredients.pack_size_unit, 
+                       CAST (ingredients.purchase_price AS FLOAT)
+                       FROM ingredients
+                       JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
+                       WHERE menu_ingredients.menu_item_id = {item["item_id"]};
+                       """)  
+        ingredient_tuple = cursor.fetchall()
+        #print(ingredient_tuple)
+        for ing_tuple in ingredient_tuple:
+            try:
+                item["ingredients"].append({"ingredient_id":ing_tuple[0],
+                                        "ingredient_name":ing_tuple[1],
+                                        "purveyor": ing_tuple[2],
+                                        "ingredient_code": ing_tuple[3],
+                                        "pack_size_unit": ing_tuple[4],
+                                        "price": ing_tuple[5]})
+            
+            except:
+                continue
+    conn.close()
+
+    for item in menu_item_cost:
+        item["ingredients"] = create_df(item["ingredients"])
+        
+    print(menu_item_cost)
+
+ 
+    # Create an excel file
+    excel_file_count = 0
+    excel_file = f"Events_Menu_Cost_{excel_file_count}_{current_date}.xlsx"
+
+   
+    
+    # Continously checks until it finds a non-existent file name
+    while os.path.exists(excel_file):
+        excel_file_count += 1
+        # This updates the file_count, allowing for it to be checked again in the while loop
+        excel_file = f"Events_Menu_Cost_{excel_file_count}_{current_date}.xlsx"
+    else:
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "menu_cost"
+        wb.save(excel_file)
+        print(f"✅ {excel_file} Created!")
+
+    with pd.ExcelWriter(excel_file, engine='openpyxl', mode='w') as writer:
+        item_name_row = 3
+        item_id_row = 4
+        df_row = 4
+        current_col = 0  # 0-based for pandas
+        column_A = 1 #1-based for openpyxl (col A)
+        column_F = 6 #6-based for openpyxl (col F)
+        column_E = 5
+        pd.DataFrame().to_excel(writer, sheet_name='menu_cost', index=False)
+        for item_dict in menu_item_cost:
+
+            current_col_letter = get_column_letter(column_A)
+            end_col_letter = get_column_letter(column_F)
+
+            ws = writer.sheets['menu_cost']
+
+            # prepares cells for item_name
+            cell_item_name = ws[f"{current_col_letter}{item_name_row}"]
+            cell_item_name.value = item_dict['item_name'].capitalize()
+            cell_item_name.border = Border(left=Side(style='thin'),
+                        right=Side(style='thin'),
+                        top=Side(style='thin'),
+                        bottom=Side(style='thin'))
+            cell_item_name.alignment = Alignment(horizontal='center', vertical='center')
+            cell_item_name.fill = PatternFill(start_color="FFC9DAF8", end_color="FFC9DAF8", fill_type="solid")
+            cell_item_name.font = Font(name='Calibri', size=14,bold=True, color="FF000000")
+            ws.merge_cells(f"{current_col_letter}{item_name_row}:{end_col_letter}{item_name_row}")
+
+            # prepares cells for item_id
+            cell_item_id =  ws[f"{current_col_letter}{item_id_row}"]
+            cell_item_id.value = f'Item_ID: {item_dict["item_id"]}'
+            cell_item_id.border = Border(left=Side(style='thin'),
+                        right=Side(style='thin'),
+                        top=Side(style='thin'),
+                        bottom=Side(style='thin'))
+            cell_item_id.alignment = Alignment(horizontal='center', vertical='center')
+            cell_item_id.fill = PatternFill(start_color="FFC9DAF8", end_color="FFC9DAF8", fill_type="solid")
+            cell_item_id.font = Font(name='Calibri', size=14,bold=True, color="FF000000")
+            ws.merge_cells(f"{current_col_letter}{item_id_row}:{end_col_letter}{item_id_row}")
+
+
+            # populates cells with ingredients
+            item_dict['ingredients'].to_excel(writer, sheet_name= 'menu_cost', startrow=df_row, startcol=current_col, index=False)
+
+            format_table_ver_2(ws, df_row, column_A, item_dict['ingredients'])
+
+            df_length = len(item_dict['ingredients'])
+            first_price_cell =f"{end_col_letter}{df_row + 2}"
+            last_price_cell = f"{end_col_letter}{df_row + df_length + 1}"
+
+            
+            sum_row = df_row + len(item_dict['ingredients'])  + 2
+            # print(f"df_length: {df_length}")
+            #print(f"Sum Row: {sum_row}")
+            # sum_cell = ws[f"{end_col_letter}{sum_row}"]
+            total_sum_cost = ws.cell(row=sum_row, column=column_F)
+            total_sum_cost.value = f"=SUM({first_price_cell}:{last_price_cell})"
+            total_sum_cost.border = Border(left=Side(style='thin'),
+                        right=Side(style='thin'),
+                        top=Side(style='thin'),
+                        bottom=Side(style='thin'))
+            total_sum_cost.alignment = Alignment(horizontal='center', vertical='center')
+            total_sum_cost.font = Font(bold=True, name='Calibri', size=12, color="000000")
+
+
+            total_cost_string = ws.cell(row=sum_row, column=column_E)
+            total_cost_string.value = "TOTAL COST"
+            total_cost_string.border = Border(left=Side(style='thin'),
+                        right=Side(style='thin'),
+                        top=Side(style='thin'),
+                        bottom=Side(style='thin'))
+            total_cost_string.alignment = Alignment(horizontal='center', vertical='center')
+            total_cost_string.font = Font(bold=True, name='Calibri', size=12, color="000000")
+
+            #format_table(ws, df_row, current_category_col, item_dict['ingredients'])
+            #this is openpyxl based and starts at 1 for indexing
+            df_row += len(item_dict["ingredients"]) + 5 # Add space between tables
+            item_id_row += len(item_dict["ingredients"]) + 5
+            item_name_row += len(item_dict["ingredients"]) + 5
+            #insert_blank_rows(ws, df_row + 1 )
+          
+#----------------------------------------------------------------------------------------
+
+def menu_cost_ver_2(db):
+    pass

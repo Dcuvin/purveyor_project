@@ -141,3 +141,41 @@ def format_table(ws, start_row, start_col, dataframe):
             cell.font = body_font
             cell.border = thin_border
             cell.alignment = align_center
+
+
+def format_table_ver_2(ws, start_row, start_col, dataframe):
+    # num_rows = dataframe.shape[0]
+    # num_cols = dataframe.shape[1]
+    df_length =len(dataframe)
+    thin_border = Border(
+        left=Side(style='thin'),
+        right=Side(style='thin'),
+        top=Side(style='thin'),
+        bottom=Side(style='thin')
+    )
+
+    # Use black font for both header and body
+    header_font = Font(name='Calibri', size=14,bold=True, color="FF000000")  # Black, bold
+    body_font = Font(name='Calibri', size=12, color="FF000000")  # Black
+    align_center = Alignment(horizontal='center', vertical='center')
+
+    # Format header row
+    for col in range(6):
+        col_letter = get_column_letter(col + 1)  # openpyxl is 1-based
+        cell = ws[f"{col_letter}{start_row + 1}"]  # pandas writes header here
+        cell.font = header_font
+        cell.border = thin_border
+        cell.alignment = align_center
+        cell.fill = PatternFill(start_color="FFC9DAF8", end_color="FFC9DAF8", fill_type="solid")
+     
+        #print("Formatting column:", col_letter)
+
+
+    # # Format body rows
+    for row in range(df_length):
+        for col in range(6):
+            col_letter = get_column_letter(col + 1)
+            cell = ws[f"{col_letter}{start_row + 2 + row}"]  # data starts after header
+            cell.font = body_font
+            cell.border = thin_border
+            cell.alignment = align_center

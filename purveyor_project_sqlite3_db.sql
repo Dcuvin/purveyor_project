@@ -144,9 +144,11 @@ ALTER TABLE ingredients RENAME COLUMN uom TO pack_size_unit;
 
 --menu_items:ingredeints query
 
-SELECT ingredients.ingredient_name, ingredients.purveyor
+SELECT menu_ingredients.menu_item_id,   ingredients.ingredient_name, ingredients.ingredient_id, ingredients.ingredient_name, ingredients.purveyor, ingredients.ingredient_code, ingredients.pack_size_unit, ingredients.purchase_price
 FROM ingredients
 JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
 WHERE menu_ingredients.menu_item_id = 1;
+
+--menu_items:ingredeints query
 
 SELECT ingredient_id FROM menu_ingredients WHERE menu_item_id = 1;
