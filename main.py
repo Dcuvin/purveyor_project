@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 import openai
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2
-from database import upload_excel, input_new_data
+from database import upload_excel, input_new_data, db_input, excel_file_to_upload, delete_data, get_ingredients
 from openapi import get_chatgpt_all_info
 from check_file import find_db, find_xlsx_db
 from prep_req import req_prep, test_prep_req, req_prep_ver_2
@@ -33,11 +33,10 @@ def main():
         print(find_db())
         db = ''
         db_input = input('Specify which database to use by typing the corresponding number:')
+     
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'        
+        db = f"purveyor_project_db_{db_input}.db"
+
         gpt_prep_list(db)
 
     elif sys.argv[1] == 'upload_excel':
@@ -46,31 +45,31 @@ def main():
         excel_file_to_upload = ''
         excel_file_input = input('Specify excel file by typing the corresponding number:')
 
-        if excel_file_input == '1':
-            excel_file_to_upload = 'nine_orchard_events_db_1.xlsx'
-        elif excel_file_input == '2':
-            excel_file_to_upload = 'nine_orchard_events_db_2.xlsx'
-        
+
+
+        excel_file_to_upload = f"nine_orchard_events_db_{excel_file_input}.xlsx"
         print(find_db())
         db = ''
         db_input = input('Specify which database to update by typing the corresponding number:')
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+ 
+
+        db = f"purveyor_project_db_{db_input}.db"
+
         upload_excel(excel_file_to_upload, db)
         update_standard_menu(db)
 
     elif sys.argv[1] == 'input_new_data':
         print("Current databases:")
         print(find_db())
-        db_input = input('Specify which database to update:')
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+        db_input = input('Specify which database to use:')
+
+       
+
+        db = f"purveyor_project_db_{db_input}.db"
+
         input_new_data(db)
+        #get_ingredients(db)
 
     elif sys.argv[1] == 'find_db':
         find_db()
@@ -80,10 +79,10 @@ def main():
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+       
+
+        db = f"purveyor_project_db_{db_input}.db"
+
         update_standard_menu(db)
         get_chatgpt_all_info(db)
         get_standard_menu()
@@ -94,10 +93,10 @@ def main():
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+       
+
+        db = f"purveyor_project_db_{db_input}.db"
+
         update_standard_menu(db)
 
     elif sys.argv[1] == 'test_prep_req':
@@ -105,10 +104,10 @@ def main():
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+       
+
+        db = f"purveyor_project_db_{db_input}.db"
+
 
         beo_info = get_chatgpt_all_info(db)
         test_prep_req(beo_info[0], db)
@@ -118,10 +117,10 @@ def main():
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+     
+
+        db = f"purveyor_project_db_{db_input}.db"
+
 
         all_info = get_chatgpt_all_info(db)
         # Specify the path of the new directory
@@ -148,10 +147,9 @@ def main():
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+
+        db = f"purveyor_project_db_{db_input}.db"
+
         update_dropdown_menu_selection(db)
 
     elif sys.argv[1] == 'update_product_catalog':
@@ -160,11 +158,10 @@ def main():
         excel_file_to_upload = ''
         excel_file_input = input('Specify excel file by typing the corresponding number:')
 
-        if excel_file_input == '1':
-            excel_file_to_upload = 'nine_orchard_events_db_1.xlsx'
-        elif excel_file_input == '2':
-            excel_file_to_upload = 'nine_orchard_events_db_2.xlsx'
+
         
+        excel_file_to_upload = f"nine_orchard_events_db_{excel_file_input}.xlsx"
+
         update_product_catalog(excel_file_to_upload)
     
     elif sys.argv[1] == "input_menu_ingredient":
@@ -172,19 +169,18 @@ def main():
         excel_file_to_upload = ''
         excel_file_input = input('Specify excel file by typing the corresponding number:')
 
-        if excel_file_input == '1':
-            excel_file_to_upload = 'nine_orchard_events_db_1.xlsx'
-        elif excel_file_input == '2':
-            excel_file_to_upload = 'nine_orchard_events_db_2.xlsx'
+  
+
+        excel_file_to_upload = f"nine_orchard_events_db_{excel_file_input}.xlsx"
+
         
         print(find_db())
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+     
+        db = f"purveyor_project_db_{db_input}.db"
+
         input_menu_ingredient(excel_file_to_upload,db)
 
     elif sys.argv[1] == 'get_menu_item_ingredients':
@@ -192,10 +188,8 @@ def main():
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+
+        db = f"purveyor_project_db_{db_input}.db"
 
         get_menu_item_ingredients(db)
 
@@ -204,12 +198,29 @@ def main():
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
 
-        if db_input == '1':
-            db = 'purveyor_project_db_1.db'
-        elif db_input == '2':
-            db = 'purveyor_project_db_2.db'
+
+        db = f"purveyor_project_db_{db_input}.db"
 
         menu_cost(db)
+    
+    elif sys.argv[1] == 'delete_data':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+        item_ids = input('Specify item_ids: ')
+
+        db = f"purveyor_project_db_{db_input}.db"
+
+        delete_data(item_ids,db)
+
+    elif sys.argv[1] == 'get_ingredients':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        db = f"purveyor_project_db_{db_input}.db"
+
+        get_ingredients(db)
 #------------------------------------------------------------------------------------------
 def gpt_prep_list(db):
 

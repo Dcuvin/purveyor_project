@@ -1,48 +1,55 @@
-[
+{
     "menu_items":[
 
         {
-            "item_name":"",
-            "category":"",
-            "sub_category": "" 
+            "item_name":"manchego toast",
+            "category":"canape",
+            "prep": ["slice brioche pullman for sandwiches", "slice 4 month manchego", "fruit mustard", "prosciutto chips"],
+            "req_prep": [
+                {
+                    "prep":"",
+                    "am_prep_team":0,
+                    "sous_prep":0,
+                    "category": ""
+                }
+            ],
+            "mise_en_place": ["manchego grilled cheese", "fruit mustard", "prosciutto chips"],
+            "ingredients": ["4 month manchego", "brioche pullman", "fig jam", "sliced prosciutto"]
 
-        }          
-    ],
+
+        },    
+        
+        {
+            "item_name":"halibut",
+            "category":"entree",
+            "prep": ["clean / portion( 6oz) /  brine (10% for 30min)  Halibut ", "slice garlic", "steam fingerling potatoes", 
+                    "wilt spinach", "fumet blanc", "fish stock", "chicken stock slurry", "chive oil", "pull trout roe", "pick dill"],
+            "req_prep": [
+                {
+                    "prep":"clean / portion( 6oz) /  brine (10% for 30min)  Halibut ",
+                    "am_prep_team":0,
+                    "sous_prep":1,
+                    "category": "entree"
+                },
+                {
+                    "prep":"fish stock ",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "entree"
+                },
+                {
+                    "prep":"clean white fish bones",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "entree"
+                }
+            ],
+            "mise_en_place": ["halibut", "sliced garlic","steamed fingerling potatoes", "spinach", "fumet blanc", "chicken stock slurry", "chive oil", "trout roe", "picked dill", "lemon vin"],
+            "ingredients": ["halibut", "peeled garlic", "fingerling potatoes", "spinach", "fish bones", "chives", "trout roe", "dill"]
+
+
+        }
+    ]
     
-    "prep_list":[
-        {
-            "prep": []
-        }
-    ],
 
-    "req_prep":[
-        {
-            "prep":[],
-            "am_prep_team":0,
-            "sous_prep":0,
-            "category": ""
-        }
-    ],
-
-    "mise_checklist":[
-        {
-            "mise_en_place": []
-        }
-    ],
-
-    "ingredients": [
-        {
-            "ingredient_name":"",
-            "purveyor":"",
-            "ingredient_code":"",
-            "uom":"",
-            "purchase_price":0.0,
-            "ingredient_type":""
-        }
-    ],
-
-    
-
-   
-
-]   
+}

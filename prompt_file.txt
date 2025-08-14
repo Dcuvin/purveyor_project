@@ -1,22 +1,33 @@
 
-Event:  PhD Microsoft	
-Date:  Wednesday, July 30, 2025
-Account:  Debbie Delano	
-Time:  5:00 PM - 8:00 PM
-Contact:  Debbie Delano	
-Location:  Greenhouse
-Phone:  14258029841	
-Event Type: cocktail reception
-Email:  v-ddelano@microsoft.com	
-Guests:  45
+Event:  Nike Day 3,	
+Date:  Wednesday, August 27, 2025
+Account:  Magma Global	
+Time:  8:30 AM - 3:30 PM
+Contact:  Francesca Cocchiarella	
+Location:  West Room
+Phone: 	
+Event Type: 
+Email:  francesca@magmagt.com	
+Guests: 20
  	
-Lobster Roll, lobster salad, tarragon, brioche bun
+Account Owner:  Julie Garces	
+Phone/Email:  917-620-6578 / julie.garces@nineorchard.com	
 
-Radish & Goat Cheese, sourdough toast, lemon zest
 
-Shrimp Toast, spicy mayo, sesame, cilantro
+menu items:
 
-Everything Gougeres, chive, cream cheese mousse,
-
-A TASTE OF NINE ORCHARD
+breakfast station,
+continental breakfast,
+breakfast sandwich station,
+sandwiches,
+grain bowls,
+hearty salads,
+sweet & savory snacks,
+chips & dips,
+afternoon tea station,
+cheese & charcuterie,
+raw bar,
+crudite & mezze,
+farmer's green market,
+a taste of nine orchard,
 

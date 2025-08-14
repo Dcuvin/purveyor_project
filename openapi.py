@@ -33,7 +33,7 @@ def get_chatgpt_all_info(db):
                  the guest count, the event start and end time, the date of that event, the event type, the event location,
                  and all the food items, each on their own separate line. Do not label any of the extracted information, and
                  make sure that the event title
-                 does not include a special character, numbers or contain an empty space. If any info is blank, replace with N/A.
+                 does not include a special character. If any info is blank, replace with N/A.
                  ."""},
                 { "role": "user","content": read_file,}
             ],

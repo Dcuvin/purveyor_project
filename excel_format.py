@@ -29,7 +29,7 @@ def format_headers_and_borders(sheet, start_row, start_col, end_col):
     for cell in sheet.iter_cols(min_row=start_row, max_row=start_row, min_col=start_col, max_col=end_col):
         for c in cell:
             c.font = Font(bold=True, name='Calibri', size=14, color="000000")
-            c.fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+            c.fill = PatternFill(start_color="FFC9DAF8", end_color="FFC9DAF8", fill_type="solid")
             c.border = thin_border
 
     # Apply borders to the entire table
@@ -80,7 +80,7 @@ def format_order_sheet(sheet, start_row, start_col, end_col):
     for cell in sheet.iter_cols(min_row=3, max_row=3, min_col=1, max_col=3):
         for c in cell:
             c.font = Font(bold=True, name='Calibri', size=14, color="000000")
-            c.fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+            c.fill = PatternFill(start_color="FFC9DAF8", end_color="FFC9DAF8", fill_type="solid")
             c.border = thin_border
 
     # Apply borders to the entire table

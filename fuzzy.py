@@ -79,12 +79,13 @@ def get_standard_station_menu():
 
 def normalize(text):
     text = text.lower()
-    # Retain alphanumeric characters and '&'
-    text = re.sub(r'[^a-z0-9&]+', ' ', text)
+    text = text.replace("&", " and ")
+    text = re.sub(r"[^a-z0-9%/.\-\s]+", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
     return text.strip()
 #----------------------------------------------------------------------------
 
-def match_menu_items(item, choices, threshold=85):
+def match_menu_items(item, choices, threshold=90):
     normalized_item = normalize(item)
     normalized_choices = [normalize(choice) for choice in choices]
     match, score, _ = process.extractOne(normalized_item, normalized_choices, scorer=fuzz.token_set_ratio)

@@ -3,3 +3,18 @@ I'am a Chef by trade, and have been in the hospitality industry since highschool
 
 
 
+Functions:
+
+database.py
+
+db_input()
+Prompts user to enter a number that corresponds to the database that they are trying to access.
+
+excel_file_to_upload()
+Prompts the user to enter a number that corresponds to the excel file that they are trying to upload to a database.
+
+upload_excel()
+Takes the database excel file, deletes the old data in the database, and reuploads the excel file into the existing database.
+
+input_new_data()
+Opens a json file with data for a new menu item to be added to the database, and checks the database to see if the menu item exists, and if not, add it to the database.

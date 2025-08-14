@@ -16,7 +16,7 @@ from collections import defaultdict
 from database import create_df
 
 #----------------------------------------------------------------------------
-def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, event_location, db, station_ids):
+def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, event_location, db):
     
     current_date = date.today()
     conn = sqlite3.connect(db)
@@ -446,6 +446,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
                        WHERE menu_prep_list.menu_item_id = {station_dict['menu_item_id']};
                        """)
         station_mise = cursor.fetchall()
+        print(station_mise)
         for mise_tuple in station_mise:
             if mise_tuple[0] == station_dict['menu_item_id']:
                 station_dict['menu_item_name'] = mise_tuple[1]
@@ -496,7 +497,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
         for i in range(len(item['Mise'])):
             item['Mise'][i].title()
             
-    print(f"menu_item_list: {menu_item_list}")
+    # print(f"menu_item_list: {menu_item_list}")
 
     
 
