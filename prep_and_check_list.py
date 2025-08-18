@@ -423,7 +423,8 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
     menu_item_list =[]
     #station_menu_items_list =[]   
     stations = []
-
+    station_menu_ids = []
+    
     
 
     for id in station_ids:
@@ -434,10 +435,13 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
                        """)
          #.fetchall() is a list of tuples
         station_menu_items = cursor.fetchall()
+        #print(f"station_menu_items: {station_menu_items}")
         # access the tuple inside the list
         for tuple_item in station_menu_items:
             stations.append({"station_name": tuple_item[0],"menu_item_id": tuple_item[1],"menu_item_name":"","mise": []})
     
+            station_menu_ids.append(tuple_item[1])
+    #print(f"station_menu_ids: {station_menu_ids}")  
     for station_dict in stations:
         cursor.execute(f"""
                        SELECT menu_prep_list.menu_item_id, menu_prep_list.item_name, prep_list.prep
@@ -648,8 +652,11 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
     # Save the workbook with formatting
     workbook.save(excel_file)
     
+    # Consolidate item_ids from both individual menu_items and each item within stations
+
+    final_item_ids = station_menu_ids + item_ids_list
     # Fill out order_sheet
-    get_order_list(item_id,db,excel_file,event_name,guest_count,event_date)
+    get_order_list(final_item_ids,db,excel_file,event_name,guest_count,event_date)
 
     
     print("✅ Excel Prep and Order List Created and Reformatted!")

@@ -177,21 +177,28 @@ def input_new_data(db):
     updated_data = data["menu_items"]
     #print(updated_data)
 
+
     conn = sqlite3.connect(db)
     cursor = conn.cursor()
 
     for menu_item in updated_data:
-        #print(menu_item["item_name"])
+
+
+        
         """ Overwrite existing entry """
         """ Check database to see if item_name exists"""
 
         cursor.execute( "SELECT menu_item_id, item_name, category FROM menu_items WHERE item_name = ?", (menu_item['item_name'],))
-        menu_items = [{"menu_item_id":i[0], "item_name":i[1], "category": i[2]} for i in cursor.fetchall()]
+        menu_item_result = [{"menu_item_id":i[0], "item_name":i[1], "category": i[2]} for i in cursor.fetchall()]
+        
+        new_menu_item = {"menu_item_id":0, "item_name":"", "category":""}
+        # Pull last menu_item_id from menu_items
+        cursor.execute("SELECT MAX(menu_item_id) FROM menu_items")
+        last_menu_item_id = cursor.fetchone()[0]
 
-      
-        if len(menu_items) == 1:
-            print(f"{menu_items[0]['item_name']} exists; item_id: {menu_items[0]['menu_item_id']}")
-            update_prompt = input(f"Would you like to overwrite {menu_items[0]['item_name']} in {db}?: y/n  ")
+        if len( menu_item_result) == 1:
+            print(f"{menu_item_result[0]['item_name']} exists; item_id: { menu_item_result[0]['menu_item_id']}")
+            update_prompt = input(f"Would you like to overwrite { menu_item_result[0]['item_name']} in {db}?: y/n  ")
             if update_prompt != "y":
                 break
         else:
@@ -199,54 +206,147 @@ def input_new_data(db):
             proceed_prompt = input(f"would you like to proceed?: y/n  ")
             if proceed_prompt != "y":
                 break
-
             else:
+                
+                new_menu_item["menu_item_id"] = last_menu_item_id + 1
+                new_menu_item["item_name"] = menu_item["item_name"]
+                new_menu_item["category"] = menu_item["category"]
+                print(f"new menu_item_id: {last_menu_item_id}; new item_name; {menu_item['item_name']}; category: {menu_item['category']}")
+
+       
+        """" Check database to see if any prep proceedures from the database matches the ones you are trying to input"""
+
+        # Pull all prep procedures from the database and normalize.
+
+        cursor.execute("SELECT * from prep_list")
+        db_prep = [{"prep_id": i[0] , "prep": normalize(i[1])} for i in cursor.fetchall()]
+
+        # normalize all prep procedures to input
+
+        prep_to_upload = [{"prep_id": 0, "prep":normalize(i)} for i in menu_item['prep']]
+
+        #find the last req_prep_id in the req_prep table
+        cursor.execute("SELECT MAX(prep_id) FROM prep_list")
+        last_prep_id = cursor.fetchone()[0]  
+
+
+        for prep_1 in prep_to_upload:
+            for prep_2 in db_prep:
+                if prep_1["prep"] == prep_2["prep"]:
+                    prep_1["prep_id"] = prep_2["prep_id"]
+
+        for prep_1 in prep_to_upload:
+            if prep_1["prep_id"] == 0:
+                last_prep_id += 1
+                prep_1["prep_id"] = last_prep_id
+                
+        print(f"prep_to_upload: {prep_to_upload}")
+
+        """Check req_prep for existing requisitioned prep"""
+
+        cursor.execute("SELECT * FROM req_prep")
+
+        db_req_prep = [{"req_prep_id": i[0], "prep":i[1], "am_prep_team": i[2], "sous_prep": i[3], "category":i[4]} for i in cursor.fetchall()]
+
+        req_prep_to_upload = []
+
+        for req_prep in menu_item["req_prep"]:
+
+            req_prep_to_upload.append({"req_prep_id":0, "prep":normalize(req_prep["prep"]), "am_prep_team": req_prep["am_prep_team"], "sous_prep": req_prep["sous_prep"], "category":req_prep["category"]}) 
+        #print(f"req_prep_to_upload: {req_prep_to_upload}")
+        #find the last req_prep_id in the req_prep table
+        cursor.execute("SELECT MAX(req_prep_id) FROM req_prep")
+        last_req_prep_id = cursor.fetchone()[0]  
+
+        # Need to Check if prep is requisitioned, because sometimes there's no prep to be requisitioned...
+        if req_prep_to_upload:
+            for prep_1 in req_prep_to_upload:
+                for prep_2 in db_req_prep:
+                    if prep_1["prep"] == prep_2["prep"]:
+                        prep_1["req_prep_id"] = prep_2["req_prep_id"]
+                        prep_1["am_prep_team"] = prep_2["am_prep_team"]
+                        prep_1["sous_prep"] = prep_2["sous_prep"]
+
+
+            for prep_1 in req_prep_to_upload:
+                if prep_1["req_prep_id"] == 0 and len(prep_1["prep"]) > 0:
+                    last_req_prep_id += 1
+                    prep_1["req_prep_id"] = last_req_prep_id
+                print(f"req_prep_id: {last_req_prep_id}")   
+            
+            
+        print(f"req_prep_to_upload: {req_prep_to_upload}")
+
+        """ Check mise_checklist for mise_en_place """
+
+        cursor.execute("SELECT * FROM mise_checklist")
+        db_mise = [{"checklist_id":i[0], "mise_en_place":i[1]} for i in cursor.fetchall()]
+
+        mise_to_upload = [{"checklist_id":0, "mise_en_place":normalize(i) }for i in menu_item["mise_en_place"]]
+
+
+        cursor.execute("SELECT MAX(checklist_id) FROM mise_checklist")
+        last_checklist_id = cursor.fetchone()[0]
+
+        for mise_dict in  mise_to_upload:
+            for db_mise_dict in db_mise:
+                if mise_dict["mise_en_place"] == db_mise_dict["mise_en_place"]:
+                    mise_dict["checklist_id"] = db_mise_dict["checklist_id"]
+
+        for mise_dict in mise_to_upload:
+            if mise_dict["checklist_id"] == 0:
+                last_checklist_id += 1
+                mise_dict["checklist_id"] = last_checklist_id
+            
+            print(f"checklist_id: {last_checklist_id}")
+        print(f"mise_en_place: {mise_to_upload}")
+
+
+        """ Check ingredients for existing ingredient_name """
+
+        cursor.execute("SELECT ingredient_id, ingredient_name FROM ingredients")
+        db_ingredients = [{"ingredient_id":i[0], "ingredient_name":i[1]} for i in cursor.fetchall()]
+
+        ingredient_to_upload = [{"ingredient_id":0, "ingredient_name":normalize(i) }for i in menu_item["ingredients"]]
+
+
+        cursor.execute("SELECT MAX(ingredient_id) FROM ingredients")
+        last_ingredient_id = cursor.fetchone()[0]
+
+        for ing in  ingredient_to_upload:
+            for db_ing in db_ingredients:
+                if ing["ingredient_name"] == db_ing["ingredient_name"]:
+                    ing["ingredient_id"] = db_ing["ingredient_id"]
+
+        for ing in ingredient_to_upload:
+            if ing["ingredient_id"] == 0:
+                last_ingredient_id += 1
+                ing["ingredient_id"] = last_ingredient_id
+            
+            print(f"ingredient_id: {last_ingredient_id}")
+        print(f"ingredients_to_upload: {ingredient_to_upload}")
                     
-                """" Check database to see if any prep proceedures from the database matches the ones you are trying to input"""
+       
+        """Insert new data into chosen database"""
+            
+        # Check if new_menu_item exists
+        # if new_menu_item:
+        #         cursor.execute(
+        #                     """INSERT INTO menu_items (menu_item_id, item_name, category) 
+        #                        VALUES (?, ?, ?)""", (new_menu_item['menu_item_id'], new_menu_item['item_name'], new_menu_item['category'])) 
+        #  Input new prep in prep_list
+        for prep in prep_to_upload:
+            cursor.execute("SELECT 1 FROM prep_list WHERE prep_id = ?", (prep['prep_id'], ))
+            exists = cursor.fetchone()
 
-                # Pull all prep procedures from the database and normalize.
+        if not exists:
+            cursor.execute(
+                "INSERT INTO prep_list (prep_id, prep) VALUES (?, ?)", 
+                (prep['prep_id'], prep['prep'])
+            )
 
-                cursor.execute("SELECT prep_id, prep from prep_list")
-                db_prep = [{"prep_id": i[0] , "prep": normalize(i[1])} for i in cursor.fetchall()]
-
-                # normalize all prep procedures to input
-
-                normalize_prep = [normalize(i) for i in menu_item['prep']]
-
-                prep_to_upload =[]
-
-                for prep in normalize_prep:
-                    for dict_prep in db_prep:
-                        if prep == dict_prep["prep"]:
-                            prep_to_upload.append(dict_prep)
-                            print(f"prep_id: {dict_prep['prep_id'], {prep}}")
-                print(prep_to_upload)
-
-                """Check req_prep for existing requisitioned prep"""
-
-                cursor.execute("SELECT * FROM req_prep")
-
-                db_req_prep = [{"req_prep_id": i[0], "prep":i[1], "am_prep_team": i[2], "sous_prep": i[3], "category":i[4]} for i in cursor.fetchall()]
-
-                normalize_req_prep = [normalize(i) for i in menu_item['req_prep'][0]['prep']]
-
-                print(normalize_req_prep)
-                        # for req_prep_1 in menu_item["req_prep"]:
-
-                        #     for req_prep_2 in db_req_prep:
-                        #         if req_prep_1["prep"] == req_prep_2["prep"]:
-                        #             print(req_prep_2)
-
-                        
-                            # cursor.execute(
-                            #     "INSERT INTO menu_items (item_name) VALUES (?)",
-                            #     (item,)
-                            # )
-                            # menu_item_id = cursor.lastrowid
-
-                            # cursor.execute()
-                            # conn.commit()
-                            # print(f"✅ New entry:{menu_item_id} ; {item}")
                     #conn.close()
 # ------------------------------------------------------------------------------------------
-
+def pull_data(item_id, db):
+    pass
+# ------------------------------------------------------------------------------------------

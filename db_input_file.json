@@ -23,7 +23,7 @@
             "item_name":"halibut",
             "category":"entree",
             "prep": ["clean / portion( 6oz) /  brine (10% for 30min)  Halibut ", "slice garlic", "steam fingerling potatoes", 
-                    "wilt spinach", "fumet blanc", "fish stock", "chicken stock slurry", "chive oil", "pull trout roe", "pick dill"],
+                    "wilt spinach", "fumet blanc", "fish stock", "chicken stock slurry", "chive oil", "pull trout roe", "picked dill"],
             "req_prep": [
                 {
                     "prep":"clean / portion( 6oz) /  brine (10% for 30min)  Halibut ",

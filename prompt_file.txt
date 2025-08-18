@@ -1,33 +1,16 @@
-
-Event:  Nike Day 3,	
-Date:  Wednesday, August 27, 2025
-Account:  Magma Global	
-Time:  8:30 AM - 3:30 PM
-Contact:  Francesca Cocchiarella	
-Location:  West Room
+Event:  AMEX	
+Date:  Tuesday, September 9, 2025
+Account:  Black Flower Agency	
+Time:  6:00 AM - 9:00 PM
+Contact:  Teresa Xu	
+Location:  Greenhouse and West Room
 Phone: 	
-Event Type: 
-Email:  francesca@magmagt.com	
-Guests: 20
+Event Type:  Conference
+Email:  teresa.xu@blackfloweragency.com	
+Guests: 115
  	
 Account Owner:  Julie Garces	
-Phone/Email:  917-620-6578 / julie.garces@nineorchard.com	
+Phone/Email:  917-620-6578 / julie.garces@nineorchard.com
 
 
-menu items:
-
-breakfast station,
-continental breakfast,
-breakfast sandwich station,
-sandwiches,
-grain bowls,
-hearty salads,
-sweet & savory snacks,
-chips & dips,
-afternoon tea station,
-cheese & charcuterie,
-raw bar,
-crudite & mezze,
-farmer's green market,
-a taste of nine orchard,
 
