@@ -1,16 +1,33 @@
-Event:  AMEX	
-Date:  Tuesday, September 9, 2025
-Account:  Black Flower Agency	
-Time:  6:00 AM - 9:00 PM
-Contact:  Teresa Xu	
-Location:  Greenhouse and West Room
+
+Event:  Daniel & Olivia	
+Date:  Thursday, August 28, 2025
+Account:  Baume	
+Time:  7:00 PM - 10:00 PM
+Contact:  Baume
+Location:  Greenhouse
 Phone: 	
-Event Type:  Conference
-Email:  teresa.xu@blackfloweragency.com	
-Guests: 115
+Event Type: 
+Email:  mdbaume@gmail.com	
+Guests: 100
  	
-Account Owner:  Julie Garces	
-Phone/Email:  917-620-6578 / julie.garces@nineorchard.com
+Account Owner:  Polina Pfliger	
+Phone/Email:  / polina.pfliger@nineorchard.com
 
 
+menu_items: 	
 
+Oysters,
+
+Fava Bean Hummus,
+
+Lobster Roll,
+
+Hamachi,
+
+Caviar with Hash Brown,
+
+Chicken Schnitzel,
+
+Beef Tenderloin,
+
+Chickpea Beignet,

@@ -485,6 +485,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
         
         #.fetchall() is a list of tuples
         mise = cursor.fetchall()
+        print(f"mise: {mise}")
         # access the tuple inside the list
         for tuple_item in mise:
             for menu_item in menu_item_list:
@@ -501,7 +502,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
         for i in range(len(item['Mise'])):
             item['Mise'][i].title()
             
-    # print(f"menu_item_list: {menu_item_list}")
+    #print(f"menu_item_list: {menu_item_list}")
 
     
 

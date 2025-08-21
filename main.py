@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 import openai
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2
-from database import upload_excel, input_new_data, db_input, excel_file_to_upload, delete_data, get_ingredients
+from database import upload_excel, input_update_data, db_input, excel_file_to_upload, delete_data, get_ingredients
 from openapi import get_chatgpt_all_info
 from check_file import find_db, find_xlsx_db
 from prep_req import req_prep, test_prep_req, req_prep_ver_2
@@ -59,7 +59,7 @@ def main():
         upload_excel(excel_file_to_upload, db)
         update_standard_menu(db)
 
-    elif sys.argv[1] == 'input_new_data':
+    elif sys.argv[1] == 'input_data':
         print("Current databases:")
         print(find_db())
         db_input = input('Specify which database to use:')
@@ -68,7 +68,7 @@ def main():
 
         db = f"purveyor_project_db_{db_input}.db"
 
-        input_new_data(db)
+        input_update_data(db)
         #get_ingredients(db)
 
     elif sys.argv[1] == 'find_db':

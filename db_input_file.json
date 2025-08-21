@@ -14,7 +14,9 @@
                 }
             ],
             "mise_en_place": ["manchego grilled cheese", "fruit mustard", "prosciutto chips"],
-            "ingredients": ["4 month manchego", "brioche pullman", "fig jam", "sliced prosciutto"]
+            "ingredients": ["4 month manchego", "brioche pullman", "fig jam", "sliced prosciutto"],
+            "menu_items_station":"",
+            "menu_items_category":"canape"
 
 
         },    
@@ -45,7 +47,9 @@
                 }
             ],
             "mise_en_place": ["halibut", "sliced garlic","steamed fingerling potatoes", "spinach", "fumet blanc", "chicken stock slurry", "chive oil", "trout roe", "picked dill", "lemon vin"],
-            "ingredients": ["halibut", "peeled garlic", "fingerling potatoes", "spinach", "fish bones", "chives", "trout roe", "dill"]
+            "ingredients": ["halibut", "peeled garlic", "fingerling potatoes", "spinach", "fish bones", "chives", "trout roe", "dill"],
+            "menu_items_station":"",
+            "menu_items_category":"plated entree"
 
 
         }

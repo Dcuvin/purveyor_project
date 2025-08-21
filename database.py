@@ -26,6 +26,9 @@ def upload_excel(name_of_excel_file, db):
     # Connect to the SQLite database
     conn = sqlite3.connect(db)
     cursor = conn.cursor()
+
+    # ✅ Enable foreign key enforcement for this connection
+    #cursor.execute("PRAGMA foreign_keys = ON;")
     # Load the Excel file
     # To read all sheets, use sheet_name=None
     #.read_excel creates a dictionary
@@ -34,38 +37,97 @@ def upload_excel(name_of_excel_file, db):
     for key in excel_data:
         excel_data[key].fillna('n/a', inplace=True)
         
-    # Check if tables in the database exists
-    verified_tables = []
-    
-    for name in table_name:
+#     # Check if tables in the database exists
+        verified_tables = []
+        for table in table_name:
         
-        try:
-            cursor.execute(f'SELECT * FROM {name}')
-            verified_tables.append(name)
+            try:
+                cursor.execute(f"SELECT 1 FROM {table} LIMIT 1;")
+                verified_tables.append(table)
 
-        except sqlite3.OperationalError:
+            except sqlite3.OperationalError:
 
-            continue
-    print(verified_tables)
+                continue
 
-    if len(verified_tables) != len(table_name):
+        if len(verified_tables) != len(table_name):
     
-        print("❌ Error with uploading excel file!")
+            print("❌ Error with uploading master_sheets!")
 
-    else:
+        else:
+            for sheet_name, df in excel_data.items():
+                    print(f"✅ Uploading sheet: {sheet_name}")
+#                     # Clear all data from the table while keeping its schema intact.
+                    cursor.execute(f'DELETE FROM {sheet_name}')
+#                     df.to_sql(table, conn, if_exists = 'append', index=False)
+#                 # conn.commit()                         # ← flush the delete
+#                     # Append the new data to the existing (now empty) table.
+                    # df.to_sql(sheet_name, conn, if_exists='append', index=False)
+            
+                    df.to_sql(sheet_name, conn, if_exists='replace', index=False)
+
+#     master_sheets = [
+#     'menu_items', 'prep_list', 'req_prep',
+#     'mise_checklist', 'ingredients', 'stations', 'categories'
+#     ]
+#     junction_sheets = [
+#     'menu_prep_list', 'menu_req_prep_list', 'menu_mise_checklist',
+#     'menu_ingredients', 'menu_items_stations', 'menu_items_categories'
+# ]
+
     
-        for sheet_name, df in excel_data.items():
-            print(f"✅ Uploading sheet: {sheet_name}")
-            # Drop the table if it exists before replacing it with new data
-            # this helped solve the locked table that kept occuring
-            #cursor.execute(f'DROP TABLE IF EXISTS {sheet_name}')
-            # Clear all data from the table while keeping its schema intact.
-            cursor.execute(f'DELETE FROM {sheet_name}')
-            conn.commit()                         # ← flush the delete
-            # Append the new data to the existing (now empty) table.
-            #df.to_sql(sheet_name, conn, if_exists='append', index=False)
+#     for table in master_sheets:
+        
+#         try:
+#             cursor.execute(f"SELECT 1 FROM {table} LIMIT 1;")
+#             verified_tables.append(table)
+
+#         except sqlite3.OperationalError:
+
+#             continue
+#     print(master_sheets)
+
+#     if len(verified_tables) != len(master_sheets):
     
-            df.to_sql(sheet_name, conn, if_exists='replace', index=False)
+#         print("❌ Error with uploading master_sheets!")
+
+#     else:
+#         for table in master_sheets:
+#             for sheet_name, df in excel_data.items():
+#                 if table == sheet_name:
+#                     print(f"✅ Uploading sheet: {table}")
+#                     # Clear all data from the table while keeping its schema intact.
+                    # cursor.execute(f'DELETE FROM {table}')
+#                     df.to_sql(table, conn, if_exists = 'append', index=False)
+#                 # conn.commit()                         # ← flush the delete
+#                     # Append the new data to the existing (now empty) table.
+                    # df.to_sql(sheet_name, conn, if_exists='append', index=False)
+            
+#                     #df.to_sql(sheet_name, conn, if_exists='replace', index=False)
+#     verified_tables = []
+
+#     for table in junction_sheets:
+        
+#         try:
+#             cursor.execute(f"SELECT 1 FROM {table} LIMIT 1;")
+#             verified_tables.append(table)
+
+#         except sqlite3.OperationalError:
+
+#             continue
+#     print(junction_sheets)
+
+#     if len(verified_tables) != len(junction_sheets):
+    
+#         print("❌ Error with uploading junction_sheets!")
+
+#     else:
+#         for table in junction_sheets:
+#             for sheet_name, df in excel_data.items():
+#                 if table == sheet_name:
+#                     print(f"✅ Uploading sheet: {table}")
+#                     # Clear all data from the table while keeping its schema intact.
+#                     cursor.execute(f'DELETE FROM {table}')
+#                     df.to_sql(table, conn, if_exists = 'append', index=False)
        
     # Commit the transaction
     conn.commit()
@@ -160,7 +222,7 @@ def get_ingredients(db):
 
 # ------------------------------------------------------------------------------------------
 
-def input_new_data(db):
+def input_update_data(db):
 
     #Check filepath
     file_path = "db_input_file.json"
@@ -191,29 +253,23 @@ def input_new_data(db):
         cursor.execute( "SELECT menu_item_id, item_name, category FROM menu_items WHERE item_name = ?", (menu_item['item_name'],))
         menu_item_result = [{"menu_item_id":i[0], "item_name":i[1], "category": i[2]} for i in cursor.fetchall()]
         
-        new_menu_item = {"menu_item_id":0, "item_name":"", "category":""}
-        # Pull last menu_item_id from menu_items
-        cursor.execute("SELECT MAX(menu_item_id) FROM menu_items")
-        last_menu_item_id = cursor.fetchone()[0]
-
+        new_menu_item = None
+     
         if len( menu_item_result) == 1:
             print(f"{menu_item_result[0]['item_name']} exists; item_id: { menu_item_result[0]['menu_item_id']}")
+            #existing_menu_item = {'menu_item_id':menu_item_result[0]['menu_item_id'], 'item_name':menu_item_result[0]['item_name'], 'category':menu_item_result[0]['category']}
             update_prompt = input(f"Would you like to overwrite { menu_item_result[0]['item_name']} in {db}?: y/n  ")
             if update_prompt != "y":
-                break
+                continue
         else:
             print(f"{menu_item['item_name']} does not exist in: {db}")
             proceed_prompt = input(f"would you like to proceed?: y/n  ")
             if proceed_prompt != "y":
-                break
-            else:
-                
-                new_menu_item["menu_item_id"] = last_menu_item_id + 1
-                new_menu_item["item_name"] = menu_item["item_name"]
-                new_menu_item["category"] = menu_item["category"]
-                print(f"new menu_item_id: {last_menu_item_id}; new item_name; {menu_item['item_name']}; category: {menu_item['category']}")
-
-       
+                continue
+            new_menu_item = {
+                            "item_name": menu_item["item_name"],
+                            "category": menu_item["category"]
+                            }
         """" Check database to see if any prep proceedures from the database matches the ones you are trying to input"""
 
         # Pull all prep procedures from the database and normalize.
@@ -224,23 +280,11 @@ def input_new_data(db):
         # normalize all prep procedures to input
 
         prep_to_upload = [{"prep_id": 0, "prep":normalize(i)} for i in menu_item['prep']]
-
         #find the last req_prep_id in the req_prep table
-        cursor.execute("SELECT MAX(prep_id) FROM prep_list")
-        last_prep_id = cursor.fetchone()[0]  
-
-
-        for prep_1 in prep_to_upload:
-            for prep_2 in db_prep:
-                if prep_1["prep"] == prep_2["prep"]:
-                    prep_1["prep_id"] = prep_2["prep_id"]
-
-        for prep_1 in prep_to_upload:
-            if prep_1["prep_id"] == 0:
-                last_prep_id += 1
-                prep_1["prep_id"] = last_prep_id
-                
-        print(f"prep_to_upload: {prep_to_upload}")
+        for new_prep in prep_to_upload:
+            for existing_prep in db_prep:
+                if new_prep["prep"] == existing_prep["prep"]:
+                    new_prep["prep_id"] = existing_prep["prep_id"]
 
         """Check req_prep for existing requisitioned prep"""
 
@@ -250,13 +294,13 @@ def input_new_data(db):
 
         req_prep_to_upload = []
 
+        # iterate over req_prep since it's a list of dictionaries
         for req_prep in menu_item["req_prep"]:
 
             req_prep_to_upload.append({"req_prep_id":0, "prep":normalize(req_prep["prep"]), "am_prep_team": req_prep["am_prep_team"], "sous_prep": req_prep["sous_prep"], "category":req_prep["category"]}) 
+
         #print(f"req_prep_to_upload: {req_prep_to_upload}")
-        #find the last req_prep_id in the req_prep table
-        cursor.execute("SELECT MAX(req_prep_id) FROM req_prep")
-        last_req_prep_id = cursor.fetchone()[0]  
+        
 
         # Need to Check if prep is requisitioned, because sometimes there's no prep to be requisitioned...
         if req_prep_to_upload:
@@ -266,16 +310,11 @@ def input_new_data(db):
                         prep_1["req_prep_id"] = prep_2["req_prep_id"]
                         prep_1["am_prep_team"] = prep_2["am_prep_team"]
                         prep_1["sous_prep"] = prep_2["sous_prep"]
+                        prep_1["category"] = prep_2["category"]
 
 
-            for prep_1 in req_prep_to_upload:
-                if prep_1["req_prep_id"] == 0 and len(prep_1["prep"]) > 0:
-                    last_req_prep_id += 1
-                    prep_1["req_prep_id"] = last_req_prep_id
-                print(f"req_prep_id: {last_req_prep_id}")   
             
-            
-        print(f"req_prep_to_upload: {req_prep_to_upload}")
+        #print(f"req_prep_to_upload: {req_prep_to_upload}")
 
         """ Check mise_checklist for mise_en_place """
 
@@ -285,20 +324,11 @@ def input_new_data(db):
         mise_to_upload = [{"checklist_id":0, "mise_en_place":normalize(i) }for i in menu_item["mise_en_place"]]
 
 
-        cursor.execute("SELECT MAX(checklist_id) FROM mise_checklist")
-        last_checklist_id = cursor.fetchone()[0]
-
         for mise_dict in  mise_to_upload:
             for db_mise_dict in db_mise:
                 if mise_dict["mise_en_place"] == db_mise_dict["mise_en_place"]:
                     mise_dict["checklist_id"] = db_mise_dict["checklist_id"]
 
-        for mise_dict in mise_to_upload:
-            if mise_dict["checklist_id"] == 0:
-                last_checklist_id += 1
-                mise_dict["checklist_id"] = last_checklist_id
-            
-            print(f"checklist_id: {last_checklist_id}")
         print(f"mise_en_place: {mise_to_upload}")
 
 
@@ -309,43 +339,200 @@ def input_new_data(db):
 
         ingredient_to_upload = [{"ingredient_id":0, "ingredient_name":normalize(i) }for i in menu_item["ingredients"]]
 
-
-        cursor.execute("SELECT MAX(ingredient_id) FROM ingredients")
-        last_ingredient_id = cursor.fetchone()[0]
-
         for ing in  ingredient_to_upload:
             for db_ing in db_ingredients:
                 if ing["ingredient_name"] == db_ing["ingredient_name"]:
                     ing["ingredient_id"] = db_ing["ingredient_id"]
-
-        for ing in ingredient_to_upload:
-            if ing["ingredient_id"] == 0:
-                last_ingredient_id += 1
-                ing["ingredient_id"] = last_ingredient_id
-            
-            print(f"ingredient_id: {last_ingredient_id}")
-        print(f"ingredients_to_upload: {ingredient_to_upload}")
-                    
        
-        """Insert new data into chosen database"""
-            
+        print(f"ingredients_to_upload: {ingredient_to_upload}")
+
+        """ Check to see if new menu item belongs to a station and pull the station_id and station_name """
+        station_to_upload = {}
+        if menu_item["menu_items_stations"]:
+            cursor.execute("SELECT * FROM stations WHERE station_name = ?", (normalize(menu_item['menu_items_stations'])))
+            result = cursor.fetchone()
+            station_to_upload['station_id']= result[0]       
+            station_to_upload['station_name'] = result[1]
+
+        """ Pull category_id and category_name """
+        category_to_upload ={}
+        cursor.execute("SELECT * FROM categories WHERE category_name = ?", (normalize(menu_item['menu_items_category'])))
+        result = cursor.fetchone()
+        category_to_upload["category_id"] = result[0]
+        category_to_upload["category_name"] = result[1]
+       
+        """Insert new data into chosen database""" 
         # Check if new_menu_item exists
-        # if new_menu_item:
-        #         cursor.execute(
-        #                     """INSERT INTO menu_items (menu_item_id, item_name, category) 
-        #                        VALUES (?, ?, ?)""", (new_menu_item['menu_item_id'], new_menu_item['item_name'], new_menu_item['category'])) 
-        #  Input new prep in prep_list
-        for prep in prep_to_upload:
-            cursor.execute("SELECT 1 FROM prep_list WHERE prep_id = ?", (prep['prep_id'], ))
-            exists = cursor.fetchone()
-
-        if not exists:
+        new_menu_item_id = 0
+        if new_menu_item:
             cursor.execute(
-                "INSERT INTO prep_list (prep_id, prep) VALUES (?, ?)", 
-                (prep['prep_id'], prep['prep'])
-            )
+                        """INSERT INTO menu_items (item_name, category) 
+                           VALUES (?, ?)""", (new_menu_item['item_name'], new_menu_item['category'])) 
+            new_menu_item_id = cursor.lastrowid
+            print(f"✅ new_menu_item: {new_menu_item_id}, {new_menu_item['item_name']} has been added!")
+            
+            # Insert prep into prep_list
+            for prep in prep_to_upload:
+                cursor.execute("INSERT OR IGNORE INTO prep_list(prep) VALUES (?)", (prep['prep'],))
 
-                    #conn.close()
+            # Pull prep_ids
+            for prep in prep_to_upload:
+                cursor.execute("SELECT * FROM prep_list WHERE prep = ?", (prep['prep'],))
+                result = cursor.fetchone()
+                if result:
+                    prep['prep_id'] = result[0]
+
+                print(f"✅ prep_list: {prep} has been added!")
+
+
+            # Map new_menu_item to new / existing prep in menu_prep_list
+            for prep in prep_to_upload:
+                cursor.execute("INSERT OR IGNORE INTO menu_prep_list (menu_item_id, item_name, prep_id) VALUES (?,?,?)", (new_menu_item_id, new_menu_item['item_name'], prep['prep_id']))
+                print(f"✅ menu_prep_list: {new_menu_item_id}, {new_menu_item['item_name']}, {prep['prep_id']} has been added!")
+
+            # Insert new/existing requisition prep into req_prep
+            for req_prep in req_prep_to_upload:
+                cursor.execute("""INSERT OR IGNORE INTO req_prep (prep, am_prep_team, sous_prep, category)
+                                VALUES (?, ? ,?, ?)""", (req_prep['prep'], req_prep['am_prep_team'], req_prep['sous_prep'], req_prep['category']))
+
+            # Pull req_prep ids
+            for req_prep in req_prep_to_upload:
+                cursor.execute("SELECT * FROM req_prep WHERE prep = ?", (req_prep['prep'],))
+                result = cursor.fetchone()
+                if result:
+                    req_prep['req_prep_id'] = result[0]
+
+                print(f"✅ req_prep:  {req_prep} has been added!")
+
+            
+            # Map new_menu_item to new / existing prep in menu_req_prep_list
+            for req_prep in req_prep_to_upload:
+                cursor.execute("INSERT OR IGNORE INTO menu_req_prep_list VALUES (?,?,?)", (new_menu_item_id, new_menu_item['item_name'], req_prep['req_prep_id']))
+                print(f"✅ menu_req_prep: {new_menu_item_id}, {new_menu_item['item_name']}, {req_prep['req_prep_id']} has been added!")
+
+            # Insert new/existing mise into mise_checklist
+            for mise in mise_to_upload:
+                cursor.execute("""INSERT OR IGNORE INTO mise_checklist (mise_en_place)
+                                VALUES (?)""", (mise['mise_en_place'],))
+            # Pull checklist_ids
+            for mise in mise_to_upload:
+                cursor.execute("SELECT * FROM mise_checklist WHERE mise_en_place= ?",(mise['mise_en_place'],))
+                result = cursor.fetchone()
+                if result:
+                    mise['checklist_id'] = result[0]
+                print(f"✅ mise_checklist: {mise} has been added!")
+                
+            # Map checklist_id to new_menu_item_id in menu_mise_checklist
+            for mise in mise_to_upload:
+                cursor.execute("INSERT OR IGNORE INTO menu_mise_checklist VALUES (?,?,?)", (new_menu_item_id, new_menu_item['item_name'], mise['checklist_id']))
+                print(f"✅ menu_mise_checklist: {new_menu_item_id}, {new_menu_item['item_name']}, {mise['checklist_id']} has been added!")
+
+            
+            # Map ingredient_id to new_menu_item_id in menu_ingredients
+            for ingredient in ingredient_to_upload:
+                cursor.execute("INSERT OR IGNORE INTO menu_ingredients VALUES (?,?)", (new_menu_item_id, ingredient['ingredient_id']))
+                print(f"✅ menu_ingredient: {ingredient} ")
+
+            # Map station_id to new_menu_item_id if it exists
+            if station_to_upload:
+                cursor.execute("INSERT OR IGNORE INTO menu_items_stations VALUES (?,?,?)", (station_to_upload['station_id'], station_to_upload['station_name'], new_menu_item_id ))
+                print(f"✅ menu_item_stations: {station_to_upload} has been added! ")
+            
+            # Map category_id to new_menu_item_id
+            if category_to_upload:
+                cursor.execute("INSERT OR IGNORE INTO menu_items_categories VALUES (?, ?, ?, ?)", (new_menu_item_id, new_menu_item['item_name'], category_to_upload['category_id'],category_to_upload['category_name'] ))
+                print(f"✅ menu_items_categories: {new_menu_item_id}, {new_menu_item['item_name']},{category_to_upload['category_id']},{category_to_upload['category_name']} has been added! ")
+        else:
+            """"If menu_item already exists, but you want to overwrite the data"""
+            existing_menu_item_id = menu_item_result[0]['menu_item_id']
+            if menu_item_result:
+               
+                # Insert prep into prep_list
+                for prep in prep_to_upload:
+                    cursor.execute("INSERT OR IGNORE INTO prep_list(prep) VALUES (?)", (prep['prep'],))
+
+                # Pull prep_ids
+                for prep in prep_to_upload:
+                    cursor.execute("SELECT * FROM prep_list WHERE prep = ?", (prep['prep'],))
+                    result = cursor.fetchone()
+                    if result:
+                        prep['prep_id'] = result[0]
+
+                    print(f"✅ prep_list: {prep} has been added!")
+
+                # Delete existing mappings in menu_prep_list prior to overwrite
+                for prep in prep_to_upload:
+                    cursor.execute("DELETE FROM menu_prep_list WHERE menu_item_id = ?", (existing_menu_item_id,))
+                    print(f"✅ Old menu_prep_list mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}")
+
+                # Map new_menu_item to new / existing prep in menu_prep_list
+                for prep in prep_to_upload:
+                    cursor.execute("INSERT OR IGNORE INTO menu_prep_list (menu_item_id, item_name, prep_id) VALUES (?,?,?)", (existing_menu_item_id, menu_item_result[0]['item_name'], prep['prep_id']))
+                    print(f"✅ menu_prep_list: {existing_menu_item_id}, {menu_item_result[0]['item_name']}, {prep['prep_id']} has been added!")
+
+                # Insert new/existing requisition prep into req_prep
+                for req_prep in req_prep_to_upload:
+                    cursor.execute("""INSERT OR IGNORE INTO req_prep (prep, am_prep_team, sous_prep, category)
+                                    VALUES (?, ? ,?, ?)""", (req_prep['prep'], req_prep['am_prep_team'], req_prep['sous_prep'], req_prep['category']))
+
+                # Pull req_prep ids
+                for req_prep in req_prep_to_upload:
+                    cursor.execute("SELECT * FROM req_prep WHERE prep = ?", (req_prep['prep'],))
+                    result = cursor.fetchone()
+                    if result:
+                        req_prep['req_prep_id'] = result[0]
+
+                    print(f"✅ req_prep: {req_prep} has been added!")
+
+                # Delete existing mappings in menu_prep_list prior to overwrite
+                for req_prep in req_prep_to_upload:
+                    cursor.execute("DELETE FROM menu_req_prep_list WHERE menu_item_id = ?", (existing_menu_item_id,))
+                    print(f"✅ Old menu_req_prep_list mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}")
+                
+                # Map menu_item_result to new / existing prep in menu_req_prep_list
+                for req_prep in req_prep_to_upload:
+                    cursor.execute("INSERT OR IGNORE INTO menu_req_prep_list VALUES (?,?,?)", (existing_menu_item_id, menu_item_result[0]['item_name'], req_prep['req_prep_id']))
+                    print(f"✅ menu_req_prep: {req_prep['req_prep_id']}, {menu_item_result['item_name']}, {req_prep['prep']} has been added!")
+
+                # Insert new/existing mise into mise_checklist
+                for mise in mise_to_upload:
+                    cursor.execute("""INSERT OR IGNORE INTO mise_checklist (mise_en_place)
+                                    VALUES (?)""", (mise['mise_en_place'],))
+                # Pull checklist_ids
+                for mise in mise_to_upload:
+                    cursor.execute("SELECT * FROM mise_checklist WHERE mise_en_place= ?",(mise['mise_en_place'],))
+                    result = cursor.fetchone()
+                    if result:
+                        mise['checklist_id'] = result[0]
+                    print(f"✅ mise_checklist: {mise} has been added!")
+
+                # Delete existing mappings in menu_mise_checklist prior to overwrite
+                for mise in mise_to_upload:
+                    cursor.execute("DELETE FROM menu_mise_checklist WHERE menu_item_id = ?", (existing_menu_item_id,))
+                    print(f"✅ Old menu_req_prep_list mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}")
+                    
+                # Map checklist_id to existing_menu_item_id in menu_mise_checklist
+                for mise in mise_to_upload:
+                    cursor.execute("INSERT OR IGNORE INTO menu_mise_checklist VALUES (?,?,?)", (existing_menu_item_id, menu_item_result[0]['item_name'], mise['checklist_id']))
+                    print(f"✅ menu_mise_checklist: {existing_menu_item_id}, {menu_item_result['item_name']}, {mise['checklist_id']} has been added!")
+
+                # Map ingredient_id to new_menu_item_id in menu_ingredients
+                for ingredient in ingredient_to_upload:
+                    cursor.execute("INSERT OR IGNORE INTO menu_ingredients VALUES (?,?)", (existing_menu_item_id, ingredient['ingredient_id']))
+                    print(f"✅ menu_ingredient: {ingredient} ")
+
+                # Map station_id to new_menu_item if it exists
+                if station_to_upload:
+                    cursor.execute("INSERT OR IGNORE INTO menu_items_stations VALUES (?,?,?)", (station_to_upload['station_id'], station_to_upload['station_name'], existing_menu_item_id))
+                    print(f"✅ menu_item_stations: {station_to_upload} has been added! ")
+                
+                # Map category_id to new_menu_item_id
+                if category_to_upload:
+                    cursor.execute("INSERT OR IGNORE INTO menu_items_categories VALUES (?, ?, ?, ?)", (existing_menu_item_id, menu_item_result['item_name'], category_to_upload['category_id'],category_to_upload['category_name'] ))
+                    print(f"✅ menu_items_categories: {existing_menu_item_id}, {menu_item_result['item_name']},{category_to_upload['category_id']},{category_to_upload['category_name']} has been added! ")
+
+        conn.commit()
+        conn.close()
 # ------------------------------------------------------------------------------------------
 def pull_data(item_id, db):
     pass

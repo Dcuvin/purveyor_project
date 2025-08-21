@@ -21,8 +21,8 @@ CREATE TABLE menu_prep_list(
     item_name TEXT NOT NULL,
     prep_id INTEGER NOT NULL,
     PRIMARY KEY (menu_item_id, prep_id),
-    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
-    FOREIGN KEY (prep_id) REFERENCES prep_list(prep_id)    
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id) ON DELETE CASCADE,
+    FOREIGN KEY (prep_id) REFERENCES prep_list(prep_id) ON DELETE CASCADE   
 );
 
 --Create a table with prep items that can be requisitioned from the AM prep team, using the main prep items in prep_list as reference.
@@ -42,8 +42,8 @@ CREATE TABLE menu_req_prep_list(
     item_name TEXT NOT NULL,   
     req_prep_id INTEGER NOT NULL,
     PRIMARY KEY (menu_item_id, req_prep_id),
-    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
-    FOREIGN KEY (req_prep_id) REFERENCES req_prep(req_prep_id)   
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id) ON DELETE CASCADE,
+    FOREIGN KEY (req_prep_id) REFERENCES req_prep(req_prep_id) ON DELETE CASCADE   
 );
 
 -- Create table for all menu items checklist
@@ -58,8 +58,8 @@ CREATE TABLE menu_mise_checklist(
     item_name TEXT NOT NULL,
     checklist_id INTEGER NOT NULL,
     PRIMARY KEY (menu_item_id, checklist_id),
-    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
-    FOREIGN KEY (checklist_id) REFERENCES mise_checklist(checklist_id) 
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id) ON DELETE CASCADE,
+    FOREIGN KEY (checklist_id) REFERENCES mise_checklist(checklist_id) ON DELETE CASCADE   
 );
 
 
@@ -83,8 +83,8 @@ CREATE TABLE menu_ingredients(
     menu_item_id INTEGER NOT NULL,
     ingredient_id INTEGER NOT NULL,
     PRIMARY KEY (menu_item_id, ingredient_id) ,
-    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
-    FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)  
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id) ON DELETE CASCADE,
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id) ON DELETE CASCADE  
 );
 
 
@@ -102,8 +102,8 @@ CREATE TABLE menu_items_stations(
     station_name TEXT NOT NULL,   
     menu_item_id INTEGER NOT NULL,
     PRIMARY KEY (station_id, menu_item_id),
-    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
-    FOREIGN KEY (station_id) REFERENCES stations(station_id)  
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id) ON DELETE CASCADE,
+    FOREIGN KEY (station_id) REFERENCES stations(station_id) ON DELETE CASCADE  
 );
 
 
@@ -123,8 +123,8 @@ CREATE TABLE menu_items_categories(
     category_name TEXT NOT NULL,
     category_id INTEGER NOT NULL,
     PRIMARY KEY (menu_item_id, category_id),
-    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
-    FOREIGN KEY (category_id) REFERENCES categories(category_id) 
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE CASCADE  
 );
 --Delete a table
 
