@@ -2,57 +2,31 @@
     "menu_items":[
 
         {
-            "item_name":"manchego toast",
-            "category":"canape",
-            "prep": ["slice brioche pullman for sandwiches", "slice 4 month manchego", "fruit mustard", "prosciutto chips"],
+            "item_name":"oysters",
+            "category":"canapes",
+            "prep": ["clean / shuck oysters", " pull /clean oyster shells", "brunoise shallots", "make / pull mignonette"],
             "req_prep": [
                 {
-                    "prep":"",
-                    "am_prep_team":0,
+                    "prep":"shuck oysters",
+                    "am_prep_team":1,
                     "sous_prep":0,
-                    "category": ""
+                    "category": "canapes/raw bar"
+
+                },
+                {
+                    "prep":"clean oyster shells",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "canapes/raw bar"
                 }
             ],
-            "mise_en_place": ["manchego grilled cheese", "fruit mustard", "prosciutto chips"],
-            "ingredients": ["4 month manchego", "brioche pullman", "fig jam", "sliced prosciutto"],
-            "menu_items_station":"",
+            "mise_en_place": ["cleaned oyster shells", "shucked oyster meat", "mignonette", "brunoise shallots"],
+            "ingredients": [{"baldor":"peeled shallots"}, {"LIEPPER & SONS LLC": "lou lou belle lou lou belle HOG NECK 9|23"}],
+            "menu_items_stations":"raw bar",
             "menu_items_category":"canape"
 
 
-        },    
-        
-        {
-            "item_name":"halibut",
-            "category":"entree",
-            "prep": ["clean / portion( 6oz) /  brine (10% for 30min)  Halibut ", "slice garlic", "steam fingerling potatoes", 
-                    "wilt spinach", "fumet blanc", "fish stock", "chicken stock slurry", "chive oil", "pull trout roe", "picked dill"],
-            "req_prep": [
-                {
-                    "prep":"clean / portion( 6oz) /  brine (10% for 30min)  Halibut ",
-                    "am_prep_team":0,
-                    "sous_prep":1,
-                    "category": "entree"
-                },
-                {
-                    "prep":"fish stock ",
-                    "am_prep_team":1,
-                    "sous_prep":0,
-                    "category": "entree"
-                },
-                {
-                    "prep":"clean white fish bones",
-                    "am_prep_team":1,
-                    "sous_prep":0,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": ["halibut", "sliced garlic","steamed fingerling potatoes", "spinach", "fumet blanc", "chicken stock slurry", "chive oil", "trout roe", "picked dill", "lemon vin"],
-            "ingredients": ["halibut", "peeled garlic", "fingerling potatoes", "spinach", "fish bones", "chives", "trout roe", "dill"],
-            "menu_items_station":"",
-            "menu_items_category":"plated entree"
-
-
-        }
+        }    
     ]
     
 

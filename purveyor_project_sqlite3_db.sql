@@ -155,3 +155,6 @@ SELECT ingredient_id FROM menu_ingredients WHERE menu_item_id = 1;
 --Delete entry from table
 DELETE FROM menu_items
 WHERE menu_item_id = 1;
+
+--Insert data into specified table
+INSERT INTO categories(category_name) VALUES ();

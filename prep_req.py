@@ -258,7 +258,8 @@ def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db):
     for row_idx, prep_items in enumerate(prep_req_list, start=3):   # start=1 → Excel’s first row
         ws.cell(row=row_idx, column=1, value=prep_items["prep"])
         ws.cell(row=row_idx, column=3, value=prep_items["category"])
-        ws.cell(row=row_idx, column=4, value=f"{need_by_date}, by 4pm")
+        #ws.cell(row=row_idx, column=4, value=f"{need_by_date}, by 4pm")
+        ws.cell(row=row_idx, column=4, value=f"{event_date}, by 4pm")
 
 
 

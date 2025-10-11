@@ -22,3 +22,11 @@ def find_xlsx_db():
 
 #------------------------------------------------------------------------------------------
 
+item_library_xlsx_files = []
+def find_xlsx_item_library():
+    """Walk through directory and yield full paths of xlsx files with 'item_library'."""
+    for root, _, files in os.walk(current_directory):
+        for file in files:
+            if "item_library" in file and file.endswith('.xlsx'):
+                item_library_xlsx_files.append(os.path.join(file))
+    return item_library_xlsx_files

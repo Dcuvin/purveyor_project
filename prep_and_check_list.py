@@ -11,7 +11,7 @@ import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from docx import Document
 from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows, format_order_sheet, format_table
-from prep_req import req_prep
+from prep_req import req_prep, req_prep_ver_2
 from collections import defaultdict
 from database import create_df
 
@@ -426,39 +426,40 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
     station_menu_ids = []
     
     
+    if station_ids:
+        for id in station_ids:
+            cursor.execute(f"""
+                        SELECT menu_items_stations.station_name, menu_items_stations.menu_item_id 
+                        FROM menu_items_stations
+                        WHERE menu_items_stations.station_id = {id};
+                        """)
+            #.fetchall() is a list of tuples
+            station_menu_items = cursor.fetchall()
+            #print(f"station_menu_items: {station_menu_items}")
+            # access the tuple inside the list
+            for tuple_item in station_menu_items:
+                stations.append({"station_name": tuple_item[0],"menu_item_id": tuple_item[1],"menu_item_name":"","mise": []})
+        
+                station_menu_ids.append(tuple_item[1])
+        #print(f"station_menu_ids: {station_menu_ids}")  
+        for station_dict in stations:
+            cursor.execute(f"""
+                        SELECT menu_prep_list.menu_item_id, menu_prep_list.item_name, prep_list.prep
+                        FROM prep_list
+                        JOIN menu_prep_list ON prep_list.prep_id = menu_prep_list.prep_id
+                        WHERE menu_prep_list.menu_item_id = {station_dict['menu_item_id']};
+                        """)
+            station_mise = cursor.fetchall()
+            print(station_mise)
+            for mise_tuple in station_mise:
+                if mise_tuple[0] == station_dict['menu_item_id']:
+                    station_dict['menu_item_name'] = mise_tuple[1]
+                    station_dict['mise'].append(mise_tuple[2])
 
-    for id in station_ids:
-        cursor.execute(f"""
-                       SELECT menu_items_stations.station_name, menu_items_stations.menu_item_id 
-                       FROM menu_items_stations
-                       WHERE menu_items_stations.station_id = {id};
-                       """)
-         #.fetchall() is a list of tuples
-        station_menu_items = cursor.fetchall()
-        #print(f"station_menu_items: {station_menu_items}")
-        # access the tuple inside the list
-        for tuple_item in station_menu_items:
-            stations.append({"station_name": tuple_item[0],"menu_item_id": tuple_item[1],"menu_item_name":"","mise": []})
+        
+        for station_dict in stations:
+            menu_item_list.append({'Item':station_dict["menu_item_name"], 'Category':station_dict["station_name"],'Mise':station_dict["mise"], 'Need':'  '})
     
-            station_menu_ids.append(tuple_item[1])
-    #print(f"station_menu_ids: {station_menu_ids}")  
-    for station_dict in stations:
-        cursor.execute(f"""
-                       SELECT menu_prep_list.menu_item_id, menu_prep_list.item_name, prep_list.prep
-                       FROM prep_list
-                       JOIN menu_prep_list ON prep_list.prep_id = menu_prep_list.prep_id
-                       WHERE menu_prep_list.menu_item_id = {station_dict['menu_item_id']};
-                       """)
-        station_mise = cursor.fetchall()
-        print(station_mise)
-        for mise_tuple in station_mise:
-            if mise_tuple[0] == station_dict['menu_item_id']:
-                station_dict['menu_item_name'] = mise_tuple[1]
-                station_dict['mise'].append(mise_tuple[2])
-
-    for station_dict in stations:
-        menu_item_list.append({'Item':station_dict["menu_item_name"], 'Category':station_dict["station_name"],'Mise':station_dict["mise"], 'Need':'  '})
-   
     for id in item_id:
         
         cursor.execute(f"""
@@ -655,9 +656,17 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
     
     # Consolidate item_ids from both individual menu_items and each item within stations
 
-    final_item_ids = station_menu_ids + item_ids_list
-    # Fill out order_sheet
-    get_order_list(final_item_ids,db,excel_file,event_name,guest_count,event_date)
+    final_ids = []
 
-    
+    for id in station_menu_ids:
+        final_ids.append(id)
+    for id in item_ids_list:
+        final_ids.append(id)
+    print(f"final_item_ids:{final_ids}")
+    # Fill out order_sheet
+    get_order_list(final_ids,db,excel_file,event_name,guest_count,event_date)
+
+    #req_prep_ver_2(final_ids, new_folder_path, event_date, event_name,db)
+
     print("✅ Excel Prep and Order List Created and Reformatted!")
+    return final_ids

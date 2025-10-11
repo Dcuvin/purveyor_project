@@ -1,33 +1,23 @@
-
-Event:  Daniel & Olivia	
-Date:  Thursday, August 28, 2025
-Account:  Baume	
-Time:  7:00 PM - 10:00 PM
-Contact:  Baume
-Location:  Greenhouse
+Event:  Bellamy Novogratz	
+Date:  Sunday, October 19, 2025
+Account:  Veronica Adgate	
+Time:  12:00 PM - 3:00 PM
+Contact:  Veronica Adgate	
+Location:  Blue Room
 Phone: 	
 Event Type: 
-Email:  mdbaume@gmail.com	
-Guests: 100
+Email:  Veronica.Adgate@galaxy.com	
+Guests:  40
  	
 Account Owner:  Polina Pfliger	
-Phone/Email:  / polina.pfliger@nineorchard.com
+Phone/Email:  / polina.pfliger@nineorchard.com	
 
+menu_items: 
 
-menu_items: 	
+assorted pastries,
 
-Oysters,
+seasonal fruit salad,
 
-Fava Bean Hummus,
+hash browns,
 
-Lobster Roll,
-
-Hamachi,
-
-Caviar with Hash Brown,
-
-Chicken Schnitzel,
-
-Beef Tenderloin,
-
-Chickpea Beignet,
+applewood smoked bacon,

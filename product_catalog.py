@@ -4,7 +4,7 @@ from openpyxl import load_workbook, Workbook
 from openpyxl.styles import numbers, Font, PatternFill, Border, Side, Alignment
 import sqlite3
 import json
-from fuzzy import match_menu_items
+from fuzzy import match_menu_items, normalize
 from datetime import date
 from excel_format import format_table
 from database import create_df
@@ -13,84 +13,112 @@ from excel_format import format_table_ver_2
 
 
 
-"""Updates current product catalog with newly downloaded file from XtraChef"""
-def update_product_catalog(db_file):
+"""Updates ingredient table in chosen database"""
+def update_ingredient_table(db_file, product_catalog_excel_file):
 
-    source_file = "new_product_catalog_2025.xlsx"
-    current_file = db_file
-    df_source = pd.read_excel(source_file, usecols=[0,1,2,5,11,13])  # Extract 6 columns
-    df_current = pd.read_excel(current_file, sheet_name="ingredients" ,usecols=[0,1,2,3,4,5,6,7])
+    source_file = product_catalog_excel_file
+    df_source = pd.read_excel(source_file)  
 
- 
-    current_data = df_current[["ingredient_id", "purveyor", "ingredient_code", "ingredient_description",
-                               "ingredient_name", "pack_size_unit", "purchase_price", "ingredient_type"]]
-    source_data = df_source[["Item Description", "Vendor Name", "Item Code",
-                               "Pack/Size/Unit", "Last Purchased Price ($)", "Product(s)"]]
-    new_data_set =[]
+    #current_data = df_current[["ingredient_id", "purveyor", "ingredient_code", "ingredient_description",
+    #                           "ingredient_name", "pack_size_unit", "purchase_price", "ingredient_type"]]
+    source_data = df_source[["Vendor Name","Item Code","Item Description","Pack/Size/Unit","Last Purchased Price ($)","Product(s)"]]
     source_data_set = []
+    
 
-    for _, row in current_data.iterrows():
-        new_data_set.append({
-            "ingredient_id": row["ingredient_id"],
-            "purveyor": row["purveyor"],
-            "ingredient_code": row["ingredient_code"],
-            "ingredient_description": row["ingredient_description"],
-            "ingredient_name": row["ingredient_name"],
-            "pack_size_unit": row["pack_size_unit"],
-            "purchase_price": row["purchase_price"],
-            "ingredient_type": row["ingredient_type"]
+    conn = sqlite3.connect(db_file)
+    # Cursor to execute commands
+    cursor = conn.cursor()
+
+    cursor.execute("""SELECT * FROM ingredients;""")
+    
+    ingredient_result = cursor.fetchall()
+    data_to_upload= []
+
+
+    for ingredient_tuple in ingredient_result:
+            data_to_upload.append({
+            "ingredient_id":ingredient_tuple[0],
+            "purveyor": ingredient_tuple[1],
+            "ingredient_code": ingredient_tuple[2],
+            "ingredient_description":ingredient_tuple[3],
+            "ingredient_name":ingredient_tuple[4],
+            "pack_size_unit":ingredient_tuple[5],
+            "purchase_price": ingredient_tuple[6],
+            "ingredient_type": ingredient_tuple[7]
         })
+            
 
     for _, row in source_data.iterrows():
-        source_data_set.append({
-            "ingredient_id": row["Item Description"],
+        data_to_upload.append({
             "purveyor": row["Vendor Name"],
-            "ingredient_code": row["Item Code"],
+            "ingredient_code": row.get("Item Code", ""),
             "ingredient_description": row["Item Description"],
-            "pack_size_unit": row["Pack/Size/Unit"],
-            "purchase_price": row["Last Purchased Price ($)"],
-            "ingredient_type": row["Product(s)"]
+             "pack_size_unit": row["Pack/Size/Unit"],
+             "purchase_price": row["Last Purchased Price ($)"],
+             "ingredient_type": row["Product(s)"]
         })
 
-    source_lookup = {
-        item["ingredient_code"]: item
-        for item in source_data_set
-    }
+    for dict_item in data_to_upload:
+        cursor.execute("""INSERT INTO ingredients
+                    (purveyor, ingredient_code, ingredient_description, pack_size_unit, purchase_price, ingredient_type
+                    VALUES (?,?,?,?,?,?,)
+                    ON CONFLICT(ingredient_code) DO UPDATE SET
+                   purchase_price = excluded.purchase_price;""",
+                   (dict_item["purveyor"],
+                    dict_item["ingredient_code"], 
+                    dict_item["ingredient_description"], 
+                    dict_item["pack_size_unit"],
+                    dict_item["purchase_price"], 
+                    dict_item[ "ingredient_type"])
 
-    #  Iterate through new data and update if matched
-    for new_dict_item in new_data_set:
-        code = new_dict_item["ingredient_code"]
-        if code in source_lookup:
-            match = source_lookup[code]
-            new_dict_item.update({
-                "purveyor": match["purveyor"],
-                "ingredient_description": match["ingredient_description"],
-                "pack_size_unit": match["pack_size_unit"],
-                "purchase_price": match["purchase_price"],
-                "ingredient_type": match["ingredient_type"]
-            })
-       
+        )
+
+    conn.commit()
+    conn.close()
+    
+    #print(data_to_upload)
+
+
+
+    # source_lookup = {
+    #     item["ingredient_code"]: item
+    #     for item in source_data_set
+    # }
+
+    # #  Iterate through new data and update if matched
     # for new_dict_item in new_data_set:
-    #     if isinstance(new_dict_item.get("purchase_price"), str):
-    #         new_dict_item["purchase_price"] = 0.0
+    #     code = new_dict_item["ingredient_code"]
+    #     if code in source_lookup:
+    #         match = source_lookup[code]
+    #         new_dict_item.update({
+    #             "purveyor": match["purveyor"],
+    #             "ingredient_description": match["ingredient_description"],
+    #             "pack_size_unit": match["pack_size_unit"],
+    #             "purchase_price": match["purchase_price"],
+    #             "ingredient_type": match["ingredient_type"]
+    #         })
+       
+    # # for new_dict_item in new_data_set:
+    # #     if isinstance(new_dict_item.get("purchase_price"), str):
+    # #         new_dict_item["purchase_price"] = 0.0
 
-    #print(new_data_set)
+    # #print(new_data_set)
 
-    wb = load_workbook(current_file)
-    ws = wb['ingredients']
-    # Write each item into its own row 
-    for row_idx, dict_items in enumerate(new_data_set, start=2):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=1, value=dict_items["ingredient_id"])
-        ws.cell(row=row_idx, column=2, value=str(dict_items["purveyor"]))
-        ws.cell(row=row_idx, column=3, value=dict_items["ingredient_code"])
-        ws.cell(row=row_idx, column=4, value=dict_items["ingredient_description"])
-        ws.cell(row=row_idx, column=5, value=dict_items["ingredient_name"])
-        ws.cell(row=row_idx, column=6, value=dict_items["pack_size_unit"])
-        ws.cell(row=row_idx, column=7, value=dict_items["purchase_price"])
-        ws.cell(row=row_idx, column=8, value=dict_items["ingredient_type"])
-    wb.save(current_file)
+    # wb = load_workbook(current_file)
+    # ws = wb['ingredients']
+    # # Write each item into its own row 
+    # for row_idx, dict_items in enumerate(new_data_set, start=2):   # start=1 → Excel’s first row
+    #     ws.cell(row=row_idx, column=1, value=dict_items["ingredient_id"])
+    #     ws.cell(row=row_idx, column=2, value=str(dict_items["purveyor"]))
+    #     ws.cell(row=row_idx, column=3, value=dict_items["ingredient_code"])
+    #     ws.cell(row=row_idx, column=4, value=dict_items["ingredient_description"])
+    #     ws.cell(row=row_idx, column=5, value=dict_items["ingredient_name"])
+    #     ws.cell(row=row_idx, column=6, value=dict_items["pack_size_unit"])
+    #     ws.cell(row=row_idx, column=7, value=dict_items["purchase_price"])
+    #     ws.cell(row=row_idx, column=8, value=dict_items["ingredient_type"])
+    # wb.save(current_file)
 
-    print(f"✅ Ingredients Table has been updated!")
+    # print(f"✅ Ingredients Table has been updated!")
     
 #----------------------------------------------------------------------------------------
 def input_menu_ingredient(db_excel_file, db):
@@ -408,3 +436,72 @@ def menu_cost(db):
 
 def menu_cost_ver_2(db):
     pass
+
+#----------------------------------------------------------------------------------------
+def upload_xtrachef_item_library(item_library_file, db):
+
+    """ Take the downloaded item library from Xtrachef and modify it for uploading to database"""
+    """ Make sure to save the downloaded .csv file into an .xlsx file, and format the columns."""
+
+    # Read the item_library_file and normalize the item_description columns and input that new data into that column in the database
+
+    item_library_data = pd.read_excel(item_library_file)
+
+    #print(item_library_data.columns.tolist())
+
+    # Uses vectorized operations with pandas .apply() method to fill the empty normalized column
+    item_library_data['Normalized Item Description'] = item_library_data['Item Description'].apply(normalize)
+    # Uses vectorized operations with pandas .apply() method to normalize the vendor name
+    item_library_data['Vendor Name'] = item_library_data['Vendor Name'].apply(normalize)
+    # Make sure the "Last Purchased Date" column is a proper datetime object:
+    item_library_data['Last Purchased Date'] = pd.to_datetime(item_library_data['Last Purchased Date'], errors='coerce')
+
+    # This ensures that the most recent entry comes first.
+    item_library_data = item_library_data.sort_values(by='Last Purchased Date', ascending=False)
+
+    # This keeps only the first (i.e., most recent) row for each normalized description.
+    deduped_data = item_library_data.drop_duplicates(subset='Normalized Item Description', keep='first')
+
+
+    item_library_data.to_excel(item_library_file, index=False)
+    print(f"✅ {item_library_file} has been normalized!")
+
+    #----------------------------------------------------------------------------------------
+
+    # Map Excel column headers → DB column names
+    column_map = {
+        "Vendor Name": "purveyor",
+        "Item Code": "ingredient_code",
+        "Item Description": "ingredient_description",
+        "Normalized Item Description": "ingredient_name",
+        "Pack/Size/Unit": "pack_size_unit",
+        "Last Purchased Price ($)": "purchase_price",
+        "Product(s)": "ingredient_type"
+    }
+
+    conn = sqlite3.connect(db)
+    cursor = conn.cursor()
+
+    updated_item_library_data = pd.read_excel(item_library_file)
+    updated_item_library_data = updated_item_library_data.fillna("")  # Optional: fill blanks to avoid NaN issues
+
+    # Excel values come in this order
+    columns = list(column_map.values())         # ['ingredient_name', 'ingredient_code', 'purveyor', 'last_purchased_price']
+    placeholders = ', '.join(['?'] * len(columns))  # '?, ?, ?, ?'
+    column_names = ', '.join(columns)           # 'ingredient_name, ingredient_code, purveyor, last_purchased_price'
+    conn.execute("BEGIN")
+
+    for _, row in updated_item_library_data.iterrows():
+
+        # Pull values in matching order
+        values = [row[excel_col] for excel_col in column_map.keys()]
+
+        # Now build and run the SQL dynamically
+        cursor.execute(
+            f"INSERT OR REPLACE INTO ingredients ({column_names}) VALUES ({placeholders})",
+            values
+        )
+    conn.commit()
+    conn.close()
+
+    print(f"✅ {item_library_file} has been uploaded to {db}!")
