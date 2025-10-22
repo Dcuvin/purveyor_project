@@ -2,31 +2,26 @@
     "menu_items":[
 
         {
-            "item_name":"oysters",
+            "item_name":"roasted potato",
             "category":"canapes",
-            "prep": ["clean / shuck oysters", " pull /clean oyster shells", "brunoise shallots", "make / pull mignonette"],
+            "prep": ["braise short rib", "make / sheet / punch - out / bake Arepa","piquillo pepper puree", "piquillo pepper puree","pickled red onion","pick peashoots"],
             "req_prep": [
                 {
-                    "prep":"shuck oysters",
-                    "am_prep_team":1,
+                    "prep":"",
+                    "am_prep_team":0,
                     "sous_prep":0,
-                    "category": "canapes/raw bar"
-
-                },
-                {
-                    "prep":"clean oyster shells",
-                    "am_prep_team":1,
-                    "sous_prep":0,
-                    "category": "canapes/raw bar"
+                    "category": ""
                 }
             ],
-            "mise_en_place": ["cleaned oyster shells", "shucked oyster meat", "mignonette", "brunoise shallots"],
-            "ingredients": [{"baldor":"peeled shallots"}, {"LIEPPER & SONS LLC": "lou lou belle lou lou belle HOG NECK 9|23"}],
-            "menu_items_stations":"raw bar",
+            "mise_en_place": ["braised short rib", "arepa", "piquillo pepper puree", "pickled red onion","picked pea shoots"],
+            "ingredients": [
+                {"pat la frieda":"Prime Beef Chuck Flap Tails"},{"baldor":"instant white corn masa flour"},{"southeast asia market llc":"spicy chili crisp - lgm - 210g. 24 k1202"},
+                {"baldor":"mozzarella shredded wf 5 lb dairy farm of a"}, {"dairyland":"peppers piquillo canned"},{"baldor":"micro pea tendril shoots 8 oz"},{"agri exotic trading":"red onion"}],
+            "menu_items_stations":"",
             "menu_items_category":"canape"
 
 
-        }    
+            }
     ]
     
 

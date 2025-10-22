@@ -19,9 +19,8 @@ def update_ingredient_table(db_file, product_catalog_excel_file):
     source_file = product_catalog_excel_file
     df_source = pd.read_excel(source_file)  
 
-    #current_data = df_current[["ingredient_id", "purveyor", "ingredient_code", "ingredient_description",
-    #                           "ingredient_name", "pack_size_unit", "purchase_price", "ingredient_type"]]
-    source_data = df_source[["Vendor Name","Item Code","Item Description","Pack/Size/Unit","Last Purchased Price ($)","Product(s)"]]
+    
+    source_data = df_source[["Vendor Name","Item Code","Item Description","Normalized Item Description","Pack/Size/Unit","Last Purchased Price ($)","Product(s)"]]
     source_data_set = []
     
 
@@ -53,20 +52,23 @@ def update_ingredient_table(db_file, product_catalog_excel_file):
             "purveyor": row["Vendor Name"],
             "ingredient_code": row.get("Item Code", ""),
             "ingredient_description": row["Item Description"],
+            "ingredient_name" : row["Normalized Item Description"],
              "pack_size_unit": row["Pack/Size/Unit"],
              "purchase_price": row["Last Purchased Price ($)"],
-             "ingredient_type": row["Product(s)"]
+             "ingredient_type": row["Product(s)"],
+
         })
 
     for dict_item in data_to_upload:
         cursor.execute("""INSERT INTO ingredients
-                    (purveyor, ingredient_code, ingredient_description, pack_size_unit, purchase_price, ingredient_type
-                    VALUES (?,?,?,?,?,?,)
+                    (purveyor, ingredient_code, ingredient_description,ingredient_name,pack_size_unit, purchase_price, ingredient_type)
+                    VALUES (?,?,?,?,?,?,?)
                     ON CONFLICT(ingredient_code) DO UPDATE SET
-                   purchase_price = excluded.purchase_price;""",
+                    purchase_price = excluded.purchase_price;""",
                    (dict_item["purveyor"],
                     dict_item["ingredient_code"], 
-                    dict_item["ingredient_description"], 
+                    dict_item["ingredient_description"],
+                    dict_item["ingredient_name"],
                     dict_item["pack_size_unit"],
                     dict_item["purchase_price"], 
                     dict_item[ "ingredient_type"])
@@ -78,47 +80,7 @@ def update_ingredient_table(db_file, product_catalog_excel_file):
     
     #print(data_to_upload)
 
-
-
-    # source_lookup = {
-    #     item["ingredient_code"]: item
-    #     for item in source_data_set
-    # }
-
-    # #  Iterate through new data and update if matched
-    # for new_dict_item in new_data_set:
-    #     code = new_dict_item["ingredient_code"]
-    #     if code in source_lookup:
-    #         match = source_lookup[code]
-    #         new_dict_item.update({
-    #             "purveyor": match["purveyor"],
-    #             "ingredient_description": match["ingredient_description"],
-    #             "pack_size_unit": match["pack_size_unit"],
-    #             "purchase_price": match["purchase_price"],
-    #             "ingredient_type": match["ingredient_type"]
-    #         })
-       
-    # # for new_dict_item in new_data_set:
-    # #     if isinstance(new_dict_item.get("purchase_price"), str):
-    # #         new_dict_item["purchase_price"] = 0.0
-
-    # #print(new_data_set)
-
-    # wb = load_workbook(current_file)
-    # ws = wb['ingredients']
-    # # Write each item into its own row 
-    # for row_idx, dict_items in enumerate(new_data_set, start=2):   # start=1 → Excel’s first row
-    #     ws.cell(row=row_idx, column=1, value=dict_items["ingredient_id"])
-    #     ws.cell(row=row_idx, column=2, value=str(dict_items["purveyor"]))
-    #     ws.cell(row=row_idx, column=3, value=dict_items["ingredient_code"])
-    #     ws.cell(row=row_idx, column=4, value=dict_items["ingredient_description"])
-    #     ws.cell(row=row_idx, column=5, value=dict_items["ingredient_name"])
-    #     ws.cell(row=row_idx, column=6, value=dict_items["pack_size_unit"])
-    #     ws.cell(row=row_idx, column=7, value=dict_items["purchase_price"])
-    #     ws.cell(row=row_idx, column=8, value=dict_items["ingredient_type"])
-    # wb.save(current_file)
-
-    # print(f"✅ Ingredients Table has been updated!")
+    print(f"✅ Ingredients Table has been updated!")
     
 #----------------------------------------------------------------------------------------
 def input_menu_ingredient(db_excel_file, db):

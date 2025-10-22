@@ -68,7 +68,7 @@ CREATE TABLE menu_mise_checklist(
 CREATE TABLE ingredients (
     ingredient_id INTEGER PRIMARY KEY AUTOINCREMENT,
     purveyor TEXT,
-    ingredient_code TEXT, 
+    ingredient_code TEXT UNIQUE,
     ingredient_description TEXT,   
     ingredient_name TEXT,
     pack_size_unit TEXT,
@@ -158,3 +158,4 @@ WHERE menu_item_id = 1;
 
 --Insert data into specified table
 INSERT INTO categories(category_name) VALUES ();
+

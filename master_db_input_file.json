@@ -1,0 +1,261 @@
+{
+    "menu_items":[
+
+        {
+            "item_name":"hamachi aguachile",
+            "category":"canapes",
+            "prep": ["punch-out / fry tortilla rounds", "defrost / dice hamachi","make / pull lemon vinaigrette", "brunoise shallots", 
+            "brunoise jalapeno","brunoise cucumber", "finely chopped cilantro", "pick micro cilantro","pickled red onion garnish","avocado mousse"],
+            "req_prep": [
+                {
+                    "prep":"lemon vin",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "canapes"
+
+                }
+            ],
+            "mise_en_place": ["round tortilla chips","dice hamachi","brunoise shallots","brunoise jalapeno","brunoise cucumber","finely chopped cilantro","picked micro cilantro",
+             "lemon vinaigrette in squeeze bottle", "pickled red onion garnish", "avocado mousse"],
+            "ingredients": [{"baldor":"tortilla white corn 6 1 lb 20 ct"},
+                {"liepper and sons llc":"hamachi hamachi filet"}, {"baldor":"cliantro 2.2 lb"}, {"baldor":"avocado"}, 
+                {"baldor":"peeled shallots"},{"baldor":"pepper jalapeno 10 lb"},{"baldor":"micro cilantro 8 oz"},{"agri exotic trading":"red onion"},{"agri exotic trading":"hot house cucumber"}],
+            "menu_items_stations":"",
+            "menu_items_category":"canape"
+
+
+        },
+        {
+            "item_name":"smoked whitefish",
+            "category":"canapes",
+            "prep": ["pick / shred whitefish", "finely cut chives", "whitefish salad mix", "pull trout roe", "cucumber cups","picked dill"],
+            "req_prep": [
+                {
+                    "prep":"pick / shred whitefish",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "canapes"
+
+                }
+            ],
+            "mise_en_place": ["shredded whitefish", "finely cut chives", "whitefish salad mix", "trout roe","cucumber cups", "picked dill"],
+            "ingredients": [
+                {"liepper and sons llc":"trout roe danish farm raised trout roe"}, {"baldor":"cliantro 2.2 lb"}, 
+                {"baldor":"whitefish whole smoked 1.65lb acmie"},{"baldor":"cucumber persian 12x1 lb"},{"baldor":"chives 2.2 lb"},{"baldor":"dill 4 oz"}],
+            "menu_items_stations":"",
+            "menu_items_category":"canape"
+
+
+        },
+        {
+            "item_name":"everything gougeres",
+            "category":"canapes",
+            "prep": ["pull / bake mini gougeres", "finely cut chives", "smoked salmon cream cheese mousse", "everything bagel mix"],
+            "req_prep": [
+                {
+                    "prep":"make mini gougeres",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "canapes"
+
+                }
+            ],
+            "mise_en_place": ["mini gougeres", "finely cut chives", "smoked salmon cream cheese mousse"],
+            "ingredients": [
+                {"liepper and sons llc":"blue hili smoked salmon blue hill smoked salmon"},{"baldor":"cream cheese soft 5 lb"},{"baldor":"chives 2.2 lb"}],
+            "menu_items_stations":"",
+            "menu_items_category":"canape"
+
+
+        },
+        {
+            "item_name":"caviar hash brown",
+            "category":"canapes",
+            "prep": ["pull caviar", "make / pull mini hash brown", "whip smoke creme fraiche","chive batons"],
+            "req_prep": [
+                {
+                    "prep":"make mini hash browns ",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "canapes"
+
+                }
+            ],
+            "mise_en_place": ["kaluga caviar", "fried  mini hash brown", "whip smoke creme fraiche","chive batons"],
+            "ingredients": [
+                {"baldor":"potato gpod 60 ct 50 lb"},{"baldor":"chives 2.2 lb"},{"dairyland":"creme fraiche kendall farms"},{"black diamond gourmet inc":"black diamond kaluga shrenckii caviar per 8oz."}],
+            "menu_items_stations":"",
+            "menu_items_category":"canape"
+
+
+        },
+        {
+            "item_name":"shrimp toast",
+            "category":"canapes",
+            "prep": ["make / fry shrimp toast", "togarashi aioli","pick micro cilantro"],
+            "req_prep": [
+                {
+                    "prep":"make shrimp toast ",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "canapes"
+
+                }
+            ],
+            "mise_en_place": ["fried shrimp toast",  "togarashi aioli","picked micro cilantro"],
+            "ingredients": [
+                {"liepper and sons llc":"shrimp 31 40 iqf"},{"eli s bread inc":"br pullman 5x5"},{"baldor":"togarashi spice powder"},{"baldor":"micro cilantro 8 oz"},{"dairyland":"mayo hellmans extra heavy"},
+                {"baldor":"seed sesame white box 5 lb"},{"dairyland":"golden sesame oil"},{"baldor":"black sesame seed"}],
+            "menu_items_stations":"",
+            "menu_items_category":"canape"
+
+
+        },
+        {
+            "item_name":"chicken schnitzel",
+            "category":"canapes",
+            "prep": ["make / fry chicken nuggets", "red cabbage condiment","red cabbage puree", "finely cut chives"],
+            "req_prep": [
+                {
+                    "prep":"make chicken nuggets",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "canapes"
+
+                },
+                {
+                    "prep":"cut and portion chicken nuggets, 1 in x 1 in",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "canapes"
+
+                },
+                {
+                    "prep":"bread chicken nuggets",
+                    "am_prep_team":1,
+                    "sous_prep":0,
+                    "category": "canapes"
+
+                }
+            ],
+            "mise_en_place": ["chicken nuggets",  "red cabbage condiment","red cabbage puree", "finely cut chives"],
+            "ingredients": [
+                {"dairyland":"base chicken knorr"},{"baldor":"panko japanese bread crumb 20 lb"},{"baldor":"smoke liquid hickory 32 oz"},{"baldor":"chives 2.2 lb"},
+                {"baldor":"seed sesame white box 5 lb"},{"dairyland":"chicken thighs b l s l raeford"},{"baldor":"cabbage red 3 pc"}],
+            "menu_items_stations":"",
+            "menu_items_category":"canape"
+
+
+        },
+        {
+            "item_name":"mushroom tartlett",
+            "category":"canapes",
+            "prep": ["make duxelle", "mushroom custard","punch-out / bake puff pastry", "pickled beech mushroom ","cut gruyere squares","pick thyme"],
+            "req_prep": [
+                {
+                    "prep":"",
+                    "am_prep_team":0,
+                    "sous_prep":0,
+                    "category": "canapes"
+                }
+            ],
+            "mise_en_place": ["puff pastry rounds", "mushroom custard","picked thyme"],
+            "ingredients": [
+                {"baldor":"sauce tartufata truffle paste 14 oz sabatino"},{"baldor":"thyme"},
+                {"dairyland":"chs gruyere natural austrian"},{"baldor":"organic brown beech mushrooms"},{"dairyland":"puff pastry half sheet le coq"}],
+            "menu_items_stations":"",
+            "menu_items_category":"canape"
+
+
+            },
+            {
+                "item_name":"cacio e pepe fritter",
+                "category":"canapes",
+                "prep": ["make / fry cacio e pepe arancini", "cacio e pepe sauce","shaved pecorino"],
+                "req_prep": [
+                    {
+                        "prep":"make cacio e pepe risotto",
+                        "am_prep_team":1,
+                        "sous_prep":1,
+                        "category": "canapes"
+                    },
+                    {
+                        "prep":"scoop and protion cacio e peppe arancini",
+                        "am_prep_team":0,
+                        "sous_prep":0,
+                        "category": "canapes"
+                    },
+                    {
+                        "prep":"bread cacio e pepe arancini",
+                        "am_prep_team":0,
+                        "sous_prep":0,
+                        "category": "canapes"
+                    }
+                ],
+                "mise_en_place": ["cacio e pepe arancini", "cacio e pepe sauce", "shaved pecorino"],
+                "ingredients": [
+                    {"baldor":"cheese pecorino romano"},{"baldor":"rice arborio 5kg bulk toro"},{"baldor":"sauce tartufata truffle paste 14 oz sabatino"},{"baldor": "cheese mascarpone 17.6 oz 24"},
+                    {"dairyland":"chs gruyere natural austrian"}, {"dairyland":"vinegar sherry wine la posada"},{"murray s cheese":"murray s parmigiano reggiano-"} ],
+                "menu_items_stations":"",
+                "menu_items_category":"canape"
+    
+    
+                },
+                {
+                    "item_name":"risotto fritter",
+                    "category":"canapes",
+                    "prep": ["make / fry cacio e pepe arancini", "cacio e pepe sauce","shaved pecorino"],
+                    "req_prep": [
+                        {
+                            "prep":"make cacio e pepe risotto",
+                            "am_prep_team":1,
+                            "sous_prep":1,
+                            "category": "canapes"
+                        },
+                        {
+                            "prep":"scoop and protion cacio e peppe arancini",
+                            "am_prep_team":0,
+                            "sous_prep":0,
+                            "category": "canapes"
+                        },
+                        {
+                            "prep":"bread cacio e pepe arancini",
+                            "am_prep_team":0,
+                            "sous_prep":0,
+                            "category": "canapes"
+                        }
+                    ],
+                    "mise_en_place": ["cacio e pepe arancini", "cacio e pepe sauce", "shaved pecorino"],
+                    "ingredients": [
+                        {"baldor":"cheese pecorino romano"},{"baldor":"rice arborio 5kg bulk toro"},{"baldor":"sauce tartufata truffle paste 14 oz sabatino"},{"baldor": "cheese mascarpone 17.6 oz 24"},
+                        {"dairyland":"chs gruyere natural austrian"}, {"dairyland":"vinegar sherry wine la posada"},{"murray s cheese":"murray s parmigiano reggiano-"} ],
+                    "menu_items_stations":"",
+                    "menu_items_category":"canape"
+        
+        
+                },
+                {
+                    "item_name":"braised short rib",
+                    "category":"canapes",
+                    "prep": ["braise short rib", "make / sheet / punch - out / bake Arepa","piquillo pepper puree", "piquillo pepper puree","pickled red onion","pick peashoots"],
+                    "req_prep": [
+                        {
+                            "prep":"",
+                            "am_prep_team":0,
+                            "sous_prep":0,
+                            "category": ""
+                        }
+                    ],
+                    "mise_en_place": ["braised short rib", "arepa", "piquillo pepper puree", "pickled red onion","picked pea shoots"],
+                    "ingredients": [
+                        {"pat la frieda":"Prime Beef Chuck Flap Tails"},{"baldor":"instant white corn masa flour"},{"southeast asia market llc":"spicy chili crisp - lgm - 210g. 24 k1202"},
+                        {"baldor":"mozzarella shredded wf 5 lb dairy farm of a"}, {"dairyland":"peppers piquillo canned"},{"baldor":"micro pea tendril shoots 8 oz"},{"agri exotic trading":"red onion"}],
+                    "menu_items_stations":"",
+                    "menu_items_category":"canape"
+        
+        
+                }                        
+    ]
+    
+
+}

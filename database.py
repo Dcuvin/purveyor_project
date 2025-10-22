@@ -149,11 +149,6 @@ def get_ingredients(db):
 
 # ------------------------------------------------------------------------------------------
 
-
-
-
-# ------------------------------------------------------------------------------------------
-
 def input_update_data(db):
 
     #Check filepath
@@ -266,20 +261,23 @@ def input_update_data(db):
 
         """ Check ingredients for existing ingredient_name """
 
-        cursor.execute("SELECT ingredient_id, ingredient_name FROM ingredients")
-        db_ingredients = [{"ingredient_id":i[0], "ingredient_name":i[1]} for i in cursor.fetchall()]
+        cursor.execute("SELECT ingredient_id, purveyor, ingredient_name FROM ingredients")
+        db_ingredients = [{"ingredient_id":i[0],"purveyor":i[1],"ingredient_name":normalize(i[2])} for i in cursor.fetchall()]
 
-        ingredient_to_upload = [{"ingredient_id":0, "purveyor": normalize(key), "ingredient_name":normalize(val) }for key, val in menu_item["ingredients"][0].items()]
+        ingredient_to_upload = []
+        for ing in menu_item["ingredients"]:
+            for key, val in ing.items():
+                ingredient_to_upload.append({"ingredient_id":0, "purveyor": normalize(key), "ingredient_name":normalize(val)})
 
         for ing in  ingredient_to_upload:
             for db_ing in db_ingredients:
                 #if ing["ingredient_name"] == db_ing["ingredient_name"]:
-                if fuzzy_match(ing, db_ing):
+                if fuzzy_match(ing["ingredient_name"], db_ing["ingredient_name"]) and fuzzy_match(ing["purveyor"], db_ing["purveyor"]):
                     ing["ingredient_id"] = db_ing["ingredient_id"]
                     ing["purveyor"] = db_ing["purveyor"]
                     ing["ingredient_name"] = db_ing["ingredient_name"]
        
-        print(f"ingredients_to_upload: {ingredient_to_upload}")
+            print(f"🍽️ ingredients_to_upload: {ingredient_to_upload}")
 
         """ Check to see if new menu item belongs to a station and pull the station_id and station_name """
         station_to_upload = {}
@@ -410,7 +408,11 @@ def input_update_data(db):
                 for prep in prep_to_upload:
                     cursor.execute("INSERT OR IGNORE INTO menu_prep_list (menu_item_id, item_name, prep_id) VALUES (?,?,?)", (existing_menu_item_id, menu_item_result[0]['item_name'], prep['prep_id'],))
                     print(f"✅ menu_prep_list: {existing_menu_item_id}, {menu_item_result[0]['item_name']}, {prep['prep_id']} has been added!")
-
+                
+                # Delete existing mappings in req_prep prior to overwrite
+                for req_prep in req_prep_to_upload:
+                    cursor.execute("DELETE FROM menu_req_prep_list WHERE menu_item_id = ?", (existing_menu_item_id,))
+                    print(f"✅ Old menu_req_prep_list mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}, {req_prep}")
                 # Insert new/existing requisition prep into req_prep
                 for req_prep in req_prep_to_upload:
                     cursor.execute("""INSERT OR IGNORE INTO req_prep (prep, am_prep_team, sous_prep, category)
@@ -428,7 +430,7 @@ def input_update_data(db):
                 # Delete existing mappings in menu_prep_list prior to overwrite
                 for req_prep in req_prep_to_upload:
                     cursor.execute("DELETE FROM menu_req_prep_list WHERE menu_item_id = ?", (existing_menu_item_id,))
-                    print(f"✅ Old menu_req_prep_list mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}")
+                    print(f"✅ Old menu_req_prep_list mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}, {req_prep}")
                 
                 # Map menu_item_result to new / existing prep in menu_req_prep_list
                 for req_prep in req_prep_to_upload:
@@ -449,8 +451,14 @@ def input_update_data(db):
 
                 # Delete existing mappings in menu_mise_checklist prior to overwrite
                 for mise in mise_to_upload:
+                    # cursor.execute("""SELECT menu_mise_checklist.item_name, menu_mise_checklist.checklist_id, mise_checklist.mise_en_place
+                    #                       FROM menu_mise_checklist
+                    #                       JOIN mise_checklist ON menu_mise_checklist.checklist_id = mise_checklist.checklist_id
+                    #                       WHERE menu_item_id = ?""", (existing_menu_item_id,))
+                    # mise_checklist_result = cursor.fetchall()
+                    # if mise_checklist_result:
                     cursor.execute("DELETE FROM menu_mise_checklist WHERE menu_item_id = ?", (existing_menu_item_id,))
-                    print(f"✅ Old menu_req_prep_list mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}")
+                    print(f"✅ Old menu_mise_checklist mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}, {mise}")
                     
                 # Map checklist_id to existing_menu_item_id in menu_mise_checklist
                 for mise in mise_to_upload:
@@ -475,6 +483,12 @@ def input_update_data(db):
     conn.commit()
     conn.close()
 # ------------------------------------------------------------------------------------------
-def pull_data(item_id, db):
+def pull_data_json(db):
+
+    conn = sqlite3.connect(db)
+    cursor = conn.cursor()
+
+    
+
     pass
 # ------------------------------------------------------------------------------------------

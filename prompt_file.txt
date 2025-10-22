@@ -1,23 +1,31 @@
-Event:  Bellamy Novogratz	
-Date:  Sunday, October 19, 2025
-Account:  Veronica Adgate	
-Time:  12:00 PM - 3:00 PM
-Contact:  Veronica Adgate	
-Location:  Blue Room
-Phone: 	
-Event Type: 
-Email:  Veronica.Adgate@galaxy.com	
-Guests:  40
+Event:  Breann Lydon	
+Date:  Saturday, October 25, 2025
+Account:  Breann Lydon	
+Time:  5:00 PM - 8:00 PM
+Contact:  Breann Lydon	
+Location:  Greenhouse
+Phone:  6313380641	
+Event Type:  Cocktail Reception
+Email:  breelydon9@gmail.com	
+Guests:  85
  	
-Account Owner:  Polina Pfliger	
-Phone/Email:  / polina.pfliger@nineorchard.com	
+Account Owner:  Julie Garces	
+Phone/Email:  917-620-6578 / julie.garces@nineorchard.com
 
-menu_items: 
+menu_items:
 
-assorted pastries,
+Caviar hash brown,
 
-seasonal fruit salad,
+Lobster Roll,
 
-hash browns,
+Risotto Fritter,
 
-applewood smoked bacon,
+Crispy Burrata,
+
+Chicken Schnitzel,
+
+Hamachi Aguachile,
+
+Shrimp Toast,
+
+NY Strip Steak,

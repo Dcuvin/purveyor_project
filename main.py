@@ -59,6 +59,7 @@ def main():
         upload_excel(excel_file_to_upload, db)
         update_standard_menu(db)
 
+    # Updates / Inputs data pythonically into desired database.
     elif sys.argv[1] == 'input_data':
         print("Current databases:")
         print(find_db())
@@ -93,7 +94,7 @@ def main():
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
 
-       
+        
 
         db = f"purveyor_project_db_{db_input}.db"
 
@@ -152,6 +153,8 @@ def main():
 
         update_dropdown_menu_selection(db)
 
+    # Updates the ingredient table inside desired database using the normalized item_library file downloaded from Xtra Chef
+
     elif sys.argv[1] == 'update_ingredient_table':
         
         print(find_db())
@@ -161,9 +164,21 @@ def main():
 
         db = f"purveyor_project_db_{db_input}.db"
 
-        product_catalog_excel_file = input('Specify product catalog excel file:')
+        file_count = 0
+        item_library_file ={}
 
-        update_ingredient_table(db, product_catalog_excel_file)
+        for i in find_xlsx_item_library():
+            file_count += 1
+            item_library_file[str(file_count)] = i
+            print(f"{file_count}.  {i}")
+        
+        item_library_input = input('Specify item_library excel file by typing the corresponding number: ')
+
+        chosen_item_library_file = item_library_file[str(item_library_input)]
+
+        print(chosen_item_library_file)
+
+        update_ingredient_table(db,  chosen_item_library_file)
     
     elif sys.argv[1] == "input_menu_ingredient":
         print(find_db())
@@ -223,7 +238,9 @@ def main():
 
         get_ingredients(db)
 
-    elif sys.argv[1] == 'upload_item_library':
+    #Takes the newly downloaded item library from Xtra Chef and creates a normalized item description column withing the same file. It then queries the desired database for any existing entries and uses INSERT OR REPLACE
+
+    elif sys.argv[1] == 'normalize_item_library':
         print(find_db())
         db = ''
         db_input = input('Specify which database to query by typing the corresponding number:')
@@ -238,7 +255,7 @@ def main():
             item_library_file[str(file_count)] = i
             print(f"{file_count}.  {i}")
         
-        item_library_input = input('Specify item_library excel file: ')
+        item_library_input = input('Specify item_library excel file by typing the corresponding number: ')
 
         chosen_item_library_file = item_library_file[str(item_library_input)]
 
