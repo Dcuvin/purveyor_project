@@ -99,7 +99,7 @@ def match_menu_items(item, choices, threshold=85):
     
 #----------------------------------------------------------------------------
 
-def fuzzy_match(upload_item, db_item, threshold=90):
+def fuzzy_match(upload_item, db_item, threshold=85):
     normalized_upload_item = normalize(upload_item)
     normalized_db_item = normalize(db_item)
     score = fuzz.token_set_ratio(normalized_upload_item, normalized_db_item)

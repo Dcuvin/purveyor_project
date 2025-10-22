@@ -2,7 +2,7 @@ import os
 import re
 import sqlite3
 from openai import OpenAI
-from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu, get_standard_station_menu
+from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu, get_standard_station_menu, fuzzy_match
 
 
 def get_chatgpt_all_info(db):
@@ -86,46 +86,62 @@ def get_chatgpt_all_info(db):
     conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
-    #for item in extracted_menu_items:
-    for item in final_menu_items_choices:
-        #print(item)
-        try:
-            cursor.execute("""
-               SELECT menu_item_id
-                FROM menu_items
-                WHERE item_name = ?;
-                """, (item,))
-            #fetch the result, a list of tuples
-            result = cursor.fetchall()
-            #print(result)
-            if not result:
-                continue
-            else:
-                item_ids.append(result[0][0])
-                final_menu_items.append(item)
-           
-        except sqlite3.DatabaseError:
-            continue
+    cursor.execute("SELECT menu_item_id, item_name FROM menu_items")
+    db_menu_item_names = [menu_item_name for menu_item_name in cursor.fetchall()]
 
-    for station in  final_stations_choices:
-        #print(item)
-        try:
-            cursor.execute("""
-               SELECT station_id
-                FROM stations
-                WHERE station_name = ?;
-                """, (station,))
-            #fetch the result, a list of tuples
-            result = cursor.fetchall()
-            #print(result)
-            if not result:
-                continue
-            else:
-                station_ids.append(result[0][0])
-                final_stations.append(station)
-           
-        except sqlite3.DatabaseError:
-            continue
+    for db_menu_item_name in db_menu_item_names:
+         for items in final_menu_items_choices:
+              if fuzzy_match(db_menu_item_name[1], items):
+                   item_ids.append(db_menu_item_name[0])
+
+    cursor.execute("SELECT station_id, station_name FROM stations")
+    db_station_names = [station_name for station_name in cursor.fetchall()]
+
+    for db_station_name in db_station_names:
+         for station in final_stations:
+              if fuzzy_match(db_station_name[1], station):
+                   station_ids.append(db_station_name[0])
+
+    #________________________________________
+    # for items in final_menu_items_choices:
+    #         #print(item)
+    #         try:
+    #             cursor.execute("""
+    #             SELECT menu_item_id
+    #                 FROM menu_items
+    #                 WHERE item_name = ?;
+    #                 """, (item,))
+    #             #fetch the result, a list of tuples
+    #             result = cursor.fetchall()
+    #             #print(result)
+    #             if not result:
+    #                 continue
+    #             else:
+    #                 item_ids.append(result[0][0])
+    #                 final_menu_items.append(item)
+            
+    #         except sqlite3.DatabaseError:
+    #             continue
+
+    # for station in  final_stations_choices:
+    #         #print(item)
+    #         try:
+    #             cursor.execute("""
+    #             SELECT station_id
+    #                 FROM stations
+    #                 WHERE station_name = ?;
+    #                 """, (station,))
+    #             #fetch the result, a list of tuples
+    #             result = cursor.fetchall()
+    #             #print(result)
+    #             if not result:
+    #                 continue
+    #             else:
+    #                 station_ids.append(result[0][0])
+    #                 final_stations.append(station)
+            
+    #         except sqlite3.DatabaseError:
+    #             continue
     conn.close()
     
     #print(does_it_work)
