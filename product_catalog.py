@@ -49,13 +49,13 @@ def update_ingredient_table(db_file, product_catalog_excel_file):
 
     for _, row in source_data.iterrows():
         data_to_upload.append({
-            "purveyor": row["Vendor Name"],
-            "ingredient_code": row.get("Item Code", ""),
-            "ingredient_description": row["Item Description"],
-            "ingredient_name" : row["Normalized Item Description"],
-             "pack_size_unit": row["Pack/Size/Unit"],
-             "purchase_price": row["Last Purchased Price ($)"],
-             "ingredient_type": row["Product(s)"],
+            "purveyor": row.get("Vendor Name", ""),
+            "ingredient_code": str(row.get("Item Code", "")),
+            "ingredient_description": row.get("Item Description",""),
+            "ingredient_name" : row.get("Normalized Item Description", ""),
+             "pack_size_unit": row.get("Pack/Size/Unit"),
+             "purchase_price": row.get("Last Purchased Price ($)", ""),
+             "ingredient_type": row.get("Product(s)", ""),
 
         })
 

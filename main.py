@@ -2,6 +2,7 @@ from datetime import date
 import pandas as pd
 import sqlite3
 import re
+import json
 from openpyxl import load_workbook #imports python library for reading and writting excel files
 from openpyxl.styles import Font, PatternFill, Border, Side
 from openpyxl.worksheet.datavalidation import DataValidation
@@ -12,7 +13,7 @@ from bs4 import BeautifulSoup
 import openai
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2
-from database import upload_excel, input_update_data, db_input, excel_file_to_upload, delete_data, get_ingredients
+from database import upload_excel, input_update_data, db_input, excel_file_to_upload, delete_data, get_ingredients, pull_data
 from openapi import get_chatgpt_all_info
 from check_file import find_db, find_xlsx_db, find_xlsx_item_library
 from prep_req import req_prep, test_prep_req, req_prep_ver_2
@@ -70,7 +71,7 @@ def main():
         db = f"purveyor_project_db_{db_input}.db"
 
         input_update_data(db)
-        #get_ingredients(db)
+      
 
     elif sys.argv[1] == 'find_db':
         find_db()
@@ -261,6 +262,16 @@ def main():
 
         print(chosen_item_library_file)
         upload_xtrachef_item_library(chosen_item_library_file, db)
+
+    elif sys.argv[1] == 'pull_data':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        db = f"purveyor_project_db_{db_input}.db"
+
+        pull_data(db)
+
 #------------------------------------------------------------------------------------------
 def gpt_prep_list(db):
 

@@ -82,7 +82,6 @@ def get_chatgpt_all_info(db):
     item_ids = []
     station_ids = []
     final_menu_items = []
-    final_stations = []
     conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
@@ -98,7 +97,7 @@ def get_chatgpt_all_info(db):
     db_station_names = [station_name for station_name in cursor.fetchall()]
 
     for db_station_name in db_station_names:
-         for station in final_stations:
+         for station in final_stations_choices:
               if fuzzy_match(db_station_name[1], station):
                    station_ids.append(db_station_name[0])
 
@@ -149,7 +148,7 @@ def get_chatgpt_all_info(db):
     print(f"item_ids: {item_ids}")
     print(final_menu_items)
     print(f"station_ids: {station_ids}")
-    print(final_stations)
+    print(final_stations_choices)
     print(f"Time: {event_time}")
     print(f"Date: {event_date}")
     return item_ids, event_name, guest_count, event_time, event_date, event_type, event_location, station_ids

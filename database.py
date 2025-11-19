@@ -6,6 +6,8 @@ import os
 import json
 import shutil
 from fuzzy import normalize, fuzzy_match
+from tabulate import tabulate
+
 
 def db_input():
    db_number = input('Specify which database to update by typing the corresponding number:')
@@ -127,24 +129,43 @@ def get_ingredients(db):
     # Cursor to execute commands
     cursor = conn.cursor()
 
+    # file_path = "ingredients.json"
+    # if os.path.exists(file_path):
+    #     print("✅  file_path is correct")
+    #     cursor.execute("""
+    #                     SELECT *
+    #                     FROM ingredients
+    #                    """)
+
+
+    #     data = [ingredient for ingredient in cursor.fetchall()]
+
+    #    # Write the data into a JSON file
+    #     with open(file_path, 'w') as json_file:
+
+    #         json.dump(data, json_file,indent=2)
+    # else:
+    #     print("❌ ERROR: standard_menu.json does not exist, will be created.")
+
     file_path = "ingredients.json"
     if os.path.exists(file_path):
-        print("✅  file_path is correct")
+        print("✅  file_path is correct; ingredients.json updated")
         cursor.execute("""
-                        SELECT ingredient_name
+                        SELECT ingredient_id, purveyor, ingredient_code, ingredient_name 
                         FROM ingredients
                        """)
-        
-        ingredients = cursor.fetchall()
 
-        data = [ingredient[0] for ingredient in ingredients]
+
+        rows = cursor.fetchall()
+        headers = [d[0] for d in cursor.description]
 
        # Write the data into a JSON file
         with open(file_path, 'w') as json_file:
 
-            json.dump(data, json_file,indent=2)
+            json_file.write(tabulate(rows, headers=headers, tablefmt="grid"))
     else:
         print("❌ ERROR: standard_menu.json does not exist, will be created.")
+
 
 
 # ------------------------------------------------------------------------------------------
@@ -269,20 +290,27 @@ def input_update_data(db):
             for key, val in ing.items():
                 ingredient_to_upload.append({"ingredient_id":0, "purveyor": normalize(key), "ingredient_name":normalize(val)})
 
-        for ing in  ingredient_to_upload:
+        for ing in ingredient_to_upload:
+            matches =[]
             for db_ing in db_ingredients:
-                #if ing["ingredient_name"] == db_ing["ingredient_name"]:
-                if fuzzy_match(ing["ingredient_name"], db_ing["ingredient_name"]) and fuzzy_match(ing["purveyor"], db_ing["purveyor"]):
-                    ing["ingredient_id"] = db_ing["ingredient_id"]
-                    ing["purveyor"] = db_ing["purveyor"]
-                    ing["ingredient_name"] = db_ing["ingredient_name"]
+                score = fuzzy_match(ing["ingredient_name"], db_ing["ingredient_name"]) + fuzzy_match(ing["purveyor"], db_ing["purveyor"])
+                matches.append({"score":score,
+                                "ingredient_id":db_ing["ingredient_id"], 
+                                "purveyor":db_ing["purveyor"],
+                                "ingredient_name":db_ing["ingredient_name"]})
+            # sort by highest score
+            matches.sort(key=lambda x: x["score"], reverse=True)
+            best_match =matches[0]
+            ing["ingredient_id"] = best_match["ingredient_id"]
+            ing["purveyor"] = best_match["purveyor"]
+            ing["ingredient_name"] = best_match["ingredient_name"]
        
             print(f"🍽️ ingredients_to_upload: {ingredient_to_upload}")
 
         """ Check to see if new menu item belongs to a station and pull the station_id and station_name """
         station_to_upload = {}
         if menu_item["menu_items_stations"]:
-            cursor.execute("SELECT * FROM stations WHERE station_name = ?", (normalize(menu_item['menu_items_stations']),))
+            cursor.execute("SELECT * FROM stations WHERE station_name = ?", (menu_item['menu_items_stations'],))
             result = cursor.fetchone()
             if result:
                 station_to_upload['station_id']= result[0]       
@@ -292,7 +320,7 @@ def input_update_data(db):
 
         """ Pull category_id and category_name """
         category_to_upload ={}
-        cursor.execute("SELECT * FROM categories WHERE category_name = ?", (normalize(menu_item['menu_items_category']),))
+        cursor.execute("SELECT * FROM categories WHERE category_name = ?", (menu_item['menu_items_category'],))
 
         result = cursor.fetchone()
         if result:
@@ -483,12 +511,102 @@ def input_update_data(db):
     conn.commit()
     conn.close()
 # ------------------------------------------------------------------------------------------
-def pull_data_json(db):
+def pull_data(db):
+
+    json_file_path = "pulled_db_data.json"
 
     conn = sqlite3.connect(db)
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
+    
+    cursor.execute("SELECT menu_item_id FROM menu_items")
+
+    menu_item_ids = [i[0] for i in cursor.fetchall()]
+
+    #print(menu_item_ids)
 
     
+    menu_items =[]
+
+    for id in menu_item_ids:
+        cursor.execute("SELECT item_name, category FROM menu_items WHERE menu_item_id =?",(id,))
+    
+        menu_item_rows= cursor.fetchall()
+
+
+        for row in menu_item_rows:
+            item_name= row["item_name"]
+            category = row["category"]
+
+            #Query DB for mapped prep procedures
+            cursor.execute("""SELECT prep
+                        FROM prep_list
+                        JOIN menu_prep_list ON prep_list.prep_id = menu_prep_list.prep_id
+                        WHERE menu_prep_list.menu_item_id = ?;""",(id,))
+            prep_list = [i[0] for i in cursor.fetchall()]
+
+            # Query DB for mapped mise checklist
+            cursor.execute("""SELECT mise_en_place
+                        FROM mise_checklist
+                        JOIN menu_mise_checklist ON menu_mise_checklist.checklist_id = mise_checklist.checklist_id
+                        WHERE menu_mise_checklist.menu_item_id = ?;""",(id,))
+            checklist =[i[0] for i in cursor.fetchall()]
+
+            # Query DB for mapped requisitioned prep
+            cursor.execute("""SELECT prep, am_prep_team, sous_prep, category
+                        FROM req_prep
+                        JOIN menu_req_prep_list ON req_prep.req_prep_id = menu_req_prep_list.req_prep_id
+                        WHERE menu_req_prep_list.menu_item_id = ?;""", (id,))
+            req_prep_result = cursor.fetchall()
+
+            req_prep =[{"prep":row["prep"], "am_prep_team":row["am_prep_team"], "sous_prep":row["sous_prep"], "category":row["category"]} for row in req_prep_result]
+
+            # Query DB for mapped ingredients
+
+            cursor.execute("""SELECT ingredients.ingredient_name, ingredients.purveyor
+                FROM ingredients
+                JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
+                WHERE menu_ingredients.menu_item_id = ?;""", (id,))
+            ingredient_result = cursor.fetchall()
+
+            ingredients = [{"purveyor": i[1], "ingredient": i[0]} for i in ingredient_result]
+
+            # Query DB for mapped station_name
+
+            cursor.execute("""SELECT station_name  FROM menu_items_stations
+                           WHERE menu_item_id =?""",(id,))
+            station =[i[0] for i in cursor.fetchall()]
+
+            # Query DB for mapped category_name
+
+            cursor.execute("""SELECT category_name  FROM menu_items_categories
+                           WHERE menu_item_id =?""",(id,))
+            category =[i[0] for i in cursor.fetchall()]
+
+            menu_items.append({
+                                    "item_name": item_name,
+                                    "category": category,
+                                    "prep": prep_list,
+                                    "req_prep": req_prep,  
+                                    "mise_en_place": checklist,
+                                    "ingredients": ingredients,
+                                    "menu_items_stations": station,
+                                    "menu_items_category": category
+                                })
+    conn.close()
+
+        #print(prep_list)
+        #print(checklist)
+        #print(req_prep)
+    #print(menu_items)
+
+    data ={"menu_items": menu_items}
+
+    with open(json_file_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+
+    print("✅ pulled_db_data.json updated!")
 
     pass
 # ------------------------------------------------------------------------------------------

@@ -1,20 +1,24 @@
-Event:  Breann Lydon	
-Date:  Saturday, October 25, 2025
-Account:  Breann Lydon	
-Time:  5:00 PM - 8:00 PM
-Contact:  Breann Lydon	
-Location:  Greenhouse
-Phone:  6313380641	
+
+Event:  WME Fashion Incubator	
+Date:  Tuesday, November 18, 2025
+Account:  WME	
+Time:  6:30 PM - 10:00 PM
+Contact:  Nicholas Griggs-Drane	
+Location:  West Room
+Phone:  804.370.5207	
 Event Type:  Cocktail Reception
-Email:  breelydon9@gmail.com	
-Guests:  85
+Email:  Ngriggsdrane@wmeagency.com	
+Guests:  65
  	
 Account Owner:  Julie Garces	
 Phone/Email:  917-620-6578 / julie.garces@nineorchard.com
 
 menu_items:
 
-beef tartare,
+	
 
-roasted potato,
+Braised Short Rib,
 
+risotto Fritter,
+
+Hamachi Aguachile,

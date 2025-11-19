@@ -2,26 +2,36 @@
     "menu_items":[
 
         {
-            "item_name":"roasted potato",
-            "category":"canapes",
-            "prep": ["braise short rib", "make / sheet / punch - out / bake Arepa","piquillo pepper puree", "piquillo pepper puree","pickled red onion","pick peashoots"],
+            "item_name":"cornbread panzanella",
+            "category":"station",
+            "prep": [ "cut / marinate heirloom tomatoes",
+                "picked basil",
+                "make / portion / toast cornbread",
+                "baby corn", "sliced shallots",
+                "grilled stone fruit"],
             "req_prep": [
                 {
-                    "prep":"",
-                    "am_prep_team":0,
-                    "sous_prep":0,
-                    "category": ""
+                    "prep":"make cornbread",
+                    "am_prep_team":1,
+                    "sous_prep":1,
+                    "category": "station salad"
                 }
             ],
-            "mise_en_place": ["braised short rib", "arepa", "piquillo pepper puree", "pickled red onion","picked pea shoots"],
+            "mise_en_place": ["heirloom tomatoes",
+                "picked basil",
+                "cornbread croutons",
+                "baby corn",
+                "grilled stone fruit", "sliced shallots"],
             "ingredients": [
-                {"pat la frieda":"Prime Beef Chuck Flap Tails"},{"baldor":"instant white corn masa flour"},{"southeast asia market llc":"spicy chili crisp - lgm - 210g. 24 k1202"},
-                {"baldor":"mozzarella shredded wf 5 lb dairy farm of a"}, {"dairyland":"peppers piquillo canned"},{"baldor":"micro pea tendril shoots 8 oz"},{"agri exotic trading":"red onion"}],
-            "menu_items_stations":"",
-            "menu_items_category":"canape"
+                {"baldor":"basil 2.2 lb"}, {"baldor":"corn baby husked guatemala 5 lb"},{"baldor":"heirloom tomatoes"},
+                {"baldor":"peach yellow 1 lyr euro 15 lb"},{"baldor":"shallots peeled 5 lb"}
+              
+            ],
+            "menu_items_stations":"farmer's green market",
+            "menu_items_category":"stations: farmer's green market"
 
 
-            }
+        }
     ]
     
 
