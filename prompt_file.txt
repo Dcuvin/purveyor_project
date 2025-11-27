@@ -1,24 +1,24 @@
 
-Event:  WME Fashion Incubator	
-Date:  Tuesday, November 18, 2025
-Account:  WME	
-Time:  6:30 PM - 10:00 PM
-Contact:  Nicholas Griggs-Drane	
-Location:  West Room
-Phone:  804.370.5207	
-Event Type:  Cocktail Reception
-Email:  Ngriggsdrane@wmeagency.com	
-Guests:  65
+Event:  Chanel
+Date:  Tuesday, December 2, 2025
+Time:  2:30 AM - 5:30 AM
+Contact:  Eamon Tobin	
+Location:  Greenhouse
+Phone:  9174460171	
+Event Type:  Seated Meal
+Email:  eamon.tobin@altana.ai	
+Guests:  10
  	
-Account Owner:  Julie Garces	
-Phone/Email:  917-620-6578 / julie.garces@nineorchard.com
+Account Owner:  Julie Garcés	
+Phone/Email:  / julie@nineorchard.com
 
 menu_items:
 
-	
 
-Braised Short Rib,
+Club Sandwich,
 
-risotto Fritter,
+Tomato & Cheese,
 
-Hamachi Aguachile,
+Grilled Eggplant,
+
+popcorn

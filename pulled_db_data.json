@@ -1,2929 +1,6 @@
 {
     "menu_items": [
-        {
-            "item_name": "oysters",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "shucked oysters",
-                "brunoise shallots",
-                "pull / make Seasonal mignonette",
-                "pull cleaned oyster shells"
-            ],
-            "req_prep": [
-                {
-                    "prep": "shucked oysters",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                },
-                {
-                    "prep": "mignonette base",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                },
-                {
-                    "prep": "clean oyster shells",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "shucked oysters",
-                "mignonette base",
-                "oyster shells",
-                "minced shallots",
-                "crushed ice",
-                "silver coupe trays"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "oyster, loulou belle"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "champagne vinegar"
-                }
-            ],
-            "menu_items_stations": [
-                "raw bar"
-            ],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "beef tartare",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "diced beef tartare",
-                "yuzu-ponzu mayo",
-                "brunoise daikon",
-                "finely cut chives",
-                "egg yolk jam",
-                "mince shallot",
-                "make / portion / fry Sushi rice",
-                "steam / press / portion / bake sushi rice"
-            ],
-            "req_prep": [
-                {
-                    "prep": "slice beef for tartare",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "diced beef",
-                "diced daikon",
-                "yuzu ponzu mayo",
-                "mignonette base",
-                "finely cut chives",
-                "yuzu ponzu mayo"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "prime meats",
-                    "ingredient": "top sirloin prime"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "yuzu juice"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "rice wine vinegar"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sushi rice"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "kewpie"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "daikon"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "fava bean hummus",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "fava bean hummus",
-                "cut / fry lavash strips",
-                "dukkah",
-                "picked chervil",
-                "pickled holland chili"
-            ],
-            "req_prep": [
-                {
-                    "prep": "fava bean hummus",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "fava bean hummus",
-                "rectangle lavash chips",
-                "pickled holland chilis",
-                "dukkah",
-                "picked chervil"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fava beans"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "lavash"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "tahini"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sesame seeds"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "black sesame seeds"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "coriander "
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "dried garlic"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "dried cherries"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "nutritional yeast"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "aleppo"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "ocean trout tartare",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "cure / rinse / mince Ocean trout",
-                "fried rice flakes",
-                "mince shallot",
-                "mince caper",
-                "lemon agrumato oil",
-                "lemon juice",
-                "finely cut chives"
-            ],
-            "req_prep": [
-                {
-                    "prep": "cure steelhead trout fillet",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "ocean trout dice",
-                "mince capers",
-                "mince shallots",
-                "fried rice flakes",
-                "lemon agrumato oil",
-                "picked dill",
-                "trout roe"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "amazon",
-                    "ingredient": "rice flakes"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "steelhead trout"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "capers"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "lemon agrumato"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "caviar & egg",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "creme fraiche gelee",
-                "egg yolk jam",
-                "cut / toast  brioche rounds",
-                "chive baton",
-                "pull caviar"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "creme fraiche gelee",
-                "toasted brioche rounds",
-                "egg yolk jam",
-                "kaluga caviar",
-                "chive batons"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "brioche pullman"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "yolks"
-                },
-                {
-                    "purveyor": "Black Diamond Gourmet inc",
-                    "ingredient": "Caviar Tins, Chinese Kaluga, 200 tin"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "creme fraiche"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "gelatin"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "heavy cream "
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "lobster roll",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "make lobster salad kit",
-                "cut brioche buns",
-                "cook / chop lobster meat"
-            ],
-            "req_prep": [
-                {
-                    "prep": "lobster rolls",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "lobster salad",
-                "brioche buns",
-                "picked chervil"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "frozen lobster meat"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "chevre"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "yuzu juice"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "parsley"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "tarragon"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "creme fraiche"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "radish & goat cheese",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "cut / toast sourdough",
-                "whip herbed goat cheese",
-                "julienne radishes",
-                "julienne pickled radishes",
-                "lemons for zest",
-                "maldon",
-                "evoo"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "toasted sourdough ",
-                "shaved radish",
-                "pickled radish",
-                "herbed goat cheese",
-                "lemons for zest",
-                "evoo ",
-                "389"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "sourdough"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "watermelon radish"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "breakfast radish"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "meyer lemon"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cream cheese"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "crispy burrata",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "fry / cut Puri shells",
-                "butternut squash ecrasse",
-                "olive oil jam",
-                "toasted pepitas",
-                "maldon",
-                "whipped buratta",
-                "make / pull lemon vinaigrette"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "puri shells",
-                "butternut squash mix",
-                "whipped burrata",
-                "olive oil jam",
-                "toasted pepitas",
-                "dried black beans",
-                "lemon vin"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "buratta"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "parsley"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "mint"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "lemon agrumato"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "raccolto olive oil"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "yolks"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "hamachi aguachile",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "portion / slice Hamachi",
-                "pickled red onions",
-                "sliced serrano chili",
-                "cut / fry Tortilla chip",
-                "pick delfino cilantro",
-                "make aguachile dressing",
-                "avocado mousse"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "sliced hamachi",
-                "pickled red onions",
-                "sliced serrano chili",
-                "tortilla chips",
-                "picked delfino cilantro",
-                "aguachile sauce",
-                "avocado mousse"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "hamachi, side, frozen gased"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "la milpa corn tortilla"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "avocado"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "serrano"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cilantro"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "delfino cilantro"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "smoked whitefish",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "kit-out / mix White fish salad",
-                "cut cucumber cups",
-                "trout roe",
-                "picked dill"
-            ],
-            "req_prep": [
-                {
-                    "prep": "clean smoked whitefish",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "whitefish salad",
-                "cucumber cups",
-                "trout roe",
-                "picked dill"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "whitefish salad"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "trout roe"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "persian cucumber"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "dill"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "mayonaise"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "parsley"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "everything gougeres",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "make / bake gougeres",
-                "everything bagel mix",
-                "salmon & chive cream cheese mousse",
-                "finely cut chives"
-            ],
-            "req_prep": [
-                {
-                    "prep": "make gougeres",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "gougeres",
-                "salmon-chive cream cheese mousse"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cream cheese"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "blue hill smoked salmon"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "quinoa falafel",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "make / portion / fry quinoa falafel",
-                "herbed labneh",
-                "brunoise pickled salad",
-                "picked dill"
-            ],
-            "req_prep": [
-                {
-                    "prep": "make / portion  quinoa falafel, 1.25 in scoop",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "picked dill",
-                "quinoa falafel",
-                "herbed labneh",
-                "brunoised pickle salad"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chickpea flour"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "garbanzos"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "parsley"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "coriander "
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "jalapeno"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "peeled garlic"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "labne"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "dill"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "lemons"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "hot house cucumbers"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "beefsteak tomatoes"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sumac"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "red onions"
-                }
-            ],
-            "menu_items_stations": [
-                "crudite & mezze"
-            ],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "caviar hash brown",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "pull caviar",
-                "make / pull mini hash brown ",
-                "whip smoke creme fraiche",
-                "chive baton"
-            ],
-            "req_prep": [
-                {
-                    "prep": "make and portion mini hash brown ",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "kaluga caviar",
-                "chive batons",
-                "fried mini hashbrowns",
-                "whipped smoked creme fraiche"
-            ],
-            "ingredients": [],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "shrimp toast",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "sliced pan de mie",
-                "make shrimp farce",
-                "togarashi aioli",
-                "pick delfino cilantro",
-                "assemble shrimp toast"
-            ],
-            "req_prep": [
-                {
-                    "prep": "make shrimp toast",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "fried shrimp toast",
-                "togarashi aioli",
-                "picked delfino cilantro"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "Frozen peeled shrimp, 31/40, 10lb case"
-                },
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "brioche pullman"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sesame seeds"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "black sesame seeds"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "peeled garlic"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "ginger"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "scallion"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "kewpie"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "togarashi"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "chicken schnitzel",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "make / cook / portion chicken farce",
-                "bread chicken farce",
-                "red cabbage condiment",
-                "red cabbage puree",
-                "finely cut chives"
-            ],
-            "req_prep": [
-                {
-                    "prep": "make chicken nuggets",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                },
-                {
-                    "prep": "cut and portion chicken nuggets, 1 in x 1 in",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                },
-                {
-                    "prep": "bread chicken nuggets",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "canape"
-                }
-            ],
-            "mise_en_place": [
-                "fried chicken schnitzel",
-                "red cabbage condiment",
-                "red cababge puree",
-                "finely cut chives"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "chicken thighs"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "chicken knorr"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "red cabbage"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shredded red cabbage"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "liquid smoke"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "butter"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "panko"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "eggs"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "apple cider vinegar"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "beef tenderloin canape",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "clean / portion strip steak",
-                "horseradish cream",
-                "finely cut chives",
-                "make / defrost Red onion chili crisp",
-                "Make / portion /pan de mie pullman toast"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "rectangle brioche toast",
-                "seared strip loin steaks",
-                "horseradish cream",
-                "red onion chili-crisp"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "brioche pullman"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "red onions"
-                },
-                {
-                    "purveyor": "Pat La Frieda",
-                    "ingredient": "ny strip loin"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "liquid smoke"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "creme fraiche"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "prepared horseradish"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "South East Asia Food Group",
-                    "ingredient": "chili crisp"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "mushroom tartlet",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "duxelle",
-                "cut comte squares",
-                "pickled beech mushroom ",
-                "punch-out / bake Puff pastry",
-                "creme fraiche custard mix"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "mushroom custard",
-                "puffed pastry",
-                "pick thyme",
-                "pickled beech mushroom "
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "le coq puff pastry sheets"
-                },
-                {
-                    "purveyor": "chefs warehouse",
-                    "ingredient": "gruyere"
-                },
-                {
-                    "purveyor": "Tivoli Mushrooms, LLC",
-                    "ingredient": "beech mushrooms"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "truffle paste"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "eggs"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "thyme"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "creme fraiche"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "heavy cream "
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "chickpea beignet",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "make / portion / fry Panisse",
-                "kit-out / mix asapargus gribiche",
-                "asparagus garnish"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "fried panisse",
-                "sauce gribiche mise",
-                "asparagus garnish"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chickpea flour"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "asparagus"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "eggs"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cornichons"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "parsley"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "risotto fritter",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "arancini ",
-                "black truffle cacio e pepe sauce",
-                "shaved pecorino"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "fried arancini",
-                "black truffle cacio e pepe sauce",
-                "shaved parm"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "Frozen Mini Arancini Cacio E Pepe"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "shaved parm"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "heavy cream "
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "braised short rib",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "braised short rib",
-                "make / sheet / punch - out / bake Arepa",
-                "piquillo pepper puree",
-                "pickled red onions",
-                "pick chervil",
-                "finish short rib jus"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "pickled red onions",
-                "braised short rib",
-                "baked arepa ",
-                "piquillo pepper puree",
-                "herb garnish"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Pat La Frieda",
-                    "ingredient": "chuck flap prime 4-6lb ea"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "masarepa"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "red onions"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "piquillo peppers"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "mozarella, shredded"
-                },
-                {
-                    "purveyor": "South East Asia Food Group",
-                    "ingredient": "chili crisp"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "micro pea shoots"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "roasted potatoes",
-            "category": [
-                "passed small plates"
-            ],
-            "prep": [
-                "boil  / smash / fry fingerlings",
-                "grill wild mushroom mix",
-                "vin jaune sauce",
-                "lemon zest",
-                "chopped parsley"
-            ],
-            "req_prep": [
-                {
-                    "prep": "clean and cut mushrooms",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "sherry sabayon",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "passed small plates"
-                }
-            ],
-            "mise_en_place": [
-                "fingerling potatoes",
-                "roasted mixed mushrooms",
-                "vin jaune sauce / sherry sabayon",
-                "lemons for zest",
-                "chopped parsley",
-                "microplane",
-                "pot / rondeau for pasta "
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "gnocchi"
-                },
-                {
-                    "purveyor": "Tivoli Mushrooms, LLC",
-                    "ingredient": "yellow oyster"
-                },
-                {
-                    "purveyor": "Tivoli Mushrooms, LLC",
-                    "ingredient": "maitake mushrooms"
-                },
-                {
-                    "purveyor": "Tivoli Mushrooms, LLC",
-                    "ingredient": "black pearl mushrooms"
-                },
-                {
-                    "purveyor": "Tivoli Mushrooms, LLC",
-                    "ingredient": "chestnut mushrooms"
-                },
-                {
-                    "purveyor": "Tivoli Mushrooms, LLC",
-                    "ingredient": "yellow oyster mushrooms"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "passed small plates"
-            ]
-        },
-        {
-            "item_name": "orecchiette pomodoro",
-            "category": [
-                "passed small plates"
-            ],
-            "prep": [
-                "blanch orecchiette",
-                "pomodoro sauce",
-                "picked basil"
-            ],
-            "req_prep": [
-                {
-                    "prep": "pomodoro sauce",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [
-                "orecchiette",
-                "pomodoro sauce",
-                "picked basil",
-                "pot / rondeau for pasta "
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "orecchiette"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "dop san marzano"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "parmiggiano reggiano"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "basil"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "passed small plates"
-            ]
-        },
-        {
-            "item_name": "cavatelli",
-            "category": [
-                "passed small plates",
-                "plated starter",
-                "family starter"
-            ],
-            "prep": [
-                "blanch cavatelli",
-                "basil puree",
-                "beurre monte"
-            ],
-            "req_prep": [
-                {
-                    "prep": "basil puree",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [
-                "broccoli pesto",
-                "pecorino bread crumbs",
-                "pot / rondeau for pasta ",
-                "cavatelli"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "basil"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "cavatelli"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "broccoli"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "parmiggiano reggiano"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "panko"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "butter"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "passed small plates",
-                "plated starter",
-                "family starter"
-            ]
-        },
-        {
-            "item_name": "corner bar burger sliders",
-            "category": [
-                "passed small plates"
-            ],
-            "prep": [
-                "cut brioche buns",
-                "tray-out / cook Beef patties 2oz",
-                "sliced cheddar",
-                "bread & butter pickles",
-                "smoked onion aioli"
-            ],
-            "req_prep": [
-                {
-                    "prep": "tray-out and re-form Beef patties 2oz",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "sliced cheddar",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "bread & butter pickles",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "smoked onion aioli",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                }
-            ],
-            "mise_en_place": [
-                "mini brioche buns",
-                "beef patties",
-                "sliced cheddar",
-                "bread & butter pickles",
-                "smoked onion aioli",
-                "skewers for sliders"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Pat La Frieda",
-                    "ingredient": "Original Lafrieda Beef Burger Mix, 2 oz slider patties, 2.5in diameter"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sliced cheddar"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "mini brioche buns"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "passed small plates"
-            ]
-        },
-        {
-            "item_name": "fried chicken slider",
-            "category": [
-                "passed small plates"
-            ],
-            "prep": [
-                "cut / marinade / bread Chicken thighs",
-                "fried chicken dry mix",
-                "lime yogurt",
-                "chive biscuits",
-                "sliced cheddar",
-                "bread & butter pickles"
-            ],
-            "req_prep": [
-                {
-                    "prep": "cut chicken thighs, 2in x 2in squares",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "6% brine cut chicken thighs",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "fried chicken dry mix",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "bread / fry chicken sliders",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "chive biscuits",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "passed small plates"
-                }
-            ],
-            "mise_en_place": [
-                "fried chicken for sliders",
-                "lime yogurt",
-                "chive biscuits",
-                "skewers for sliders"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "chicken thighs"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "labne"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "passed small plates"
-            ]
-        },
-        {
-            "item_name": "lamb chop",
-            "category": [
-                "passed small plates"
-            ],
-            "prep": [
-                "clean and portion lamb racks",
-                "cumin rub",
-                "whip labneh",
-                "picked mint"
-            ],
-            "req_prep": [
-                {
-                    "prep": "clean lamb racks",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "grill lamb racks",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "passed small plates"
-                }
-            ],
-            "mise_en_place": [
-                "lamb racks",
-                "whipped labneh"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Pat La Frieda",
-                    "ingredient": "lamb rack"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cumin"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "panko"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "labne"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "mint"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "passed small plates"
-            ]
-        },
-        {
-            "item_name": "flatbread",
-            "category": [
-                "passed small plates"
-            ],
-            "prep": [
-                "butternut squash ecrasse",
-                "smoked mozarella",
-                "sliced red onion",
-                "picked sage",
-                "picked mixed herbs"
-            ],
-            "req_prep": [
-                {
-                    "prep": "cut and portion flatbreads",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "green garlic pesto",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "english pea cream",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "passed small plates"
-                }
-            ],
-            "mise_en_place": [
-                "toasted pepitas",
-                "smoked mozarella",
-                "sage",
-                "flatbread"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "frozen flatbread"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "green garlic"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "chevre"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "english peas"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "passed small plates"
-            ]
-        },
-        {
-            "item_name": "hamachi crudo",
-            "category": [
-                "plated starter",
-                "stations: raw bar",
-                "family starter",
-                "plated entree"
-            ],
-            "prep": [
-                "clean / portion / slice Hamachi",
-                "yuzu-mandarin vinaigrette",
-                "black onion powder",
-                "boil / dehydrate / fry   Amaranth",
-                "sliced shallot rings",
-                "mandarin agrumato"
-            ],
-            "req_prep": [
-                {
-                    "prep": "crispy amaranth",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "starter"
-                }
-            ],
-            "mise_en_place": [
-                "sliced hamachi",
-                "yuzu-mandarin vinaigrette",
-                "crispy black amaranth",
-                "sliced shallot rings",
-                "mandarin agrumato oil"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "hamachi, side, frozen gased"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "mandarin puree"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "mandarin agrumato"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated starter",
-                "stations: raw bar",
-                "family starter",
-                "plated entree"
-            ]
-        },
-        {
-            "item_name": "tuna tartare",
-            "category": [
-                "plated starter",
-                "passed small plates"
-            ],
-            "prep": [
-                "clean / dice   Tuna loin",
-                "yuzu-ponzu mayo",
-                "finely cut chives",
-                "thinly shaved watermelon radish",
-                "small diced watermelon radish"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "tuna loin dice",
-                "whipped labneh",
-                "pea ecrasse",
-                "lemon agrumato oil"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "yellow fin tuna loin top loin"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "labne"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "lemon agrumato"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "kewpie"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated starter",
-                "passed small plates"
-            ]
-        },
-        {
-            "item_name": "golden beets",
-            "category": [
-                "plated starter"
-            ],
-            "prep": [
-                "whipped sheeps milk feta",
-                "roasted / cut   Golden beets",
-                "cut citrus",
-                "picked mizuna",
-                "beet liquid vinaigrette",
-                "red wine vinaigrette"
-            ],
-            "req_prep": [
-                {
-                    "prep": "whipped sheeps milk feta",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "starter"
-                },
-                {
-                    "prep": "roasted / cut   Golden Beets",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "starter"
-                }
-            ],
-            "mise_en_place": [
-                "whipped sheeps milk feta",
-                "golden beets",
-                "strawberries",
-                "sliced citrus",
-                "assorted yogurt cups",
-                "roasted broccoli"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "golden beets"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "feta"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "strawberries"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "mizuna"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated starter"
-            ]
-        },
-        {
-            "item_name": "beef tenderloin ",
-            "category": [
-                "plated entree"
-            ],
-            "prep": [
-                "clean / tie   Tenderloin",
-                "wash / cut   Swiss chard",
-                "make polenta",
-                "bordelaise sauce",
-                "brown butter"
-            ],
-            "req_prep": [
-                {
-                    "prep": "clean / tie  Beef Tenderloin",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                },
-                {
-                    "prep": "wash / cut   Swiss chard",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [
-                "cheddar pieces",
-                "sliced grapes"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "swiss chard"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "polenta"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "veal demi"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated entree"
-            ]
-        },
-        {
-            "item_name": "halibut",
-            "category": [
-                "plated entree"
-            ],
-            "prep": [
-                "clean / portion( 4oz) /  brine (10% for 30min)  Halibut ",
-                "fumet blanc",
-                "picked dill",
-                "wilted spinach",
-                "cut / braise fingerling potatoes",
-                "dill oil",
-                "olive oil aioli"
-            ],
-            "req_prep": [
-                {
-                    "prep": "portion / 10 % brine Halibut (4oz portions )",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                },
-                {
-                    "prep": "cook and clean U15 shrimp",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "entree"
-                },
-                {
-                    "prep": "clean white fish bones",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "sauce prep"
-                },
-                {
-                    "prep": "bouillabaisse sauce",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "sauce prep"
-                },
-                {
-                    "prep": "olive oil aioli",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "mussels"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "green pattypan squash"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fingerling potatoes"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "fish bones"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated entree"
-            ]
-        },
-        {
-            "item_name": "lasagna",
-            "category": [
-                "plated entree"
-            ],
-            "prep": [
-                "make / sheet / blanch Lasagna pasta",
-                "make duxelle",
-                "mushroom ricotta",
-                "lasagna chimichurri",
-                "blanch / torch Broccolini"
-            ],
-            "req_prep": [
-                {
-                    "prep": "make pasta for veg lasagna",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                },
-                {
-                    "prep": "make duxelle",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                },
-                {
-                    "prep": "mushroom ricotta",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                },
-                {
-                    "prep": "lasagna chimichurri",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [],
-            "ingredients": [
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "ricotta"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "crimini mushrooms"
-                },
-                {
-                    "purveyor": "chefs warehouse",
-                    "ingredient": "spirulina"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "00 caputo flour"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated entree"
-            ]
-        },
-        {
-            "item_name": "ocean trout carpaccio",
-            "category": [
-                "plated starter",
-                "stations: raw bar",
-                "family starter"
-            ],
-            "prep": [
-                "mince shallot",
-                "mince caper",
-                "lemon agrumato oil",
-                "lemon juice",
-                "cure / pound ocean trout carpaccio",
-                "cut meyer lemon cheeks",
-                "pull trout roe"
-            ],
-            "req_prep": [
-                {
-                    "prep": "make trout carpaccio portions",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "starter"
-                }
-            ],
-            "mise_en_place": [
-                "minced shallots",
-                "mince capers",
-                "lemon agrumato oil",
-                "meyer lemons for zest",
-                "microplane"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "steelhead trout"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "trout roe"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "meyer lemon"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "lemon agrumato"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "capers"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated starter",
-                "stations: raw bar",
-                "family starter"
-            ]
-        },
-        {
-            "item_name": "cauliflower steak",
-            "category": [
-                "plated entree"
-            ],
-            "prep": [
-                "make vegan cauliflower-tahini puree",
-                "   kit-out / mix cauliflower cous cous",
-                "salsa verde",
-                "cut / shallow fry cauliflower steaks"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "cauliflower steaks",
-                "cauliflower-tahini puree",
-                "cauliflower cous-cous"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "broccolini"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "cauliflower"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "coconut milk"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "persian cucumber"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "parsley"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated entree"
-            ]
-        },
-        {
-            "item_name": "roast chicken",
-            "category": [
-                "plated entree"
-            ],
-            "prep": [
-                "clean  / 6% brine / cook airline lunch chickens",
-                "6% brine / roast / pull chicken legs for fricasse",
-                "cook farro",
-                "carrot puree",
-                "glazed carrots",
-                "small dice / sweat  red pepper",
-                "sherry sabayon",
-                "finely cut chives",
-                "mustard frills"
-            ],
-            "req_prep": [
-                {
-                    "prep": "6 % brine / cook airline chickens",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "entree"
-                },
-                {
-                    "prep": "6% brine / cook chicken quarters (legs & thighs)",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "entree"
-                },
-                {
-                    "prep": "cook farro",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                },
-                {
-                    "prep": "cut corn off the cob",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                },
-                {
-                    "prep": "sherry sabayon",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [
-                "airliner chickens",
-                "chicken fricasse",
-                "farro",
-                "corn pudding",
-                "sauteed corn",
-                "marinated peppers",
-                "sherry sabayon",
-                "pea tendrils",
-                "finely cut chives",
-                "isi canister",
-                "pot / rondeau for farro",
-                "immersion circulator",
-                "induction burner"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Pat La Frieda",
-                    "ingredient": "Chicken French Cut Airline Cutlets - 10-12 oz Bell &Evans"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "corn"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "red pepper"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "pea tendrils"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "farro"
-                },
-                {
-                    "purveyor": "Pat La Frieda",
-                    "ingredient": "Bell & Evans Chicken Bone-in Quarters"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated entree"
-            ]
-        },
-        {
-            "item_name": "bread and butter",
-            "category": [
-                "sides"
-            ],
-            "prep": [
-                "assorted bread rolls",
-                "gluten-free bread",
-                "butter ramekins"
-            ],
-            "req_prep": [
-                {
-                    "prep": "butter ramekins",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "bread service"
-                }
-            ],
-            "mise_en_place": [],
-            "ingredients": [
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "DZ Light Roll Mini Long"
-                },
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "DZ Rustic Olive Long Roll"
-                },
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "DZ SF - style Round Rolls"
-                },
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "DZ Health Rolls"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "butter"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "sides"
-            ]
-        },
-        {
-            "item_name": "ribeye loin",
-            "category": [
-                "plated entree"
-            ],
-            "prep": [
-                "clean ribeye loin",
-                "sauce barigoule",
-                "clean / blanch / grill broccolini",
-                "fennel pollen",
-                "pull / make garlic miso rub",
-                "confit / glaze shallots"
-            ],
-            "req_prep": [
-                {
-                    "prep": "clean ribeye loin",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station entrees"
-                },
-                {
-                    "prep": "sauce barigoule",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station entrees"
-                },
-                {
-                    "prep": "roasted garlic rub",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [
-                "ribeye loin",
-                "treviso chimichurri",
-                "grilled lemon halves",
-                "confit shallots",
-                "chicken jus"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Pat La Frieda",
-                    "ingredient": "beef prime ribeye fresh (ribeye loin)"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "trevisano"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "kale"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "miso"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "plated entree"
-            ]
-        },
-        {
-            "item_name": "green salad",
-            "category": [
-                "plated starter",
-                "lunch stations: sandwiches",
-                "breakfast station",
-                "a taste of nine orchard",
-                "family starter"
-            ],
-            "prep": [
-                "clean mixed greens",
-                "make / pull citrus-tahini vinaigrette",
-                "pull / make crispy quinoa za'atar",
-                "slice cucumbers"
-            ],
-            "req_prep": [
-                {
-                    "prep": "clean mixed greens",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "starter"
-                },
-                {
-                    "prep": "citrus-tahini vinaigrette",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "starter"
-                },
-                {
-                    "prep": "crispy quinoa za'atar",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "starter"
-                }
-            ],
-            "mise_en_place": [
-                "mixed greens",
-                "citrus-tahini vinaigrette",
-                "sliced cucumbers",
-                "crispy quinoa za'atar"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "baby lettuce mix"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "persian cucumber"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "quinoa"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "za'atar"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "tahini"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "lemon agrumato"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "mandarin agrumato"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sesame seeds"
-                }
-            ],
-            "menu_items_stations": [
-                "breakfast sandwich station",
-                " sandwiches",
-                "hearty salads",
-                "a taste of nine orchard"
-            ],
-            "menu_items_category": [
-                "plated starter",
-                "lunch stations: sandwiches",
-                "breakfast station",
-                "a taste of nine orchard",
-                "family starter"
-            ]
-        },
-        {
-            "item_name": "vegetable aguachile",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "brunoise mexican pickled salad",
-                "sliced serrano chili",
-                "cut / fry Tortilla chip",
-                "pick delfino cilantro",
-                "make aguachile dressing",
-                "avocado mousse"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "tortilla chips",
-                "picked delfino cilantro",
-                "aguachile sauce",
-                "brunoise mexican pickle salad",
-                "avocado mousse"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "persian cucumber"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cilantro"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "avocado"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "serrano"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "la milpa corn tortilla"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
-        {
-            "item_name": "broccolini",
-            "category": [
-                "lunch stations: hearty salads",
-                "a taste of nine orchard",
-                "family sides"
-            ],
-            "prep": [
-                "trim / blanch broccolini",
-                "slice garlic",
-                "make / pull lemon vinaigrette",
-                "make chili garlic oil"
-            ],
-            "req_prep": [
-                {
-                    "prep": "trim / blanch broccolini",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station sides "
-                }
-            ],
-            "mise_en_place": [
-                "broccolini",
-                "crispy garlic chili oil",
-                "lemon vin"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "broccolini"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "peeled garlic"
-                }
-            ],
-            "menu_items_stations": [
-                "hearty salads",
-                "a taste of nine orchard"
-            ],
-            "menu_items_category": [
-                "lunch stations: hearty salads",
-                "a taste of nine orchard",
-                "family sides"
-            ]
-        },
-        {
-            "item_name": "dry-aged ribeye",
-            "category": [
-                "family entree"
-            ],
-            "prep": [
-                "pull / sear  28-day dry aged ribeye steaks",
-                "confit / glaze shallots",
-                "sauce barigoule",
-                "pull / make garlic miso rub"
-            ],
-            "req_prep": [
-                {
-                    "prep": "clean ribeye loin",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "entree"
-                },
-                {
-                    "prep": "sauce barigoule",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station entrees"
-                },
-                {
-                    "prep": "roasted garlic rub",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [
-                "28-day dry aged ribeye steaks",
-                "garlic miso rub",
-                "treviso chimichurri"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "trevisano"
-                },
-                {
-                    "purveyor": "Pat La Frieda",
-                    "ingredient": "Dry-Aged Ribeye 28-day 28oz individually vacuum sealed"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "whole garlic"
-                }
-            ],
-            "menu_items_stations": [
-                "a taste of nine orchard"
-            ],
-            "menu_items_category": [
-                "family entree"
-            ]
-        },
-        {
-            "item_name": "roasted fingerling potatoes",
-            "category": [
-                "family sides",
-                "lunch stations: hearty salads"
-            ],
-            "prep": [
-                "boil  / smash / fry fingerlings",
-                "paprika vinaigrette ",
-                "confit diced shallots",
-                "make / pull pickled mustard seeds",
-                "chopped parsley"
-            ],
-            "req_prep": [
-                {
-                    "prep": "boil  / smash  fingerlings",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "pickled mustard seeds",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station sides "
-                }
-            ],
-            "mise_en_place": [
-                "fingerling potatoes",
-                "confit shallots",
-                "pickeld mustard seeds",
-                "smoked paprika vinaigrette",
-                "chopped parsley"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fingerling potatoes"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "paprika"
-                },
-                {
-                    "purveyor": "chefs warehouse",
-                    "ingredient": "mustard seed"
-                }
-            ],
-            "menu_items_stations": [
-                "hearty salads"
-            ],
-            "menu_items_category": [
-                "family sides",
-                "lunch stations: hearty salads"
-            ]
-        },
-        {
-            "item_name": "grilled branzino",
-            "category": [
-                "a taste of nine orchard",
-                "family entree"
-            ],
-            "prep": [
-                "pin-bone / tray-out branzino",
-                "make / pull olive oil aioli",
-                "make / pull lemon caper condiment",
-                "cut meyer lemon cheeks",
-                "brunoise shallots"
-            ],
-            "req_prep": [
-                {
-                    "prep": "pinbone and tray-out branzino fillets",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station entrees"
-                },
-                {
-                    "prep": "clean and butterfly branzino",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station entrees"
-                },
-                {
-                    "prep": "olive oil aioli",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station entrees"
-                },
-                {
-                    "prep": "lemon caper condiment",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station entrees"
-                }
-            ],
-            "mise_en_place": [
-                "branzino",
-                "olive oil aioli",
-                "lemon caper condiment",
-                "meyer lemon cheeks"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "Branzino Butterflied, Head Split, no pin bones"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "capers"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "parsley"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "Pitted Castelvetrano Olives in Brine"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "meyer lemon"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "a taste of nine orchard",
-                "family entree"
-            ]
-        },
-        {
-            "item_name": "shrimp cocktail",
-            "category": [
-                "passed small plates"
-            ],
-            "prep": [
-                "clean / steam shrimp",
-                "horseradish cocktail sauce"
-            ],
-            "req_prep": [
-                {
-                    "prep": "cook and clean U15 shrimp",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "horseradish cocktail sauce",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                }
-            ],
-            "mise_en_place": [
-                "steamed U15 shrimp",
-                "horseradish cocktail sauce"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "U15 mexican white frozen shrimp"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "passed small plates"
-            ]
-        },
-        {
-            "item_name": "charred broccoli salad",
-            "category": [
-                "passed small plates"
-            ],
-            "prep": [
-                "cut and roast broccoli florets",
-                "break cheddar into pieces",
-                "slice grapes",
-                "toasted almonds",
-                "pickled red onions",
-                "buttermilk vinaigrette"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "picked basil",
-                "heirloom tomatoes",
-                "raspberry vinegar",
-                "toasted almonds",
-                "pickled red onions",
-                "buttermilk vinaigrette"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "basil"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "raspberries"
-                }
-            ],
-            "menu_items_stations": [
-                " farmer's green market"
-            ],
-            "menu_items_category": [
-                "passed small plates"
-            ]
-        },
-        {
-            "item_name": "shaved brussels sprouts & baby kale salad",
-            "category": [
-                "lunch stations: hearty salads",
-                "stations: farmer's green market"
-            ],
-            "prep": [
-                "make / pull citrus-tahini vinaigrette",
-                "shaved brussels sprouts",
-                "baby kale",
-                "cut citrus fruit",
-                "grated pecorino",
-                "toasted almonds"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "citrus-tahini vinaigrette",
-                "shaved brussels",
-                "baby kale",
-                "cut citrus",
-                "grated pecorino",
-                "toasted almonds"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shaved brussels"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "baby kale"
-                },
-                {
-                    "purveyor": "NATOORA",
-                    "ingredient": "cara cara oranges"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sliced almonds"
-                }
-            ],
-            "menu_items_stations": [
-                "hearty salads",
-                " farmer's green market"
-            ],
-            "menu_items_category": [
-                "lunch stations: hearty salads",
-                "stations: farmer's green market"
-            ]
-        },
-        {
-            "item_name": "avocado tartine",
-            "category": [],
-            "prep": [
-                "cut / toast sourdough",
-                "pick chervil",
-                "toasted almonds",
-                "slice avocado",
-                "whip cream cheese",
-                "shaved vegetables"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "sliced avocado",
-                "whipped cream cheese",
-                "sourdough",
-                "shaved veggies"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "avocado"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "sourdough"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": []
-        },
-        {
-            "item_name": "steamed salmon",
-            "category": [],
-            "prep": [
-                "portion 6oz / 10% brine steelhead trout fillet",
-                "cauliflower puree",
-                "cut / roast cauliflower florets",
-                "cut castelvetrano olives",
-                "toasted almonds"
-            ],
-            "req_prep": [
-                {
-                    "prep": "portion / 10% brine steelhead trout fillet (no skin, 4oz)",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "lunch station"
-                }
-            ],
-            "mise_en_place": [
-                "toasted almonds",
-                "steelhead trout portions",
-                "cauliflower puree",
-                "cauliflower florets",
-                "castelvetrano olives"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "steelhead trout"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sliced almonds"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "cauliflower"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "Pitted Castelvetrano Olives in Brine"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": []
-        },
-        {
-            "item_name": "cornbread panzanella",
-            "category": [
-                "stations: farmer's green market"
-            ],
-            "prep": [
-                "cut / marinate heirloom tomatoes",
-                "picked basil",
-                "make / portion / toast cornbread",
-                "baby corn",
-                "grilled stone fruit"
-            ],
-            "req_prep": [
-                {
-                    "prep": "make cornbread",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "starter"
-                }
-            ],
-            "mise_en_place": [
-                "heirloom tomatoes",
-                "picked basil",
-                "cornbread croutons",
-                "baby corn",
-                "grilled stone fruit"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "basil"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "baby corn"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "peaches"
-                }
-            ],
-            "menu_items_stations": [
-                " farmer's green market"
-            ],
-            "menu_items_category": [
-                "stations: farmer's green market"
-            ]
-        },
-        {
-            "item_name": "shaved brussels sprouts",
-            "category": [],
-            "prep": [
-                "shaved brussels sprouts",
-                "toasted almonds",
-                "sliced green apple",
-                "shaved manchego",
-                "green goddess dressing"
-            ],
-            "req_prep": [
-                {
-                    "prep": "green goddess dressing",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                }
-            ],
-            "mise_en_place": [
-                "shaved brussels",
-                "toasted almonds",
-                "sliced green apple",
-                "shaved manchego",
-                "green goddess dressing"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shaved brussels"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sliced almonds"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "green apples"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "manchego"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": []
-        },
+    
         {
             "item_name": "grilled summer beans",
             "category": [
@@ -2938,23 +15,12 @@
             ],
             "req_prep": [
                 {
-                    "prep": "clean haricot verts",
-                    "am_prep_team": 1,
+                    "prep": "",
+                    "am_prep_team": 0,
                     "sous_prep": 0,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "clean yellow wax beans",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "buttermilk vinaigrette",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station sides "
+                    "category": ""
                 }
+                
             ],
             "mise_en_place": [
                 "shaved parm",
@@ -2964,16 +30,16 @@
             ],
             "ingredients": [
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "haricot vert"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "bean french haricot vert 5 lb"
                 },
                 {
                     "purveyor": "baldor",
-                    "ingredient": "1 10lb"
+                    "ingredient": "bean wax yellow 10 lb"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cherry tomatoes"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "tomato cherry honey bombs 8x12 oz sunset"
                 }
             ],
             "menu_items_stations": [
@@ -2995,16 +61,10 @@
             ],
             "req_prep": [
                 {
-                    "prep": "clean asparagus",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "make asparagus marinade",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station sides "
+                    "prep": "",
+                    "am_prep_team": 0,
+                    "sous_prep": 0,
+                    "category": ""
                 }
             ],
             "mise_en_place": [
@@ -3015,7 +75,7 @@
             "ingredients": [
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cherry tomatoes"
+                    "ingredient": "tomato cherry honey bombs 8x12 oz sunset"
                 }
             ],
             "menu_items_stations": [
@@ -3025,68 +85,7 @@
                 "stations: farmer's green market"
             ]
         },
-        {
-            "item_name": "bread & butter",
-            "category": [
-                "a taste of nine orchard"
-            ],
-            "prep": [
-                "cut sourdough",
-                "whipped butter",
-                "cleaned radishes",
-                "cornichons",
-                "anchovy-shallot relish"
-            ],
-            "req_prep": [
-                {
-                    "prep": "clean and quarter radishes",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "lemon caper condiment",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                }
-            ],
-            "mise_en_place": [
-                "cut sourdough",
-                "whipped butter",
-                "cleaned radishes",
-                "cornichons",
-                "anchovy-shallot relish"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "sourdough"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "breakfast radish"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "butter"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cornichons"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "anchovy"
-                }
-            ],
-            "menu_items_stations": [
-                "a taste of nine orchard"
-            ],
-            "menu_items_category": [
-                "a taste of nine orchard"
-            ]
-        },
+        
         {
             "item_name": "grilled chicken ",
             "category": [
@@ -3147,7 +146,7 @@
             "prep": [
                 "sherry vinaigrette / sherry sabayon",
                 "clean / grill mixed mushrooms",
-                "sheep's milk dumpling"
+                "finely chopped parsley"
             ],
             "req_prep": [
                 {
@@ -3155,34 +154,36 @@
                     "am_prep_team": 1,
                     "sous_prep": 0,
                     "category": "station sides "
-                },
-                {
-                    "prep": "sherry sabayon",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station sides "
                 }
             ],
             "mise_en_place": [
                 " mixed mushrooms",
-                "sherry vinaigrette / sherry sabayon"
+                "sherry vinaigrette"
             ],
             "ingredients": [
                 {
-                    "purveyor": "Tivoli Mushrooms, LLC",
+                    "purveyor": "tivoli mushrooms llc",
                     "ingredient": "maitake mushrooms"
                 },
                 {
-                    "purveyor": "Tivoli Mushrooms, LLC",
-                    "ingredient": "black pearl mushrooms"
+                    "purveyor": "tivoli mushrooms llc",
+                    "ingredient": "shiitake mushrooms"
                 },
                 {
-                    "purveyor": "Tivoli Mushrooms, LLC",
+                    "purveyor": "tivoli mushrooms llc",
                     "ingredient": "chestnut mushrooms"
                 },
                 {
-                    "purveyor": "Tivoli Mushrooms, LLC",
-                    "ingredient": "yellow oyster mushrooms"
+                    "purveyor": "tivoli mushrooms llc",
+                    "ingredient": "oyster mushrooms - blue"
+                },
+                {
+                    "purveyor": "tivoli mushrooms llc",
+                    "ingredient": "oyster mushrooms - yellow"
+                },
+                {
+                    "purveyor": "tivoli mushrooms llc",
+                    "ingredient": " oyster mushrooms - black pearl "
                 }
             ],
             "menu_items_stations": [
@@ -3204,7 +205,6 @@
                 "cook farro",
                 "cook bulgur",
                 "cut / roast mulitcolor carrots",
-                "pick mizuna",
                 "make / pull almond dukkah",
                 "make / pull carrot vin",
                 "pitted dates"
@@ -3212,31 +212,31 @@
             "req_prep": [
                 {
                     "prep": "whipped sheeps milk feta",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
                 {
                     "prep": "cook quinoa",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
                 {
                     "prep": "cook farro",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
                 {
                     "prep": "cook bulgur",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
                 {
                     "prep": "cut and roast mulitcolor carrots",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
@@ -3248,7 +248,7 @@
                 },
                 {
                     "prep": "pitted dates",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 }
@@ -3259,31 +259,37 @@
                 "cooked farro",
                 "cooked bulgur",
                 "whipped feta",
-                "mizuna",
                 "carrot vin ",
-                "pitted dates",
-                "egg mix"
-            ],
+                "pitted dates"
+                        ],
             "ingredients": [
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "multi-color carrots"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "mixed colored baby carrots"
                 },
                 {
-                    "purveyor": "Dairyland",
-                    "ingredient": "bulgur"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "bulgur wheat coarse box 10 lb"
                 },
                 {
                     "purveyor": "baldor",
                     "ingredient": "carrot juice"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "dates"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "large medjool dates"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "almonds"
+                    "ingredient": "feta valbreso sheep french"
+                },
+                {
+                    "purveyor": "Dairyland",
+                    "ingredient": "quinoa red conventional"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "farro semi pearled bag 11 lb"
                 }
             ],
             "menu_items_stations": [
@@ -3315,20 +321,20 @@
             "mise_en_place": [
                 "finely cut chives",
                 "creme fraiche",
-                "granola"
+                "egg mix"
             ],
             "ingredients": [
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "creme fraiche"
+                    "ingredient": "creme fraiche grand reserve"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
+                    "ingredient": "chives 2.2 lb"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "eggs"
+                    "ingredient": "eggs large cage free brown a"
                 }
             ],
             "menu_items_stations": [
@@ -3339,56 +345,7 @@
                 "breakfast station"
             ]
         },
-        {
-            "item_name": "ny strip steak",
-            "category": [
-                "canape"
-            ],
-            "prep": [
-                "clean / portion strip steak",
-                "horseradish cream",
-                "Make / portion /pan de mie pullman toast",
-                "finely cut chives",
-                "make / defrost Red onion chili crisp"
-            ],
-            "req_prep": [],
-            "mise_en_place": [
-                "seared strip loin steaks",
-                "horseradish cream",
-                "rectangle brioche toast",
-                "finely cut chives"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "prime meats",
-                    "ingredient": "top sirloin prime"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "prepared horseradish"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "creme fraiche"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "red onions"
-                },
-                {
-                    "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "brioche pullman"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "canape"
-            ]
-        },
+        
         {
             "item_name": "granola",
             "category": [
@@ -3396,10 +353,10 @@
             ],
             "prep": [
                 "pull granola",
-                "clean and sort blueberries",
-                "clean and sort raspberries",
-                "clean and sort blackberries",
-                "portion family style yogurt",
+                "clean / sort blueberries",
+                "clean / sort raspberries",
+                "clean / sort blackberries",
+                "portion family style / individual yogurt",
                 "honey"
             ],
             "req_prep": [],
@@ -3413,20 +370,24 @@
             ],
             "ingredients": [
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "blueberries"
+                    "purveyor": "agri exotic trading",
+                    "ingredient": "blueberry 12 x1 2 p"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "blackberries"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "blackberries 12x6 oz driscoll"
+                },
+                {
+                    "purveyor": "agri exotic trading",
+                    "ingredient": "raspberry - driscoll"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "honey clover 5 lb"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "honey"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "rolled oats"
+                    "ingredient": "rolled oats organic bob s"
                 }
             ],
             "menu_items_stations": [
@@ -3444,33 +405,27 @@
             ],
             "prep": [
                 "make / pull overnight oats",
-                "slice banana",
-                "grated coconut",
+                "toasted coconut",
                 "coca nibs"
             ],
             "req_prep": [],
             "mise_en_place": [
                 "overnight oats",
-                "sliced banana",
                 "grated coconut",
                 "coca nibs"
             ],
             "ingredients": [
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chia seed"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "banana"
+                    "purveyor": "dairyland ",
+                    "ingredient": "chia seed blk"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "dessicated coconut"
+                    "ingredient": "coconut chips bazzini dessicat"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "coca nibs"
+                    "ingredient": "cocoa nibs 1 kg bag valrhona"
                 }
             ],
             "menu_items_stations": [
@@ -3491,7 +446,7 @@
             "req_prep": [
                 {
                     "prep": "par-cook applewood smoked bacon",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "breakfast station"
                 }
@@ -3502,7 +457,7 @@
             "ingredients": [
                 {
                     "purveyor": "Pat La Frieda",
-                    "ingredient": "Applewood Smoked Bacon, Sliced Nueske 10/12-10lb"
+                    "ingredient": "nueske applewood smoked pork slab bacon  "
                 }
             ],
             "menu_items_stations": [
@@ -3519,9 +474,9 @@
             ],
             "prep": [
                 "large dice pineapple",
-                "large dice melon",
-                "clean and pick grapes",
-                "large dice kiwi"
+                "large dice cantaloupe melon",
+                "clean and pick red grapes",
+                "large dice honeydew"
             ],
             "req_prep": [],
             "mise_en_place": [
@@ -3530,7 +485,19 @@
             "ingredients": [
                 {
                     "purveyor": "baldor",
-                    "ingredient": "seasonal fruits for sliced fruit plate"
+                    "ingredient": "honeydew 6 ct"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "cantaloupe 9 ct"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "mini honeyglow pineapples"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "grapes red 5 lb"
                 }
             ],
             "menu_items_stations": [
@@ -3559,10 +526,10 @@
                 }
             ],
             "mise_en_place": [
-                "fried hashbrowns"
+                "fried hashbrowns 80g"
             ],
-            "ingredients": [],
-            "menu_items_stations": [],
+            "ingredients": [{"purveyor":"baldor", "ingredient": "potato russet 80 ct org"}],
+            "menu_items_stations": ["breakfast station"],
             "menu_items_category": [
                 "breakfast station"
             ]
@@ -3581,15 +548,27 @@
             ],
             "ingredients": [
                 {
+                    "purveyor": "agri exotic trading",
+                    "ingredient": "baby gala apple v"
+                },
+                {
+                    "purveyor": "agri exotic trading",
+                    "ingredient": "banana green tip-5lbs"
+                }, 
+                {
                     "purveyor": "baldor",
-                    "ingredient": "assorted whole fruit"
+                    "ingredient": "pears bartlett 80 ct"
+                }, 
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "grapes red seedless med lg 18 lb "
                 }
             ],
             "menu_items_stations": [
-                "sweet & savory snacks"
+                "breakfast station","sweet & savory snacks", "continental breakfast"
             ],
             "menu_items_category": [
-                "breakfast station"
+                "breakfast station", "continental breakfast","sweet & savory snacks"
             ]
         },
         {
@@ -3606,8 +585,16 @@
             ],
             "ingredients": [
                 {
-                    "purveyor": "amazon.com",
-                    "ingredient": "assorted protein bars"
+                    "purveyor": "wb mason",
+                    "ingredient": "rx bar protein choco sea salt 12 - 1.83 oz 6ct"
+                },
+                {
+                    "purveyor": "wb mason",
+                    "ingredient": "rx bar peanut butter protein bar 1.83 oz. 12 bx"
+                },
+                {
+                    "purveyor": "wb mason",
+                    "ingredient": "rx bar protein blueberry 12 - .83 oz 6ct "
                 }
             ],
             "menu_items_stations": [],
@@ -3633,34 +620,10 @@
             ],
             "req_prep": [
                 {
-                    "prep": "cut persian cucumbers",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cut tomatoes",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "slice red onion",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cut castelvetrano olives",
+                    "prep": "",
                     "am_prep_team": 0,
                     "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "shave fennel",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
+                    "category": ""
                 }
             ],
             "mise_en_place": [
@@ -3673,8 +636,28 @@
             ],
             "ingredients": [
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fennel"
+                    "purveyor": "baldor",
+                    "ingredient": "seed fennel 1 lb"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "tomato beefsteak large 1 lyr 15 lb"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "mint 2.2 lb"
+                },
+                {
+                    "purveyor": "agri exotic trading",
+                    "ingredient": "red onions-5lbs"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "olives castelvetrano pitted in brine green 2"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "pasta orzo 20x1 lb dececco"
                 }
             ],
             "menu_items_stations": [
@@ -3700,10 +683,10 @@
             ],
             "req_prep": [
                 {
-                    "prep": "cook orzo",
+                    "prep": "",
                     "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station salad"
+                    "sous_prep": 0,
+                    "category": ""
                 }
             ],
             "mise_en_place": [
@@ -3716,24 +699,32 @@
             ],
             "ingredients": [
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fava beans"
+                    "purveyor": "baldor",
+                    "ingredient": "dill 1 lb"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "dill"
+                    "purveyor": "baldor",
+                    "ingredient": "asparagus large 11 lb"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "orzo"
+                    "purveyor": "baldor",
+                    "ingredient": "bean fava 22 lb fz"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "arugula"
+                    "purveyor": "baldor",
+                    "ingredient": "chickpeas can 6x110 oz furmanos"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "canned chickpeas"
+                    "purveyor": "baldor",
+                    "ingredient": "olives castelvetrano pitted in brine green 2"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "pasta orzo 20x1 lb dececco"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "arugula wild baby 4 lb org"
                 }
             ],
             "menu_items_stations": [
@@ -3766,7 +757,7 @@
                 },
                 {
                     "prep": "croutons",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
@@ -3788,15 +779,19 @@
             "ingredients": [
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "romaine lettuce"
+                    "ingredient": "romaine hearts baby 24 ct"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "parmiggiano reggiano"
+                    "ingredient": "chs parm reggiano 1 4 s"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "anchovies in olive oil tin 25 oz"
                 }
             ],
             "menu_items_stations": [
-                "hearty salads"
+                "hearty salads", "a taste of nine orchard"
             ],
             "menu_items_category": [
                 "lunch stations: hearty salads",
@@ -3812,30 +807,32 @@
                 "stations: farmer's green market"
             ],
             "prep": [
-                "butcher / grill hengar steaks",
-                "kit-out / make chimichurri"
+                "butcher / grill hanger steaks",
+                "chimichurri base",
+                "chimichurri herbs"
             ],
             "req_prep": [],
             "mise_en_place": [
-                "chimichurri",
-                "grilled steelhead trout"
+                "grilled hanger steak",
+                 "chimichurri base",
+                "chimichurri herbs"
             ],
             "ingredients": [
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "parsley"
+                    "ingredient": "parsley 1 lb"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cilantro"
+                    "ingredient": "cilantro 1 lb"
                 },
                 {
                     "purveyor": "Prime Food Distributor Inc",
-                    "ingredient": "Double R Ranch Prime Hanger Steaks 8oz (4 per pack)"
+                    "ingredient": "beef hanger steak prime 8 oz. 14930 double r ranch - 9 orchard"
                 },
                 {
-                    "purveyor": "Dairyland",
-                    "ingredient": "oregano"
+                    "purveyor": "baldor",
+                    "ingredient": "oregano leaves 8 oz"
                 }
             ],
             "menu_items_stations": [
@@ -3856,8 +853,9 @@
                 "lunch stations: grain bowls"
             ],
             "prep": [
-                "portion 6oz / 10% brine steelhead trout fillet",
-                "kit-out / make chimichurri"
+                "portion 4oz / 10% brine steelhead trout fillet",
+                  "chimichurri base",
+                "chimichurri herbs"
             ],
             "req_prep": [
                 {
@@ -3868,25 +866,26 @@
                 }
             ],
             "mise_en_place": [
-                "carrot batons",
-                "grilled steelhead trout"
+                "4oz steelhead trout fillet portions",
+                  "chimichurri base",
+                "chimichurri herbs"
             ],
             "ingredients": [
                 {
-                    "purveyor": "Dairyland",
-                    "ingredient": "lavash"
+                    "purveyor": "liepper and sons llc ",
+                    "ingredient": " salmon steelhead."
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "parsley"
+                    "ingredient": "parsley 1 lb"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cilantro"
+                    "ingredient": "cilantro 1 lb"
                 },
                 {
-                    "purveyor": "Dairyland",
-                    "ingredient": "oregano"
+                    "purveyor": "baldor",
+                    "ingredient": "oregano leaves 8 oz"
                 }
             ],
             "menu_items_stations": [
@@ -3919,13 +918,19 @@
                 "pull potato chips",
                 "cut / grill pita"
             ],
-            "req_prep": [],
+            "req_prep": [
+                {
+                    "prep": "whipped chive creme fraiche",
+                    "am_prep_team": 1,
+                    "sous_prep": 1,
+                    "category": "crudite & mezze station"
+                }
+            ],
             "mise_en_place": [
                 "cucumber batons",
                 "celery batons",
                 "breakfast radish quarters",
                 "watermelon radish moons",
-                " endive / trevisano spears",
                 "fava bean hummus",
                 "fire roasted eggplant",
                 "carrot miso",
@@ -3939,63 +944,67 @@
             "ingredients": [
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "multi-color carrots"
+                    "ingredient": "carrot baby tri color peeled 5 lb "
+                },
+                {
+                    "purveyor": "natoora",
+                    "ingredient": "radishes easter egg bunch"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "breakfast radish"
+                    "ingredient": "radish watermelon 10 lb"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "watermelon radish"
+                    "ingredient": "celery 12 ct"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "endive"
+                    "ingredient": "cucumber persian 12x1 lb"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "trevisano"
+                    "ingredient": "bean fava 22 lb fz"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fava beans"
+                    "ingredient": "eggplant japanese 10 lb"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "italian eggplant, 10lbs"
+                    "ingredient": "organic ginger  "
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "ginger"
+                    "ingredient": "chives 2.2 lb"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
+                    "ingredient": "mint 2.2 lb"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "mint"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "yogurt, arethusa"
+                    "ingredient": "yogurt plain 6x32 oz arethusa lcl"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "lavash"
+                    "ingredient": "lavash bread kontos"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "la milpa corn tortilla"
+                    "purveyor": "dairyland",
+                    "ingredient": "tortillas 6 blue corn "
+                },
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "tortillas 6 corn yellow harbar"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "potato chips, torres"
+                    "ingredient": "torres evoo potato chips"
                 },
                 {
-                    "purveyor": "Dairyland",
-                    "ingredient": "pita"
+                    "purveyor": "baldor",
+                    "ingredient": "pita white 60x3.5 oz ahgel bakeries "
                 }
             ],
             "menu_items_stations": [],
@@ -4010,9 +1019,10 @@
             ],
             "prep": [
                 "portion 6oz / 10% brine steelhead trout fillet",
-                "chickpeas",
-                "braise coco beans",
-                "braised leeks"
+                "honey nut squash ecrasse",
+                "braise butter beans",
+                "braised leeks",
+                "squash broth"
             ],
             "req_prep": [
                 {
@@ -4023,34 +1033,28 @@
                 }
             ],
             "mise_en_place": [
-                "asparagus",
-                "chickpeas",
-                "butterbeans",
-                "steelhead trout portions",
-                "butterbeans",
-                "spring onion broth",
-                "allium coins"
+                "6oz steelhead trout fillet",
+                "honey nut squash ecrasse",
+                "butter beans",
+                "braised leeks",
+                "squash broth"
             ],
             "ingredients": [
                 {
                     "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "steelhead trout"
+                    "ingredient": "salmon steelhead."
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fava beans"
+                    "ingredient": "squash honeynut 1 2 bsh org lcl"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "asparagus"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "spring onion"
+                    "ingredient": "leeks holland style 11 lb"
                 },
                 {
                     "purveyor": "NATOORA",
-                    "ingredient": "butter beans"
+                    "ingredient": "beans dried - butter"
                 }
             ],
             "menu_items_stations": [],
@@ -4066,7 +1070,9 @@
             ],
             "prep": [
                 "egg mix",
-                "roast mix seasonal vegetables",
+                "roast mushrooms",
+                "sautee spinach",
+                "dice / sweat bell peppers",
                 "sweat leeks",
                 "crumble goat cheese"
             ],
@@ -4079,24 +1085,43 @@
                 }
             ],
             "mise_en_place": [
-                "creme fraiche",
+                "egg mix",
                 "crumbled goat cheese",
                 "sweated leeks",
-                "seasonal veggie mix"
+                "roast mushrooms",
+                "sautee spinach",
+                "bell peppers"
             ],
             "ingredients": [
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "leeks"
+                    "ingredient": "leeks holland style 11 lb"
                 },
                 {
                     "purveyor": "baldor",
-                    "ingredient": "seasonal veggies"
+                    "ingredient": "mush chef mix 3 lb rl mush lcl "
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "eggs"
+                    "ingredient": "eggs large cage free brown a"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "pepper red 5 lb"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "pepper green 5 lb"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "spinach triple washed 4x2.5 lb"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "goat cheese rondin 2 lb log"
                 }
+            
             ],
             "menu_items_stations": [
                 "breakfast station"
@@ -4117,33 +1142,32 @@
                 "clean and sort raspberries",
                 "clean and sort blackberries",
                 "honey",
-                "portion yogurt into individual rocks glass"
+                "portion yogurt"
             ],
             "req_prep": [],
             "mise_en_place": [
                 "raspberries",
                 "blackberries",
+                "blueberries",
                 "honey",
-                "individual rocks glass",
-                "overnight oats",
                 "yogurt"
             ],
             "ingredients": [
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "blueberries"
+                    "purveyor": "agri exotic trading",
+                    "ingredient": "blueberry 12 x1 2 pt"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "blackberries"
+                    "purveyor": "agri exotic trading",
+                    "ingredient": "blackberry 8 x18 oz"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "honey"
+                    "ingredient": "honey clover 5 lb"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "yogurt, arethusa"
+                    "ingredient": "yogurt plain 6x32 oz arethusa lcl"
                 }
             ],
             "menu_items_stations": [],
@@ -4161,10 +1185,10 @@
             ],
             "req_prep": [
                 {
-                    "prep": "tray-out chicken apple sausage",
-                    "am_prep_team": 1,
+                    "prep": "",
+                    "am_prep_team": 0,
                     "sous_prep": 0,
-                    "category": "breakfast station"
+                    "category": ""
                 }
             ],
             "mise_en_place": [
@@ -4172,318 +1196,13 @@
             ],
             "ingredients": [
                 {
-                    "purveyor": "Pat La Frieda",
-                    "ingredient": "chicken apple sausage"
+                    "purveyor": "dairyland",
+                    "ingredient": "chicken apple sausage 2oz"
                 }
             ],
             "menu_items_stations": [],
             "menu_items_category": [
                 "breakfast station"
-            ]
-        },
-        {
-            "item_name": "grain bowl station",
-            "category": [
-                "lunch stations: grain bowls"
-            ],
-            "prep": [
-                "brine/ steam /grill chicken breast",
-                "make miso marinade",
-                "marinade / roast miso salmon",
-                "butcher / portion / grill hangar steak",
-                "marinate / roast firm tofu",
-                "cook jasmine rice",
-                "cook quinoa",
-                "clean / blanch / grill broccolini",
-                "cut / roast cumin roasted carrots",
-                "make cabbage slaw",
-                "cut / roast sweet potatoes",
-                "large dice avocado",
-                "harissa baked chickpeas",
-                "pickled sumac red onion",
-                "arugula",
-                "clean / grill mixed mushrooms",
-                "make / pull lemon vinaigrette",
-                "make / pull citrus-tahini vinaigrette",
-                "make / pull carrot dijon vin",
-                "make cucumber mint yogurt"
-            ],
-            "req_prep": [
-                {
-                    "prep": "make miso marinade",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "lunch station"
-                },
-                {
-                    "prep": "marinate miso salmon",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "lunch station"
-                },
-                {
-                    "prep": "cook jasmine rice",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "lunch station"
-                },
-                {
-                    "prep": "cook quinoa",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "lunch station"
-                },
-                {
-                    "prep": "cut persian cucumbers",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cut tomatoes",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "slice red onion",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cut castelvetrano olives",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "shave fennel",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cook orzo",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "clean romaine lettuce",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "croutons",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "caesar dressing",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "6 % brine / cook airline chickens",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "sandwiches"
-                },
-                {
-                    "prep": "clean and cut mushrooms",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "trim / blanch broccolini",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "lemon vinaigrette",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "boil  / smash  fingerlings",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "pickled mustard seeds",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "smoked paprika vinaigrette",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "clean mixed greens",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "citrus-tahini vinaigrette",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "crispy quinoa za'atar",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "green goddess dressing",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "whipped sheeps milk feta",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cook quinoa",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cook farro",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cook bulgur",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cut and roast mulitcolor carrots",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "carrot vin",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "pitted dates",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "dukkah",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station sides "
-                }
-            ],
-            "mise_en_place": [
-                "lemon vin",
-                "grilled chicken breast",
-                "roasted miso salmon",
-                "grilled hangar steak",
-                "roasted tofu",
-                " jasmine rice",
-                " quinoa",
-                "grilled spicy broccolini",
-                "cumin roasted carrots",
-                "cabbage slaw",
-                "roasted sweet potatoes",
-                "avocado halves",
-                "harissa baked chickpeas",
-                "pickled sumac red onion",
-                "make cucumber mint yogurt"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "persian cucumber"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "steelhead trout"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "miso"
-                },
-                {
-                    "purveyor": "Prime Food Distributor Inc",
-                    "ingredient": "Double R Ranch Prime Hanger Steaks 8oz (4 per pack)"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "firm tofu"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "jasmine rice"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "quinoa"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "multi-color carrots"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shredded cabbage"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "sweet potatoes"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "avocado"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "harissa"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "sumac"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "mint"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "yogurt, arethusa"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "lunch stations: grain bowls"
             ]
         },
         {
@@ -4508,7 +1227,7 @@
             "ingredients": [
                 {
                     "purveyor": "Pat La Frieda",
-                    "ingredient": "PBS Pork Sausage, Breakfast (16/1) - S/C"
+                    "ingredient": "s c pork breakfast sausage 16 1"
                 }
             ],
             "menu_items_stations": [],
@@ -4535,31 +1254,31 @@
             "req_prep": [
                 {
                     "prep": "whipped sheeps milk feta",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
                 {
                     "prep": "cook quinoa",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
                 {
                     "prep": "cook farro",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
                 {
                     "prep": "cook bulgur",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
                 {
                     "prep": "cut and roast mulitcolor carrots",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
                 },
@@ -4571,15 +1290,9 @@
                 },
                 {
                     "prep": "pitted dates",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
-                },
-                {
-                    "prep": "dukkah",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station sides "
                 }
             ],
             "mise_en_place": [
@@ -4589,552 +1302,46 @@
                 "cooked bulgur",
                 "whipped feta",
                 "carrot vin ",
-                "pitted dates",
-                "egg mix",
-                " romaine lettuce"
-            ],
+                "pitted dates"
+                        ],
             "ingredients": [
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "multi-color carrots"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "mixed colored baby carrots"
                 },
                 {
-                    "purveyor": "Dairyland",
-                    "ingredient": "bulgur"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "bulgur wheat coarse box 10 lb"
                 },
                 {
                     "purveyor": "baldor",
                     "ingredient": "carrot juice"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "dates"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "large medjool dates"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "almonds"
+                    "ingredient": "feta valbreso sheep french"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "arugula"
+                    "purveyor": "Dairyland",
+                    "ingredient": "quinoa red conventional"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "farro semi pearled bag 11 lb"
                 }
             ],
             "menu_items_stations": [
-                "hearty salads"
+                "crudite & mezze","hearty salads","grain bowls"
             ],
             "menu_items_category": [
-                "lunch stations: hearty salads"
+                "stations: crudite & mezze","lunch stations: hearty salads","lunch stations: grain bowls"
             ]
         },
-        {
-            "item_name": "raw bar",
-            "category": [
-                "stations: raw bar"
-            ],
-            "prep": [
-                "clean / steam shrimp",
-                "pull cleaned oyster shells",
-                "jonah crab claws",
-                "scallop tartare",
-                "limes for zest",
-                "sliced serrano chili",
-                "daikon radish vinaigrette",
-                "cure / rinse / mince Ocean trout",
-                "mince shallot",
-                "mince caper",
-                "lemon agrumato oil",
-                "lemon juice",
-                "trout roe",
-                "cut meyer lemon cheeks",
-                "clean / portion / slice Hamachi",
-                "yuzu-mandarin vinaigrette",
-                "black onion powder",
-                "boil / dehydrate / fry   Amaranth",
-                "sliced shallot rings",
-                "mandarin agrumato",
-                "clean / dice   Tuna loin",
-                "fresh horseradish for grating",
-                "alaskan king crab legs",
-                "poached lobsters",
-                "kaluga caviar",
-                "pull / sort chips for caviar",
-                "whipped chive creme fraiche",
-                "blinis",
-                "chives / shallots / capers",
-                "horseradish cocktail sauce",
-                "pull / make Seasonal mignonette",
-                "cut lemon wedges",
-                "chesapeake bay aioli"
-            ],
-            "req_prep": [
-                {
-                    "prep": "scallop tartare",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "daikon radish vinaigrette",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "king crab legs",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "poached lobsters",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "cut lemon wedges",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "chesapeake bay aioli",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "green olive tapenade",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "beet and white bean spread",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "shucked oysters",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "mignonette base",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "clean oyster shells",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "whipped chive oil creme fraiche",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "raw bar"
-                },
-                {
-                    "prep": "cook and clean U15 shrimp",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                },
-                {
-                    "prep": "horseradish cocktail sauce",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "passed small plates"
-                }
-            ],
-            "mise_en_place": [
-                "steamed U15 shrimp",
-                "scallop tartare",
-                "limes for zest",
-                "daikon radish vinaigrette",
-                "sliced serrano chili",
-                "ocean trout dice",
-                "mince capers",
-                "mince shallots",
-                "trout roe",
-                "lemon agrumato oil",
-                "sliced hamachi",
-                "yuzu-mandarin vinaigrette",
-                "crispy black amaranth",
-                "sliced shallot rings",
-                "mandarin agrumato oil",
-                "tuna loin dice",
-                "fresh horseradish for grating",
-                "king crab legs",
-                "poached lobsters",
-                "kaluga caviar",
-                "whipped chive creme fraiche",
-                "chips",
-                "blinis",
-                "horseradish cocktail sauce",
-                "mignonette base",
-                "minced shallots",
-                "lemon wedges",
-                "chesapeake bay aioli"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "U15 mexican white frozen shrimp"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "oyster, loulou belle"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "Jonah Crab Claws, Fresh (needs a week out)"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "steelhead trout"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "trout roe"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "serrano"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "daikon"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "shallots"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "capers"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "meyer lemon"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "hamachi, side, frozen gased"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "mandarin puree"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "amaranth"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "1/8in pre-sliced white onions"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "squid ink"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "mandarin agrumato"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "yellow fin tuna loin top loin"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "blue fin tuna top loin"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fresh horseradish"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "king crab legs"
-                },
-                {
-                    "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "lobster 1.5lbs"
-                },
-                {
-                    "purveyor": "Black Diamond Gourmet inc",
-                    "ingredient": "Caviar Tins, Chinese Kaluga, 200 tin"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "blinis"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "stations: raw bar"
-            ]
-        },
-        {
-            "item_name": "crudite & mezze",
-            "category": [
-                "stations: crudite & mezze"
-            ],
-            "prep": [
-                "cut carrot batons",
-                "cut cucumber batons",
-                "cut celery batons",
-                "cut breakfast radish quarters",
-                "cut watermelon radish moons",
-                "cherry tomatoes",
-                "fire roasted eggplant",
-                "carrot miso",
-                "whipped chive creme fraiche",
-                "cucumber-mint yogurt",
-                "cut / fry lavash chips",
-                "cut / fry corn tortilla chips with sumac",
-                "cut / grill pita",
-                "green olive tapenade",
-                "beet and white bean spread",
-                "piquillo pepper and walnut dip",
-                "cut tri-color cauliflower",
-                "decorative fruits / vegetables"
-            ],
-            "req_prep": [
-                {
-                    "prep": "cut carrot batons",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "cut cucumber batons",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "cut celery batons",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "fava bean hummus",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "fire roasted eggplant",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "carrot miso",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "whipped chive oil creme fraiche",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "cucumber-mint yogurt",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "green olive tapenade",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "beet and white bean spread",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "piquillo pepper and walnut dip",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "whipped tahini sauce",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "pickled fresno chilis",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station sides "
-                },
-                {
-                    "prep": "whipped sheeps milk feta",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "cook quinoa",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "cook farro",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "cook bulgur",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "cut and roast mulitcolor carrots",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "carrot vin",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "pitted dates",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                },
-                {
-                    "prep": "dukkah",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
-                    "category": "station crudite  & mezze / cheese & charcuterie"
-                }
-            ],
-            "mise_en_place": [
-                "cucumber batons",
-                "celery batons",
-                "breakfast radish quarters",
-                "watermelon radish moons",
-                " endive / trevisano spears",
-                "fava bean hummus",
-                "fire roasted eggplant",
-                "carrot miso",
-                "whipped chive creme fraiche",
-                "cucumber-mint yogurt",
-                "lavash chips",
-                "corn tortilla chips",
-                "grilled pita",
-                "green olive tapenade",
-                "beet and white bean spread",
-                "piquillo pepper and walnut dip"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "multi-color carrots"
-                },
-                {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "hot house cucumbers"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "breakfast radish"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "watermelon radish"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "endive"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "trevisano"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fava beans"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "italian eggplant, 10lbs"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "ginger"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "mint"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "yogurt, arethusa"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "lavash"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "la milpa corn tortilla"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "red beets"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "pita"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "gigante beans in vinaigrette"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "Pitted Castelvetrano Olives in Brine"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "piquillo peppers"
-                }
-            ],
-            "menu_items_stations": [],
-            "menu_items_category": [
-                "stations: crudite & mezze"
-            ]
-        },
+    
         {
             "item_name": "fried cauliflower",
             "category": [
@@ -5144,12 +1351,12 @@
                 "cut / fry cauliflower florets",
                 "whipped tahini sauce",
                 "pickled fresno chilis",
-                "pick chervil"
+                "pick parsley"
             ],
             "req_prep": [
                 {
                     "prep": "whipped tahini sauce",
-                    "am_prep_team": 0,
+                    "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station sides "
                 }
@@ -5162,12 +1369,20 @@
             ],
             "ingredients": [
                 {
-                    "purveyor": "Agri Exotic Trading",
-                    "ingredient": "cauliflower"
+                    "purveyor": "baldor",
+                    "ingredient": "cauliflower 16 ct"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "fresno chili"
+                    "purveyor": "baldor",
+                    "ingredient": "pepper red long hot 6.6 lb"
+                },
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "soom tahini 16oz"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "parsley 1 lb"
                 }
             ],
             "menu_items_stations": [
@@ -5183,11 +1398,11 @@
                 "afternoon tea station"
             ],
             "prep": [
-                "Slice  brioche pullman",
+                "slice  brioche pullman",
                 "horseradish cream cheese",
-                "Sliced cucumbers",
-                "assemble tea sandwiches",
-                "cut tea sandwiches"
+                "sliced cucumbers",
+                "pick dill",
+                "assemble / cut tea sandwiches"
             ],
             "req_prep": [],
             "mise_en_place": [
@@ -5200,19 +1415,19 @@
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "dill"
+                    "ingredient": "dill 1 lb"
                 },
                 {
                     "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "brioche pullman"
+                    "ingredient": "br pullman 5x5 "
                 },
                 {
                     "purveyor": "baldor",
-                    "ingredient": "prepared horseradish"
+                    "ingredient": "horseradish prepared all natural 1 gal gold"
                 },
                 {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "cream cheese"
+                    "purveyor": "dairyland",
+                    "ingredient": "chs cream cheese"
                 }
             ],
             "menu_items_stations": [
@@ -5228,12 +1443,11 @@
                 "afternoon tea station"
             ],
             "prep": [
-                "slice pan se mie pullman for sandwiches",
+                "slice brioche pullman",
                 "arugula",
                 "dijon aioli",
-                "Chicken salad",
-                "assemble tea sandwiches",
-                "cut tea sandwiches"
+                "chicken salad",
+                "assemble / cut tea sandwiches"
             ],
             "req_prep": [
                 {
@@ -5249,35 +1463,35 @@
             "ingredients": [
                 {
                     "purveyor": "Pat La Frieda",
-                    "ingredient": "Chicken French Cut Airline Cutlets - 10-12 oz Bell &Evans"
+                    "ingredient": "bell and evans 10 12oz boneless french cut chicken breasts"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "celery"
+                    "ingredient": "celery 12 ct"
                 },
                 {
-                    "purveyor": "Dairyland",
-                    "ingredient": "whole grain mustard"
-                },
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "red grapes"
+                    "purveyor": "baldor",
+                    "ingredient": "mustard maille dijon 1 gal"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "dijon mustard"
+                    "ingredient": "grapes red 5 lb"
                 },
                 {
-                    "purveyor": "Dairyland",
-                    "ingredient": "mayonaise"
+                    "purveyor": "Baldor Speciality Foods, Inc.",
+                    "ingredient": "mustard maille whole grain 1 gal "
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "mayonnaise extra heavy 1 gal hellmans"
                 },
                 {
                     "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "light pullman"
+                    "ingredient": "br pullman 5x5"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "arugula"
+                    "ingredient": "arugula wild baby 4 lb org"
                 }
             ],
             "menu_items_stations": [
@@ -5293,11 +1507,11 @@
                 "afternoon tea station"
             ],
             "prep": [
-                "Slice Rye Pullman",
+                "slice rye pullman",
                 "whipped creme fraiche with chives",
                 "smoked salmon",
-                "assemble tea sandwiches",
-                "cut tea sandwiches"
+                "pick dill",
+                "assemble / cut tea sandwiches"
             ],
             "req_prep": [],
             "mise_en_place": [
@@ -5306,31 +1520,23 @@
             "ingredients": [
                 {
                     "purveyor": "LIEPPER & SONS LLC",
-                    "ingredient": "blue hill smoked salmon"
-                },
-                {
-                    "purveyor": "balthazaar",
-                    "ingredient": "Jerusalem2#LongCut"
+                    "ingredient": "blue hill smoked salmon "
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "chives"
+                    "ingredient": "chives 1 lb"
                 },
                 {
                     "purveyor": "Dairyland",
-                    "ingredient": "creme fraiche"
-                },
-                {
-                    "purveyor": "Dairyland",
-                    "ingredient": "Prociutto Cotto, Herbs"
+                    "ingredient": "creme fraiche grand reserve"
                 },
                 {
                     "purveyor": "ELI'S BREAD INC",
-                    "ingredient": "5 x 5 health pullman"
+                    "ingredient": "rye pullman 5x5"
                 },
                 {
                     "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "sliced cheddar"
+                    "ingredient": "cheddar yellow sliced 192 slices 6x1.5 lb"
                 }
             ],
             "menu_items_stations": [
@@ -5346,12 +1552,11 @@
                 "afternoon tea station"
             ],
             "prep": [
-                "Sliced Prosciutto cotto",
+                "sliced prosciutto cotto",
                 "smoked onion aioli",
                 "sliced cheddar",
-                "Slice multigrain pullman",
-                "assemble tea sandwiches",
-                "cut tea sandwiches"
+                "slice multigrain pullman",
+                "assemble / cut tea sandwiches"
             ],
             "req_prep": [
                 {
