@@ -1,24 +1,35 @@
-
-Event:  Chanel
-Date:  Tuesday, December 2, 2025
-Time:  2:30 AM - 5:30 AM
-Contact:  Eamon Tobin	
-Location:  Greenhouse
-Phone:  9174460171	
-Event Type:  Seated Meal
-Email:  eamon.tobin@altana.ai	
-Guests:  10
+Event:  Mellon Holiday Party	
+Date:  Thursday, December 18, 2025,
+Account:  ANDREW W. MELLON FOUNDATION,	
+Time:  4:30 PM - 8:30 PM,
+Contact:  Kim Lovett,	
+Location:  Greenhouse,
+Phone: 	
+Event Type:  Cocktail Reception,
+Email:  kim@indigoevents.com	
+Guests:  125
  	
 Account Owner:  Julie Garcés	
 Phone/Email:  / julie@nineorchard.com
 
 menu_items:
 
+Braised Short Rib,
 
-Club Sandwich,
+Cacio e Pepe Fritter,
 
-Tomato & Cheese,
+Crispy Burrata,
 
-Grilled Eggplant,
+Green Hummus,
 
-popcorn
+Lobster Roll,
+
+	
+Fried Chicken Slider,
+
+Tuna Tartare,
+
+FARMERS GREEN MARKET,
+
+CRUDITES & MEZZE,
+

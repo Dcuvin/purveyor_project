@@ -127,6 +127,26 @@ CREATE TABLE menu_items_categories(
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
     FOREIGN KEY (category_id) REFERENCES categories(category_id)   
 );
+
+--Create a purchasing table for simplified ordering of mise en place; separate from the existing ingredients table.
+CREATE TABLE purchasing (
+    ingredient_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ingredient_name TEXT NOT NULL,
+    purveyor TEXT NOT NULL,
+    item_code TEXT UNIQUE
+    
+);
+--Create a junction table for ordering purposes linking menu_items to purchasing table.
+CREATE TABLE menu_items_purchasing(
+    menu_item_id INTEGER,
+    item_name TEXT NOT NULL,
+    ingredient_id INTEGER,
+    ingredient_name TEXT NOT NULL,
+    PRIMARY KEY (menu_item_id, ingredient_id),
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
+    FOREIGN KEY (ingredient_id) REFERENCES purchasing(purchasing_id)   
+);
+
 --Delete a table
 
 DROP TABLE table_name;

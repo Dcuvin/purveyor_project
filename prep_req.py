@@ -34,7 +34,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     new_file_name = f"PREP_REQ_{event_name}_{event_date}_{file_count}.xlsx"
 
     # EVENTS REQ TEMPLATE file_path
-    event_req_template_file_path = os.path.join(cwd, 'PREP REQ - TEMPLATE.xlsx')
+    event_req_template_file_path = os.path.join(cwd, 'PREP REQ v2- TEMPLATE.xlsx')
 
     # File path for the folder where the copied template will be saved to
     dest_dir = os.path.join(cwd, excel_folder_path)
@@ -94,9 +94,9 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
    # start = 3, becuase I want to start filling in the cells in the third row (rows 1-2 are titles and headings)
     for row_idx, prep_items in enumerate(am_prep_req_list, start=3):   # start=1 → Excel’s first row
         ws.cell(row=row_idx, column=1, value=prep_items["prep"])
-        ws.cell(row=row_idx, column=3, value=prep_items["category"])
-        ws.cell(row=row_idx, column=4, value=f"{need_by_date}, by 4pm")
-
+        #ws.cell(row=row_idx, column=3, value=prep_items["category"])
+        #ws.cell(row=row_idx, column=4, value=f"{need_by_date}, before 4pm")
+        ws.cell(row=row_idx, column=4, value=f"Before {need_by_date}")
 
 
     # format AM prep reauisition sheet
@@ -131,7 +131,7 @@ def req_prep(item_ids, excel_folder_path, event_date, event_name, db):
     for row_idx, prep_items in enumerate(sous_prep_req_list, start=3):   # start=1 → Excel’s first row
         ws.cell(row=row_idx, column=1, value=prep_items["prep"])
         ws.cell(row=row_idx, column=3, value=prep_items["category"])
-        ws.cell(row=row_idx, column=4, value=f"{need_by_date}, by 4pm")
+        ws.cell(row=row_idx, column=4, value=f"{need_by_date}, before 4pm")
 
 
     # format AM prep requisition sheet

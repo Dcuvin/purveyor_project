@@ -1,36 +1,46 @@
 {
     "menu_items":[
-
         {
-            "item_name":"cornbread panzanella",
-            "category":"station",
-            "prep": [ "cut / marinate heirloom tomatoes",
-                "picked basil",
-                "make / portion / toast cornbread",
-                "baby corn", "sliced shallots",
-                "grilled stone fruit"],
+            "item_name": "grilled mushrooms",
+            "category": "a taste of nine orchard",
+            "prep": [
+                "finely chopped parsley",
+                "sherry vinaigrette / sherry sabayon",
+                "clean / grill mixed mushrooms"
+            ],
             "req_prep": [
                 {
-                    "prep":"make cornbread",
-                    "am_prep_team":1,
-                    "sous_prep":1,
-                    "category": "station salad"
+                    "prep": "clean and cut mushrooms",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "station sides "
                 }
             ],
-            "mise_en_place": ["heirloom tomatoes",
-                "picked basil",
-                "cornbread croutons",
-                "baby corn",
-                "grilled stone fruit", "sliced shallots"],
-            "ingredients": [
-                {"baldor":"basil 2.2 lb"}, {"baldor":"corn baby husked guatemala 5 lb"},{"baldor":"heirloom tomatoes"},
-                {"baldor":"peach yellow 1 lyr euro 15 lb"},{"baldor":"shallots peeled 5 lb"}
-              
+            "mise_en_place": [
+                "mixed mushrooms",
+                "sherry vinaigrette",
+                "finely chopped parsley"
             ],
-            "menu_items_stations":"farmer's green market",
-            "menu_items_category":"stations: farmer's green market"
-
-
+            "ingredients": [
+                {
+                    "purveyor": "tivoli mushrooms llc",
+                    "ingredient": "shiitake mushrooms"
+                },
+                {
+                    "purveyor": "tivoli mushrooms llc",
+                    "ingredient": "oyster mushrooms - blue"
+                },
+                {
+                    "purveyor": "tivoli mushrooms llc",
+                    "ingredient": "chestnut mushrooms"
+                }
+            ],
+            "menu_items_stations": [
+                "a taste of nine orchard"
+            ],
+            "menu_items_category": [
+                "a taste of nine orchard"
+            ]
         }
     ]
     
