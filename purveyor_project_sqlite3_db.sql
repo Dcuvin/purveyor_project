@@ -146,6 +146,12 @@ CREATE TABLE menu_items_purchasing(
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
     FOREIGN KEY (ingredient_id) REFERENCES purchasing(purchasing_id)   
 );
+--Create a dietary table for restrictions.
+CREATE TABLE dietary (
+    dietary_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    dietary_name TEXT NOT NULL
+    
+);
 
 --Delete a table
 

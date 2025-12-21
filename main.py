@@ -288,11 +288,14 @@ def gpt_prep_list(db):
     station_ids = all_info[7]
     #print(item_ids)
     # if event_type is a seated dinner...
-    event_type_list = ['seated dinner', 'seated meal', 'seated', ' ']
+    event_type_list = ['seated dinner', 'seated meal', 'seated', 'plated dinner']
     # Adds Bread and butter for db_3
     if event_type in event_type_list:
-       item_ids.append(37)
-
+        cursor = sqlite3.connet(db)
+        cursor.execute("SELECT item_id FROM menu_items WHERE menu_item_name = bread service;")
+        result = cursor.fetchall()
+        for r in result:
+            item_ids.append(r)
     # Call the master_prep_list function using the returned variables
     master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db, station_ids,event_type)
 #------------------------------------------------------------------------------------------

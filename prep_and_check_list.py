@@ -394,9 +394,83 @@ def get_order_list(item_id,db,excel_file_path,event_name,guest_count,event_date)
     format_order_sheet(workbook['order_sheet'], 2, 1, 3)
 
     workbook.save(excel_file_path)
+#----------------------------------------------------------------------------
 
 
     print("Order Sheet Created!")
+
+def get_order_list_ver_2(item_id,db,excel_file_path,event_name,guest_count,event_date):
+
+    conn = sqlite3.connect(db)
+    # Cursor to execute commands
+    cursor = conn.cursor()
+    current_date = date.today()
+    formatted_date = current_date.strftime("%m-%d-%Y")
+
+    result_dict= {'Ingredient': [],'QTY':'', 'Purveyor':[]}
+    for id in item_id:
+        cursor.execute("""
+                SELECT ingredients.ingredient_name, ingredients.purveyor
+                FROM ingredients
+                JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
+                WHERE menu_ingredients.menu_item_id = ?;
+            """, (id,)
+        )
+        
+        results = cursor.fetchall()
+        #print(results)
+
+        # Remove duplicate ingredients
+        for tuple_item in results:
+            capitalized_ingredient = tuple_item[0].capitalize()
+            if tuple_item[0].capitalize() not in result_dict['Ingredient']:
+                result_dict['Ingredient'].append(capitalized_ingredient)
+                result_dict['Purveyor'].append(tuple_item[1].capitalize())
+
+    #print(result_list)
+
+    print(result_dict)
+    # Function that creates a dataframe
+    def create_df(data):
+
+        df= pd.DataFrame(data)
+        return df
+    
+    
+    df_list =[] 
+    df_list.append(create_df(result_dict))
+
+    print(df_list)
+
+   
+    # Create the order_sheet and populate with data.
+
+    with pd.ExcelWriter(excel_file_path, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
+        sheet_name = "order_sheet"
+        pd.DataFrame().to_excel(writer, sheet_name=sheet_name, index=False)
+
+        # Add event info to the top of the order sheet.
+
+        workbook = writer.book
+        worksheet = writer.sheets[sheet_name]
+        worksheet["A1"] = f"Order List for {event_name} - {event_date} - Guest:{guest_count}"  # Customize your title here
+
+        current_row = 2
+        for item in df_list:
+            item.to_excel(writer, sheet_name= 'order_sheet', startrow=current_row, startcol=0, index=False)
+            current_row += len(item.index) + 1  # Increment to avoid overlap
+
+    # Reload the workbook with openpyxl to apply the formatting.
+    workbook = load_workbook(excel_file_path)
+
+
+    format_order_sheet(workbook['order_sheet'], 2, 1, 3)
+
+    workbook.save(excel_file_path)
+
+
+    print("Order Sheet Created!")
+    
     
 #----------------------------------------------------------------------------
 

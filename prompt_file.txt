@@ -1,35 +1,38 @@
-Event:  Mellon Holiday Party	
-Date:  Thursday, December 18, 2025,
-Account:  ANDREW W. MELLON FOUNDATION,	
-Time:  4:30 PM - 8:30 PM,
-Contact:  Kim Lovett,	
-Location:  Greenhouse,
+Event:  Wedding: Hannah & Michael	
+Date:  Saturday, January 10, 2026
+Account:  Miller, Hannah	
+Time:  5:00 PM - 12:00 AM
+Contact:  Miller, Hannah PLANNER - KARISSA KALOMIDOS	
+Location:  Greenhouse
 Phone: 	
-Event Type:  Cocktail Reception,
-Email:  kim@indigoevents.com	
-Guests:  125
+Event Type:  seated dinner
+Email:  karissa.kalodimos@gmail.com	Guests: 
  	
-Account Owner:  Julie Garcés	
-Phone/Email:  / julie@nineorchard.com
+Account Owner:  Deborah Zakhar	
+Phone/Email:  / deborah.zakhar@nineorchard.com
 
 menu_items:
 
-Braised Short Rib,
+Crab Toast,
+
+Cavatelli,
+
+Steak Au Poivre,
+
+Steelhead Salmon,
+
+Braised Short,
 
 Cacio e Pepe Fritter,
 
+Caviar hash brown,
+
+Chicken Schnitzel,
+
 Crispy Burrata,
 
-Green Hummus,
+“Everything” Gougeres,
 
-Lobster Roll,
+NY Strip Steak,
 
-	
-Fried Chicken Slider,
-
-Tuna Tartare,
-
-FARMERS GREEN MARKET,
-
-CRUDITES & MEZZE,
-
+Shrimp Toast

@@ -1,38 +1,40 @@
 {
     "menu_items":[
         {
-            "item_name": "grilled mushrooms",
+            "item_name": "grilled chicken ",
             "category": "a taste of nine orchard",
             "prep": [
-                "finely chopped parsley",
-                "sherry vinaigrette / sherry sabayon",
-                "clean / grill mixed mushrooms"
+                "slice garlic",
+                "butcher / brine / grill sasso chickens",
+                "make / pull ginger scallion relish"
             ],
             "req_prep": [
                 {
-                    "prep": "clean and cut mushrooms",
+                    "prep": "butcher / 6% brine sasso chickens",
                     "am_prep_team": 1,
                     "sous_prep": 0,
-                    "category": "station sides "
+                    "category": "station entrees"
+                },
+                {
+                    "prep": "ginger-scallion relish",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "entree"
                 }
             ],
             "mise_en_place": [
-                "mixed mushrooms",
-                "sherry vinaigrette",
-                "finely chopped parsley"
+                "grilled sasso chicken",
+                "ginger scallion relish"
             ],
             "ingredients": [
+               
                 {
-                    "purveyor": "tivoli mushrooms llc",
-                    "ingredient": "shiitake mushrooms"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "organic ginger"
                 },
                 {
-                    "purveyor": "tivoli mushrooms llc",
-                    "ingredient": "oyster mushrooms - blue"
-                },
-                {
-                    "purveyor": "tivoli mushrooms llc",
-                    "ingredient": "chestnut mushrooms"
+                    "purveyor": "laper poultry",
+                    "ingredient": "sasso"
                 }
             ],
             "menu_items_stations": [
@@ -40,6 +42,12 @@
             ],
             "menu_items_category": [
                 "a taste of nine orchard"
+            ],
+            "purchasing":[{
+                "ingredient_name": "sasso chickens",
+                "purveyor":"lapera brothers",
+                "sku": "37909_XC491220"
+            }
             ]
         }
     ]
