@@ -242,12 +242,7 @@ def main():
     #Takes the newly downloaded item library from Xtra Chef and creates a normalized item description column withing the same file. It then queries the desired database for any existing entries and uses INSERT OR REPLACE
 
     elif sys.argv[1] == 'normalize_item_library':
-        print(find_db())
-        db = ''
-        db_input = input('Specify which database to query by typing the corresponding number:')
-
-        db = f"purveyor_project_db_{db_input}.db"
-
+        
         file_count = 0
         item_library_file ={}
 
@@ -261,7 +256,7 @@ def main():
         chosen_item_library_file = item_library_file[str(item_library_input)]
 
         print(chosen_item_library_file)
-        upload_xtrachef_item_library(chosen_item_library_file, db)
+        upload_xtrachef_item_library(chosen_item_library_file)
     #Pulls all db entries within a specified database
     elif sys.argv[1] == 'pull_all_data':
         print(find_db())

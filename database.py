@@ -346,32 +346,37 @@ def input_update_data(db):
 
         """Pull all ingredients from purchasing table"""
         cursor.execute("SELECT ingredient_id, ingredient_name, purveyor, item_code FROM purchasing")
-        db_purchasing = [{"ingredient_id":i[0], "ingredient_name":i[1], "purveyor":i[2], "item_code":1[3]} for i in cursor.fetchall()]
+        db_purchasing = [{"ingredient_id":i[0], "ingredient_name":i[1], "purveyor":i[2], "item_code":i[3]} for i in cursor.fetchall()]
         purchasing_to_upload = []
         for ing in menu_item["purchasing"]:
            
-            purchasing_to_upload.append({"ingredient_id":0, "ingredient_name":normalize(ing["ingredient_name"]), "purveyor": normalize(ing["purveyor"]),"item_code":normalize(["sku"])})
+            purchasing_to_upload.append({"ingredient_id":0, "ingredient_name":normalize(ing["ingredient"]), "purveyor": normalize(ing["purveyor"]),"item_code":ing["sku"]})
 
+        """Normalize and fuzzy match all existing ingredients from purchasing table with ingredients (purchasing) to upload"""
+        """"""
         for ing in purchasing_to_upload:
             matches =[]
             for db_ing in db_purchasing:
                 score = fuzzy_match(ing["ingredient_name"], db_ing["ingredient_name"]) + fuzzy_match(ing["purveyor"], db_ing["purveyor"])
-                matches.append({"score":score,
-                                    "ingredient_id":db_ing["ingredient_id"], 
-                                    "purveyor":db_ing["purveyor"],
-                                    "ingredient_name":db_ing["ingredient_name"],
-                                    "item_code":db_ing["item_code"]})
-                # sort by highest score
-                matches.sort(key=lambda x: x["score"], reverse=True)
-                best_match =matches[0]
-                ing["ingredient_id"] = best_match["ingredient_id"]
-                ing["purveyor"] = best_match["purveyor"]
-                ing["ingredient_name"] = best_match["ingredient_name"]
+                if score:
+                    matches.append({"score":score,
+                                        "ingredient_id":db_ing["ingredient_id"], 
+                                        "purveyor":db_ing["purveyor"],
+                                        "ingredient_name":db_ing["ingredient_name"],
+                                        "item_code":db_ing["item_code"]
+                                        })
+                    # sort by highest score
+                    matches.sort(key=lambda x: x["score"], reverse=True)
+                    best_match =matches[0]
+                    ing["ingredient_id"] = best_match["ingredient_id"]
+                    ing["purveyor"] = best_match["purveyor"]
+                    ing["ingredient_name"] = best_match["ingredient_name"]
+                    ing["item_code"]= best_match["item_code"]
+                    
        
-            print(f"💰 purchasing_to_upload: {purchasing_to_upload}")
+                print(f"💰 purchasing_to_upload: {purchasing_to_upload}")
 
-        """Normalize and fuzzy match all existing ingredients from purchasing table with ingredients (purchasing) to upload"""
-        """"""
+     
         #break
         """Insert new data into chosen database""" 
         # Check if new_menu_item exists
@@ -462,15 +467,24 @@ def input_update_data(db):
                 cursor.execute("INSERT OR IGNORE INTO menu_items_categories VALUES (?, ?, ?, ?)", (new_menu_item_id, new_menu_item['item_name'], category_to_upload['category_id'],category_to_upload['category_name'],))
             print(f"✅ menu_items_categories: {new_menu_item_id,new_menu_item['item_name'],category_to_upload['category_id'],category_to_upload['category_name']} has been added! ")
 
-            # Map purchasing ingredient_id to new_menu_item_id in purchasing table
+            # Insert purchasing ingredient_id to new_menu_item_id in purchasing table
             for purchase in purchasing_to_upload:
-                cursor.execute("INSERT OR IGNORE INTO purchasing VALUES (?,?,?,?)", (purchase['ingredient_id'], purchase['ingredient_name'], purchase['purveyor'], purchase['item_code']))
-                print(f"✅ purchasing: {purchase['ingredient_id']}, {purchase['ingredient_name']}, {purchase['purveyor']},{purchase['item_code']} has been added! ")
+                cursor.execute("INSERT OR IGNORE INTO purchasing (ingredient_name, purveyor, item_code) VALUES (?,?,?)", (purchase['ingredient_name'], purchase['purveyor'], purchase['item_code'],))
+
+                print(f"✅ purchasing: {purchase['ingredient_name']}, {purchase['purveyor']},{purchase['item_code']} has been added! ")
+
+                # cursor.execute("INSERT OR IGNORE INTO purchasing VALUES (?,?,?,?)", (purchase['ingredient_id'], purchase['ingredient_name'], purchase['purveyor'], purchase['item_code'],))
+
+                # print(f"✅ purchasing: {purchase['ingredient_id']}, {purchase['ingredient_name']}, {purchase['purveyor']},{purchase['item_code']} has been added! ")
 
             # Map menu_items_purchasing to new_menu_item_id
-            if purchasing_to_upload:
-                   cursor.execute("INSERT OR IGNORE INTO menu_items_purchasing VALUES (?, ?, ?, ?)", (new_menu_item_id, new_menu_item['item_name'], purchasing_to_upload['ingredient_id'],purchasing_to_upload['ingredient_name'],))
-            print(f"✅ menu_items_purchasing: {new_menu_item_id,new_menu_item['item_name'],purchasing_to_upload['ingredient_id'],purchasing_to_upload['ingredient_name']} has been added! ")
+            for purchase in purchasing_to_upload:
+                   
+            #        cursor.execute("INSERT OR IGNORE INTO menu_items_purchasing (menu_item_id, item_name, ingredient_name) VALUES (?, ?, ?, ?)", (new_menu_item_id, new_menu_item['item_name'],purchase['ingredient_name'],))
+            # print(f"✅ menu_items_purchasing: {new_menu_item_id,new_menu_item['item_name'],purchase['ingredient_name']} has been added! ")
+
+                   cursor.execute("INSERT OR IGNORE INTO menu_items_purchasing VALUES (?, ?, ?, ?)", (new_menu_item_id, new_menu_item['item_name'], purchase['ingredient_id'],purchase['ingredient_name'],))
+            print(f"✅ menu_items_purchasing: {new_menu_item_id,new_menu_item['item_name'],purchase['ingredient_id'],purchase['ingredient_name']} has been added! ")
 
         else:
             """"If menu_item already exists, but you want to overwrite the data"""
@@ -528,22 +542,34 @@ def input_update_data(db):
                 for req_prep in req_prep_to_upload:
                     cursor.execute("INSERT OR IGNORE INTO menu_req_prep_list VALUES (?,?,?)", (existing_menu_item_id, menu_item_result[0]['item_name'], req_prep['req_prep_id'],))
                     print(f"✅ menu_req_prep: {req_prep['req_prep_id']}, {menu_item_result[0]['item_name']}, {req_prep['prep']} has been added!")
-                # Map purchasing ingredient_id to new_menu_item_id in purchasing table
+                # Insert ingredient in purchasing table
 
-                for purchase in purchasing_to_upload:
-                    cursor.execute("INSERT OR IGNORE INTO purchasing VALUES (?,?,?,?)", (purchase['ingredient_id'], purchase['ingredient_name'],purchase['purveyor'], purchase['item_code']))
-                    print(f"✅ purchasing: {purchase['ingredient_id']}, {purchase['ingredient_name']}, {purchase['purveyor']},{purchase['item_code']} has been added! ")
+                # Insert purchasing ingredient_id to new_menu_item_id in purchasing table
+                for purchasing in purchasing_to_upload:
+
+                    cursor.execute("INSERT OR IGNORE INTO purchasing (ingredient_name, purveyor, item_code) VALUES  (?,?,?)", (purchasing['ingredient_name'], purchasing['purveyor'], purchasing['item_code'],))
+
+                    print(f"✅ purchasing: {purchasing['ingredient_name']}, {purchasing['purveyor']},{purchasing['item_code']} has been added! ")
+
+                    # cursor.execute("INSERT OR IGNORE INTO purchasing VALUES (?,?,?,?)", ( purchasing["ingredient_id"], purchasing['ingredient_name'], purchasing['purveyor'], purchasing['item_code'],))
+
+                    # print(f"✅ purchasing:{purchasing["ingredient_id"]}, {purchasing['ingredient_name']}, {purchasing['purveyor']},{purchasing['item_code']} has been added! ")        
 
                 # Delete existing purchasing mappings in menu_items_purchasing prior to overwrite
                 for purchasing in purchasing_to_upload:
                     cursor.execute("DELETE FROM menu_items_purchasing WHERE menu_item_id = ?", (existing_menu_item_id,))
-                    print(f"✅ Old menu_items_purchasing mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}, {purchasing['ingredient_id']},{purchasing['ingredient_name']}, {purchasing['purveyor']}, {purchasing['item_code']}")
+                    print(f"✅ Old menu_items_purchasing mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}, {purchasing['ingredient_name']}, {purchasing['purveyor']}, {purchasing['item_code']}")
                 
                 # Map purchasing to new / existing prep in menu_req_prep_list
                 for purchasing in purchasing_to_upload:
-                    cursor.execute("INSERT OR IGNORE INTO menu_items_purchasing VALUES (?,?,?,?)", (existing_menu_item_id, menu_item_result[0]['item_name'], purchasing['ingredient_id'], purchasing['ingredient_name'],))
 
-                    print(f"✅ menu_items_purchasing: {existing_menu_item_id}, {menu_item_result[0]['item_name']}, {purchasing['ingredient_id']},{purchasing['ingredient_name']}, {purchasing['purveyor']} has been added!")
+                    # cursor.execute("INSERT OR IGNORE INTO menu_items_purchasing (menu_item_id, item_name, ingredient_name) VALUES (?, ?, ?)", (existing_menu_item_id, menu_item_result[0]['item_name'],purchasing['ingredient_name'],))
+                    
+                    # print(f"✅ menu_items_purchasing: {existing_menu_item_id}, {menu_item_result[0]['item_name']},{purchasing['ingredient_name']}, {purchasing['purveyor']} has been added!")
+
+                    cursor.execute("INSERT OR IGNORE INTO menu_items_purchasing VALUES (?,?,?,?)", (existing_menu_item_id, menu_item_result[0]['item_name'],purchasing["ingredient_id"], purchasing['ingredient_name'],))
+
+                    print(f"✅ menu_items_purchasing: {existing_menu_item_id}, {menu_item_result[0]['item_name']},{purchasing['ingredient_name']}, {purchasing['purveyor']} has been added!")
 
                 # Insert new/existing mise into mise_checklist
                 for mise in mise_to_upload:
@@ -559,12 +585,7 @@ def input_update_data(db):
 
                 # Delete existing mappings in menu_mise_checklist prior to overwrite
                 for mise in mise_to_upload:
-                    # cursor.execute("""SELECT menu_mise_checklist.item_name, menu_mise_checklist.checklist_id, mise_checklist.mise_en_place
-                    #                       FROM menu_mise_checklist
-                    #                       JOIN mise_checklist ON menu_mise_checklist.checklist_id = mise_checklist.checklist_id
-                    #                       WHERE menu_item_id = ?""", (existing_menu_item_id,))
-                    # mise_checklist_result = cursor.fetchall()
-                    # if mise_checklist_result:
+                    
                     cursor.execute("DELETE FROM menu_mise_checklist WHERE menu_item_id = ?", (existing_menu_item_id,))
                     print(f"✅ Old menu_mise_checklist mappings deleted for: {existing_menu_item_id}, {menu_item_result[0]['item_name']}, {mise}")
                     
@@ -580,9 +601,6 @@ def input_update_data(db):
 
                 # Map station_id to new_menu_item if it exists
                 
-                # if station_to_upload:
-                #     cursor.execute("INSERT OR IGNORE INTO menu_items_stations VALUES (?,?,?)", (station_to_upload['station_id'], station_to_upload['station_name'], existing_menu_item_id,))
-                #     print(f"✅ menu_item_stations: {station_to_upload} has been added! ")
                 if station_to_upload:
                     cursor.execute("INSERT OR IGNORE INTO menu_items_stations VALUES (?,?,?)", (station_to_upload['station_id'], station_to_upload['station_name'], existing_menu_item_id, ))
 
@@ -590,9 +608,7 @@ def input_update_data(db):
                 else:
                     continue
                 # Map category_id to new_menu_item_id
-                # if category_to_upload:
-                #     cursor.execute("INSERT OR IGNORE INTO menu_items_categories VALUES (?, ?, ?, ?)", (existing_menu_item_id, menu_item_result[0]['item_name'], category_to_upload['category_id'],category_to_upload['category_name'],))
-                #     print(f"✅ menu_items_categories: {existing_menu_item_id}, {menu_item_result[0]['item_name']},{category_to_upload['category_id']},{category_to_upload['category_name']} has been added! ")
+                
                 if category_to_upload:
                     cursor.execute("INSERT OR IGNORE INTO menu_items_categories VALUES (?, ?, ?, ?)", (existing_menu_item_id, menu_item_result[0]['item_name'], category_to_upload['category_id'],category_to_upload['category_name'],))
                     print(f"✅ menu_items_categories: {existing_menu_item_id}, {menu_item_result[0]['item_name']},{ category_to_upload['category_id'],category_to_upload['category_name']} has been added! ")
@@ -654,13 +670,13 @@ def pull_all_data(db):
 
             # Query DB for mapped ingredients
 
-            cursor.execute("""SELECT ingredients.ingredient_name, ingredients.purveyor
+            cursor.execute("""SELECT ingredients.ingredient_name, ingredients.purveyor, ingredients.ingredient_code
                 FROM ingredients
                 JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
                 WHERE menu_ingredients.menu_item_id = ?;""", (id,))
             ingredient_result = cursor.fetchall()
 
-            ingredients = [{"purveyor": i[1], "ingredient": i[0]} for i in ingredient_result]
+            ingredients = [{"purveyor": i[1], "ingredient": i[0], "sku":i[2]} for i in ingredient_result]
             #print(ingredients)
 
             # Query DB for mapped station_name
@@ -675,6 +691,18 @@ def pull_all_data(db):
                            WHERE menu_item_id =?""",(id,))
             category =[i[0]for i in cursor.fetchall()]
             #print(category)
+
+            # Query DB for mapped menu_items_purchasing
+            cursor.execute("""SELECT purchasing.ingredient_name,  purchasing.purveyor, purchasing.item_code
+                FROM menu_items_purchasing
+                JOIN purchasing ON purchasing.ingredient_id = menu_items_purchasing.ingredient_id
+                WHERE menu_items_purchasing.menu_item_id = ?;""", (id,))
+            
+            purchasing =[{"ingredient":i[0], "purveyor":i[1],"sku":i[2]} for i in cursor.fetchall()]
+
+            #print(purchasing)
+            
+            #break
             menu_items.append({
                                     "item_name": item_name,
                                     "category": item_name_category,
@@ -683,8 +711,10 @@ def pull_all_data(db):
                                     "mise_en_place": checklist,
                                     "ingredients": ingredients,
                                     "menu_items_stations": station,
-                                    "menu_items_category": category
+                                    "menu_items_category": category,
+                                    "purchasing": purchasing
                                })
+
     conn.close()
 
         #print(prep_list)
@@ -701,3 +731,4 @@ def pull_all_data(db):
 
     pass
 # ------------------------------------------------------------------------------------------
+def ingredient_helper(item_id, ingredient_list):

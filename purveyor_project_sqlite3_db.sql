@@ -68,9 +68,10 @@ CREATE TABLE menu_mise_checklist(
 -- Create table for ingredients
 CREATE TABLE ingredients (
     ingredient_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    ingredient_name TEXT NOT NULL,
-    purveyor TEXT NOT NULL,
-    item_code TEXT UNIQUE,
+    purveyor TEXT,
+    ingredient_code TEXT NOT NULL, 
+    ingredient_description TEXT,   
+    ingredient_name TEXT,
     pack_size_unit TEXT,
     purchase_price REAL NOT NULL DEFAULT 0.0,
     ingredient_type TEXT
@@ -156,6 +157,10 @@ CREATE TABLE dietary (
 --Delete a table
 
 DROP TABLE table_name;
+
+-- Empty a table
+
+DELETE FROM table_name;
 
 --Add column
 ALTER TABLE table_name

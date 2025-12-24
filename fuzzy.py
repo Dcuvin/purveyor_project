@@ -86,6 +86,8 @@ def normalize(text):
         return text.strip()
     except:
         return
+
+
 #----------------------------------------------------------------------------
 
 def match_menu_items(item, choices, threshold=85):

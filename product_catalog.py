@@ -23,57 +23,51 @@ def update_ingredient_table(db_file, product_catalog_excel_file):
     source_data = df_source[["Vendor Name","Item Code","Item Description","Normalized Item Description","Pack/Size/Unit","Last Purchased Price ($)","Product(s)"]]
     source_data_set = []
     
+    # bad_rows = source_data[pd.isna(source_data["Vendor Name"])]
+    # print(bad_rows)
+
 
     conn = sqlite3.connect(db_file)
     # Cursor to execute commands
     cursor = conn.cursor()
-
-    cursor.execute("""SELECT * FROM ingredients;""")
+    cursor.execute("""CREATE UNIQUE INDEX IF NOT EXISTS idx_ingredients_vendor_code_pack
+                    ON ingredients(purveyor, ingredient_code, pack_size_unit);""")
     
-    ingredient_result = cursor.fetchall()
-    data_to_upload= []
-
-
-    for ingredient_tuple in ingredient_result:
-            data_to_upload.append({
-            "ingredient_id":ingredient_tuple[0],
-            "purveyor": ingredient_tuple[1],
-            "ingredient_code": ingredient_tuple[2],
-            "ingredient_description":ingredient_tuple[3],
-            "ingredient_name":ingredient_tuple[4],
-            "pack_size_unit":ingredient_tuple[5],
-            "purchase_price": ingredient_tuple[6],
-            "ingredient_type": ingredient_tuple[7]
-        })
-            
+    conn.commit()
 
     for _, row in source_data.iterrows():
-        data_to_upload.append({
-            "purveyor": row.get("Vendor Name", ""),
-            "ingredient_code": str(row.get("Item Code", "")),
-            "ingredient_description": row.get("Item Description",""),
-            "ingredient_name" : row.get("Normalized Item Description", ""),
-             "pack_size_unit": row.get("Pack/Size/Unit"),
-             "purchase_price": row.get("Last Purchased Price ($)", ""),
-             "ingredient_type": row.get("Product(s)", ""),
+        #purveyor = (row.get("Vendor Name", "") or "").strip()
+        purveyor = "" if pd.isna(row.get("Vendor Name")) else str(row.get("Vendor Name")).strip()
 
-        })
+        raw_code = row.get("Item Code")
 
-    for dict_item in data_to_upload:
-        cursor.execute("""INSERT INTO ingredients
-                    (purveyor, ingredient_code, ingredient_description,ingredient_name,pack_size_unit, purchase_price, ingredient_type)
-                    VALUES (?,?,?,?,?,?,?)
-                    ON CONFLICT(ingredient_code) DO UPDATE SET
-                    purchase_price = excluded.purchase_price;""",
-                   (dict_item["purveyor"],
-                    dict_item["ingredient_code"], 
-                    dict_item["ingredient_description"],
-                    dict_item["ingredient_name"],
-                    dict_item["pack_size_unit"],
-                    dict_item["purchase_price"], 
-                    dict_item[ "ingredient_type"])
+        if pd.isna(raw_code):
+            code = ""
+        else:
+            code = str(raw_code).strip()
+            if code.endswith(".0") and code[:-2].isdigit():
+                code = code[:-2]
 
-        )
+        cursor.execute("""
+            INSERT INTO ingredients
+                (purveyor, ingredient_code, ingredient_description, ingredient_name, pack_size_unit, purchase_price, ingredient_type)
+            VALUES (?,?,?,?,?,?,?)
+            ON CONFLICT(purveyor, ingredient_code, pack_size_unit) DO UPDATE SET
+                ingredient_description = excluded.ingredient_description,
+                ingredient_name        = excluded.ingredient_name,
+                pack_size_unit         = excluded.pack_size_unit,
+                purchase_price         = excluded.purchase_price,
+                ingredient_type        = excluded.ingredient_type;
+        """, (
+            purveyor,
+            code,
+            row.get("Item Description",""),
+            row.get("Normalized Item Description",""),
+            row.get("Pack/Size/Unit",""),
+            row.get("Last Purchased Price ($)", ""),
+            row.get("Product(s)", "")
+        ))
+
 
     conn.commit()
     conn.close()
@@ -400,10 +394,25 @@ def menu_cost_ver_2(db):
     pass
 
 #----------------------------------------------------------------------------------------
-def upload_xtrachef_item_library(item_library_file, db):
+def upload_xtrachef_item_library(item_library_file):
 
     """ Take the downloaded item library from Xtrachef and modify it for uploading to database"""
     """ Make sure to save the downloaded .csv file into an .xlsx file, and format the columns."""
+
+    # Create a Normalized Item Description column prior to manipulating data
+
+    wb = load_workbook(item_library_file)
+    ws = wb.active
+
+        # Insert column C
+    ws.insert_cols(5)
+
+    # Set header
+    ws.cell(row=1, column=5, value="Normalized Item Description")
+
+
+
+    wb.save(f"✅ Normalized Item Description Column added to {item_library_file}")
 
     # Read the item_library_file and normalize the item_description columns and input that new data into that column in the database
 
@@ -425,45 +434,45 @@ def upload_xtrachef_item_library(item_library_file, db):
     deduped_data = item_library_data.drop_duplicates(subset='Normalized Item Description', keep='first')
 
 
-    item_library_data.to_excel(item_library_file, index=False)
+    deduped_data.to_excel(item_library_file, index=False)
     print(f"✅ {item_library_file} has been normalized!")
 
-    #----------------------------------------------------------------------------------------
+    # #----------------------------------------------------------------------------------------
 
-    # Map Excel column headers → DB column names
-    column_map = {
-        "Vendor Name": "purveyor",
-        "Item Code": "ingredient_code",
-        "Item Description": "ingredient_description",
-        "Normalized Item Description": "ingredient_name",
-        "Pack/Size/Unit": "pack_size_unit",
-        "Last Purchased Price ($)": "purchase_price",
-        "Product(s)": "ingredient_type"
-    }
+    # # Map Excel column headers → DB column names
+    # column_map = {
+    #     "Vendor Name": "purveyor",
+    #     "Item Code": "ingredient_code",
+    #     "Item Description": "ingredient_description",
+    #     "Normalized Item Description": "ingredient_name",
+    #     "Pack/Size/Unit": "pack_size_unit",
+    #     "Last Purchased Price ($)": "purchase_price",
+    #     "Product(s)": "ingredient_type"
+    # }
 
-    conn = sqlite3.connect(db)
-    cursor = conn.cursor()
+    # conn = sqlite3.connect(db)
+    # cursor = conn.cursor()
 
-    updated_item_library_data = pd.read_excel(item_library_file)
-    updated_item_library_data = updated_item_library_data.fillna("")  # Optional: fill blanks to avoid NaN issues
+    # updated_item_library_data = pd.read_excel(item_library_file)
+    # updated_item_library_data = updated_item_library_data.fillna("")  # Optional: fill blanks to avoid NaN issues
 
-    # Excel values come in this order
-    columns = list(column_map.values())         # ['ingredient_name', 'ingredient_code', 'purveyor', 'last_purchased_price']
-    placeholders = ', '.join(['?'] * len(columns))  # '?, ?, ?, ?'
-    column_names = ', '.join(columns)           # 'ingredient_name, ingredient_code, purveyor, last_purchased_price'
-    conn.execute("BEGIN")
+    # # Excel values come in this order
+    # columns = list(column_map.values())         # ['ingredient_name', 'ingredient_code', 'purveyor', 'last_purchased_price']
+    # placeholders = ', '.join(['?'] * len(columns))  # '?, ?, ?, ?'
+    # column_names = ', '.join(columns)           # 'ingredient_name, ingredient_code, purveyor, last_purchased_price'
+    # conn.execute("BEGIN")
 
-    for _, row in updated_item_library_data.iterrows():
+    # for _, row in updated_item_library_data.iterrows():
 
-        # Pull values in matching order
-        values = [row[excel_col] for excel_col in column_map.keys()]
+    #     # Pull values in matching order
+    #     values = [row[excel_col] for excel_col in column_map.keys()]
 
-        # Now build and run the SQL dynamically
-        cursor.execute(
-            f"INSERT OR REPLACE INTO ingredients ({column_names}) VALUES ({placeholders})",
-            values
-        )
-    conn.commit()
-    conn.close()
+    #     # Now build and run the SQL dynamically
+    #     cursor.execute(
+    #         f"INSERT OR REPLACE INTO ingredients ({column_names}) VALUES ({placeholders})",
+    #         values
+    #     )
+    # conn.commit()
+    # conn.close()
 
-    print(f"✅ {item_library_file} has been uploaded to {db}!")
+    # print(f"✅ {item_library_file} has been normalized!")

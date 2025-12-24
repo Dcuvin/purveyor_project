@@ -10,10 +10,13 @@ import sys #import sys modulet o access command-line arguments
 import os #This statement is used to include the functionality of
 #the os module, allowing you to interact with the operating system in a portable way
 from docx import Document
-from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows, format_order_sheet, format_table
+from excel_format import format_headers_and_borders, set_print_options, insert_blank_rows, format_order_sheet, format_table, format_order_guide
 from prep_req import req_prep, req_prep_ver_2
 from collections import defaultdict
 from database import create_df
+import shutil
+from fuzzy import normalize, fuzzy_match
+
 
 #----------------------------------------------------------------------------
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, event_location, db):
@@ -394,84 +397,132 @@ def get_order_list(item_id,db,excel_file_path,event_name,guest_count,event_date)
     format_order_sheet(workbook['order_sheet'], 2, 1, 3)
 
     workbook.save(excel_file_path)
+
 #----------------------------------------------------------------------------
 
 
-    print("Order Sheet Created!")
-
-def get_order_list_ver_2(item_id,db,excel_file_path,event_name,guest_count,event_date):
+def get_order_list_ver_2(item_id,db,excel_folder_path,event_name,guest_count,event_date):
 
     conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
-    current_date = date.today()
-    formatted_date = current_date.strftime("%m-%d-%Y")
 
-    result_dict= {'Ingredient': [],'QTY':'', 'Purveyor':[]}
     for id in item_id:
-        cursor.execute("""
-                SELECT ingredients.ingredient_name, ingredients.purveyor
-                FROM ingredients
-                JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
-                WHERE menu_ingredients.menu_item_id = ?;
-            """, (id,)
+        cursor.execute(  """SELECT purchasing.ingredient_name,  purchasing.purveyor, purchasing.item_code
+                FROM menu_items_purchasing
+                JOIN purchasing ON purchasing.ingredient_id = menu_items_purchasing.ingredient_id
+                WHERE menu_items_purchasing.menu_item_id = ?;""", (id,)
         )
         
-        results = cursor.fetchall()
-        #print(results)
+        seen_ingredients = set()
+        purchase_results = []
 
-        # Remove duplicate ingredients
-        for tuple_item in results:
-            capitalized_ingredient = tuple_item[0].capitalize()
-            if tuple_item[0].capitalize() not in result_dict['Ingredient']:
-                result_dict['Ingredient'].append(capitalized_ingredient)
-                result_dict['Purveyor'].append(tuple_item[1].capitalize())
+        for ingredient, vendor, sku in cursor.fetchall():
+            key = ingredient.lower()
 
-    #print(result_list)
-
-    print(result_dict)
-    # Function that creates a dataframe
-    def create_df(data):
-
-        df= pd.DataFrame(data)
-        return df
+            if key not in seen_ingredients:
+                seen_ingredients.add(key)
+                purchase_results.append({
+                    "ingredient": ingredient.capitalize(),
+                    "vendor": vendor.capitalize(),
+                    "sku": sku
+                })
     
+    produce_purveyor=["dairyland", "chefs warehouse", "baldor", "agri exotic trading", "natoora", "murray s cheese", "tivoli mushrooms llc", "g de p inc", "riviera produce "]
+    protein_purveyor=["pat la frieda", "liepper and sons llc","prime food distributor inc", "Black Diamond Gourmet inc", "LIEPPER & SONS LLC "]
+    bread_purveyor=["eli s bread inc","all natural products llc","pain d avignon", "davidovich bakery" ]
+
+    produce_purchase =[]
+    protein_purchase = []
+    bread_purchase=[]
+
+
+    for purchase_dict in purchase_results:
+        for produce_p in produce_purveyor:
+            if fuzzy_match(purchase_dict["vendor"], produce_p):
+                produce_purchase.append(purchase_dict)
+            else:
+                continue
+        for protein_p in protein_purveyor:
+            if fuzzy_match(purchase_dict["vendor"], protein_p):
+                protein_purchase.append(purchase_dict)
+            else:
+                continue
+        for bread_p in bread_purveyor:
+            if fuzzy_match(purchase_dict["vendor"], bread_p):
+                bread_purchase.append(purchase_dict)
+            else:
+                continue
+
+    print(produce_purchase)
+    print(protein_purchase)
+    print(bread_purchase)
     
-    df_list =[] 
-    df_list.append(create_df(result_dict))
+    """Pull order sheet template and re-save using event info"""
+    # Get the current working directory
+    cwd = os.getcwd()
+    file_count = 0
+    # Create name for new order guide xlsx file
+    new_file_name = f"ORDER_GUIDE_{event_name}_{event_date}_{file_count}.xlsx"
 
-    print(df_list)
+    # ORDER GUIDE - TEMPLATE.xlsx file_path
+    order_guide_template_file_path = os.path.join(cwd, 'ORDER GUIDE - TEMPLATE.xlsx')
 
-   
-    # Create the order_sheet and populate with data.
+    # File path for the folder where the copied template will be saved to
+    dest_dir = os.path.join(cwd, excel_folder_path)
 
-    with pd.ExcelWriter(excel_file_path, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
-        sheet_name = "order_sheet"
-        pd.DataFrame().to_excel(writer, sheet_name=sheet_name, index=False)
+    # Complet file path of newly copied and renamed events req file > event folder
+    dest_path = os.path.join(dest_dir, new_file_name)
 
-        # Add event info to the top of the order sheet.
-
-        workbook = writer.book
-        worksheet = writer.sheets[sheet_name]
-        worksheet["A1"] = f"Order List for {event_name} - {event_date} - Guest:{guest_count}"  # Customize your title here
-
-        current_row = 2
-        for item in df_list:
-            item.to_excel(writer, sheet_name= 'order_sheet', startrow=current_row, startcol=0, index=False)
-            current_row += len(item.index) + 1  # Increment to avoid overlap
-
-    # Reload the workbook with openpyxl to apply the formatting.
-    workbook = load_workbook(excel_file_path)
-
-
-    format_order_sheet(workbook['order_sheet'], 2, 1, 3)
-
-    workbook.save(excel_file_path)
-
-
-    print("Order Sheet Created!")
+    # Sanity check that the source exists
+    if not os.path.isfile(order_guide_template_file_path):
+        raise FileNotFoundError(f"Source file not found: {order_guide_template_file_path}")
     
+    while os.path.exists(dest_path):
+        file_count += 1
+
+        new_file_name =f"ORDER_GUIDE_{event_name}_{event_date}_{file_count}.xlsx"
+        dest_path = os.path.join(dest_dir, new_file_name)
+
+    # 5. Copy (using copy2 to preserve metadata)
+    shutil.copy2(order_guide_template_file_path , dest_path)
+
+    print(f"Copied:\n  {order_guide_template_file_path}\n→ {dest_path}")
     
+    print("📋 Order Guide Created!")
+
+    """re-open newly saved order guide and populate with data."""
+
+    # Populate new template with prep items that can be requisitioned from the AM Prep Team
+    wb = load_workbook(f"{dest_dir}/{new_file_name}")
+    ws = wb['order_guide']
+    ws['A1'] = f"Event:{event_name} Date: {event_date} Guests:{guest_count}"         
+    #print(am_prep_req_list)
+    
+    # Write each item into its own row (column A)
+    for row_idx, produce_p in enumerate(produce_purchase, start=4):   # start=1 → Excel’s first row
+        ws.cell(row=row_idx, column=1, value=produce_p["ingredient"])
+        ws.cell(row=row_idx, column=2, value=produce_p["vendor"])
+        ws.cell(row=row_idx, column=3, value=produce_p["sku"])
+
+    for row_idx, protein_p in enumerate(protein_purchase, start=4):   # start=1 → Excel’s first row
+        ws.cell(row=row_idx, column=5, value=produce_p["ingredient"])
+        ws.cell(row=row_idx, column=6, value=produce_p["vendor"])
+        ws.cell(row=row_idx, column=7, value=produce_p["sku"])
+    
+    for row_idx, bread_p in enumerate(bread_purchase, start=4):   # start=1 → Excel’s first row
+        ws.cell(row=row_idx, column=9, value=produce_p["ingredient"])
+        ws.cell(row=row_idx, column=10, value=produce_p["vendor"])
+        ws.cell(row=row_idx, column=11, value=produce_p["sku"])
+    
+
+    # format AM prep reauisition sheet
+    format_order_guide (ws, 4, 1, 11)
+    # Save
+    wb.save(f"{dest_dir}/{new_file_name}")
+    
+    print("📋 Order Guide Updated!")
+
 #----------------------------------------------------------------------------
 
 def old_excel_prep_list(item_id, event_name, guest_count, event_start, event_date,db):
@@ -610,6 +661,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
     
     excel_file_count = 0
     # Create an excel file
+    excel_folder =f"prep_and_checklists/{event_name}"
     excel_file = f"prep_and_checklists/{event_name}/PREPLIST_{event_name}_{formatted_date}_{excel_file_count}.xlsx"
     # Continously checks until it finds a non-existent file name
     while os.path.exists(excel_file):
@@ -739,8 +791,6 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
     print(f"final_item_ids:{final_ids}")
     # Fill out order_sheet
     get_order_list(final_ids,db,excel_file,event_name,guest_count,event_date)
-
-    #req_prep_ver_2(final_ids, new_folder_path, event_date, event_name,db)
-
+    get_order_list_ver_2(final_ids,db,excel_folder,event_name,guest_count,event_date)
     print("✅ Excel Prep and Order List Created and Reformatted!")
     return final_ids

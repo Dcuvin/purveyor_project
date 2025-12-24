@@ -1,5 +1,6 @@
 {
     "menu_items":[
+
         {
             "item_name": "grilled chicken ",
             "category": "a taste of nine orchard",
@@ -27,14 +28,20 @@
                 "ginger scallion relish"
             ],
             "ingredients": [
-               
+                {
+                    "purveyor": "Baldor Speciality Foods, Inc.",
+                    "ingredient": "juice orange 1 gal orchid island",
+                    "sku": "JUICEOEA"
+                },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "organic ginger"
+                    "ingredient": "organic ginger",
+                    "sku": "VEG1J1A"
                 },
                 {
                     "purveyor": "laper poultry",
-                    "ingredient": "sasso"
+                    "ingredient": "sasso",
+                    "sku": "37909_XC491220"
                 }
             ],
             "menu_items_stations": [
@@ -43,10 +50,107 @@
             "menu_items_category": [
                 "a taste of nine orchard"
             ],
+            "purchasing": [
+                {
+                    "ingredient": "sasso",
+                    "purveyor": "llaper poultry",
+                    "sku": "37909_XC491220"
+                }
+            ]
+        },
+        {
+            "item_name": "crab toast",
+            "category": "plated starter",
+            "prep": [
+                "crab meat",
+                "yuzu-ponzu mayo",
+                "diced pickled daikon",
+                "brunoise shallots",
+                "brunoise celery",
+                "ginger juice",
+                "cut brioche toast",
+                "pick celery leaf"
+            ],
+            "req_prep": [
+                {
+                    "prep": "ginger juice",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "station entrees"
+                }
+            ],
+            "mise_en_place": [
+                "crab meat",
+                "yuzu-ponzu mayo",
+                "diced pickled daikon",
+                "brunoise shallots",
+                "brunoise celery",
+                "ginger juice",
+                "brioche toast",
+                "picked celery leaf"
+            ],
+            "ingredients": [
+               
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "organic ginger",
+                    "sku": ""
+                },
+                {
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "crabmeat jumbo lump crabmeat jumbo lump",
+                    "sku":"5851_XC3705271"
+                },
+                {
+                    "purveyor": "agri exotic trading",
+                    "ingredient": "celery 12 ct",
+                    "sku": "CE12CT"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "yuzu juice 100%",
+                    "sku": "YUZUCO"
+                },
+                {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "br pullman 5x5",
+                    "sku": "20713 "
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "sauce ponzu 1 2 gal kikkoman",
+                    "sku": "ASIA1Z"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "shallots peeled 5 lb ",
+                    "sku": "SH3EA"
+                }
+            ],
+            "menu_items_stations": [
+            ],
+            "menu_items_category": [
+                "plated starter"
+            ],
             "purchasing":[{
-                "ingredient_name": "sasso chickens",
-                "purveyor":"lapera brothers",
-                "sku": "37909_XC491220"
+                "purveyor": "liepper and sons llc",
+                "ingredient": "crabmeat jumbo lump crabmeat jumbo lump",
+                "sku":"5851_XC3705271"
+            },
+            {
+                "purveyor": "baldor",
+                "ingredient": "yuzu juice 100%",
+                "sku": "YUZUCO"
+            },
+            {
+                "purveyor": "eli s bread inc",
+                "ingredient": "br pullman 5x5",
+                "sku": "20713 "
+            },
+            {
+                "purveyor": "baldor",
+                "ingredient": "sauce ponzu 1 2 gal kikkoman",
+                "sku": "ASIA1Z"
             }
             ]
         }

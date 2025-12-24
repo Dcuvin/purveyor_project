@@ -88,6 +88,7 @@ def format_order_sheet(sheet, start_row, start_col, end_col):
         for cell in row:
             cell.border = thin_border
                
+#----------------------------------------------------------------------------
 
 def format_prep_sheet (sheet, start_row, start_col, end_col):
 
@@ -104,6 +105,7 @@ def format_prep_sheet (sheet, start_row, start_col, end_col):
             cell.font = cell_font
             # Center all data
             cell.alignment = cell_alignment
+#----------------------------------------------------------------------------
 
 def format_table(ws, start_row, start_col, dataframe):
     num_rows = dataframe.shape[0]
@@ -142,6 +144,7 @@ def format_table(ws, start_row, start_col, dataframe):
             cell.border = thin_border
             cell.alignment = align_center
 
+#----------------------------------------------------------------------------
 
 def format_table_ver_2(ws, start_row, start_col, dataframe):
     # num_rows = dataframe.shape[0]
@@ -179,3 +182,19 @@ def format_table_ver_2(ws, start_row, start_col, dataframe):
             cell.font = body_font
             cell.border = thin_border
             cell.alignment = align_center
+#----------------------------------------------------------------------------
+def format_order_guide (sheet, start_row, start_col, end_col):
+
+    # Define the font for non-header cells
+    cell_font = Font(name="Calibri", size=14)
+
+    # Define the alignment for all cells
+    cell_alignment = Alignment(horizontal='center', vertical='center')
+
+        
+    # Apply font to the entire table
+    for row in sheet.iter_rows(min_row=start_row, max_row=sheet.max_row, min_col=start_col, max_col=end_col):
+        for cell in row:
+            cell.font = cell_font
+            # Center all data
+            cell.alignment = cell_alignment
