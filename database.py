@@ -187,10 +187,11 @@ def input_update_data(db):
         new_menu_item = None
      
         if len(menu_item_result) == 1:
-            print(f"{menu_item_result[0]['item_name']} exists; item_id: { menu_item_result[0]['menu_item_id']}")
-            update_prompt = input(f"Would you like to overwrite { menu_item_result[0]['item_name']} in {db}?: y/n  ")
-            if update_prompt != "y":
-                continue
+            # print(f"{menu_item_result[0]['item_name']} exists; item_id: { menu_item_result[0]['menu_item_id']}")
+            # update_prompt = input(f"Would you like to overwrite { menu_item_result[0]['item_name']} in {db}?: y/n  ")
+            # if update_prompt != "y":
+               #continue
+            new_menu_item = None
         else:
             print(f"{menu_item['item_name']} does not exist in: {db}")
             proceed_prompt = input(f"would you like to proceed?: y/n  ")
