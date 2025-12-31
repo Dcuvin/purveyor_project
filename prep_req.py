@@ -249,14 +249,15 @@ def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db, need
     # Populate new template with prep items that can be requisitioned.
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['Prep Req']
-    ws['A1'] = f"{event_name} - {formatted_date}"         
+    ws['A1'] = f"EVENT REQ PREP - {formatted_date}"         
     print(f"🍽️ Mise en Place to Requisition: {prep_req_list}")
     
     # Write each item into its own row (column A)
    # start = 3, becuase I want to start filling in the cells in the third row (rows 1-2 are titles and headings)
     for row_idx, prep_items in enumerate(prep_req_list, start=3):   # start=1 → Excel’s first row
         ws.cell(row=row_idx, column=1, value=prep_items["prep"])
-        ws.cell(row=row_idx, column=3, value=prep_items["category"])
+        ws.cell(row=row_idx, column=3, value=f"{event_name.capitalize()}")
+        #ws.cell(row=row_idx, column=3, value=prep_items["category"])
         #ws.cell(row=row_idx, column=4, value=f"{need_by_date}, by 4pm")
         ws.cell(row=row_idx, column=4, value=f"{event_date}, before {need_by_event_time}")
 
