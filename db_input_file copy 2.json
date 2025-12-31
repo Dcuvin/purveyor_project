@@ -1,0 +1,104 @@
+{
+    "menu_items":
+    [
+        {
+            "item_name": "roasted carrots",
+            "category": "stations: crudite & mezze",
+            "prep": [
+                "cook farro",
+                "whipped sheeps milk feta",
+                "cook quinoa",
+                "cook bulgur",
+                "cut / roast mulitcolor carrots",
+                "make / pull almond dukkah",
+                "make / pull carrot vin",
+                "pitted dates"
+            ],
+            "req_prep": [
+                {
+                    "prep": "whipped sheeps milk feta",
+                    "am_prep_team": 1,
+                    "sous_prep": 1,
+                    "category": "station salad"
+                },
+                {
+                    "prep": "cook quinoa",
+                    "am_prep_team": 1,
+                    "sous_prep": 1,
+                    "category": "station salad"
+                },
+                {
+                    "prep": "cook farro",
+                    "am_prep_team": 1,
+                    "sous_prep": 1,
+                    "category": "station salad"
+                },
+                {
+                    "prep": "cook bulgur",
+                    "am_prep_team": 1,
+                    "sous_prep": 1,
+                    "category": "station salad"
+                },
+                {
+                    "prep": "cut and roast mulitcolor carrots",
+                    "am_prep_team": 1,
+                    "sous_prep": 1,
+                    "category": "station salad"
+                },
+                {
+                    "prep": "carrot vin",
+                    "am_prep_team": 1,
+                    "sous_prep": 1,
+                    "category": "station salad"
+                },
+                {
+                    "prep": "pitted dates",
+                    "am_prep_team": 1,
+                    "sous_prep": 1,
+                    "category": "station salad"
+                }
+            ],
+            "mise_en_place": [
+                "roasted carrots",
+                "cooked quinoa",
+                "cooked farro",
+                "cooked bulgur",
+                "whipped feta",
+                "carrot vin",
+                "pitted dates"
+            ],
+            "ingredients": [{
+                "purveyor": "baldor speciality foods inc.",
+                "ingredient": "carrot baby tri color peeled 5 lb"
+            },
+            {
+                "purveyor": "dairyland",
+                "ingredient": "quinoa red conventional"
+            },
+            {
+                "purveyor": "dairyland",
+                "ingredient": "bulgur wheat coarse 10lb"
+            },
+            {
+                "purveyor": "baldor speciality foods inc.",
+                "ingredient": "farro semi pearled bag 11 lb"
+            },
+            {
+                "purveyor": "baldor speciality foods inc.",
+                "ingredient": "large medjool dates"
+            },
+            {
+                "purveyor": "dairyland",
+                "ingredient": "feta valbreso sheep french"
+            }],
+            "menu_items_stations": [
+                "crudite & mezze"
+            ],
+            "menu_items_category": [
+                "stations: crudite & mezze"
+            ],
+            "purchasing": []
+        },
+    ]
+       
+}

@@ -1,38 +1,40 @@
-Event:  Wedding: Hannah & Michael	
-Date:  Saturday, January 10, 2026
-Account:  Miller, Hannah	
-Time:  5:00 PM - 12:00 AM
-Contact:  Miller, Hannah PLANNER - KARISSA KALOMIDOS	
-Location:  Greenhouse
+Event:  Urby	
+Date:  Wednesday, January 7, 2026
+Account:  Urby	
+Time:  5:30 PM - 9:30 PM
+Contact:  Camilla Mastromauro	
+Location:  Blue Room and Swan Room
 Phone: 	
-Event Type:  seated dinner
-Email:  karissa.kalodimos@gmail.com	Guests: 
+Event Type:  Cocktail Reception
+Email:  cmastromauro@urby.com	
+Guests:  65
  	
-Account Owner:  Deborah Zakhar	
-Phone/Email:  / deborah.zakhar@nineorchard.com
+Account Owner:  Julie Garcés	
+Phone/Email:  / julie@nineorchard.com
 
 menu_items:
 
-Crab Toast,
-
-Cavatelli,
-
-Steak Au Poivre,
-
-Steelhead Salmon,
-
-Braised Short,
-
-Cacio e Pepe Fritter,
+Oysters,
 
 Caviar hash brown,
 
-Chicken Schnitzel,
+Shrimp Toast,
 
-Crispy Burrata,
-
-“Everything” Gougeres,
+Hamachi Aguachile,
 
 NY Strip Steak,
 
-Shrimp Toast
+Braised Short Rib,
+
+Cacio e Pepe Fritter,
+
+Crispy Burrata,
+
+
+Tuna Tartare,
+
+Corner Bar Burger Sliders,
+
+Cavatelli,
+ 
+A TASTE OF NINE ORCHARD

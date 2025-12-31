@@ -30,7 +30,7 @@ def get_chatgpt_all_info(db):
     response = client.chat.completions.create(
                 messages=[
                 {"role": "system", "content": """Extract and Isolate the following: Name of the event, 
-                 the guest count, the event start and end time, the date of that event, the event type, the event location,
+                 guest count, event time, date, event type, event location,
                  and all the food items, each on their own separate line. Do not label any of the extracted information, and
                  make sure that the event title
                  does not include a special character. If any info is blank, replace with N/A.

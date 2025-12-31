@@ -13,9 +13,9 @@ from bs4 import BeautifulSoup
 import openai
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2
-from database import upload_excel, input_update_data, db_input, excel_file_to_upload, delete_data, get_ingredients, pull_all_data
+from database import upload_excel, input_update_data, db_input, excel_file_to_upload, delete_data, get_ingredients, pull_all_data, ingredient_helper, json_editor
 from openapi import get_chatgpt_all_info
-from check_file import find_db, find_xlsx_db, find_xlsx_item_library
+from check_file import find_db, find_xlsx_db, find_xlsx_item_library, find_json_files
 from prep_req import req_prep, test_prep_req, req_prep_ver_2
 from beo import update_dropdown_menu_selection
 from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu,get_standard_station_menu
@@ -267,6 +267,41 @@ def main():
 
         pull_all_data(db)
 
+    
+#------------------------This code block is for manipulating data prior to adding into a DB-----------------------
+# Creates a JSON template of ingredients ready to copy and paste.
+    elif sys.argv[1] == 'ingredient_helper':
+        print(find_db())
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        db = f"purveyor_project_db_{db_input}.db"
+
+        
+        ingredient_id_input =input('List of ingredient_ids:')
+        ingredient_id_list =ingredient_id_input.split(",")
+
+        print(ingredient_id_list)
+        ingredient_helper(db, ingredient_id_list)
+    
+    elif sys.argv[1] == 'json_editor':
+        
+        file_count = 0
+        json_db_file ={}
+
+        for i in find_json_files():
+            file_count += 1
+            json_db_file[str(file_count)] = i
+            print(f"{file_count}.  {i}")
+        
+        json_db_file_input = input('Specify JSON file by typing the corresponding number: ')
+
+        chosen_json_db_file = json_db_file[str(json_db_file_input)]
+
+        print(chosen_json_db_file)
+
+        json_editor(chosen_json_db_file)
+    
 #------------------------------------------------------------------------------------------
 def gpt_prep_list(db):
 
@@ -278,24 +313,28 @@ def gpt_prep_list(db):
     guest_count = all_info[2]
     event_time = all_info[3]
     event_date = all_info[4]
-    event_type = all_info[5].lower()
+    event_type = all_info[5].strip().lower()
     event_location = all_info[6]
     station_ids = all_info[7]
+    need_by_event_time = event_time.split("-")[0]
     #print(item_ids)
+    print(f"event_type: {event_type}")
     # if event_type is a seated dinner...
     event_type_list = ['seated dinner', 'seated meal', 'seated', 'plated dinner']
     # Adds Bread and butter for db_3
+    conn = sqlite3.connect(db)
+    cursor = conn.cursor()
     if event_type in event_type_list:
-        cursor = sqlite3.connet(db)
-        cursor.execute("SELECT item_id FROM menu_items WHERE menu_item_name = bread service;")
+        cursor.execute("""SELECT menu_item_id FROM menu_items WHERE item_name = "bread service";""")
         result = cursor.fetchall()
         for r in result:
-            item_ids.append(r)
+            item_ids.append(r[0])
+    conn.close()
     # Call the master_prep_list function using the returned variables
-    master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db, station_ids,event_type)
+    master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db, station_ids,event_type, need_by_event_time)
 #------------------------------------------------------------------------------------------
        
-def master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db, station_ids, event_type):
+def master_prep_list(item_ids, event_name, guest_count, event_time, event_date,event_location, db, station_ids, event_type, need_by_event_time):
     
     # Specify the path of the new directory
     new_folder_path = f"prep_and_checklists/{event_name}"
@@ -320,7 +359,7 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date,e
     word_checklist(final_ids, event_name, guest_count, event_time, event_date, event_location,db, station_ids)
     # Fill out prep requisition sheet
     #req_prep(item_ids, new_folder_path, event_date, event_name,db)
-    req_prep_ver_2(final_ids, new_folder_path, event_date, event_name,db)
+    req_prep_ver_2(final_ids, new_folder_path, event_date, event_name,db, need_by_event_time)
 
 #------------------------------------------------------------------------------------------
     

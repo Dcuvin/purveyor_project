@@ -27,8 +27,8 @@ CREATE TABLE menu_prep_list(
 
 --Create a table with prep items that can be requisitioned from the AM prep team, using the main prep items in prep_list as reference.
 CREATE TABLE req_prep (
-    req_prep_id INTEGER,
-    prep TEXT NOT NULL,
+    req_prep_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    prep TEXT NOT NULL UNIQUE,
     am_prep_team BOOLEAN NOT NULL DEFAULT 0,
     sous_prep BOOLEAN NOT NULL DEFAULT 0,
     category TEXT NOT NULL
@@ -92,7 +92,7 @@ CREATE TABLE menu_ingredients(
 -- Create a table for stations
 
 CREATE TABLE stations(
-    station_id INTEGER,
+    station_id INTEGER PRIMARY KEY AUTOINCREMENT,
     station_name TEXT NOT NULL   
 );
 
@@ -104,7 +104,6 @@ CREATE TABLE menu_items_stations(
     menu_item_id INTEGER,
     PRIMARY KEY (station_id, menu_item_id),
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
-    FOREIGN kEY (station_name) REFERENCES stations(station_name),
     FOREIGN KEY (station_id) REFERENCES stations(station_id)   
 );
 
@@ -129,23 +128,13 @@ CREATE TABLE menu_items_categories(
     FOREIGN KEY (category_id) REFERENCES categories(category_id)   
 );
 
---Create a purchasing table for simplified ordering of mise en place; separate from the existing ingredients table.
-CREATE TABLE purchasing (
-    ingredient_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    ingredient_name TEXT NOT NULL,
-    purveyor TEXT NOT NULL,
-    item_code TEXT UNIQUE
-    
-);
 --Create a junction table for ordering purposes linking menu_items to purchasing table.
 CREATE TABLE menu_items_purchasing(
     menu_item_id INTEGER,
-    item_name TEXT NOT NULL,
     ingredient_id INTEGER,
-    ingredient_name TEXT NOT NULL,
     PRIMARY KEY (menu_item_id, ingredient_id),
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
-    FOREIGN KEY (ingredient_id) REFERENCES purchasing(purchasing_id)   
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)   
 );
 --Create a dietary table for restrictions.
 CREATE TABLE dietary (
@@ -183,3 +172,31 @@ WHERE menu_ingredients.menu_item_id = 1;
 --menu_items:ingredeints query
 
 SELECT ingredient_id FROM menu_ingredients WHERE menu_item_id = 1;
+
+INSERT OR IGNORE INTO stations (station_name) VALUES
+('holiday party'),
+('breakfast station'),
+('continental breakfast'),
+('breakfast sandwich station'),
+ ('sandwiches'),
+('grain bowls'),
+('hearty salads'),
+('sweet & savory snacks'),
+('chips & dips'),
+('afternoon tea station'),
+('cheese & charcuterie'),
+('raw bar'),
+('crudite & mezze'),
+("farmer's green market"),
+('a taste of nine orchard');
+
+INSERT OR IGNORE INTO categories (category_name) VALUES
+('canape'),
+('passed small plates'),
+('plated starter'),
+('plated entree'),
+('family starter'),
+('family entree'),
+('plated breakfast'),
+('station'),
+('sides');

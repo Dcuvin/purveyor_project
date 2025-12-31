@@ -1,160 +1,88 @@
 {
-    "menu_items":[
-
-        {
-            "item_name": "grilled chicken ",
-            "category": "a taste of nine orchard",
-            "prep": [
-                "slice garlic",
-                "butcher / brine / grill sasso chickens",
-                "make / pull ginger scallion relish"
-            ],
-            "req_prep": [
-                {
-                    "prep": "butcher / 6% brine sasso chickens",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station entrees"
-                },
-                {
-                    "prep": "ginger-scallion relish",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [
-                "grilled sasso chicken",
-                "ginger scallion relish"
-            ],
-            "ingredients": [
-                {
-                    "purveyor": "Baldor Speciality Foods, Inc.",
-                    "ingredient": "juice orange 1 gal orchid island",
-                    "sku": "JUICEOEA"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "organic ginger",
-                    "sku": "VEG1J1A"
-                },
-                {
-                    "purveyor": "laper poultry",
-                    "ingredient": "sasso",
-                    "sku": "37909_XC491220"
-                }
-            ],
-            "menu_items_stations": [
-                "a taste of nine orchard"
-            ],
-            "menu_items_category": [
-                "a taste of nine orchard"
-            ],
-            "purchasing": [
-                {
-                    "ingredient": "sasso",
-                    "purveyor": "llaper poultry",
-                    "sku": "37909_XC491220"
-                }
-            ]
+    "menu_items":
+    [ 
+    {
+        "item_name": "porchetta",
+        "category": "station",
+        "prep": [
+            "brine / stuff /tie pork belly",
+            "pork butt farce",
+            "porchetta seasoning"
+        ],
+        "req_prep": [
+            {
+                "prep": "",
+                "am_prep_team": 0,
+                "sous_prep": 0,
+                "category": ""
+            }
+        ],
+        "mise_en_place": [
+            "porchetta loins"
+        ],
+        "ingredients": [{
+            "purveyor": "pat la frieda",
+            "ingredient": "abf boneless skinless pork belly",
+            "sku": "PBESO"
         },
         {
-            "item_name": "crab toast",
-            "category": "plated starter",
-            "prep": [
-                "crab meat",
-                "yuzu-ponzu mayo",
-                "diced pickled daikon",
-                "brunoise shallots",
-                "brunoise celery",
-                "ginger juice",
-                "cut brioche toast",
-                "pick celery leaf"
-            ],
-            "req_prep": [
-                {
-                    "prep": "ginger juice",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "station entrees"
-                }
-            ],
-            "mise_en_place": [
-                "crab meat",
-                "yuzu-ponzu mayo",
-                "diced pickled daikon",
-                "brunoise shallots",
-                "brunoise celery",
-                "ginger juice",
-                "brioche toast",
-                "picked celery leaf"
-            ],
-            "ingredients": [
-               
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "organic ginger",
-                    "sku": ""
-                },
-                {
-                    "purveyor": "liepper and sons llc",
-                    "ingredient": "crabmeat jumbo lump crabmeat jumbo lump",
-                    "sku":"5851_XC3705271"
-                },
-                {
-                    "purveyor": "agri exotic trading",
-                    "ingredient": "celery 12 ct",
-                    "sku": "CE12CT"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "yuzu juice 100%",
-                    "sku": "YUZUCO"
-                },
-                {
-                    "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713 "
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "sauce ponzu 1 2 gal kikkoman",
-                    "sku": "ASIA1Z"
-                },
-                {
-                    "purveyor": "baldor",
-                    "ingredient": "shallots peeled 5 lb ",
-                    "sku": "SH3EA"
-                }
-            ],
-            "menu_items_stations": [
-            ],
-            "menu_items_category": [
-                "plated starter"
-            ],
-            "purchasing":[{
-                "purveyor": "liepper and sons llc",
-                "ingredient": "crabmeat jumbo lump crabmeat jumbo lump",
-                "sku":"5851_XC3705271"
-            },
-            {
-                "purveyor": "baldor",
-                "ingredient": "yuzu juice 100%",
-                "sku": "YUZUCO"
-            },
-            {
-                "purveyor": "eli s bread inc",
-                "ingredient": "br pullman 5x5",
-                "sku": "20713 "
-            },
-            {
-                "purveyor": "baldor",
-                "ingredient": "sauce ponzu 1 2 gal kikkoman",
-                "sku": "ASIA1Z"
-            }
-            ]
-        }
+            "purveyor": "baldor speciality foods inc.",
+            "ingredient": "rosemary 1 lb",
+            "sku": "RO1"
+        },
+        {
+            "purveyor": "dairyland",
+            "ingredient": "spice fennel seed whole",
+            "sku": "SPF100"
+        },
+        {
+            "purveyor": "baldor speciality foods inc.",
+            "ingredient": "peppercorns whole black",
+            "sku": "SPSPICE13I"
+        },
+        {
+            "purveyor": "g de p inc",
+            "ingredient": "produce goods yellow lemons case",
+            "sku": "45584_XC12396134"
+        },
+        {
+            "purveyor": "pat la frieda",
+            "ingredient": "boneless pork butts",
+            "sku": "PB"
+        }],
+        "menu_items_stations": ["holiday party"],
+        "menu_items_category": ["station"],
+        "purchasing":[{
+            "purveyor": "pat la frieda",
+            "ingredient": "abf boneless skinless pork belly",
+            "sku": "PBESO"
+        },
+        {
+            "purveyor": "baldor speciality foods inc.",
+            "ingredient": "rosemary 1 lb",
+            "sku": "RO1"
+        },
+        {
+            "purveyor": "dairyland",
+            "ingredient": "spice fennel seed whole",
+            "sku": "SPF100"
+        },
+        {
+            "purveyor": "baldor speciality foods inc.",
+            "ingredient": "peppercorns whole black",
+            "sku": "SPSPICE13I"
+        },
+        {
+            "purveyor": "g de p inc",
+            "ingredient": "produce goods yellow lemons case",
+            "sku": "45584_XC12396134"
+        },
+        {
+            "purveyor": "pat la frieda",
+            "ingredient": "boneless pork butts",
+            "sku": "PB"
+        }]
+    }
     ]
-    
-
+       
 }

@@ -190,7 +190,7 @@ def test_prep_req(item_ids, db):
 
 #---------------------------------------------------------------------------------------------
 
-def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db):
+def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db, need_by_event_time):
     
     # Get the current working directory
     cwd = os.getcwd()
@@ -228,7 +228,6 @@ def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db):
     cursor = conn.cursor()
     current_date = date.today()
     formatted_date = current_date.strftime("%m-%d-%Y")
-    need_by_date= need_by(event_date)
     prep_req_list = []
     for id in item_ids:
         cursor.execute(
@@ -250,7 +249,7 @@ def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db):
     # Populate new template with prep items that can be requisitioned.
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
     ws = wb['Prep Req']
-    ws['A1'] = f"EVENT PREP {formatted_date}"         
+    ws['A1'] = f"{event_name} - {formatted_date}"         
     print(f"🍽️ Mise en Place to Requisition: {prep_req_list}")
     
     # Write each item into its own row (column A)
@@ -259,7 +258,7 @@ def req_prep_ver_2(item_ids, excel_folder_path, event_date, event_name, db):
         ws.cell(row=row_idx, column=1, value=prep_items["prep"])
         ws.cell(row=row_idx, column=3, value=prep_items["category"])
         #ws.cell(row=row_idx, column=4, value=f"{need_by_date}, by 4pm")
-        ws.cell(row=row_idx, column=4, value=f"{event_date}, by 4pm")
+        ws.cell(row=row_idx, column=4, value=f"{event_date}, before {need_by_event_time}")
 
 
 

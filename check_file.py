@@ -30,3 +30,13 @@ def find_xlsx_item_library():
             if "item_library" in file and file.endswith('.xlsx'):
                 item_library_xlsx_files.append(os.path.join(file))
     return item_library_xlsx_files
+#------------------------------------------------------------------------------------------
+
+json_files = []
+def find_json_files():
+    """Walk through directory and yield full paths of json files."""
+    for root, _, files in os.walk(current_directory):
+        for file in files:
+            if "db" in file and file.endswith('.json'):
+                json_files.append(os.path.join(file))
+    return json_files

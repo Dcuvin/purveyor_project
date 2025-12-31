@@ -406,29 +406,54 @@ def get_order_list_ver_2(item_id,db,excel_folder_path,event_name,guest_count,eve
     conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
+   #result_dict= {'Ingredient': [],'QTY':'', 'Purveyor':[]}
+    # for id in item_id:
+    #     cursor.execute("""
+    #             SELECT ingredients.ingredient_name, ingredients.purveyor
+    #             FROM ingredients
+    #             JOIN menu_ingredients ON ingredients.ingredient_id = menu_ingredients.ingredient_id
+    #             WHERE menu_ingredients.menu_item_id = ?;
+    #         """, (id,)
+    #     )
+        
+    #     results = cursor.fetchall()
+    #     #print(f"results: {results}")
 
+    purchase_results = []
     for id in item_id:
-        cursor.execute(  """SELECT purchasing.ingredient_name,  purchasing.purveyor, purchasing.item_code
+        cursor.execute(  """SELECT ingredient_id
                 FROM menu_items_purchasing
-                JOIN purchasing ON purchasing.ingredient_id = menu_items_purchasing.ingredient_id
                 WHERE menu_items_purchasing.menu_item_id = ?;""", (id,)
         )
-        
-        seen_ingredients = set()
-        purchase_results = []
+        results = cursor.fetchall()
+        print(results)
+        ingredient_id_results =[i[0] for i in results]
 
-        for ingredient, vendor, sku in cursor.fetchall():
-            key = ingredient.lower()
 
-            if key not in seen_ingredients:
-                seen_ingredients.add(key)
-                purchase_results.append({
-                    "ingredient": ingredient.capitalize(),
-                    "vendor": vendor.capitalize(),
-                    "sku": sku
-                })
+        for id in ingredient_id_results:
+            cursor.execute(  """SELECT ingredient_name, purveyor, ingredient_code
+                    FROM ingredients
+                    WHERE ingredient_id = ?;""", (id,)
+            )
+            ingredient_results = cursor.fetchall()
+            seen_ingredients = set()
+            
+
+            for ingredient, vendor, sku in ingredient_results:
+                key = ingredient
+
+                if key not in seen_ingredients:
+                    seen_ingredients.add(key)
+                    purchase_results.append({
+                        "ingredient": ingredient,
+                        "vendor": vendor,
+                        "sku": sku
+                    })
+    print(f"ingredient_id_results: {ingredient_id_results}")
+
+    print(f"purchase_results: {purchase_results}")
     
-    produce_purveyor=["dairyland", "chefs warehouse", "baldor", "agri exotic trading", "natoora", "murray s cheese", "tivoli mushrooms llc", "g de p inc", "riviera produce "]
+    produce_purveyor=["dairyland", "chefs warehouse", "baldor","baldor specialty foods inc." "agri exotic trading", "natoora", "murray s cheese", "tivoli mushrooms llc", "g de p inc", "riviera produce "]
     protein_purveyor=["pat la frieda", "liepper and sons llc","prime food distributor inc", "Black Diamond Gourmet inc", "LIEPPER & SONS LLC "]
     bread_purveyor=["eli s bread inc","all natural products llc","pain d avignon", "davidovich bakery" ]
 
@@ -454,9 +479,9 @@ def get_order_list_ver_2(item_id,db,excel_folder_path,event_name,guest_count,eve
             else:
                 continue
 
-    print(produce_purchase)
-    print(protein_purchase)
-    print(bread_purchase)
+    print(f"produce: {produce_purchase}")
+    print(f"protein: {protein_purchase}")
+    print(f"bread: {bread_purchase}")
     
     """Pull order sheet template and re-save using event info"""
     # Get the current working directory
@@ -506,14 +531,14 @@ def get_order_list_ver_2(item_id,db,excel_folder_path,event_name,guest_count,eve
         ws.cell(row=row_idx, column=3, value=produce_p["sku"])
 
     for row_idx, protein_p in enumerate(protein_purchase, start=4):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=5, value=produce_p["ingredient"])
-        ws.cell(row=row_idx, column=6, value=produce_p["vendor"])
-        ws.cell(row=row_idx, column=7, value=produce_p["sku"])
+        ws.cell(row=row_idx, column=5, value=protein_p["ingredient"])
+        ws.cell(row=row_idx, column=6, value=protein_p["vendor"])
+        ws.cell(row=row_idx, column=7, value=protein_p["sku"])
     
     for row_idx, bread_p in enumerate(bread_purchase, start=4):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=9, value=produce_p["ingredient"])
-        ws.cell(row=row_idx, column=10, value=produce_p["vendor"])
-        ws.cell(row=row_idx, column=11, value=produce_p["sku"])
+        ws.cell(row=row_idx, column=9, value=bread_p["ingredient"])
+        ws.cell(row=row_idx, column=10, value=bread_p["vendor"])
+        ws.cell(row=row_idx, column=11, value=bread_p["sku"])
     
 
     # format AM prep reauisition sheet
@@ -749,7 +774,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
     # Insert Event Info
     title = prep_sheet.cell(row=1, column=1, value=f"{event_name}, Guests: {guest_count} , {event_start} ,{event_date}")
     title.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
-    event_info = prep_sheet.cell(row=2, column=1, value =f"Location: {event_location}")
+    event_info = prep_sheet.cell(row=2, column=1, value =f"Location: {event_location} Event Type: {event_type}")
     event_info.font = Font(name='Calibri', size=16, bold=True, underline='single', color='000000')
 
     # Set print options
@@ -788,7 +813,8 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
         final_ids.append(id)
     for id in item_ids_list:
         final_ids.append(id)
-    print(f"final_item_ids:{final_ids}")
+    #print(f"final_item_ids:{final_ids}")
+    final_ids = list(dict.fromkeys(final_ids))
     # Fill out order_sheet
     get_order_list(final_ids,db,excel_file,event_name,guest_count,event_date)
     get_order_list_ver_2(final_ids,db,excel_folder,event_name,guest_count,event_date)

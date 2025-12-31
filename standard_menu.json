@@ -1,6 +1,6 @@
 [
-    "manchego toast",
     "halibut",
+    "manchego toast",
     "oysters",
     "beef tartare",
     "fava bean hummus",
@@ -19,7 +19,6 @@
     "shrimp toast",
     "beef tenderloin canape",
     "mushroom tartlett",
-    "chickpea beignet",
     "risotto fritter",
     "cacio e pepe fritter",
     "braised short rib",
@@ -156,5 +155,11 @@
     "rigatoni pomodoro",
     "charred broccoli salad",
     "bread service",
-    "crab toast"
+    "crab toast",
+    "green hummus",
+    "chickpea beignet",
+    "eggplant parm",
+    "pesto salad",
+    "porchetta",
+    "prime rib"
 ]
