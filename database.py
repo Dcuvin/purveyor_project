@@ -520,7 +520,7 @@ def input_update_data(db):
                                     WHERE menu_item_id = ?
                                 """, (menu_item["category"], existing_menu_item_id))
 
-                print(f"✅ Category updated for: {existing_menu_item_id}, {menu_item["category"]}")
+                print(f"✅ Category updated for: {existing_menu_item_id}, {menu_item['category']}")
 
                 # Delete existing mappings in menu_prep_list prior to overwrite
                 

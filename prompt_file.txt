@@ -1,40 +1,38 @@
-Event:  Urby	
-Date:  Wednesday, January 7, 2026
-Account:  Urby	
-Time:  5:30 PM - 9:30 PM
-Contact:  Camilla Mastromauro	
-Location:  Blue Room and Swan Room
-Phone: 	
+
+Event:  Melio	
+Date:  Thursday, January 15, 2026
+Account:  Melio	
+Time:  7:00 PM - 11:00 PM
+Contact:  Andrea Rodriguez	
+Location:  Greenhouse
+Phone:  3107336757
 Event Type:  Cocktail Reception
-Email:  cmastromauro@urby.com	
-Guests:  65
+Email:  andrea@melio.com	
+Guests:  150
  	
 Account Owner:  Julie Garcés	
 Phone/Email:  / julie@nineorchard.com
 
 menu_items:
 
-Oysters,
+Caviar hash brown, 
 
-Caviar hash brown,
-
-Shrimp Toast,
-
-Hamachi Aguachile,
-
-NY Strip Steak,
-
-Braised Short Rib,
-
-Cacio e Pepe Fritter,
+Chicken Schnitzel,
 
 Crispy Burrata,
 
+Green Hummus lavash chip, sesame, chervil
 
-Tuna Tartare,
+Lobster Roll,
+
+Mushroom tartlet,
+
+Cavatelli,
 
 Corner Bar Burger Sliders,
 
-Cavatelli,
- 
-A TASTE OF NINE ORCHARD
+Hamachi Crudo,
+
+a taste of nine orchard,
+
+Cauliflower Steak

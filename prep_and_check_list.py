@@ -454,7 +454,7 @@ def get_order_list_ver_2(item_id,db,excel_folder_path,event_name,guest_count,eve
     print(f"purchase_results: {purchase_results}")
     
     produce_purveyor=["dairyland", "chefs warehouse", "baldor","baldor specialty foods inc." "agri exotic trading", "natoora", "murray s cheese", "tivoli mushrooms llc", "g de p inc", "riviera produce "]
-    protein_purveyor=["pat la frieda", "liepper and sons llc","prime food distributor inc", "Black Diamond Gourmet inc", "LIEPPER & SONS LLC "]
+    protein_purveyor=["pat la frieda", "liepper and sons llc","prime food distributor inc", "Black Diamond Gourmet inc"]
     bread_purveyor=["eli s bread inc","all natural products llc","pain d avignon", "davidovich bakery" ]
 
     produce_purchase =[]

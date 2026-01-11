@@ -191,6 +191,7 @@ INSERT OR IGNORE INTO stations (station_name) VALUES
 ('a taste of nine orchard');
 
 INSERT OR IGNORE INTO categories (category_name) VALUES
+('silent veg'),
 ('canape'),
 ('passed small plates'),
 ('plated starter'),

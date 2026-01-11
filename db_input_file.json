@@ -1,88 +1,92 @@
 {
     "menu_items":
     [ 
-    {
-        "item_name": "porchetta",
-        "category": "station",
-        "prep": [
-            "brine / stuff /tie pork belly",
-            "pork butt farce",
-            "porchetta seasoning"
-        ],
-        "req_prep": [
-            {
-                "prep": "",
-                "am_prep_team": 0,
-                "sous_prep": 0,
-                "category": ""
-            }
-        ],
-        "mise_en_place": [
-            "porchetta loins"
-        ],
-        "ingredients": [{
-            "purveyor": "pat la frieda",
-            "ingredient": "abf boneless skinless pork belly",
-            "sku": "PBESO"
-        },
         {
-            "purveyor": "baldor speciality foods inc.",
-            "ingredient": "rosemary 1 lb",
-            "sku": "RO1"
-        },
-        {
-            "purveyor": "dairyland",
-            "ingredient": "spice fennel seed whole",
-            "sku": "SPF100"
-        },
-        {
-            "purveyor": "baldor speciality foods inc.",
-            "ingredient": "peppercorns whole black",
-            "sku": "SPSPICE13I"
-        },
-        {
-            "purveyor": "g de p inc",
-            "ingredient": "produce goods yellow lemons case",
-            "sku": "45584_XC12396134"
-        },
-        {
-            "purveyor": "pat la frieda",
-            "ingredient": "boneless pork butts",
-            "sku": "PB"
-        }],
-        "menu_items_stations": ["holiday party"],
-        "menu_items_category": ["station"],
-        "purchasing":[{
-            "purveyor": "pat la frieda",
-            "ingredient": "abf boneless skinless pork belly",
-            "sku": "PBESO"
-        },
-        {
-            "purveyor": "baldor speciality foods inc.",
-            "ingredient": "rosemary 1 lb",
-            "sku": "RO1"
-        },
-        {
-            "purveyor": "dairyland",
-            "ingredient": "spice fennel seed whole",
-            "sku": "SPF100"
-        },
-        {
-            "purveyor": "baldor speciality foods inc.",
-            "ingredient": "peppercorns whole black",
-            "sku": "SPSPICE13I"
-        },
-        {
-            "purveyor": "g de p inc",
-            "ingredient": "produce goods yellow lemons case",
-            "sku": "45584_XC12396134"
-        },
-        {
-            "purveyor": "pat la frieda",
-            "ingredient": "boneless pork butts",
-            "sku": "PB"
-        }]
-    }
+            "item_name": "corner bar burger sliders",
+            "category": "passed small plates",
+            "prep": [
+                "re-form / sear 2oz sliders",
+                "cut brioche slider buns",
+                "smoked onion aioli",
+                "bread and butter pickles",
+                "slice cheddar cheese"
+            ],
+            "req_prep": [
+                {
+                    "prep": "re-form 2oz sliders",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "small plates"
+                },
+                {
+                    "prep": "smoked onion aioli",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "small plates"
+                },
+                {
+                    "prep": "bread and butter pickles",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "small plates"
+                }
+            ],
+            "mise_en_place": [
+                "2oz sliders",
+                "brioche slider buns",
+                "smoked onion aioli",
+                "bread and butter pickles",
+                "sliced cheddar cheese"
+            ],
+            "ingredients": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cucumbers kirby 1 2 bsh",
+                    "sku": "CU50"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cheddar yellow sliced 192 slices 6x1.5 lb",
+                    "sku": "DACHEESE8H"
+                },
+                {
+                    "purveyor": "pat la frieda",
+                    "ingredient": "2oz dry aged beer hamburger",
+                    "sku": "CHBBL2"
+                },
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "baked brioche slider roll",
+                    "sku": "032-60ROBR"
+                },
+                {
+                    "purveyor": "agri exotic trading",
+                    "ingredient": "red onions-5lbs",
+                    "sku": "ONR5"
+                }
+            ],
+            "menu_items_stations": [],
+            "menu_items_category": [
+                "passed small plates"
+            ],
+            "purchasing": [
+                {
+                    "ingredient": "cheddar yellow sliced 192 slices 6x1.5 lb",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "DACHEESE8H"
+                },
+                {
+                    "ingredient": "2oz dry aged beer hamburger",
+                    "purveyor": "pat la frieda",
+                    "sku": "CHBBL2"
+                },
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "hawaiian sweet sliced slider",
+                    "sku": "10880700"
+                }
+            ]
+        }
     ]
        
 }
