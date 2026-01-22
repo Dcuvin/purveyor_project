@@ -238,9 +238,7 @@
             "prep": [
                 "clean / shuck oysters",
                 "pull /clean oyster shells",
-                "brunoise shallots",
-                "make / pull mignonette",
-                "black pepper"
+                "make pomegranate hibiscus gel"
             ],
             "req_prep": [
                 {
@@ -258,12 +256,14 @@
             ],
             "mise_en_place": [
                 "cleaned oyster shells",
-                "shucked oyster meat",
-                "mignonette",
-                "brunoise shallots",
-                "black pepper"
+                "shucked oyster meat"
             ],
             "ingredients": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "juice pomegranate 6x16 oz pom wonderful",
+                    "sku": "JU23A"
+                },
                 {
                     "purveyor": "liepper and sons llc",
                     "ingredient": "savage blonds.",
@@ -277,6 +277,11 @@
                 "canape"
             ],
             "purchasing": [
+                {
+                    "ingredient": "juice pomegranate 6x16 oz pom wonderful",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "JU23A"
+                },
                 {
                     "ingredient": "savage blonds.",
                     "purveyor": "liepper and sons llc",
@@ -1534,6 +1539,11 @@
                     "sku": "ASIA1J"
                 },
                 {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "br pullman 5x5",
+                    "sku": "20713"
+                },
+                {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "togarashi spice powder",
                     "sku": "ASIA1"
@@ -1564,6 +1574,11 @@
                 "canape"
             ],
             "purchasing": [
+                {
+                    "ingredient": "br pullman 5x5",
+                    "purveyor": "eli s bread inc",
+                    "sku": "20713"
+                },
                 {
                     "ingredient": "togarashi spice powder",
                     "purveyor": "baldor speciality foods inc.",
@@ -2338,9 +2353,9 @@
                     "sku": "CHBBL2"
                 },
                 {
-                    "ingredient": "baked brioche slider roll",
+                    "ingredient": "hawaiian sweet sliced slider",
                     "purveyor": "dairyland",
-                    "sku": "032-60ROBR"
+                    "sku": "10880700"
                 }
             ]
         },
@@ -6311,7 +6326,7 @@
                 }
             ],
             "menu_items_stations": [
-                "sandwiches"
+                "afternoon tea station"
             ],
             "menu_items_category": [
                 "station"
@@ -11076,11 +11091,18 @@
                 "pull / par-cook applewood smoked bacon",
                 "egg mix",
                 "sliced cheddar",
-                "slice brioche pullman for sandwiches"
+                "brioche buns",
+                "80g hashbrowns"
             ],
             "req_prep": [
                 {
                     "prep": "egg mix",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "breakfast station"
+                },
+                {
+                    "prep": "80g hashbrowns",
                     "am_prep_team": 1,
                     "sous_prep": 0,
                     "category": "breakfast station"
@@ -11115,8 +11137,8 @@
                 }
             ],
             "menu_items_stations": [
-                "breakfast sandwich station",
-                "breakfast station"
+                "breakfast station",
+                "breakfast sandwich station"
             ],
             "menu_items_category": [
                 "station"
@@ -12620,6 +12642,11 @@
                 },
                 {
                     "purveyor": "pat la frieda",
+                    "ingredient": "boneless pork butts",
+                    "sku": "PB"
+                },
+                {
+                    "purveyor": "pat la frieda",
                     "ingredient": "abf boneless skinless pork belly",
                     "sku": "PBESO"
                 }
@@ -12650,6 +12677,11 @@
                     "ingredient": "peppercorns whole black box 5 lb diretta",
                     "purveyor": "baldor speciality foods inc.",
                     "sku": "SPSPICE13II"
+                },
+                {
+                    "ingredient": "boneless pork butts",
+                    "purveyor": "pat la frieda",
+                    "sku": "PB"
                 },
                 {
                     "ingredient": "abf boneless skinless pork belly",
@@ -12759,6 +12791,94 @@
                     "ingredient": "shallots peeled 5 lb",
                     "purveyor": "baldor speciality foods inc.",
                     "sku": "SH3EA"
+                }
+            ]
+        },
+        {
+            "item_name": "stuffed squash",
+            "category": "silent veg",
+            "prep": [
+                "chive oil",
+                "roast honey nut squash halves",
+                "braised beluga lentils",
+                "squash puree",
+                "micro salad",
+                "sherry vin"
+            ],
+            "req_prep": [],
+            "mise_en_place": [
+                "chive oil",
+                "roasted honey nut squash halves",
+                "braised beluga lentils",
+                "squash puree",
+                "micro salad"
+            ],
+            "ingredients": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "coconut milk unsweetened can 6x 10",
+                    "sku": "ASIA1Q2"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "lentils black beluga box 10 lb internat",
+                    "sku": "BEAN1H"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "micro-spectrum rainbow mix 8 oz fres...",
+                    "sku": "MIC99K"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "squash honeynut",
+                    "sku": "SQ92H"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "mush chef mix 3 lb rl mush lcl",
+                    "sku": "MU93AAA"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "chives 2.2 lb",
+                    "sku": "CH3"
+                }
+            ],
+            "menu_items_stations": [],
+            "menu_items_category": [
+                "silent veg"
+            ],
+            "purchasing": [
+                {
+                    "ingredient": "coconut milk unsweetened can 6x 10",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "ASIA1Q2"
+                },
+                {
+                    "ingredient": "lentils black beluga box 10 lb internat",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "BEAN1H"
+                },
+                {
+                    "ingredient": "micro-spectrum rainbow mix 8 oz fres...",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "MIC99K"
+                },
+                {
+                    "ingredient": "squash honeynut",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "SQ92H"
+                },
+                {
+                    "ingredient": "mush chef mix 3 lb rl mush lcl",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "MU93AAA"
+                },
+                {
+                    "ingredient": "chives 2.2 lb",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "CH3"
                 }
             ]
         }

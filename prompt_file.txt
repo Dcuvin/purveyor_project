@@ -1,38 +1,38 @@
 
-Event:  Melio	
-Date:  Thursday, January 15, 2026
-Account:  Melio	
-Time:  7:00 PM - 11:00 PM
-Contact:  Andrea Rodriguez	
+Event:  Cleary Gottlieb Steen & Hamilton	
+Date:  Thursday, January 29, 2026
+Account:  Cleary Gottlieb Steen & Hamilton LLP	
+Time:  7:00 PM - 10:00 PM
+Contact:  Jordan Moore	
 Location:  Greenhouse
-Phone:  3107336757
+Phone:  212 225 3446	
 Event Type:  Cocktail Reception
-Email:  andrea@melio.com	
-Guests:  150
+Email:  jomoore@cgsh.com	
+Guests:  50
  	
 Account Owner:  Julie Garcés	
 Phone/Email:  / julie@nineorchard.com
 
 menu_items:
 
-Caviar hash brown, 
+Braised Short Rib,
+
+Cacio e Pepe Fritter,
+
+Caviar & Egg brioche, 
 
 Chicken Schnitzel,
 
-Crispy Burrata,
-
-Green Hummus lavash chip, sesame, chervil
-
 Lobster Roll,
 
-Mushroom tartlet,
+FARMERS GREEN MARKET,
 
-Cavatelli,
+Shaved Brussels Sprouts, 
 
-Corner Bar Burger Sliders,
+Hanger Steak,
 
-Hamachi Crudo,
+Cornbread panzanella,
 
-a taste of nine orchard,
+Blistered corn salad,
 
-Cauliflower Steak
+Grilled asparagus,

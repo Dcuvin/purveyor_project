@@ -454,7 +454,7 @@ def get_order_list_ver_2(item_id,db,excel_folder_path,event_name,guest_count,eve
     print(f"purchase_results: {purchase_results}")
     
     produce_purveyor=["dairyland", "chefs warehouse", "baldor","baldor specialty foods inc." "agri exotic trading", "natoora", "murray s cheese", "tivoli mushrooms llc", "g de p inc", "riviera produce "]
-    protein_purveyor=["pat la frieda", "liepper and sons llc","prime food distributor inc", "Black Diamond Gourmet inc"]
+    protein_purveyor=["pat la frieda", "liepper and sons llc","prime food distributor inc", "Black Diamond Gourmet inc", "lapera bros poultry"]
     bread_purveyor=["eli s bread inc","all natural products llc","pain d avignon", "davidovich bakery" ]
 
     produce_purchase =[]
@@ -520,29 +520,36 @@ def get_order_list_ver_2(item_id,db,excel_folder_path,event_name,guest_count,eve
 
     # Populate new template with prep items that can be requisitioned from the AM Prep Team
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
-    ws = wb['order_guide']
-    ws['A1'] = f"Event:{event_name} Date: {event_date} Guests:{guest_count}"         
+    ws_1 = wb['order_guide']
+    ws_2 = wb['protein_order_guide']
+    ws_1['A1'] = f"Event:{event_name} Date: {event_date} Guests:{guest_count}"  
+    ws_2['A1'] = f"Event:{event_name} Date: {event_date}"
+    ws_2['A2'] = f"Before {event_date}"
     #print(am_prep_req_list)
     
     # Write each item into its own row (column A)
     for row_idx, produce_p in enumerate(produce_purchase, start=4):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=1, value=produce_p["ingredient"])
-        ws.cell(row=row_idx, column=2, value=produce_p["vendor"])
-        ws.cell(row=row_idx, column=3, value=produce_p["sku"])
+        ws_1.cell(row=row_idx, column=1, value=produce_p["ingredient"])
+        ws_1.cell(row=row_idx, column=2, value=produce_p["vendor"])
+        ws_1.cell(row=row_idx, column=3, value=produce_p["sku"])
 
     for row_idx, protein_p in enumerate(protein_purchase, start=4):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=5, value=protein_p["ingredient"])
-        ws.cell(row=row_idx, column=6, value=protein_p["vendor"])
-        ws.cell(row=row_idx, column=7, value=protein_p["sku"])
+        ws_1.cell(row=row_idx, column=5, value=protein_p["ingredient"])
+        ws_2.cell(row=row_idx, column=1, value=protein_p["ingredient"])
+        ws_1.cell(row=row_idx, column=6, value=protein_p["vendor"])
+        ws_1.cell(row=row_idx, column=7, value=protein_p["sku"])
     
     for row_idx, bread_p in enumerate(bread_purchase, start=4):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=9, value=bread_p["ingredient"])
-        ws.cell(row=row_idx, column=10, value=bread_p["vendor"])
-        ws.cell(row=row_idx, column=11, value=bread_p["sku"])
-    
+        ws_1.cell(row=row_idx, column=9, value=bread_p["ingredient"])
+        ws_1.cell(row=row_idx, column=10, value=bread_p["vendor"])
+        ws_1.cell(row=row_idx, column=11, value=bread_p["sku"])
 
-    # format AM prep reauisition sheet
-    format_order_guide (ws, 4, 1, 11)
+
+
+    # format Order sheet
+    format_order_guide (ws_1, 4, 1, 11)
+    format_order_guide (ws_2, 4, 1, 11)
+
     # Save
     wb.save(f"{dest_dir}/{new_file_name}")
     

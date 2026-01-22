@@ -2,88 +2,87 @@
     "menu_items":
     [ 
         {
-            "item_name": "corner bar burger sliders",
-            "category": "passed small plates",
+            "item_name": "smoked trout",
+            "category": "canapes",
             "prep": [
-                "re-form / sear 2oz sliders",
-                "cut brioche slider buns",
-                "smoked onion aioli",
-                "bread and butter pickles",
-                "slice cheddar cheese"
+                "finely cut chives",
+                "pull trout roe",
+                "picked dill",
+                "pick / shred smoked trout",
+                "smoked trout salad mix",
+                "cucumber cups"
             ],
             "req_prep": [
-                {
-                    "prep": "re-form 2oz sliders",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "small plates"
-                },
-                {
-                    "prep": "smoked onion aioli",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "small plates"
-                },
-                {
-                    "prep": "bread and butter pickles",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "small plates"
-                }
+               
             ],
             "mise_en_place": [
-                "2oz sliders",
-                "brioche slider buns",
-                "smoked onion aioli",
-                "bread and butter pickles",
-                "sliced cheddar cheese"
+                "trout roe",
+                "finely cut chives",
+                "picked dill",
+                "smoked trout salad mix",
+                "cucumber cups"
             ],
             "ingredients": [
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "cucumbers kirby 1 2 bsh",
-                    "sku": "CU50"
+                    "ingredient": "cucumbers hot house 12 ct",
+                    "sku": "CU"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "cheddar yellow sliced 192 slices 6x1.5 lb",
-                    "sku": "DACHEESE8H"
-                },
-                {
-                    "purveyor": "pat la frieda",
-                    "ingredient": "2oz dry aged beer hamburger",
-                    "sku": "CHBBL2"
+                    "ingredient": "dill 1 lb",
+                    "sku": "D1"
                 },
                 {
                     "purveyor": "dairyland",
-                    "ingredient": "baked brioche slider roll",
-                    "sku": "032-60ROBR"
+                    "ingredient": "mayo hellmans extra heavy",
+                    "sku": "GM105"
                 },
                 {
-                    "purveyor": "agri exotic trading",
-                    "ingredient": "red onions-5lbs",
-                    "sku": "ONR5"
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "trout roe danish farm raised trout roe",
+                    "sku": "5851_XC11302515"
+                },
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "creme fraiche kendall farms",
+                    "sku": "D110K"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "chives 1 lb",
+                    "sku": "CH1"
                 }
             ],
             "menu_items_stations": [],
             "menu_items_category": [
-                "passed small plates"
+                "canape"
             ],
             "purchasing": [
                 {
-                    "ingredient": "cheddar yellow sliced 192 slices 6x1.5 lb",
+                    "ingredient": "cucumbers hot house 12 ct",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "DACHEESE8H"
+                    "sku": "CU"
                 },
                 {
-                    "ingredient": "2oz dry aged beer hamburger",
-                    "purveyor": "pat la frieda",
-                    "sku": "CHBBL2"
+                    "ingredient": "dill 1 lb",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "D1"
                 },
                 {
+                    "ingredient": "mayo hellmans extra heavy",
                     "purveyor": "dairyland",
-                    "ingredient": "hawaiian sweet sliced slider",
-                    "sku": "10880700"
+                    "sku": "GM105"
+                },
+                {
+                    "ingredient": "trout roe danish farm raised trout roe",
+                    "purveyor": "liepper and sons llc",
+                    "sku": "5851_XC11302515"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "chives 1 lb",
+                    "sku": "CH1"
                 }
             ]
         }

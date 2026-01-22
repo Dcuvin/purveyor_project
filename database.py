@@ -273,30 +273,33 @@ def input_update_data(db):
 
         """ Check ingredients for existing ingredient_name """
 
-        cursor.execute("SELECT ingredient_id, purveyor, ingredient_name FROM ingredients")
-        db_ingredients = [{"ingredient_id":i[0],"purveyor":i[1],"ingredient_name":normalize(i[2])} for i in cursor.fetchall()]
+        cursor.execute("SELECT ingredient_id, purveyor, ingredient_name, ingredient_code FROM ingredients")
+        db_ingredients = [{"ingredient_id":i[0],"purveyor":i[1],"ingredient_name":normalize(i[2]),"sku": i[3]} for i in cursor.fetchall()]
 
         ingredient_to_upload = []
         for ing in menu_item["ingredients"]:
            
-            ingredient_to_upload.append({"ingredient_id":0, "purveyor": normalize(ing["purveyor"]), "ingredient_name":normalize(ing["ingredient"])})
+            ingredient_to_upload.append({"ingredient_id":0, "purveyor": normalize(ing["purveyor"]), "ingredient_name":normalize(ing["ingredient"]), "sku":ing["sku"]})
 
         #print(ingredient_to_upload)
         #break
         for ing in ingredient_to_upload:
             matches =[]
             for db_ing in db_ingredients:
-                score = fuzzy_match(ing["ingredient_name"], db_ing["ingredient_name"]) + fuzzy_match(ing["purveyor"], db_ing["purveyor"])
+                score = fuzzy_match(ing["ingredient_name"], db_ing["ingredient_name"]) + fuzzy_match(ing["purveyor"], db_ing["purveyor"]) + fuzzy_match(ing["sku"], db_ing["sku"])
                 matches.append({"score":score,
                                 "ingredient_id":db_ing["ingredient_id"], 
                                 "purveyor":db_ing["purveyor"],
-                                "ingredient_name":db_ing["ingredient_name"]})
+                                "ingredient_name":db_ing["ingredient_name"],
+                                "sku":db_ing["sku"]})
+
             # sort by highest score
             matches.sort(key=lambda x: x["score"], reverse=True)
             best_match =matches[0]
             ing["ingredient_id"] = best_match["ingredient_id"]
             ing["purveyor"] = best_match["purveyor"]
             ing["ingredient_name"] = best_match["ingredient_name"]
+            ing["sku"] = best_match["sku"]
        
         print(f"🍽️ ingredients_to_upload: {ingredient_to_upload}")
 
