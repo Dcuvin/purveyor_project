@@ -4,7 +4,7 @@ from openpyxl import load_workbook, Workbook
 from openpyxl.styles import numbers, Font, PatternFill, Border, Side, Alignment
 import sqlite3
 import json
-from fuzzy import match_menu_items, normalize
+from fuzzy import match_menu_items, normalize, fuzzy_match
 from datetime import date
 from excel_format import format_table
 from database import create_df
@@ -77,25 +77,30 @@ def update_ingredient_table(db_file, product_catalog_excel_file):
     print(f"✅ Ingredients Table has been updated!")
     
 #----------------------------------------------------------------------------------------
-def input_menu_ingredient(db_excel_file, db):
+def input_menu_ingredient(db):
 
-    current_file = db_excel_file
-    df_current = pd.read_excel(current_file, sheet_name="ingredients" ,usecols=[0,1,2,3,4,5,6,7])
-    
-    file_path = "input_product_catalog.json"
-    data_to_insert=[]
+    """input new ingredients into ingredient table for desired database.  """
+
+    file_path = "input_ingredient.json"
     conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
 
     cursor.execute("""
-                SELECT ingredient_name
+                SELECT ingredient_id, purveyor, ingredient_code, ingredient_description, ingredient_name, pack_size_unit, purchase_price, ingredient_type
                 FROM ingredients;
                   """)
     
     results = cursor.fetchall()
 
-    ingredient_names=[result[0] for result in results ]
+    db_ingredients=[{"ingredient_id":result[0],
+                    "purveyor": result[1],  
+                     "ingredient_code": result[2], 
+                     "ingredient_description": result[3],
+                     "ingredient_name":result[4] ,
+                     "pack_size_unit":result[5], 
+                     "purchase_price": result[6], 
+                     "ingredient_type":result[7]} for result in results]
     #print(ingredient_names)
 
     if os.path.exists(file_path):
@@ -104,62 +109,94 @@ def input_menu_ingredient(db_excel_file, db):
         print("ERROR")
           
     # Read the existing content
-    with open("input_product_catalog.json", 'r') as file:
+    with open(file_path, 'r') as file:
         #data is a list of dict
         data = json.load(file)
+
+    read_ing_file = data["ingredient"]
    
-    last_id = df_current['ingredient_id'].iloc[-1]
-    new_id = last_id + 1
-    new_menu_item = []
+    """ Check ingredients for existing ingredient_name """
 
-    for dict_item in data:
-        data_to_insert.append({
-                 "ingredient_id": new_id, 
-                 "purveyor":dict_item["purveyor"], 
-                 "ingredient_code": dict_item["ingredient_code"], 
-                 "ingredient_description": dict_item["ingredient_description"],
-                 "ingredient_name": dict_item["ingredient_name"], 
-                 "pack_size_unit":dict_item["pack_size_unit"], 
-                 "purchase_price": dict_item["purchase_price"], 
-                 "ingredient_type": dict_item["ingredient_type"]})
+    ingredient_lookup = {
+        (normalize(db_ing["purveyor"]),db_ing["ingredient_code"]): db_ing
+        for db_ing in db_ingredients
+        if db_ing["ingredient_code"]
+        }
 
-        new_menu_item.append(dict_item["ingredient_name"])
- 
-    for menu_item_name in new_menu_item:
-        if match_menu_items(menu_item_name, ingredient_names) is not None:
-            print(f"❌ {menu_item_name} Already Exists!" )
+    ingredient_to_upload = []
+    for ing in read_ing_file:
+           
+        ingredient_to_upload.append({"purveyor": normalize(ing["purveyor"]),  
+                     "ingredient_code": ing["ingredient_code"], 
+                     "ingredient_description": ing["ingredient_description"],
+                     "ingredient_name":normalize(ing["ingredient_description"]) ,
+                     "pack_size_unit":ing["pack_size_unit"], 
+                     "purchase_price": ing["purchase_price"], 
+                     "ingredient_type":ing["ingredient_type"]})
 
+    for ing in ingredient_to_upload:    
 
+        key = (normalize(ing["purveyor"]), ing["ingredient_code"])
+
+        if key in ingredient_lookup:
+            match = ingredient_lookup[key]
+
+            if match:
+                print(f"🍽️ ingredient exists: {ingredient_to_upload}")
+                update_prompt = input(f"Would you like to overwrite {ingredient_to_upload} in {db}?: y/n  ")
+                if update_prompt != "y":
+                    continue
+                update_sql = """
+                                UPDATE ingredients
+                                SET
+                                    ingredient_description = :desc,
+                                    ingredient_name        = :name,
+                                    pack_size_unit         = :pack,
+                                    purchase_price         = :price,
+                                    ingredient_type        = :type
+                                WHERE ingredient_id = :id;
+                                """
+
+                cursor.execute(update_sql, {
+                                    "desc": ing["ingredient_description"],
+                                    "name": ing["ingredient_name"],
+                                    "pack": ing["pack_size_unit"],
+                                    "price": ing["purchase_price"],
+                                    "type": ing["ingredient_type"],
+                                    "id": match["ingredient_id"],
+                                })
+                conn.commit()  
+                print(f"✅ ingredient: {ing} overwritten!")
+
+        
         else:
-            wb = load_workbook(current_file)
-            ws = wb['ingredients']
-            # +1 to last row, since pandas starts indexing at 0; + 1 more to access the empty row after it.
-            last_empty_row = len(df_current) + 2
-            print(last_empty_row)
-            # Write each item into its own row 
-            for row_idx, dict_items in enumerate(data_to_insert, start= last_empty_row):   # start=1 → Excel’s first row
-                ws.cell(row=row_idx, column=1, value=dict_items["ingredient_id"])
-                ws.cell(row=row_idx, column=2, value=dict_items["purveyor"])
-                ws.cell(row=row_idx, column=3, value=dict_items["ingredient_code"])
-                ws.cell(row=row_idx, column=4, value=dict_items["ingredient_description"])
-                ws.cell(row=row_idx, column=5, value=dict_items["ingredient_name"])
-                ws.cell(row=row_idx, column=6, value=dict_items["pack_size_unit"])
-                ws.cell(row=row_idx, column=7, value=dict_items["purchase_price"])
-                ws.cell(row=row_idx, column=8, value=dict_items["ingredient_type"])
+            print(f"{ingredient_to_upload} does not exist in: {db}")
+            proceed_prompt = input(f"would you like to proceed?: y/n  ")
+            if proceed_prompt != "y":
+                continue
+            else:
+                cursor.execute("""INSERT OR IGNORE INTO ingredients 
+                               (purveyor,
+                                ingredient_code,
+                                ingredient_description,
+                                ingredient_name,
+                                pack_size_unit, 
+                                purchase_price, 
+                                ingredient_type) VALUES (?,?,?,?,?,?,?)""", 
+                               (ing["purveyor"],
+                                ing["ingredient_code"],
+                                ing["ingredient_description"],
+                                ing["ingredient_name"],
+                                ing["pack_size_unit"],
+                                ing["purchase_price"],
+                                ing["ingredient_type"],))
+ 
+                conn.commit()
+    conn.close()
+   
+    print(f"✅ ingredient: {ing} uploaded!")
 
-            wb.save(current_file)
 
-            for dict_item in data_to_insert:
-                print(f"""✅ Inserted the following ingredients:
-                        \n"ingredient_id": {dict_item["ingredient_id"]}, 
-                        \n"purveyor": {dict_item["purveyor"]}, 
-                        \n"ingredient_code":  {dict_item["ingredient_code"]}, 
-                        \n"ingredient_description":  {dict_item["ingredient_description"]},
-                        \n"ingredient_name":  {dict_item["ingredient_name"]}, 
-                        \n"pack_size_unit": {dict_item["pack_size_unit"]}, 
-                        \n"purchase_price":  {dict_item["purchase_price"]}, 
-                        \n"ingredient_type":  {dict_item["ingredient_type"]}  """)
-                
 #----------------------------------------------------------------------------------------
 def get_menu_item_ingredients(db):
 

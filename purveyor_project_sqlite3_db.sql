@@ -70,8 +70,8 @@ CREATE TABLE ingredients (
     ingredient_id INTEGER PRIMARY KEY AUTOINCREMENT,
     purveyor TEXT,
     ingredient_code TEXT NOT NULL, 
-    ingredient_description TEXT,   
-    ingredient_name TEXT,
+    ingredient_description TEXT,  --ingredient name as it appears on the invoice or website 
+    ingredient_name TEXT,--normalized ver of ingredient_description
     pack_size_unit TEXT,
     purchase_price REAL NOT NULL DEFAULT 0.0,
     ingredient_type TEXT
@@ -141,6 +141,23 @@ CREATE TABLE dietary (
     dietary_id INTEGER PRIMARY KEY AUTOINCREMENT,
     dietary_name TEXT NOT NULL
     
+);
+
+-- Create table for serveware
+CREATE TABLE serveware (
+    serveware_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    serveware_name TEXT NOT NULL,
+    serveware_category TEXT NOT NULL
+
+);
+-- Create junction table for menu_items and serveware
+CREATE TABLE menu_items_serveware (
+    serveware_id INTEGER,
+    menu_item_id INTEGER,
+    PRIMARY KEY (menu_item_id, serveware_id),
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id) ON DELETE CASCADE,
+    FOREIGN KEY (serveware_id) REFERENCES serveware(serveware_id) ON DELETE CASCADE
+
 );
 
 --Delete a table

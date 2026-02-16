@@ -370,31 +370,7 @@ def input_update_data(db):
         print(f"purchasing_to_upload: {purchasing_to_upload}")
         """Normalize and fuzzy match all existing ingredients from purchasing table with ingredients (purchasing) to upload"""
         """"""
-        # for ing in purchasing_to_upload:
-        #     matches =[]
-        #     for db_ing in db_purchasing:
-        #         ing_score = fuzzy_match(ing["ingredient_name"],db_ing["ingredient_name"])
-        #         purveyor_score = fuzzy_match(ing["purveyor"],db_ing["purveyor"])
-        #         if ing_score and purveyor_score:
-        #             matches.append({"score":ing_score + purveyor_score,
-        #                                 "ingredient_id":db_ing["ingredient_id"], 
-        #                                 "purveyor":db_ing["purveyor"],
-        #                                 "ingredient_name":db_ing["ingredient_name"],
-        #                                 "item_code":db_ing["item_code"]
-        #                                 })
-        #             # sort by highest score
-        #             matches.sort(key=lambda x: x["score"], reverse=True)
-        #             best_match =matches[0]
-        #             ing["ingredient_id"] = best_match["ingredient_id"]
-        #             # ing["purveyor"] = best_match["purveyor"]
-        #             # ing["ingredient_name"] = best_match["ingredient_name"]
-        #             # ing["item_code"]= best_match["item_code"]
-            
-       
-        #print(f"💰 purchasing_to_upload: {purchasing_to_upload}")
-
-
-
+        
         for ing in purchasing_to_upload:
             matches = []
             for db_ing in db_purchasing:
@@ -762,6 +738,9 @@ def pull_all_data(db):
     pass
 # ------------------------------------------------------------------------------------------
 def ingredient_helper(db,ingredient_list):
+    """pulls ingredients from chosen database and outputs into ingredient_helper.json for easier copy and paste, when 
+    inputing new data into database"""
+
     json_file_path = "ingredient_helper.json"
 
     conn = sqlite3.connect(db)

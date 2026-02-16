@@ -2,87 +2,104 @@
     "menu_items":
     [ 
         {
-            "item_name": "smoked trout",
-            "category": "canapes",
+            "item_name": "station decoration",
+            "category": "station",
             "prep": [
-                "finely cut chives",
-                "pull trout roe",
-                "picked dill",
-                "pick / shred smoked trout",
-                "smoked trout salad mix",
-                "cucumber cups"
+                "grapes",
+                "cut tri-color cauliflower",
+                "pomegranates",
+                "castelfranco",
+                "purple napa cabbage",
+                "cherry tomatoes on the vine",
+                "seasonal squashes",
+                "decorative leaves / branches"
             ],
             "req_prep": [
-               
-            ],
-            "mise_en_place": [
-                "trout roe",
-                "finely cut chives",
-                "picked dill",
-                "smoked trout salad mix",
-                "cucumber cups"
-            ],
-            "ingredients": [
                 {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "cucumbers hot house 12 ct",
-                    "sku": "CU"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "dill 1 lb",
-                    "sku": "D1"
-                },
-                {
-                    "purveyor": "dairyland",
-                    "ingredient": "mayo hellmans extra heavy",
-                    "sku": "GM105"
-                },
-                {
-                    "purveyor": "liepper and sons llc",
-                    "ingredient": "trout roe danish farm raised trout roe",
-                    "sku": "5851_XC11302515"
-                },
-                {
-                    "purveyor": "dairyland",
-                    "ingredient": "creme fraiche kendall farms",
-                    "sku": "D110K"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "chives 1 lb",
-                    "sku": "CH1"
+                    "prep": "",
+                    "am_prep_team": 0,
+                    "sous_prep": 0,
+                    "category": ""
                 }
             ],
-            "menu_items_stations": [],
+            "mise_en_place": [  
+                "grapes",
+                "cut tri-color cauliflower",
+                "pomegranates",
+                "castelfranco",
+                "purple napa cabbage",
+                "cherry tomatoes on the vine",
+                "seasonal squashes",
+                "decorative leaves / branches"],
+            "ingredients": [
+                
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "pomegranate 2 lyr",
+                    "sku": "POM2"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cauliflower tri color 6 ct salad savoy",
+                    "sku": "CAU7"
+                },
+                {
+                    "purveyor": "natoora",
+                    "ingredient": "winter squash koginut",
+                    "sku": "20666"
+                },
+                {
+                    "purveyor": "natoora",
+                    "ingredient": "radicchio castelfranco",
+                    "sku": "20002"
+                }
+                ,
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "ruskess leaves by the bunch ruskess",
+                    "sku": "LV1"
+                }
+            ],
+            "menu_items_stations": [
+                "farmer's green market",
+                "a taste of nine orchard",
+                "crudite & mezze",
+                "cheese & charcuterie"
+            ],
             "menu_items_category": [
-                "canape"
+                "station"
             ],
             "purchasing": [
+                
                 {
-                    "ingredient": "cucumbers hot house 12 ct",
+                    "ingredient": "pomegranate 2 lyr",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "CU"
+                    "sku": "POM2"
                 },
                 {
-                    "ingredient": "dill 1 lb",
+                    "ingredient": "cauliflower tri color 6 ct salad savoy",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "D1"
+                    "sku": "CAU7"
                 },
                 {
-                    "ingredient": "mayo hellmans extra heavy",
-                    "purveyor": "dairyland",
-                    "sku": "GM105"
+                    "ingredient": "winter squash koginut",
+                    "purveyor": "natoora",
+                    "sku": "20666"
                 },
                 {
-                    "ingredient": "trout roe danish farm raised trout roe",
-                    "purveyor": "liepper and sons llc",
-                    "sku": "5851_XC11302515"
+                    "ingredient": "radicchio castelfranco",
+                    "purveyor": "natoora",
+                    "sku": "20002"
                 },
                 {
+                    "ingredient": "tomato tri-color bombs squad 8x12 oz sunse",
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "chives 1 lb",
-                    "sku": "CH1"
+                    "sku": "TO4BSQ"
+                },
+                {
+                    "purveyor": "baldor",
+                    "ingredient": "ruskess leaves by the bunch ruskess",
+                    "sku": "LV1"
                 }
             ]
         }

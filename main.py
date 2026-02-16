@@ -12,7 +12,7 @@ import os #This statement is used to include the functionality of
 from bs4 import BeautifulSoup
 import openai
 #from docx import Document
-from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2
+from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2, serveware_pull_sheet
 from database import upload_excel, input_update_data, db_input, excel_file_to_upload, delete_data, get_ingredients, pull_all_data, ingredient_helper, json_editor
 from openapi import get_chatgpt_all_info
 from check_file import find_db, find_xlsx_db, find_xlsx_item_library, find_json_files
@@ -182,14 +182,6 @@ def main():
         update_ingredient_table(db,  chosen_item_library_file)
     
     elif sys.argv[1] == "input_menu_ingredient":
-        print(find_db())
-        excel_file_to_upload = ''
-        excel_file_input = input('Specify db file by typing the corresponding number:')
-
-  
-
-        excel_file_to_upload = f"nine_orchard_events_db_{excel_file_input}.xlsx"
-
         
         print(find_db())
         db = ''
@@ -198,7 +190,7 @@ def main():
      
         db = f"purveyor_project_db_{db_input}.db"
 
-        input_menu_ingredient(excel_file_to_upload,db)
+        input_menu_ingredient(db)
 
     elif sys.argv[1] == 'get_menu_item_ingredients':
         print(find_db())
@@ -266,7 +258,8 @@ def main():
         db = f"purveyor_project_db_{db_input}.db"
 
         pull_all_data(db)
-
+    
+    
     
 #------------------------This code block is for manipulating data prior to adding into a DB-----------------------
 # Creates a JSON template of ingredients ready to copy and paste.
@@ -354,13 +347,14 @@ def master_prep_list(item_ids, event_name, guest_count, event_time, event_date,e
     update_standard_menu(db)
     # Create excel prep and order list
     #excel_prep_list(item_ids, event_name, guest_count, event_time, event_date, event_location, db) 
+    #final_ids is a collection of all individual menu_item_ids (standalone and grouped in stations), and is returned after running excel_prep_list_ver_2 function.
     final_ids = excel_prep_list_ver_2(item_ids, event_name, guest_count, event_time, event_date, event_location, db, station_ids,event_type)
     # Create word doc checklist for mise en place by dish
     word_checklist(final_ids, event_name, guest_count, event_time, event_date, event_location,db, station_ids)
     # Fill out prep requisition sheet
     #req_prep(item_ids, new_folder_path, event_date, event_name,db)
     req_prep_ver_2(final_ids, new_folder_path, event_date, event_name,db, need_by_event_time)
-
+    serveware_pull_sheet(db,new_folder_path, event_name, event_date, final_ids)
 #------------------------------------------------------------------------------------------
     
     

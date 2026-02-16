@@ -1,38 +1,30 @@
 
-Event:  Cleary Gottlieb Steen & Hamilton	
-Date:  Thursday, January 29, 2026
-Account:  Cleary Gottlieb Steen & Hamilton LLP	
-Time:  7:00 PM - 10:00 PM
-Contact:  Jordan Moore	
-Location:  Greenhouse
-Phone:  212 225 3446	
-Event Type:  Cocktail Reception
-Email:  jomoore@cgsh.com	
-Guests:  50
- 	
-Account Owner:  Julie Garcés	
-Phone/Email:  / julie@nineorchard.com
+Event:  AMEX Photoshoot	
+Date:  Wednesday, February 18, 2026
+Sales: Julie Garcés	
+Time:  7:00 AM - 7:00 PM
+Contact:  Tom Sawyer	
+Location:  West Room, Blue Room, and Swan Room
+Phone:  3478703553	
+Event Type: Breakfast Buffet + Lunch Buffet
+Guests: 25
 
-menu_items:
+BREAKFAST STATION,
 
-Braised Short Rib,
+Applewood Smoked Bacon, 
 
-Cacio e Pepe Fritter,
+Chicken Apple Sausage, 
 
-Caviar & Egg brioche, 
+Seasonal Berries, 
 
-Chicken Schnitzel,
+Hash Browns
 
-Lobster Roll,
+Frittata,
 
-FARMERS GREEN MARKET,
+soft scramble Eggs,
 
-Shaved Brussels Sprouts, 
+Overnight Oats,
+	
+GRAIN BOWLS,
 
-Hanger Steak,
-
-Cornbread panzanella,
-
-Blistered corn salad,
-
-Grilled asparagus,
+Mediterranean,

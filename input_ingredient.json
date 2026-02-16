@@ -1,0 +1,12 @@
+{
+    "ingredient": [
+        {
+            "purveyor":"baldor",
+            "ingredient_code":"LV1",
+            "ingredient_description":" Decorative Ruscus Leaves",
+            "pack_size_unit":"1 bunch",
+            "purchase_price":"11.25",
+            "ingredient_type":"decoration" 
+        }
+    ]
+}

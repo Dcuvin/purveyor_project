@@ -827,3 +827,129 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
     get_order_list_ver_2(final_ids,db,excel_folder,event_name,guest_count,event_date)
     print("✅ Excel Prep and Order List Created and Reformatted!")
     return final_ids
+
+    #---------------------------------------------------------------------------------
+
+def serveware_pull_sheet(db,excel_folder_path, event_name, event_date, item_ids):
+    # Get the current working directory
+    cwd = os.getcwd()
+    file_count = 0
+    # Create name for new event_req xlsx file
+    new_file_name = f"PLATEWARE PULL SHEET {event_name}_{event_date}_{file_count}.xlsx"
+
+    # PLATEWARE PULL SHEET - TEMPLATE file_path
+    event_pullsheet_template_file_path = os.path.join(cwd, 'PLATEWARE PULL SHEET - TEMPLATE.xlsx')
+
+    # File path for the folder where the copied template will be saved to
+    dest_dir = os.path.join(cwd, excel_folder_path)
+
+    # Complet file path of newly copied and renamed events req file > event folder
+    dest_path = os.path.join(dest_dir, new_file_name)
+
+    # Sanity check that the source exists
+    if not os.path.isfile(event_pullsheet_template_file_path ):
+        raise FileNotFoundError(f"Source file not found: {event_pullsheet_template_file_path }")
+    
+    while os.path.exists(dest_path):
+        file_count += 1
+
+        new_file_name = f"PREP_REQ_{event_name}_{event_date}_{file_count}.xlsx"
+        dest_path = os.path.join(dest_dir, new_file_name)
+
+    # 5. Copy (using copy2 to preserve metadata)
+    shutil.copy2(event_pullsheet_template_file_path , dest_path)
+
+    print(f"Copied:\n  {event_pullsheet_template_file_path }\n→ {dest_path}")
+
+    # Query db for all prep that can be requisitioned from AM prep team for Events
+    conn = sqlite3.connect(db)
+    # Cursor to execute commands
+    cursor = conn.cursor()
+    serveware_list = []
+    for id in item_ids:
+        cursor.execute(
+                       f"""
+                       SELECT serveware.serveware_name, serveware.serveware_category
+                       FROM serveware
+                       JOIN menu_items_serveware ON serveware.serveware_id = menu_items_serveware.serveware_id
+                       WHERE menu_items_serveware.menu_item_id = {id};
+                       """)  
+        
+        #.fetchall() is a list of tuples
+        serveware = cursor.fetchall()
+        # access the tuple inside the list
+        for tuple_item in serveware:
+             print(f"tuple_item{tuple_item}")
+             serveware_list.append({"serveware":tuple_item[0],"category":tuple_item[1]})
+
+    plates = []
+    silverware = []
+    serving_utensils = []
+    glassware =[]
+    servicewares =[]
+    trays =[]
+    risers =[]
+    beverage_set =[]
+    rentals =[]
+
+    for serveware_dict in serveware_list:
+        if serveware_dict["categories"] == "plates":
+            plates.append(serveware_dict["serveware"])
+        elif serveware_dict["categories"] == "silverware":
+            silverware.append(serveware_dict["serveware"])
+        elif serveware_dict["categories"] == "serving_utensils":
+            serving_utensils.append(serveware_dict["serveware"])
+        elif serveware_dict["categories"] == "glassware":
+            glassware.append(serveware_dict["serveware"])
+        elif serveware_dict["categories"] == "servicewares":
+            servicewares.append(serveware_dict["serveware"])
+        elif serveware_dict["categories"] == "trays":
+            trays.append(serveware_dict["serveware"])
+        elif serveware_dict["categories"] == "risers":
+            risers.append(serveware_dict["serveware"])
+        elif serveware_dict["categories"] == "beverage_set":
+            beverage_set.append(serveware_dict["serveware"])
+        elif serveware_dict["categories"] == "rentals":
+            rentals.append(serveware_dict["serveware"])
+
+    # Populate new template with prep items that can be requisitioned.
+    wb = load_workbook(f"{dest_dir}/{new_file_name}")
+    ws = wb['Updated_Pull_Sheet']
+    ws['B1'] = f"Event: {event_name} Date: {event_date}"         
+    print(f"🍽️ Mise en Place to Requisition: {serveware_list}")
+    
+    for row_idx, serveware_items in enumerate(plates, start=4):   # start=1 → Excel’s first row
+        ws.cell(row=row_idx, column=1, value=serveware_items)
+        
+    for row_idx, serveware_items in enumerate(silverware, start=4):  
+        ws.cell(row=row_idx, column=5, value=serveware_items)
+  
+    for row_idx, serveware_items in enumerate(serving_utensils, start=17):  
+        ws.cell(row=row_idx, column=1, value=serveware_items)
+
+    for row_idx, serveware_items in enumerate(glassware, start=17):  
+        ws.cell(row=row_idx, column=5, value=serveware_items)
+    
+    servicewares_cell_count = 26
+    for row_idx, serveware_items in enumerate(servicewares, start=26):
+        if servicewares_cell_count <= 26:
+            ws.cell(row=row_idx, column=1, value=serveware_items)    
+            servicewares_cell_count += 1
+        else:
+            ws.cell(row=row_idx, column=5, value=serveware_items) 
+
+    for row_idx, serveware_items in enumerate(trays, start=46):  
+        ws.cell(row=row_idx, column=1, value=serveware_items)
+
+    for row_idx, serveware_items in enumerate(risers, start=46):  
+        ws.cell(row=row_idx, column=5, value=serveware_items)
+    
+    for row_idx, serveware_items in enumerate(beverage_set, start=54):  
+        ws.cell(row=row_idx, column=1, value=serveware_items)
+
+    for row_idx, serveware_items in enumerate(rentals, start=54):  
+        ws.cell(row=row_idx, column=5, value=serveware_items)
+    # Save
+    wb.save(f"{dest_dir}/{new_file_name}")
+    print("✅ Event Serviceware Pull Sheet Updated!")
+    pass

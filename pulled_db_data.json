@@ -238,7 +238,11 @@
             "prep": [
                 "clean / shuck oysters",
                 "pull /clean oyster shells",
-                "make pomegranate hibiscus gel"
+                "brunoise shallots",
+                "black pepper",
+                "make pomegranate hibiscus base",
+                "make / pull mignonette base",
+                "mix pomegranate hibiscus mignonette"
             ],
             "req_prep": [
                 {
@@ -2277,11 +2281,11 @@
             "item_name": "corner bar burger sliders",
             "category": "passed small plates",
             "prep": [
-                "re-form / sear 2oz sliders",
-                "cut brioche slider buns",
                 "smoked onion aioli",
                 "bread and butter pickles",
-                "slice cheddar cheese"
+                "slice cheddar cheese",
+                "re-form / sear 2oz sliders 3in diameter",
+                "cut kings hawaiian slider buns"
             ],
             "req_prep": [
                 {
@@ -2368,7 +2372,7 @@
                 "fried chicken flour",
                 "buttermilk batter",
                 "chili-lime yogurt sauce",
-                "make / pull cheddar chive biscuits"
+                "cut kings hawaiian slider buns"
             ],
             "req_prep": [
                 {
@@ -2466,7 +2470,8 @@
                 "cook new zealand lamb racks 165f internal temp 52c",
                 "whipped labneh",
                 "pick mint",
-                "moroccan spice crust"
+                "moroccan spice crust",
+                "dijon mustard"
             ],
             "req_prep": [
                 {
@@ -6679,13 +6684,19 @@
                     "category": "station crudite  & mezze / cheese & charcuterie"
                 },
                 {
-                    "prep": "cut 3 types of cheeses",
-                    "am_prep_team": 0,
-                    "sous_prep": 1,
+                    "prep": "sliced bresaola",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
                     "category": "station crudite  & mezze / cheese & charcuterie"
                 },
                 {
-                    "prep": "sliced bresaola",
+                    "prep": "mixed nuts",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "snacks"
+                },
+                {
+                    "prep": "mixed olives",
                     "am_prep_team": 1,
                     "sous_prep": 0,
                     "category": "station crudite  & mezze / cheese & charcuterie"
@@ -12879,6 +12890,89 @@
                     "ingredient": "chives 2.2 lb",
                     "purveyor": "baldor speciality foods inc.",
                     "sku": "CH3"
+                }
+            ]
+        },
+        {
+            "item_name": "smoked trout",
+            "category": "canapes",
+            "prep": [
+                "finely cut chives",
+                "pull trout roe",
+                "picked dill",
+                "cucumber cups",
+                "pick / shred smoked trout",
+                "smoked trout salad mix"
+            ],
+            "req_prep": [],
+            "mise_en_place": [
+                "trout roe",
+                "finely cut chives",
+                "picked dill",
+                "cucumber cups",
+                "smoked trout salad mix"
+            ],
+            "ingredients": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cucumbers hot house 12 ct",
+                    "sku": "CU"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "dill 1 lb",
+                    "sku": "D1"
+                },
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "mayo hellmans extra heavy",
+                    "sku": "GM105"
+                },
+                {
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "trout roe danish farm raised trout roe",
+                    "sku": "5851_XC11302515"
+                },
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "creme fraiche kendall farms",
+                    "sku": "D110K"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "chives 1 lb",
+                    "sku": "CH1"
+                }
+            ],
+            "menu_items_stations": [],
+            "menu_items_category": [
+                "canape"
+            ],
+            "purchasing": [
+                {
+                    "ingredient": "cucumbers hot house 12 ct",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "CU"
+                },
+                {
+                    "ingredient": "dill 1 lb",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "D1"
+                },
+                {
+                    "ingredient": "mayo hellmans extra heavy",
+                    "purveyor": "dairyland",
+                    "sku": "GM105"
+                },
+                {
+                    "ingredient": "trout roe danish farm raised trout roe",
+                    "purveyor": "liepper and sons llc",
+                    "sku": "5851_XC11302515"
+                },
+                {
+                    "ingredient": "chives garlic chive 1 lb girl n dug farm",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "CH1GDF"
                 }
             ]
         }
