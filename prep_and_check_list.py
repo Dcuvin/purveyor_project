@@ -21,7 +21,6 @@ from fuzzy import normalize, fuzzy_match
 #----------------------------------------------------------------------------
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, event_location, db):
     
-    current_date = date.today()
     conn = sqlite3.connect(db)
     # Cursor to execute commands
     cursor = conn.cursor()
@@ -853,7 +852,7 @@ def serveware_pull_sheet(db,excel_folder_path, event_name, event_date, item_ids)
     while os.path.exists(dest_path):
         file_count += 1
 
-        new_file_name = f"PREP_REQ_{event_name}_{event_date}_{file_count}.xlsx"
+        new_file_name = f"PLATEWARE PULL SHEET_{event_name}_{event_date}_{file_count}.xlsx"
         dest_path = os.path.join(dest_dir, new_file_name)
 
     # 5. Copy (using copy2 to preserve metadata)
@@ -914,41 +913,49 @@ def serveware_pull_sheet(db,excel_folder_path, event_name, event_date, item_ids)
 
     # Populate new template with prep items that can be requisitioned.
     wb = load_workbook(f"{dest_dir}/{new_file_name}")
-    ws = wb['Updated_Pull_Sheet']
-    ws['B1'] = f"Event: {event_name} Date: {event_date}"         
+    print(wb.sheetnames)
+
+    #ws = wb['Updated_Pull_Sheet']
+    ws_2 = wb['Pull_Sheet']
+    
+    #ws = wb['Pull_Sheet']
+
+    #ws['B1'] = f"Event: {event_name} Date: {event_date}"
+    ws_2['B1'] = f"Event: {event_name} Date: {event_date}"         
+         
     print(f"🍽️ Mise en Place to Requisition: {serveware_list}")
     
-    for row_idx, serveware_items in enumerate(plates, start=4):   # start=1 → Excel’s first row
-        ws.cell(row=row_idx, column=1, value=serveware_items)
+    # for row_idx, serveware_items in enumerate(plates, start=4):   # start=1 → Excel’s first row
+    #     ws.cell(row=row_idx, column=1, value=serveware_items)
         
-    for row_idx, serveware_items in enumerate(silverware, start=4):  
-        ws.cell(row=row_idx, column=5, value=serveware_items)
+    # for row_idx, serveware_items in enumerate(silverware, start=4):  
+    #     ws.cell(row=row_idx, column=5, value=serveware_items)
   
-    for row_idx, serveware_items in enumerate(serving_utensils, start=17):  
-        ws.cell(row=row_idx, column=1, value=serveware_items)
+    # for row_idx, serveware_items in enumerate(serving_utensils, start=17):  
+    #     ws.cell(row=row_idx, column=1, value=serveware_items)
 
-    for row_idx, serveware_items in enumerate(glassware, start=17):  
-        ws.cell(row=row_idx, column=5, value=serveware_items)
+    # for row_idx, serveware_items in enumerate(glassware, start=17):  
+    #     ws.cell(row=row_idx, column=5, value=serveware_items)
     
-    servicewares_cell_count = 26
-    for row_idx, serveware_items in enumerate(servicewares, start=26):
-        if servicewares_cell_count <= 26:
-            ws.cell(row=row_idx, column=1, value=serveware_items)    
-            servicewares_cell_count += 1
-        else:
-            ws.cell(row=row_idx, column=5, value=serveware_items) 
+    # servicewares_cell_count = 26
+    # for row_idx, serveware_items in enumerate(servicewares, start=26):
+    #     if servicewares_cell_count <= 26:
+    #         ws.cell(row=row_idx, column=1, value=serveware_items)    
+    #         servicewares_cell_count += 1
+    #     else:
+    #         ws.cell(row=row_idx, column=5, value=serveware_items) 
 
-    for row_idx, serveware_items in enumerate(trays, start=46):  
-        ws.cell(row=row_idx, column=1, value=serveware_items)
+    # for row_idx, serveware_items in enumerate(trays, start=46):  
+    #     ws.cell(row=row_idx, column=1, value=serveware_items)
 
-    for row_idx, serveware_items in enumerate(risers, start=46):  
-        ws.cell(row=row_idx, column=5, value=serveware_items)
+    # for row_idx, serveware_items in enumerate(risers, start=46):  
+    #     ws.cell(row=row_idx, column=5, value=serveware_items)
     
-    for row_idx, serveware_items in enumerate(beverage_set, start=54):  
-        ws.cell(row=row_idx, column=1, value=serveware_items)
+    # for row_idx, serveware_items in enumerate(beverage_set, start=54):  
+    #     ws.cell(row=row_idx, column=1, value=serveware_items)
 
-    for row_idx, serveware_items in enumerate(rentals, start=54):  
-        ws.cell(row=row_idx, column=5, value=serveware_items)
+    # for row_idx, serveware_items in enumerate(rentals, start=54):  
+    #     ws.cell(row=row_idx, column=5, value=serveware_items)
     # Save
     wb.save(f"{dest_dir}/{new_file_name}")
     print("✅ Event Serviceware Pull Sheet Updated!")

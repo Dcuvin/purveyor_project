@@ -2,104 +2,90 @@
     "menu_items":
     [ 
         {
-            "item_name": "station decoration",
-            "category": "station",
+            "item_name": "chicken",
+            "category": "plated entree",
             "prep": [
-                "grapes",
-                "cut tri-color cauliflower",
-                "pomegranates",
-                "castelfranco",
-                "purple napa cabbage",
-                "cherry tomatoes on the vine",
-                "seasonal squashes",
-                "decorative leaves / branches"
+                "finely cut chives",
+                "debone / brine / sear sasso chickens",
+                "cut / glaze carrots",
+                "carrot puree",
+                "cook farro",
+                "pick red mustard frills"
             ],
             "req_prep": [
                 {
-                    "prep": "",
-                    "am_prep_team": 0,
+                    "prep": "brine / cut airline chicken breast",
+                    "am_prep_team": 1,
                     "sous_prep": 0,
                     "category": ""
                 }
             ],
-            "mise_en_place": [  
-                "grapes",
-                "cut tri-color cauliflower",
-                "pomegranates",
-                "castelfranco",
-                "purple napa cabbage",
-                "cherry tomatoes on the vine",
-                "seasonal squashes",
-                "decorative leaves / branches"],
+            "mise_en_place": [
+                "finely cut chives",
+                "sasso chicken portions",
+                "glazed carrots",
+                "carrot puree",
+                "farro",
+                "picked red mustard frills",
+                "creme fraiche",
+                "chicken stock"
+            ],
             "ingredients": [
-                
                 {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "pomegranate 2 lyr",
-                    "sku": "POM2"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "cauliflower tri color 6 ct salad savoy",
-                    "sku": "CAU7"
-                },
-                {
+                    "ingredient": "carrots. kyoto bunch",
                     "purveyor": "natoora",
-                    "ingredient": "winter squash koginut",
-                    "sku": "20666"
+                    "sku": "20816"
                 },
                 {
-                    "purveyor": "natoora",
-                    "ingredient": "radicchio castelfranco",
-                    "sku": "20002"
-                }
-                ,
+                    "ingredient": "farro semi pearled bag 11 lb",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "FLOUR1"
+                },
                 {
-                    "purveyor": "baldor",
-                    "ingredient": "ruskess leaves by the bunch ruskess",
-                    "sku": "LV1"
+                    "ingredient": "sasso",
+                    "purveyor": "lapera bros poultry",
+                    "sku": "CFCBO"
+                },
+                {
+                    "ingredient": "greens mustard frill red 3 lb county line or",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "ZLETT1"
+                },
+                {
+                    "ingredient": "chives 2.2 lb",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "CH3"
                 }
             ],
-            "menu_items_stations": [
-                "farmer's green market",
-                "a taste of nine orchard",
-                "crudite & mezze",
-                "cheese & charcuterie"
-            ],
+            "menu_items_stations": [],
             "menu_items_category": [
-                "station"
+                "plated entree"
             ],
             "purchasing": [
-                
                 {
-                    "ingredient": "pomegranate 2 lyr",
-                    "purveyor": "baldor speciality foods inc.",
-                    "sku": "POM2"
-                },
-                {
-                    "ingredient": "cauliflower tri color 6 ct salad savoy",
-                    "purveyor": "baldor speciality foods inc.",
-                    "sku": "CAU7"
-                },
-                {
-                    "ingredient": "winter squash koginut",
+                    "ingredient": "carrots. kyoto bunch",
                     "purveyor": "natoora",
-                    "sku": "20666"
+                    "sku": "20816"
                 },
                 {
-                    "ingredient": "radicchio castelfranco",
-                    "purveyor": "natoora",
-                    "sku": "20002"
-                },
-                {
-                    "ingredient": "tomato tri-color bombs squad 8x12 oz sunse",
+                    "ingredient": "farro semi pearled bag 11 lb",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "TO4BSQ"
+                    "sku": "FLOUR1"
                 },
                 {
-                    "purveyor": "baldor",
-                    "ingredient": "ruskess leaves by the bunch ruskess",
-                    "sku": "LV1"
+                    "ingredient": "sasso",
+                    "purveyor": "lapera bros poultry",
+                    "sku": "CFCBO"
+                },
+                {
+                    "ingredient": "greens mustard frill red 3 lb county line or",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "ZLETT1"
+                },
+                {
+                    "ingredient": "chives 2.2 lb",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "CH3"
                 }
             ]
         }

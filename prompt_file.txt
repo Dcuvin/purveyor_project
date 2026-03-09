@@ -1,30 +1,34 @@
 
-Event:  AMEX Photoshoot	
-Date:  Wednesday, February 18, 2026
-Sales: Julie Garcés	
-Time:  7:00 AM - 7:00 PM
-Contact:  Tom Sawyer	
-Location:  West Room, Blue Room, and Swan Room
-Phone:  3478703553	
-Event Type: Breakfast Buffet + Lunch Buffet
-Guests: 25
+Event:  Emma & Jake	
+Date:  Saturday, March 7, 2026
+Sales: Deborah Zakhar	
+Time:  8:00 PM - 12:00 AM
+Contact:  Jennifer Gilbert	
+Location:  Greenhouse
+Phone: 	
+Event Type:  Engagement Party
+Guests:  125
+Time: 8:00 PM-12:00 AM
 
-BREAKFAST STATION,
+menu_items:
 
-Applewood Smoked Bacon, 
+Pigs In a blanket,
 
-Chicken Apple Sausage, 
+Lobster Roll,
 
-Seasonal Berries, 
+Crispy Burrata,
 
-Hash Browns
+NY Strip Steak,
 
-Frittata,
+Chicken Schnitzel,
 
-soft scramble Eggs,
+Cacio e Pepe Fritter,
 
-Overnight Oats,
-	
-GRAIN BOWLS,
+Rigatoni Pomodoro ,
 
-Mediterranean,
+Corner Bar Burger Sliders,
+
+
+Fried Chicken Slider,
+
+A TASTE OF NINE ORCHARD

@@ -20,6 +20,7 @@ from prep_req import req_prep, test_prep_req, req_prep_ver_2
 from beo import update_dropdown_menu_selection
 from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu,get_standard_station_menu
 from product_catalog import update_ingredient_table, input_menu_ingredient, get_menu_item_ingredients, menu_cost, upload_xtrachef_item_library
+from create_weekly_report import create_weekly_report_folder
 #------------------------------------------------------------------------------------------
 
 def main():
@@ -257,7 +258,9 @@ def main():
 
         db = f"purveyor_project_db_{db_input}.db"
 
-        pull_all_data(db)
+    # Creates weekly_report folder
+    elif sys.argv[1] == 'weekly_report':
+        create_weekly_report_folder()
     
     
     
