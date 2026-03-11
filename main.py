@@ -316,7 +316,7 @@ def gpt_prep_list(db):
     #print(item_ids)
     print(f"event_type: {event_type}")
     # if event_type is a seated dinner...
-    event_type_list = ['seated dinner', 'seated meal', 'seated', 'plated dinner']
+    event_type_list = ['seated dinner', 'seated meal', 'seated', 'plated dinner', 'rehearsal dinner']
     # Adds Bread and butter for db_3
     conn = sqlite3.connect(db)
     cursor = conn.cursor()

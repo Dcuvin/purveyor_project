@@ -2,90 +2,138 @@
     "menu_items":
     [ 
         {
-            "item_name": "chicken",
-            "category": "plated entree",
+            "item_name": "marinated olives",
+            "category": "station",
             "prep": [
-                "finely cut chives",
-                "debone / brine / sear sasso chickens",
-                "cut / glaze carrots",
-                "carrot puree",
-                "cook farro",
-                "pick red mustard frills"
+                "marinated olives"
             ],
             "req_prep": [
                 {
-                    "prep": "brine / cut airline chicken breast",
+                    "prep": "marinated olives",
                     "am_prep_team": 1,
                     "sous_prep": 0,
-                    "category": ""
+                    "category": "snacks"
                 }
             ],
             "mise_en_place": [
-                "finely cut chives",
-                "sasso chicken portions",
-                "glazed carrots",
-                "carrot puree",
-                "farro",
-                "picked red mustard frills",
-                "creme fraiche",
-                "chicken stock"
+                "marinated olives"
             ],
             "ingredients": [
                 {
-                    "ingredient": "carrots. kyoto bunch",
-                    "purveyor": "natoora",
-                    "sku": "20816"
-                },
-                {
-                    "ingredient": "farro semi pearled bag 11 lb",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "FLOUR1"
+                    "ingredient": "olives green casteventrano in br",
+                    "sku": "SPO22CCC"
                 },
                 {
-                    "ingredient": "sasso",
-                    "purveyor": "lapera bros poultry",
-                    "sku": "CFCBO"
-                },
-                {
-                    "ingredient": "greens mustard frill red 3 lb county line or",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "ZLETT1"
+                    "ingredient": "olives red cerignola gg size tin 2",
+                    "sku": "SPO22BBB"
                 },
                 {
-                    "ingredient": "chives 2.2 lb",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "CH3"
+                    "ingredient": "olives green picholine in brine 11 lb",
+                    "sku": "SPO5"
                 }
             ],
-            "menu_items_stations": [],
+            "menu_items_stations": [
+                "sweet & savory snacks", "bar snacks"
+            ],
             "menu_items_category": [
-                "plated entree"
+                "station"
             ],
             "purchasing": [
                 {
-                    "ingredient": "carrots. kyoto bunch",
-                    "purveyor": "natoora",
-                    "sku": "20816"
-                },
-                {
-                    "ingredient": "farro semi pearled bag 11 lb",
+                    "ingredient": "olives green casteventrano in br",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "FLOUR1"
+                    "sku": "SPO22CCC"
                 },
                 {
-                    "ingredient": "sasso",
-                    "purveyor": "lapera bros poultry",
-                    "sku": "CFCBO"
-                },
-                {
-                    "ingredient": "greens mustard frill red 3 lb county line or",
+                    "ingredient": "olives red cerignola gg size tin 2",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "ZLETT1"
+                    "sku": "SPO22BBB"
                 },
                 {
-                    "ingredient": "chives 2.2 lb",
+                    "ingredient": "olives green picholine in brine 11 lb",
                     "purveyor": "baldor speciality foods inc.",
-                    "sku": "CH3"
+                    "sku": "SPO5"
+                }
+            ]
+        },
+        {
+            "item_name": "popcorn sea salt & rosemary",
+            "category": "station",
+            "prep": [
+                "rosemary salt",
+                "pop popcorn"
+            ],
+            "req_prep": [
+                {
+                    "prep": "rosemary salt",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "entree"
+                }
+            ],
+            "mise_en_place": [
+                "rosemary salt",
+                "popcorn kernels"
+            ],
+            "ingredients": [
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "popcorn kernels 50 lb bag",
+                    "sku": "GP901"
+                }
+            ],
+            "menu_items_stations": [
+                "sweet & savory snacks", "bar snacks"
+            ],
+            "menu_items_category": [
+                "station"
+            ],
+            "purchasing": [
+                {
+                    "ingredient": "popcorn kernels 50 lb bag",
+                    "purveyor": "dairyland",
+                    "sku": "GP901"
+                }
+            ]
+        },
+        {
+            "item_name": "mixed nuts",
+            "category": "station",
+            "prep": [
+                "mmixed nuts"
+            ],
+            "req_prep": [
+                {
+                    "prep": "mixed nuts",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "snacks"
+                }
+            ],
+            "mise_en_place": [
+                "mixed nuts"
+            ],
+            "ingredients": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "nuts mix competition salted no",
+                    "sku": "SPNU4"
+                }
+            ],
+            "menu_items_stations": [
+                "sweet & savory snacks", "bar snacks"
+            ],
+            "menu_items_category": [
+                "station"
+            ],
+            "purchasing": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "nuts mix competition salted no",
+                    "sku": "SPNU4"
                 }
             ]
         }

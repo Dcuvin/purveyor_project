@@ -1,34 +1,27 @@
-
-Event:  Emma & Jake	
-Date:  Saturday, March 7, 2026
-Sales: Deborah Zakhar	
-Time:  8:00 PM - 12:00 AM
-Contact:  Jennifer Gilbert	
-Location:  Greenhouse
-Phone: 	
-Event Type:  Engagement Party
-Guests:  125
-Time: 8:00 PM-12:00 AM
+event:  ShopMy	
+Date:  Monday, March 23, 2026
+Account:  ShopMy	
+Time:  5:30 PM - 7:30 PM
+Contact:  Sophie Grippo	
+Location:  West Room
+Phone:  914-574-9370	
+Event Type:  Cocktail Reception
+Email:  sophie@shopmy.us	
+Guests:  65
+ 	
+Account Owner:  Julie Garcés	
+Phone/Email:  / julie@nineorchard.com
 
 menu_items:
 
-Pigs In a blanket,
+Cacio e Pepe Fritter,
 
-Lobster Roll,
-
-Crispy Burrata,
-
-NY Strip Steak,
+Caviar hash brown,
 
 Chicken Schnitzel,
 
-Cacio e Pepe Fritter,
+Green Hummus,
 
-Rigatoni Pomodoro ,
+Lobster Roll,
 
-Corner Bar Burger Sliders,
-
-
-Fried Chicken Slider,
-
-A TASTE OF NINE ORCHARD
+NY Strip Steak,

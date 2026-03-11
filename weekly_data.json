@@ -1,0 +1,27 @@
+{
+    "weekly_data":
+    [
+        {   
+            "event_info": "",
+            "event_date": "",
+            "event_name": "",
+            "event_type": "",
+            "guest_count": "",
+
+            "space_fee": "",
+            "food_revenue": "",
+            "beverage_revenue": "",
+            "admin_fee": "",
+            "sales_tax": "",
+            "net_revenue":"",
+
+            "food_cost_partial": "",
+            "in_house_labor":"",
+            "outsourced_labor":"",
+            "rentals":"",
+
+            "revenue_per_guest":"",
+            "labor_cost_per_guest":""
+        }
+    ]
+}
