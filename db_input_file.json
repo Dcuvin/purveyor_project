@@ -2,138 +2,119 @@
     "menu_items":
     [ 
         {
-            "item_name": "marinated olives",
-            "category": "station",
+            "item_name": "green salad",
+            "category": "plated starter",
             "prep": [
-                "marinated olives"
+                "clean/ cut mixed greens",
+                "citrus-tahini dressing",
+                "crispy za atar quinoa",
+                "sliced cucumber"
             ],
             "req_prep": [
                 {
-                    "prep": "marinated olives",
+                    "prep": "clean/ cut mixed greens",
                     "am_prep_team": 1,
                     "sous_prep": 0,
-                    "category": "snacks"
+                    "category": "starter"
+                },
+                {
+                    "prep": "citrus-tahini dressing",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "starter"
+                },
+                {
+                    "prep": "crispy quinoa zaatar",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "starter"
                 }
             ],
             "mise_en_place": [
-                "marinated olives"
+                "mixed greens",
+                "citrus-tahini dressing",
+                "crispy za atar quinoa",
+                "sliced cucumber",
+                "mixing bowls"
             ],
             "ingredients": [
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "olives green casteventrano in br",
-                    "sku": "SPO22CCC"
+                    "ingredient": "cucumbers hot house 12 ct",
+                    "sku": "CU"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "olives red cerignola gg size tin 2",
-                    "sku": "SPO22BBB"
+                    "ingredient": "lettuce baby mix 2 lb",
+                    "sku": "LETT"
                 },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "olives green picholine in brine 11 lb",
-                    "sku": "SPO5"
-                }
-            ],
-            "menu_items_stations": [
-                "sweet & savory snacks", "bar snacks"
-            ],
-            "menu_items_category": [
-                "station"
-            ],
-            "purchasing": [
-                {
-                    "ingredient": "olives green casteventrano in br",
-                    "purveyor": "baldor speciality foods inc.",
-                    "sku": "SPO22CCC"
-                },
-                {
-                    "ingredient": "olives red cerignola gg size tin 2",
-                    "purveyor": "baldor speciality foods inc.",
-                    "sku": "SPO22BBB"
-                },
-                {
-                    "ingredient": "olives green picholine in brine 11 lb",
-                    "purveyor": "baldor speciality foods inc.",
-                    "sku": "SPO5"
-                }
-            ]
-        },
-        {
-            "item_name": "popcorn sea salt & rosemary",
-            "category": "station",
-            "prep": [
-                "rosemary salt",
-                "pop popcorn"
-            ],
-            "req_prep": [
-                {
-                    "prep": "rosemary salt",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "entree"
-                }
-            ],
-            "mise_en_place": [
-                "rosemary salt",
-                "popcorn kernels"
-            ],
-            "ingredients": [
                 {
                     "purveyor": "dairyland",
-                    "ingredient": "popcorn kernels 50 lb bag",
-                    "sku": "GP901"
-                }
-            ],
-            "menu_items_stations": [
-                "sweet & savory snacks", "bar snacks"
-            ],
-            "menu_items_category": [
-                "station"
-            ],
-            "purchasing": [
+                    "ingredient": "wa yuzu juice marugoto shib",
+                    "sku": "GV369"
+                },
                 {
-                    "ingredient": "popcorn kernels 50 lb bag",
                     "purveyor": "dairyland",
-                    "sku": "GP901"
-                }
-            ]
-        },
-        {
-            "item_name": "mixed nuts",
-            "category": "station",
-            "prep": [
-                "mmixed nuts"
-            ],
-            "req_prep": [
+                    "ingredient": "soom tahini 16oz",
+                    "sku": "10359658"
+                },
                 {
-                    "prep": "mixed nuts",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "snacks"
-                }
-            ],
-            "mise_en_place": [
-                "mixed nuts"
-            ],
-            "ingredients": [
+                    "purveyor": "dairyland",
+                    "ingredient": "quinoa red conventional",
+                    "sku": "923567"
+                },
                 {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "nuts mix competition salted no",
-                    "sku": "SPNU4"
+                    "purveyor": "dairyland",
+                    "ingredient": "sunflower seeds raw shelled",
+                    "sku": "NS100"
+                },
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "zaatar spice jordian spice",
+                    "sku": "916723"
                 }
             ],
             "menu_items_stations": [
-                "sweet & savory snacks", "bar snacks"
+                "a taste of nine orchard", "sandwiches"
             ],
             "menu_items_category": [
-                "station"
+                "plated starter"
             ],
             "purchasing": [
                 {
+                    "ingredient": "cucumbers hot house 12 ct",
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "nuts mix competition salted no",
-                    "sku": "SPNU4"
+                    "sku": "CU"
+                },
+                {
+                    "ingredient": "lettuce baby mix 2 lb",
+                    "purveyor": "baldor speciality foods inc.",
+                    "sku": "LETT"
+                },
+                {
+                    "ingredient": "wa yuzu juice marugoto shib",
+                    "purveyor": "dairyland",
+                    "sku": "GV369"
+                },
+                {
+                    "ingredient": "soom tahini 16oz",
+                    "purveyor": "dairyland",
+                    "sku": "10359658"
+                },
+                {
+                    "ingredient": "quinoa red conventional",
+                    "purveyor": "dairyland",
+                    "sku": "923567"
+                },
+                {
+                    "ingredient": "sunflower seeds raw shelled",
+                    "purveyor": "dairyland",
+                    "sku": "NS100"
+                },
+                {
+                    "ingredient": "zaatar spice jordian spice",
+                    "purveyor": "dairyland",
+                    "sku": "916723"
                 }
             ]
         }

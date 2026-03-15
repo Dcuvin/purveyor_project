@@ -82,5 +82,20 @@ def create_weekly_report_folder():
     
     print(f"✅ {week_folder} => {new_report_name} copied!")
 
-    return week_folder_path
+    # Copies a .json weekly invoice input file into a folder named after the week.
+    weekly_data_path = Path("weekly_invoice.json")
+
+    if weekly_data_path.exists():
+        new_weekly_invoice = f"{formatted_week_start.strftime('%m-%d-%Y')}_weekly_invoice.json"
+        new_weekly_invoice_path = week_folder_path / new_weekly_invoice
+        try:
+            shutil.copy2(weekly_data_path,  new_weekly_invoice_path)
+        except OSError as e:
+            print(f"Could not copy weekly_invoice.json: {e}")
+    else:
+        print("weekly_invoice.json template not found.")
+
+    print(f"✅ {week_folder} => {new_weekly_invoice} copied!")
+
+    return week_folder_path, week_start
 

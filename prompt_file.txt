@@ -1,27 +1,32 @@
-event:  ShopMy	
-Date:  Monday, March 23, 2026
-Account:  ShopMy	
-Time:  5:30 PM - 7:30 PM
-Contact:  Sophie Grippo	
-Location:  West Room
-Phone:  914-574-9370	
-Event Type:  Cocktail Reception
-Email:  sophie@shopmy.us	
-Guests:  65
- 	
-Account Owner:  Julie Garcés	
-Phone/Email:  / julie@nineorchard.com
 
+Event:  A24	Date:  Friday, March 20, 2026
+Sales: Julie Garcés	Time:  9:00 AM - 5:00 PM
+Contact:  Grace Chiong	Location:  East Room
+Phone: 	Event Type:  Conference
+Guests:  8
+
+	
 menu_items:
 
-Cacio e Pepe Fritter,
+Scrambled eggs,
+Granola,
+Overnight oats,
 
-Caviar hash brown,
+Applewood Smoked Bacon,
 
-Chicken Schnitzel,
+Chicken Apple Sausage,
 
-Green Hummus,
+Seasonal Berries,
 
-Lobster Roll,
+Hash Browns,
 
-NY Strip Steak,
+Sandwiches,
+
+green salad,
+
+potato chips,
+
+assorted cookies,
+
+
+CRUDITES & MEZZE

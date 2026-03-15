@@ -1,0 +1,13 @@
+{
+    "weekly_invoices":
+    [
+        {
+            "invoice_date": "",
+            "vendor":"",
+            "invoice_number":"",
+            "category":"",
+            "cost":"",
+            "notes":""
+        }
+    ]
+}

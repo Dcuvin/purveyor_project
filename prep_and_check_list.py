@@ -728,7 +728,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
             # Insert category as title 
             cell_category = ws[f"{current_category_col_letter}{category_row}"]
             cell_category.value = df_dict['Category'].capitalize()
-            cell_category.font = Font(bold=True, name='Calibri', size=14, color="000000")
+            cell_category.font = Font(bold=True, name='Calibri', size=18, color="000000")
             cell_category.fill = PatternFill(start_color="FFC9DAF8", end_color="FFC9DAF8", fill_type="solid")
             cell_category.border = Border(left=Side(style='thin'),
                         right=Side(style='thin'),
@@ -744,7 +744,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
             # Insert, format, and merge row below the 'category' title for timing
             cell_timing= ws[f"{current_category_col_letter}{timing_row}"]
             cell_timing.value = "Timing TBD"
-            cell_timing.font = Font(bold=True, name='Calibri', size=14, color="FFFF0000")
+            cell_timing.font = Font(bold=True, name='Calibri', size=18, color="FFFF0000")
             cell_timing.border = Border(left=Side(style='thin'),
                         right=Side(style='thin'),
                         top=Side(style='thin'),

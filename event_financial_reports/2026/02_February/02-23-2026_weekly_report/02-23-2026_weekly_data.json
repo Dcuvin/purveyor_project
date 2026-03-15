@@ -1,0 +1,48 @@
+{
+    "weekly_data":
+    [
+        {   
+            "event_name": "Margot Hauer-King & Jack Morant",
+            "event_date": "2/28/26",
+            "event_type": "Wedding / Seated Dinner",
+            "guest_count": "133",
+
+            "space_fee": "10000",
+            "food_revenue": "29967",
+            "beverage_revenue": "16320",
+            "admin_fee": "13072.51",
+            "sales_tax": "6204.47",
+            "gross_revenue":"76113.98",
+            "net_revenue":"69909.51",
+
+            "additional_labor":"550",
+            "in_house_labor":"7572.10",
+            "outsourced_labor":"0",
+            "approx_food_cost": "5657.65",
+            "rentals":"0"
+        },
+    
+    
+        {   
+            "event_name": "Ruba Katrib",
+            "event_date": "3/1/26",
+            "event_type": "Birthday/ Cheese & Charcuterie",
+            "guest_count": "30",
+
+            "space_fee": "0",
+            "food_revenue": "700",
+            "beverage_revenue": "2475",
+            "admin_fee": "730.25",
+            "sales_tax": "346.59",
+            "gross_revenue":"4251.84",
+            "net_revenue":"3905.25",
+
+            "additional_labor":"0",
+            "in_house_labor":"1269.70",
+            "outsourced_labor":"0",
+            "approx_food_cost": "654.35",
+            "rentals":"0"
+
+        }
+    ]
+}
