@@ -2,23 +2,62 @@
     "weekly_data":
     [
         {   
-            "event_name": "",
-            "event_date": "",
-            "event_type": "",
-            "guest_count": "0",
+            "event_name": "One for Democracy",
+            "event_date": "03-07-2026",
+            "event_type": "Panel/ Breakfast Station",
+            "guest_count": "50",
 
             "space_fee": "0",
-            "food_revenue": "0",
-            "beverage_revenue": "0",
-            "admin_fee": "0",
-            "sales_tax": "0",
-            "gross_revenue":"0",
-            "net_revenue":"0",
+            "food_revenue": "14990",
+            "beverage_revenue": "2700",
+            "admin_fee": "4068.70",
+            "sales_tax": "1931.08",
+            "gross_revenue":"23689.78",
 
             "additional_labor":"0",
-            "in_house_labor":"0",
+            "in_house_labor":"2874.75",
             "outsourced_labor":"0",
-            "approx_food_cost": "0",
+            "approx_food_cost":"1548.50",
+            "rentals":"0"
+
+        },
+        {   
+            "event_name": "Marble Collective",
+            "event_date": "03-05-2026",
+            "event_type": "Cocktail Reception / Crudite & Mezze",
+            "guest_count": "65",
+
+            "space_fee": "3375",
+            "food_revenue": "3770",
+            "beverage_revenue": "1300",
+            "admin_fee": "2018.25",
+            "sales_tax": "957.90",
+            "gross_revenue":"11751.15",
+
+            "additional_labor":"330",
+            "in_house_labor":"2873.20",
+            "outsourced_labor":"0",
+            "approx_food_cost":"637.06",
+            "rentals":"0"
+
+        },
+        {   
+            "event_name": "Emma & Jake",
+            "event_date": "03-07-2026",
+            "event_type": "Engagement Party/ canapes, small plates, station",
+            "guest_count": "125",
+
+            "space_fee": "5000",
+            "food_revenue": "18750",
+            "beverage_revenue": "18750",
+            "admin_fee": "9775",
+            "sales_tax": "0",
+            "gross_revenue":"52275",
+
+            "additional_labor":"0",
+            "in_house_labor":"4370.08",
+            "outsourced_labor":"0",
+            "approx_food_cost":"3008.56",
             "rentals":"0"
 
         }

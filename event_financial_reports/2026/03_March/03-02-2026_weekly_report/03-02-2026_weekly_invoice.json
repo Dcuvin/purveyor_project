@@ -1,0 +1,103 @@
+{
+    "weekly_invoices":
+    [
+            {
+                "invoice_date": "03-07-202",
+                "vendor":"All Natural Products Davidovich Bakery",
+                "invoice_number":"948010",
+                "category":"Bagels",
+                "cost":"32.99",
+                "notes":"1 DZ, 4 types of Bagels"
+            },
+            {
+                "invoice_date": "03-05-2026",
+                "vendor":"Chef's Warehouse",
+                "invoice_number":"4908189",
+                "category":"Eggs / Frozen Goods",
+                "cost":"288.56",
+                "notes":""
+            },
+            {
+                "invoice_date": "03-05-2026",
+                "vendor":"Baldor",
+                "invoice_number":"IV101-0028189541",
+                "category":"Produce",
+                "cost":"786.10",
+                "notes":""
+            },
+            {
+                "invoice_date": "03-07-2026",
+                "vendor":"Baldor",
+                "invoice_number":"IV101-0028210021",
+                "category":"Produce",
+                "cost":"244.01",
+                "notes":""
+            },
+            {
+                "invoice_date": "03-06-2026",
+                "vendor":"Prime Food Distributor",
+                "invoice_number":"299306",
+                "category":"Beef",
+                "cost":"1759.95",
+                "notes":"4x Beef, Ribeye Boneless Prime"
+            },
+            {
+                "invoice_date": "03-09-2026",
+                "vendor":"Tivoli Mushrooms, LLC",
+                "invoice_number":"35268",
+                "category":"Mushrooms",
+                "cost":"371",
+                "notes":"+30lbs Mixed Mushrooms"
+            },
+            {
+                "invoice_date": "03-06-2026",
+                "vendor":"Liepper & Sons",
+                "invoice_number":"111235",
+                "category":"Fish",
+                "cost":"527.35",
+                "notes":"53 ea; 800/1000 Branzino Fillet"
+            },
+            {
+                "invoice_date": "03-06-2026",
+                "vendor":"Liepper & Sons",
+                "invoice_number":"111235",
+                "category":"Fish",
+                "cost":"412.60",
+                "notes":"7x sides Steelhead Salmon, skin-off"
+            },
+            {
+                "invoice_date": "03-07-2026",
+                "vendor":"Pain d Avignon",
+                "invoice_number":"",
+                "category":"Pastries",
+                "cost":"73.44",
+                "notes":"1 DZ ea Croissant, Pain au Chocolat, Kouign Amann"
+            },
+            {
+                "invoice_date": "03-07-2026",
+                "vendor":"Eli's Bread",
+                "invoice_number":"",
+                "category":"Bread",
+                "cost":"60",
+                "notes":"3 DZ mini Brioche hot dog, 4x 1.5# SF-style Sourdough, 1x, 5x5 Brioche Pullman"
+            },
+            {
+                "invoice_date": "03-07-2026",
+                "vendor":"Pat La Frieda",
+                "invoice_number":"",
+                "category":"Meat",
+                "cost":"143.70",
+                "notes":"1 cs Chicken French Airline Cutlet"
+            },
+            {
+                "invoice_date": "03-07-2026",
+                "vendor":"Pat La Frieda",
+                "invoice_number":"",
+                "category":"Meat",
+                "cost":"134.40",
+                "notes":"20lbs 2oz Dry Aged Beer Hamburger"
+            }
+        ]
+    
+    
+}

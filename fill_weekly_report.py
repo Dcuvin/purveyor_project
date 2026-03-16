@@ -72,8 +72,117 @@ def extract_weekly_data(week_folder_path, week_start):
     labor_cost_per_guest =[[float(tlc) / float(gc) for tlc, gc in zip(total_labor_cost, guest_count)]]
     profit_per_guest =[float(op) / float(gc) for op, gc in zip(operating_profit, guest_count)]
 
+     #---------------------------------------------------------------------------------------------------------------
+
+# Fills out xlsx weekly report file.
+
+    col_count = len(weekly_data)
+    row_start =1
+    row_end = 29
+    formula_col = 2  # Column B is the formula source column
+    start_col = 3  # Column C is the first column to be copied to
+    end_col = start_col + col_count - 2
+
+    
+
+    weekly_report_xlsx =f"{week_start}_weekly_report.xlsx"
+    weekly_data_xlsx_path = week_folder_path/ weekly_report_xlsx
+
+    wb =load_workbook(weekly_data_xlsx_path)
+    ws_1 =wb['Event_PnL']
+
+    # Iterate over cells and check for formula. If it exists, copy over to the adjacent cell in the next col.
+    for row in range(row_start, row_end + 1):
+        src_cell = ws_1.cell(row=row, column=formula_col)
+
+        if src_cell.data_type == "f":
+            for target_col in range(start_col, end_col + 1):
+                dst_cell = ws_1.cell(row=row, column=target_col)
+                dst_cell.value = Translator(
+                    src_cell.value,
+                    origin=src_cell.coordinate
+                ).translate_formula(dst_cell.coordinate)
+    
+    full_data =[{
+        "event_date":e_date, 
+        "event_name":e_name, 
+        "event_type":e_type, 
+        "guest_count":gc, 
+        "space_fee":sf, 
+        "food_revenue":fr, 
+        "beverage_revenue":br,
+         "admin_fee": af,
+         "sales_tax":st,
+         "gross_revenue":gr,
+         "additional_labor_cost":alc, 
+         "in_house_hourly_labor_cost":ihl,
+         "outsourced_labor_cost": ol, 
+         "approx_food_cost":afc, 
+         "rentals": r} for e_date, e_name, e_type, gc, sf,fr,br,af,st,gr,alc, ihl,ol,afc, r in zip(
+        event_date, event_name, event_type, guest_count, space_fee, food_revenue, beverage_revenue, admin_fee, sales_tax, 
+        gross_revenue, additional_labor_cost,in_house_labor_cost, outsourced_labor_cost,approx_food_cost, rentals
+    )]
+# Fills out the Event_PnL portion of weekly_report.xlsx 
+    info_col_start =2 # Col B in Even_PnL sheet
+    header_col = 1 # Col A in Even_PnL sheet
+    for event_info in full_data:
+        for row in range(row_start, row_end + 1):
+            header_cell = ws_1.cell(row=row, column=header_col).value
+            target_cell = ws_1.cell(row = row, column=info_col_start)
+
+            if header_cell in event_info and target_cell.value in (None, ""):
+                ws_1.cell(row=row, column=info_col_start).value = event_info[header_cell]
+
+        info_col_start += 1
+        
+
+    # Fill out the invoices portion of weekly_report.xlsx 
+    weekly_invoices_json =f"{week_start}_weekly_invoice.json"
+    weekly_invoices_json_path = week_folder_path/ weekly_invoices_json
+
+    
+    ws_2 =wb['Invoices']
+
+    with open(weekly_invoices_json_path, 'r') as file:
+         #data is a list of dict
+         invoices = json.load(file)
+    weekly_invoices =invoices["weekly_invoices"]
+
+    invoice_date =[data["invoice_date"] for data in weekly_invoices]
+    vendor = [data["vendor"] for data in weekly_invoices]
+    invoice_number = [data["invoice_number"] for data in weekly_invoices]
+    category = [data["category"] for data in weekly_invoices]
+    cost = [float(data["cost"])for data in weekly_invoices]
+    notes =[data["notes"] for data in weekly_invoices]
+
+    full_invoices =[
+        {"invoice_date":in_d, "vendor":v, "invoice_number":in_n, "category":cat, "cost":cos, "notes":no}
+        for in_d, v,in_n, cat,cos,no in zip(invoice_date, vendor, invoice_number, category, cost, notes)
+    ]
+
+    invoice_start_col = 1 # Col A in Event_PnL sheet
+    invoice_end_col = 6 # Col F in Event_PnL sheet
+    invoice_start_row = 2
+
+    # for invoice_info in full_invoices:
+    #     for col in range(invoice_start_col, invoice_end_col + 1):
+    #         header_cell = ws_2.cell(row=1, column= invoice_start_col).value
+    #         ws_2.cell(row=invoice_start_row, column=invoice_start_col).value = invoice_info[header_cell]
+    #     invoice_start_col += 1
+
+    for invoice_info in full_invoices:
+        for col in range(invoice_start_col, invoice_end_col + 1):
+            header_cell = ws_2.cell(row=1, column= col).value
+            
+            ws_2.cell(row=invoice_start_row, column=col).value = invoice_info[header_cell]
+        invoice_start_row += 1
+
+    wb.save(weekly_data_xlsx_path)
+
     #---------------------------------------------------------------------------------------------------------------
     # Charts folder
+    chart_file_names = []
+
     charts_folder ="charts"
     charts_path = Path(week_folder_path / charts_folder)
 
@@ -102,7 +211,8 @@ def extract_weekly_data(week_folder_path, week_start):
 
     plt.savefig(charts_path/ f"{week_start}_revenue_vs_profit.png", dpi=300, bbox_inches="tight")
     plt.close()
-    
+    chart_file_names.append(f"{week_start}_revenue_vs_profit.png")
+
     # Chart Revenue per Guest; Bar Chart
 
     plt.figure()
@@ -117,11 +227,12 @@ def extract_weekly_data(week_folder_path, week_start):
 
     plt.savefig(charts_path / f"{week_start}_revenue_per_guest.png", dpi=300, bbox_inches="tight")
     plt.close()
+
+    chart_file_names.append(f"{week_start}_revenue_per_guest.png")
+
     #---------------------------------------------------------------------------------------------------------------
 
     # Chart Operating Profit by Event Type; Bar Chart
-
-    chart_file_names = []
 
     profit_by_type = defaultdict(float)
 
@@ -252,9 +363,11 @@ def extract_weekly_data(week_folder_path, week_start):
     plt.close()
 
     chart_file_names.append(f"{week_start}_weekly_profit_vs_cost.png")
-    #---------------------------------------------------------------------------------------------------------------
+        
+    print("✅ Charts Created!")
 
-    # Fills out the Charts worksheet in weekly_report.xlsx
+#--------------------------------------------------------------------------------------------------------------
+    #Fills out weekly_report.xlsx with charts
     ws_3 = wb["Charts"]
     chart_start_row = 2
     row_jump = 23
@@ -262,119 +375,25 @@ def extract_weekly_data(week_folder_path, week_start):
     max_charts_per_col = 2
     chart_count = 0
     for chart_name in chart_file_names:
-        charts_folder_path = week_folder_path /chart_name
+        charts_folder_path = charts_path/ chart_name
         
         chart_start_col_letter = get_column_letter(chart_start_col)
         img = Image(charts_folder_path)
         img.width = 900
-        img.height = 450
+        img.height = 900
         ws_3.add_image(img, f"{chart_start_col_letter}{chart_start_row}")
         chart_count += 1        
         if chart_count < max_charts_per_col:
             chart_start_row += row_jump
+            chart_start_col += 1
         else:
             chart_start_row =2
-            chart_start_col += 1
+            chart_start_col += 3
             chart_count = 0
-        
-    print("✅ Charts Created!")
-    #---------------------------------------------------------------------------------------------------------------
 
-# Fills out xlsx weekly report file.
-
-    col_count = len(weekly_data)
-    row_start =1
-    row_end = 29
-    src_col = 2  # Column B is the formula source column
-    start_col = 3  # Column C is the first column to be copied to
-
-    weekly_report_xlsx =f"{week_start}_weekly_report.xlsx"
-    weekly_data_xlsx_path = week_folder_path/ weekly_report_xlsx
-
-    wb =load_workbook(weekly_data_xlsx_path)
-    ws_1 =wb['Event PnL']
-
-    # Iterate over cells and check for formula. If it exists, copy over to the adjacent cell in the next col.
-    for row in range(row_start, row_end + 1):
-        src_cell = ws_1.cell(row=row, column=src_col)
-
-        if src_cell.data_type == "f":
-            for target_col in range(start_col, col_count + 1):
-                dst_cell = ws_1.cell(row=row, column=target_col)
-                dst_cell.value = Translator(
-                    src_cell.value,
-                    origin=src_cell.coordinate
-                ).translate_formula(dst_cell.coordinate)
-    
-    full_data =[{
-        "event_date":e_date, 
-        "event_name":e_name, 
-        "event_type":e_type, 
-        "guest_count":gc, 
-        "space_fee":sf, 
-        "food_revenue":fr, 
-        "beverage_revenue":br,
-         "admin_fee": af,
-         "sales_tax":st,
-         "gross_revenue":gr,
-         "additional_labor_cost":alc, 
-         "in_house_labor_cost":ihl,
-         "outsourced_labor_cost": ol, 
-         "approx_food_cost":afc, 
-         "rentals": r} for e_date, e_name, e_type, gc, sf,fr,br,af,st,gr,alc, ihl,ol,afc, r in zip(
-        event_date, event_name, event_type, guest_count, space_fee, food_revenue, beverage_revenue, admin_fee, sales_tax, 
-        gross_revenue, additional_labor_cost,in_house_labor_cost, outsourced_labor_cost,approx_food_cost, rentals
-    )]
-
-    header_col = 1 # Col A in Even_PnL sheet
-    info_start_col =2
-    for event_info in full_data:
-        for row in range(row_start, row_end + 1):
-            header_cell = ws_1.cell(row=row, column=header_col).value
-            target_cell = ws_1.cell(row = row, column=info_start_col)
-            if header_cell in event_info and target_cell.value in (None, ""):
-                ws_1.cell(row=row, column=info_start_col).value = event_info[header_cell]
-        info_start_col += 1
-
-    # Fill out the invoices portion of weekly_report.xlsx 
-    weekly_invoices_json =f"{week_start}_weekly_invoices.json"
-    weekly_invoices_json_path = week_folder_path/ weekly_invoices_json
-
-    
-    ws_2 =wb['Invoices']
-
-    with open(weekly_invoices_json_path, 'r') as file:
-         #data is a list of dict
-         invoices = json.load(file)
-    weekly_invoices =invoices["weekly_invoices"]
-
-    invoice_date =[data["invoice_date"] for data in weekly_invoices]
-    vendor = [data["vendor"] for data in weekly_invoices]
-    invoice_number = [data["invoice_number"] for data in weekly_invoices]
-    category = [data["category"] for data in weekly_invoices]
-    cost = float([data["cost"] for data in weekly_invoices])
-    notes =[data["notes"] for data in weekly_invoices]
-
-    full_invoices =[
-        {"invoice_date":in_d, "vendor":v, "invoice_number":in_n, "category":cat, "cost":cos, "notes":no}
-        for in_d, v,in_n, cat,cos,no in zip(invoice_date, vendor, invoice_number, category, cost, notes)
-    ]
-
-    invoice_start_col = 1 # Col A in Event_PnL sheet
-    invoice_end_col = 6 # Col F in Event_PnL sheet
-    invoice_start_row = 2
-    invoice_end_row = len(weekly_invoices)
-
-    for invoice_info in full_invoices:
-        for col in range(invoice_start_col, invoice_end_col):
-            header_cell = ws_2.cell(row=1, column= invoice_start_col).value
-            ws_2.cell(row=invoice_start_row, column=info_start_col).value = invoice_info[header_cell]
-        invoice_start_col += 1
-    
-
-    #---------------------------------------------------------------------------------------------------------------
     wb.save(weekly_data_xlsx_path)
 
     print(f"✅ {week_start}_weekly_report.xlsx filled!")
+
 
 #extract_weekly_data(week_folder_path,"02-23-2026")

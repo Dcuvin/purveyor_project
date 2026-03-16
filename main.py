@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 import pandas as pd
 import sqlite3
 import re
@@ -22,9 +22,11 @@ from fuzzy import update_standard_menu, normalize, match_menu_items, get_standar
 from product_catalog import update_ingredient_table, input_menu_ingredient, get_menu_item_ingredients, menu_cost, upload_xtrachef_item_library
 from create_weekly_report import create_weekly_report_folder
 from fill_weekly_report import extract_weekly_data
+from pathlib import Path
+
+
 
 #------------------------------------------------------------------------------------------
-
 def main():
 
     
@@ -259,13 +261,35 @@ def main():
         db_input = input('Specify which database to query by typing the corresponding number:')
 
         db = f"purveyor_project_db_{db_input}.db"
-
+    
     # Creates and fills weekly_report folder
     elif sys.argv[1] == 'weekly_report':
-        folder_path_start_week = create_weekly_report_folder()
+        folder_path_start_week =[]
+
+        folder_path_start_week.append(create_weekly_report_folder())
+        print(folder_path_start_week)
 
     elif sys.argv[1] == 'fill_weekly_report':
-        extract_weekly_data(*folder_path_start_week)
+        while True:
+            week_start = input("Enter Week Start Date (mm-dd-yyyy): ")
+
+            try:
+                formatted_week_start = datetime.strptime(week_start, "%m-%d-%Y")
+                break
+            except ValueError:
+                print("Invalid date format. Please use mm-dd-yyyy.")
+            
+        
+        year = formatted_week_start.year
+        month = formatted_week_start.strftime("%m_%B")
+        
+
+        week_folder = f"{week_start}_weekly_report"
+        event_financial_reports_folder = Path("event_financial_reports")
+
+        week_folder_path = event_financial_reports_folder / str(year) / month / week_folder
+
+        extract_weekly_data(week_folder_path, week_start)
     
 #------------------------This code block is for manipulating data prior to adding into a DB-----------------------
 # Creates a JSON template of ingredients ready to copy and paste.

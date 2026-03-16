@@ -13,12 +13,11 @@
             "admin_fee": "0",
             "sales_tax": "0",
             "gross_revenue":"0",
-            "net_revenue":"0",
 
             "additional_labor":"0",
             "in_house_labor":"0",
             "outsourced_labor":"0",
-            "approx_food_cost": "0",
+            "approx_food_cost":"0",
             "rentals":"0"
 
         }
