@@ -185,7 +185,7 @@ def main():
         print(chosen_item_library_file)
 
         update_ingredient_table(db,  chosen_item_library_file)
-    
+    #input new ingredient into ingredients table in db.
     elif sys.argv[1] == "input_menu_ingredient":
         
         print(find_db())
@@ -197,15 +197,15 @@ def main():
 
         input_menu_ingredient(db)
 
-    elif sys.argv[1] == 'get_menu_item_ingredients':
-        print(find_db())
-        db = ''
-        db_input = input('Specify which database to query by typing the corresponding number:')
+    # elif sys.argv[1] == 'get_menu_item_ingredients':
+    #     print(find_db())
+    #     db = ''
+    #     db_input = input('Specify which database to query by typing the corresponding number:')
 
 
-        db = f"purveyor_project_db_{db_input}.db"
+    #     db = f"purveyor_project_db_{db_input}.db"
 
-        get_menu_item_ingredients(db)
+    #     get_menu_item_ingredients(db)
 
     elif sys.argv[1] == 'menu_cost':
         print(find_db())
@@ -261,6 +261,7 @@ def main():
         db_input = input('Specify which database to query by typing the corresponding number:')
 
         db = f"purveyor_project_db_{db_input}.db"
+        pull_all_data(db)
     
     # Creates and fills weekly_report folder
     elif sys.argv[1] == 'weekly_report':

@@ -119,8 +119,8 @@ def format_table(ws, start_row, start_col, dataframe):
     )
 
     # Use black font for both header and body
-    header_font = Font(name='Calibri', size=14,bold=True, color="FF000000")  # Black, bold
-    body_font = Font(name='Calibri', size=12, color="FF000000")  # Black
+    header_font = Font(name='Calibri', size=16,bold=True, color="FF000000")  # Black, bold
+    body_font = Font(name='Calibri', size=16, color="FF000000")  # Black
     align_center = Alignment(horizontal='center', vertical='center')
 
     # Format header row

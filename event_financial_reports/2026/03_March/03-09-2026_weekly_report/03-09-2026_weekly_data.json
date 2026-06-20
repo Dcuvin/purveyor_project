@@ -1,0 +1,26 @@
+{
+    "weekly_data":
+    [
+        {   
+            "event_name": "Business of Fashion",
+            "event_date": "03-12-2026",
+            "event_type": "Panel / Continental Breakfast",
+            "guest_count": "30",
+
+            "space_fee": "1000",
+            "food_revenue": "1560",
+            "beverage_revenue": "0",
+            "admin_fee": "588.80",
+            "sales_tax": "279.46",
+            "gross_revenue":"3428.26",
+
+            "additional_labor":"0",
+            "in_house_labor":"1274.55",
+            "outsourced_labor":"0",
+            "approx_food_cost":"0",
+            "rentals":"0"
+
+        }
+    ],
+    "weekly_labor": "0"
+}

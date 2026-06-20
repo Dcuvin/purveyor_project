@@ -1,0 +1,9 @@
+Employee,Job Title,Regular Hours,Overtime Hours,Hourly Rate,Regular Pay,Overtime Pay,Total Pay,Net Sales,Declared Tips,Non-Cash Tips,Total Tips,Tips Withheld,Total Gratuity,Employee ID,Job Code,Location,Location Code
+"Ahmed, Jahangir",Event Server,5.49,0.0,40.00,219.60,0.00,219.60,0.00,0.00,0.00,0.00,0.00,0.00,10001,,Banquets & Events - 9O,
+"Cole, Neleta",Event Houseperson,3.09,0.0,27.00,83.43,0.00,83.43,0.00,,0.00,0.00,0.00,0.00,10023,,Banquets & Events - 9O,
+"Graves, Kavin",Event Houseperson,6.94,0.0,28.00,194.32,0.00,194.32,0.00,,0.00,0.00,0.00,0.00,10038,,Banquets & Events - 9O,
+"Rivera, Silvano",Event Cook,5.66,0.0,30.00,169.80,0.00,169.80,0.00,,0.00,0.00,0.00,0.00,10086,,Banquets & Events - 9O,
+"Roopchand, Ariane",Event Coordinator,6.02,0.0,25.00,150.50,0.00,150.50,0.00,,0.00,0.00,0.00,0.00,10158,,Banquets & Events - 9O,
+"Thompson, Phoebe",Event Captain,4.87,0.0,45.00,219.15,0.00,219.15,0.00,0.00,0.00,0.00,0.00,0.00,10678,,Banquets & Events - 9O,
+"Torres, Stephanie",Event Cook,5.35,0.0,30.00,160.50,0.00,160.50,0.00,,0.00,0.00,0.00,0.00,10101,,Banquets & Events - 9O,
+"Vasquez, Anulfo",Event Houseperson,3.09,0.0,25.00,77.25,0.00,77.25,0.00,,0.00,0.00,0.00,0.00,10103,,Banquets & Events - 9O,

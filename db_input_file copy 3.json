@@ -1,0 +1,157 @@
+{
+    "menu_items":[
+        {
+            "item_name": "raw bar platter",
+            "category": "family starter",
+            "prep": [
+                "clean / steam u15 shrimp",
+                "clean / shuck oysters",
+                "pull /clean oyster shells",
+                "brunoise daikon",
+                "clean / dice scallops",
+                "jalapeno brunoise",
+                "citrus vinaigrette",
+                "diced pickled daikon",
+                "pick delfino cilantro",
+                "pull / make seasonal mignonette",
+                "mince shallots",
+                "cut lemon wedges",
+                "cocktail sauce"
+            ],
+            "req_prep": [
+                {
+                    "prep": "steam/ cook u15 shrimp",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "raw bar"
+                },
+                {
+                    "prep": "mignonette base",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "raw bar"
+                },
+                {
+                    "prep": "cocktail sauce",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "raw bar"
+                },
+                {
+                    "prep": "steam / dice scallops",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "raw bar"
+                },
+                {
+                    "prep": "shuck oysters",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "canapes/raw bar"
+                },
+                {
+                    "prep": "clean oyster shells",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "canapes/raw bar"
+                }
+            ],
+            "mise_en_place": [
+                "clean / steam u15 shrimp",
+                "clean / shuck oysters",
+                "pull /clean oyster shells",
+                "brunoise daikon",
+                "clean / dice scallops",
+                "jalapeno brunoise",
+                "citrus vinaigrette",
+                "diced pickled daikon",
+                "pick delfino cilantro",
+                "pull / make seasonal mignonette",
+                "mince shallots",
+                "cut lemon wedges",
+                "cocktail sauce",
+                "scallop shells / rental butter dishes",
+                "crushed ice",
+                "metal sauce rammekins",
+                "metal oysyer coupes"
+
+            ],
+            "ingredients": [
+                {
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "shrimp u15 shrimp u15",
+                    "sku": "5851_XC12345796"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "pepper jalapeno 1 lb",
+                    "sku": "PE8"
+                },
+                {
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "scallops day boat",
+                    "sku": "5851_XC3219285"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cilantro delfino 2 oz girl n dug farm",
+                    "sku": "CI7GDF"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "daikon radishes",
+                    "sku": "RA3AA"
+                },
+                {
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "savage blonds.",
+                    "sku": "5851_XC12865100"
+                }
+                
+            ],
+            "menu_items_stations": [
+            
+            ],
+            "menu_items_category": [
+                "family starter"
+            ],
+            "purchasing": [
+                {
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "shrimp u15 shrimp u15",
+                    "sku": "5851_XC12345796"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "pepper jalapeno 1 lb",
+                    "sku": "PE8"
+                },
+                {
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "scallops day boat",
+                    "sku": "5851_XC3219285"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cilantro delfino 2 oz girl n dug farm",
+                    "sku": "CI7GDF"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "daikon radishes",
+                    "sku": "RA3AA"
+                },
+                {
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "savage blonds.",
+                    "sku": "5851_XC12865100"
+                }
+            ]
+        }
+    ]
+    
+        
+    
+    
+       
+}

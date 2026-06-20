@@ -1,20 +1,122 @@
 # purveyor_project
-I'am a Chef by trade, and have been in the hospitality industry since highschool. When the pandemic hit in 2019, I, like many, decided to learn a new skill to pass the time. Thus my coding journey began. Like many, I struggled to find a good idea for a coding project, but I kept learning in my free time while I freelanced working events.Fast forward to 2024 I started a new job as a Banquet Sous Chef in April for a hotel in NYC. It was here that I came up with the idea for this project. When it comes to Banquets, no two events are the same. That means differing menus, prep lists, checklists, and order lists. You can imagine how much more challenging that can be when dealing with multiple events happening everyday in a week. I immediately saw the benefits that automation and digitization could bring in order to create a more efficient workflow.
+# Purveyor Project
 
+A Python-based culinary operations tool for automating banquet and events workflows.
 
+This project was built to reduce manual admin work in hospitality by turning event and menu data into structured outputs like prep lists, requisition sheets, checklists, and database-driven menu records. It is centered around banquet/event operations where menus, guest counts, prep needs, and service formats change constantly.
 
-Functions:
+## Why this project exists
 
-database.py
+Banquet kitchens deal with a moving target:
 
-db_input()
-Prompts user to enter a number that corresponds to the database that they are trying to access.
+- Different menus for every event
+- Different guest counts, times, and locations
+- Repeated manual prep-list creation
+- Requisition sheets that need to be rebuilt constantly
+- Ingredient and menu data spread across spreadsheets and notes
 
-excel_file_to_upload()
-Prompts the user to enter a number that corresponds to the excel file that they are trying to upload to a database.
+The goal of this project is to make that workflow faster, more consistent, and easier to scale by combining:
 
-upload_excel()
-Takes the database excel file, deletes the old data in the database, and reuploads the excel file into the existing database.
+- SQLite for structured menu and prep data
+- Excel-based templates and exports
+- JSON-based data input
+- Fuzzy matching for menu normalization
+- OpenAI-powered parsing of event/BEO text
+- HTML generation for BEO-style forms
 
-input_new_data()
-Opens a json file with data for a new menu item to be added to the database, and checks the database to see if the menu item exists, and if not, add it to the database.
+---
+
+## What the project does
+
+At a high level, the project can:
+
+- Upload master Excel data into a SQLite database
+- Add or update menu/item data from JSON
+- Normalize and fuzzy-match menu items against a standard menu
+- Parse copied BEO/event text into structured event info
+- Generate Excel prep lists and order sheets
+- Generate Word checklists
+- Generate prep requisition sheets from event data
+- Build HTML dropdowns for BEO-style forms from database data
+- Create weekly report folders and fill weekly report workbooks
+
+---
+
+## Core features
+
+### 1. Database-driven menu and prep management
+The project uses SQLite as the source of truth for menu items, prep lists, ingredients, stations, categories, and related junction tables.
+
+Examples of supported workflows:
+
+- Upload structured Excel sheets into an existing database
+- Pull and update ingredient/menu relationships
+- Delete or query records
+- Refresh menu data used for matching logic
+
+### 2. BEO / event parsing
+Event information can be extracted from copied event text stored in `prompt_file.txt`.
+
+The parser extracts:
+
+- Event name
+- Guest count
+- Event time
+- Event date
+- Event type
+- Event location
+- Food items
+
+Those extracted menu items are then fuzzy-matched against the database to identify menu item IDs and station IDs.
+
+### 3. Prep list generation
+The project can generate event-specific prep outputs, including:
+
+- Excel prep sheets
+- Order sheets
+- Word checklists
+- Requisition sheets
+- Serveware / pull-sheet style outputs
+
+These files are saved into event-specific folders under `prep_and_checklists/`.
+
+### 4. Weekly reporting workflow
+The codebase includes commands for:
+
+- Creating a weekly report folder
+- Filling a weekly report workbook from extracted weekly data
+
+This supports a broader event-financial reporting workflow.
+
+### 5. HTML BEO form support
+The repo includes Jinja-based HTML templates that can be populated from database values, allowing dropdown menus to be updated dynamically for form-based workflows.
+
+---
+
+## Project structure
+
+A simplified overview of the repo:
+
+```text
+purveyor_project/
+├── main.py
+├── database.py
+├── prep_and_check_list.py
+├── prep_req.py
+├── product_catalog.py
+├── fuzzy.py
+├── openapi.py
+├── beo.py
+├── check_file.py
+├── excel_format.py
+├── beo_form_template.html
+├── beo_form_final.html
+├── prompt_file.txt
+├── db_input_file.json
+├── standard_menu.json
+├── ingredients.json
+├── input_product_catalog.json
+├── prep_and_checklists/
+├── *.db
+├── *.xlsx
+└── *.json

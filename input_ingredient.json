@@ -2,11 +2,27 @@
     "ingredient": [
         {
             "purveyor":"baldor",
-            "ingredient_code":"LV1",
-            "ingredient_description":" Decorative Ruscus Leaves",
-            "pack_size_unit":"1 bunch",
-            "purchase_price":"11.25",
-            "ingredient_type":"decoration" 
+            "ingredient_code":"MAYOV",
+            "ingredient_description":"Vegan Mayo",
+            "pack_size_unit":"1 GAL",
+            "purchase_price":"43.99",
+            "ingredient_type":"condiment" 
+        },
+        {
+            "purveyor":"baldor",
+            "ingredient_code":"MEVEG1",
+            "ingredient_description":"Frozen Veggie Burger",
+            "pack_size_unit":"29 X 5.5 OZ",
+            "purchase_price":"59.09",
+            "ingredient_type":"frozen" 
+        },
+        {
+            "purveyor":"baldor",
+            "ingredient_code":"SPR21",
+            "ingredient_description":"Alfalfa Sprouts",
+            "pack_size_unit":"12 CT",
+            "purchase_price":"26.00",
+            "ingredient_type":"produce" 
         }
     ]
 }

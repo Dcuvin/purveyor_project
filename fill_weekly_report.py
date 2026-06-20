@@ -32,6 +32,7 @@ def extract_weekly_data(week_folder_path, week_start):
          event_info = json.load(file)
 
     weekly_data = event_info["weekly_data"]
+    weekly_labor_data =event_info["weekly_labor"]
 
     event_date= [data["event_date"] for data in weekly_data]
     event_name= [data["event_name"]for data in weekly_data]
@@ -39,7 +40,7 @@ def extract_weekly_data(week_folder_path, week_start):
     guest_count= [int(data["guest_count"])for data in weekly_data]
 
     space_fee= [float(data["space_fee"])for data in weekly_data]
-    food_revenue=[float(data["food_revenue"])for data in weekly_data]
+    food_revenue=[float(data["food_revenue"]) for data in weekly_data]
     beverage_revenue= [float(data["beverage_revenue"])for data in weekly_data]
     admin_fee= [float(data["admin_fee"])for data in weekly_data]
     sales_tax= [float(data["sales_tax"])for data in weekly_data]
@@ -56,16 +57,24 @@ def extract_weekly_data(week_folder_path, week_start):
                         float(data["in_house_labor"]) +float(data["additional_labor"]) + float(data["outsourced_labor"])
                         for data in weekly_data
     ]
-    
-    approx_food_cost= [float(data["approx_food_cost"])for data in weekly_data]
+
+    weekly_labor_cost =[float(weekly_labor_data)]
+    #Add 15% buffer for requisitioned prep and pastry 
+    approx_food_cost= [float(data["approx_food_cost"]) * 0.15 for data in weekly_data]
+    # Do 20% bev cost since I have no access to bev invoices
     approx_bev_cost =[(float(data["beverage_revenue"]) * 0.22 )for data in weekly_data]
 
     rentals= [float(data["rentals"])for data in weekly_data]
 
-    approx_operating_cost =[float(afc) + float(abc) + float(tlc) + float(r) for afc, abc, tlc, r in zip(approx_food_cost, approx_bev_cost, total_labor_cost, rentals)
+    event_approx_operating_cost =[float(afc) + float(abc) + float(tlc) + float(r) for afc, abc, tlc, r
+                             in zip(approx_food_cost, approx_bev_cost,  total_labor_cost, rentals)
+                             ]
+    weekly_operating_cost= [float(afc) + float(abc) + float(wlc) + float(r) for afc, abc, wlc, r
+                             in zip(approx_food_cost, approx_bev_cost,  weekly_labor_cost, rentals)
                              ]
     
-    operating_profit = [float(nr) - float(aoe) for nr, aoe in zip(net_revenue, approx_operating_cost)]
+    
+    operating_profit = [float(nr) - float(aoe) for nr, aoe in zip(net_revenue, event_approx_operating_cost)]
     margin_pct =[float(op) / float(nr) for op, nr in zip(operating_profit, net_revenue)]
     revenue_per_guest =[float(nr) / float(gc) for nr, gc in zip(net_revenue, guest_count)]
     food_and_beverage_cost_per_guest =[(float(afc) + float(abc)) / float(gc) for afc, abc, gc in zip(approx_food_cost, approx_bev_cost, guest_count)]
@@ -176,8 +185,28 @@ def extract_weekly_data(week_folder_path, week_start):
             
             ws_2.cell(row=invoice_start_row, column=col).value = invoice_info[header_cell]
         invoice_start_row += 1
+    
+    #--------------------------------------------------------------------------------------------------------------
+    #Fills out Labor sheet in weekly_report.xlsx 
 
-    wb.save(weekly_data_xlsx_path)
+    ws_4 = wb["Labor"]
+    labor_start_col = 1
+    labor_start_row = 2
+    labor_end_col = 4
+
+    total_weekly_labor = [{"weekly_labor_cost": wlc for wlc in weekly_labor_cost}]
+    event_labor_info  = [{"event_date":e_d, "event_name": e_n, "event_labor_cost":elc} for
+                            e_d, e_n, elc in zip(event_date, event_name, total_labor_cost)]
+    
+    for event_info in event_labor_info:
+        for col in range(labor_start_col, labor_end_col):
+            header_cell = ws_4.cell(row=1, column= col).value
+            ws_4.cell(row=labor_start_row, column=col).value = event_info[header_cell]
+        labor_start_row += 1
+
+    header_cell = ws_4.cell(row=1, column= 4).value
+    ws_4.cell(row=2, column=4).value = total_weekly_labor[0]["weekly_labor_cost"]
+
 
     #---------------------------------------------------------------------------------------------------------------
     # Charts folder
@@ -261,7 +290,7 @@ def extract_weekly_data(week_folder_path, week_start):
 
     cost_by_type = defaultdict(float)
 
-    for etype, cost in zip(event_type, approx_operating_cost):
+    for etype, cost in zip(event_type, event_approx_operating_cost):
        cost_by_type[etype] += cost
 
     types = list(cost_by_type.keys())
@@ -344,11 +373,11 @@ def extract_weekly_data(week_folder_path, week_start):
 
     # Chart Weekly Operating Profit vs Weekly Operating Cost
     
-    weekly_operating_cost = sum(approx_operating_cost)
+    final_weekly_operating_cost = sum(weekly_operating_cost)
     weekly_operating_profit = sum(operating_profit)
 
     labels = ["Operating Cost", "Operating Profit"]
-    values = [weekly_operating_cost, weekly_operating_profit]
+    values = [final_weekly_operating_cost, weekly_operating_profit]
 
     plt.figure()
 
@@ -368,7 +397,7 @@ def extract_weekly_data(week_folder_path, week_start):
 
 #--------------------------------------------------------------------------------------------------------------
     #Fills out weekly_report.xlsx with charts
-    ws_3 = wb["Charts"]
+    ws_4 = wb["Charts"]
     chart_start_row = 2
     row_jump = 23
     chart_start_col = 1
@@ -378,10 +407,10 @@ def extract_weekly_data(week_folder_path, week_start):
         charts_folder_path = charts_path/ chart_name
         
         chart_start_col_letter = get_column_letter(chart_start_col)
-        img = Image(charts_folder_path)
+        img = Image(str(charts_folder_path))
         img.width = 900
         img.height = 900
-        ws_3.add_image(img, f"{chart_start_col_letter}{chart_start_row}")
+        ws_4.add_image(img, f"{chart_start_col_letter}{chart_start_row}")
         chart_count += 1        
         if chart_count < max_charts_per_col:
             chart_start_row += row_jump
@@ -390,6 +419,8 @@ def extract_weekly_data(week_folder_path, week_start):
             chart_start_row =2
             chart_start_col += 3
             chart_count = 0
+
+
 
     wb.save(weekly_data_xlsx_path)
 

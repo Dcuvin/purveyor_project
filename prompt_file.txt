@@ -1,32 +1,23 @@
 
-Event:  A24	Date:  Friday, March 20, 2026
-Sales: Julie Garcés	Time:  9:00 AM - 5:00 PM
-Contact:  Grace Chiong	Location:  East Room
-Phone: 	Event Type:  Conference
-Guests:  8
+Event:  Julia Cerra	
+Date:  Sunday, June 28, 2026
+Sales: Julie Garcés	
+Time:  1:00 PM - 4:00 PM
+Contact:  Sydney Wurst	
+Location:  Greenhouse
+Phone:  5165323918	
+Event Type:  Bridal/Baby Shower
+Guests:  30
+Time: 1:00 PM-4:00 PM
 
-	
 menu_items:
 
-Scrambled eggs,
-Granola,
-Overnight oats,
+Viennoiserie & pastries, 
+Seasonal berries, 
+Applewood-smoked bacon, 
+Chicken Sausage,
+ Hash Browns
 
-Applewood Smoked Bacon,
-
-Chicken Apple Sausage,
-
-Seasonal Berries,
-
-Hash Browns,
-
-Sandwiches,
-
-green salad,
-
-potato chips,
-
-assorted cookies,
-
-
-CRUDITES & MEZZE
+Avocado Toast,
+French Toast,
+Frittata,

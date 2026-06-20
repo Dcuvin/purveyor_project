@@ -663,7 +663,6 @@ def pull_all_data(db):
                         JOIN menu_mise_checklist ON menu_mise_checklist.checklist_id = mise_checklist.checklist_id
                         WHERE menu_mise_checklist.menu_item_id = ?;""",(id,))
             checklist =[i[0] for i in cursor.fetchall()]
-
             # Query DB for mapped requisitioned prep
             cursor.execute("""SELECT prep, am_prep_team, sous_prep, category
                         FROM req_prep
@@ -672,7 +671,6 @@ def pull_all_data(db):
             req_prep_result = cursor.fetchall()
 
             req_prep =[{"prep":row["prep"], "am_prep_team":row["am_prep_team"], "sous_prep":row["sous_prep"], "category":row["category"]} for row in req_prep_result]
-
             # Query DB for mapped ingredients
 
             cursor.execute("""SELECT ingredients.ingredient_name, ingredients.purveyor, ingredients.ingredient_code
@@ -703,8 +701,7 @@ def pull_all_data(db):
                 JOIN ingredients ON ingredients.ingredient_id = menu_items_purchasing.ingredient_id
                 WHERE menu_items_purchasing.menu_item_id = ?;""", (id,))
             
-            purchasing =[{"ingredient":i[0], "purveyor":i[1],"sku":i[2]} for i in cursor.fetchall()]
-
+            purchasing =[{"purveyor":i[1],"ingredient":i[0], "sku":i[2]} for i in cursor.fetchall()]
             #print(purchasing)
             
             #break
