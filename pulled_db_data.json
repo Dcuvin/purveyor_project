@@ -144,10 +144,10 @@
             "category": "canape",
             "prep": [
                 "slice brioche pullman rectangles 2in x 1in",
-                "shaved manchego",
                 "sliced figs",
                 "prosciutto chips",
                 "pick peashoots",
+                "shaved manchego",
                 "bechamel"
             ],
             "req_prep": [
@@ -204,8 +204,8 @@
             "purchasing": [
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -468,8 +468,8 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "pepper red long hot 6.6 lb",
-                    "sku": "PE96"
+                    "ingredient": "pepper red 5 lb",
+                    "sku": "PE62"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -644,8 +644,8 @@
                 },
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 }
             ]
         },
@@ -944,6 +944,11 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "tortilla white corn 5 12 lb 300",
+                    "sku": "WRAPSMR3"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
                     "ingredient": "avocado ripe 1 lyr 24 ct 1 2 cs",
                     "sku": "AV5A"
                 },
@@ -956,11 +961,6 @@
                     "purveyor": "agri exotic trading",
                     "ingredient": "red onions-5lbs",
                     "sku": "ONR5"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "tortilla white corn 6 1 lb 20 ct",
-                    "sku": "WRAPSMR1"
                 }
             ],
             "menu_items_stations": [],
@@ -990,6 +990,11 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "tortilla white corn 5 12 lb 300",
+                    "sku": "WRAPSMR3"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
                     "ingredient": "avocado ripe 1 lyr 24 ct 1 2 cs",
                     "sku": "AV5A"
                 },
@@ -1002,11 +1007,6 @@
                     "purveyor": "agri exotic trading",
                     "ingredient": "red onions-5lbs",
                     "sku": "ONR5"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "tortilla white corn 6 1 lb 20 ct",
-                    "sku": "WRAPSMR1"
                 }
             ]
         },
@@ -1017,7 +1017,6 @@
                 "finely cut chives",
                 "pull trout roe",
                 "picked dill",
-                "pick / shred whitefish",
                 "whitefish salad mix",
                 "cucumber cups"
             ],
@@ -1033,7 +1032,6 @@
                 "trout roe",
                 "finely cut chives",
                 "picked dill",
-                "shredded whitefish",
                 "whitefish salad mix",
                 "cucumber cups"
             ],
@@ -1492,8 +1490,8 @@
             "purchasing": [
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 },
                 {
                     "purveyor": "pat la frieda",
@@ -1587,8 +1585,8 @@
             "purchasing": [
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -1672,8 +1670,8 @@
             "purchasing": [
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 },
                 {
                     "purveyor": "pat la frieda",
@@ -1790,21 +1788,9 @@
             ],
             "req_prep": [
                 {
-                    "prep": "make cacio e pepe risotto",
+                    "prep": "make cacio e pepe arancini",
                     "am_prep_team": 1,
                     "sous_prep": 1,
-                    "category": "canapes"
-                },
-                {
-                    "prep": "scoop and protion cacio e peppe arancini",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": "canapes"
-                },
-                {
-                    "prep": "bread cacio e pepe arancini",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
                     "category": "canapes"
                 }
             ],
@@ -2050,10 +2036,10 @@
             "item_name": "roasted potato",
             "category": "passed small plates",
             "prep": [
-                "salt bake / smash fingerling potatoes",
                 "sherry sabayon",
                 "cut / grill mixed mushrooms",
-                "chopped parsley"
+                "chopped parsley",
+                "boiled / smash fingerling potatoes"
             ],
             "req_prep": [
                 {
@@ -2366,8 +2352,8 @@
                 "cut / brine / par-fry chicken thighs for sliders",
                 "fried chicken flour",
                 "buttermilk batter",
-                "chili-lime yogurt sauce",
-                "cut kings hawaiian slider buns"
+                "cut kings hawaiian slider buns",
+                "chipotle-lime sauce"
             ],
             "req_prep": [
                 {
@@ -2406,8 +2392,8 @@
                 "fried chicken",
                 "fried chicken flour",
                 "buttermilk batter",
-                "chili-lime yogurt sauce",
-                "mini cheddar chive biscuits"
+                "mini cheddar chive biscuits",
+                "chipotle-lime sauce"
             ],
             "ingredients": [
                 {
@@ -2462,11 +2448,12 @@
             "item_name": "grilled lamb chop",
             "category": "passed small plates",
             "prep": [
-                "cook new zealand lamb racks 165f internal temp 52c",
                 "whipped labneh",
                 "pick mint",
-                "moroccan spice crust",
-                "dijon mustard"
+                "dijon mustard",
+                "spice mix",
+                "cook new zealand lamb racks 175f internal temp 52c",
+                "spiced bread crumbs"
             ],
             "req_prep": [
                 {
@@ -2480,7 +2467,9 @@
                 "new zealand lamb racks",
                 "whipped labneh",
                 "picked mint",
-                "moroccan spice crust"
+                "dijon mustard",
+                "spice mix",
+                "spiced bread crumbs"
             ],
             "ingredients": [
                 {
@@ -2617,6 +2606,11 @@
             ],
             "purchasing": [
                 {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "onion spanish diced 1 4 5 lb",
+                    "sku": "ON995B1"
+                },
+                {
                     "purveyor": "dairyland",
                     "ingredient": "wa yuzu juice marugoto shib",
                     "sku": "GV369"
@@ -2635,11 +2629,6 @@
                     "purveyor": "dairyland",
                     "ingredient": "takumi white shoyu soywa",
                     "sku": "77924"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "onion spanish sliced 1 4 5 lb",
-                    "sku": "ON997A2"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -2834,6 +2823,11 @@
             "purchasing": [
                 {
                     "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "lettuce baby mix 2 lb",
+                    "sku": "LETT"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
                     "ingredient": "large red beets",
                     "sku": "BEE3"
                 },
@@ -2841,11 +2835,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "oranges cara cara 18 lb",
                     "sku": "OR8"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "lettuce mizuna baby living 2 lb lakeville",
-                    "sku": "LET8B"
                 },
                 {
                     "purveyor": "dairyland",
@@ -2931,6 +2920,11 @@
             "purchasing": [
                 {
                     "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "lettuce baby mix 2 lb",
+                    "sku": "LETT"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
                     "ingredient": "large red beets",
                     "sku": "BEE3"
                 },
@@ -2938,11 +2932,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "oranges cara cara 18 lb",
                     "sku": "OR8"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "lettuce mizuna baby living 2 lb lakeville",
-                    "sku": "LET8B"
                 },
                 {
                     "purveyor": "dairyland",
@@ -2961,9 +2950,9 @@
             "category": "plated entree",
             "prep": [
                 "french fries",
-                "clean / tie tenderloin",
                 "peppercorn sauce",
-                "brown butter"
+                "brown butter",
+                "clean / tie tenderloin / cook at 175f to 52c internal temp"
             ],
             "req_prep": [
                 {
@@ -3042,7 +3031,9 @@
                 "make / roll-out pasta dough",
                 "roast mixed mushrooms",
                 "make bechamel",
-                "assemble lasagna"
+                "assemble lasagna",
+                "grated parmesan",
+                "shredded mozzarella"
             ],
             "req_prep": [
                 {
@@ -3057,7 +3048,8 @@
                 "sheeted pasta dough",
                 "roasted mixed mushrooms",
                 "bechamel",
-                "shredded mozzarella"
+                "shredded mozzarella",
+                "grated parmesan"
             ],
             "ingredients": [
                 {
@@ -3447,12 +3439,22 @@
             "item_name": "beef ribeye loin",
             "category": "plated entree",
             "prep": [
+                "french fries",
                 "clean / tie ribeye loin",
                 "cut / blanch / grill broccolini",
-                "sauce barigoule",
-                "fennel pollen"
+                "fennel pollen",
+                "lemon vin",
+                "rosemary salt",
+                "sauce bordelaise",
+                "grill brocolini"
             ],
             "req_prep": [
+                {
+                    "prep": "lemon vin",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "canapes"
+                },
                 {
                     "prep": "cut / blanch broccolini",
                     "am_prep_team": 1,
@@ -3460,17 +3462,27 @@
                     "category": "entree"
                 },
                 {
-                    "prep": "sauce barigoule",
+                    "prep": "rosemary salt",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "entree"
+                },
+                {
+                    "prep": "sauce bordelaise",
                     "am_prep_team": 1,
                     "sous_prep": 0,
                     "category": "entree"
                 }
             ],
             "mise_en_place": [
-                "ribeye loin",
-                "grilled broccolini",
+                "french fries",
                 "fennel pollen",
-                "ribeye sauce"
+                "lemon vin",
+                "rosemary salt",
+                "clean / tie ribeye loin",
+                "cut / blanch / grill broccolini",
+                "sauce bordelaise",
+                "grill brocolini"
             ],
             "ingredients": [
                 {
@@ -3634,7 +3646,6 @@
             "category": "side",
             "prep": [
                 "cut / blanch broccolini",
-                "chili-garlic oil",
                 "lemon vin"
             ],
             "req_prep": [
@@ -3653,8 +3664,7 @@
             ],
             "mise_en_place": [
                 "grilled broccolini",
-                "lemon vin",
-                "chili-garlic oil"
+                "lemon vin"
             ],
             "ingredients": [
                 {
@@ -3873,10 +3883,10 @@
             "prep": [
                 "brunoise shallots",
                 "lemon vin",
-                "fillet / pin-bone branzino",
                 "olive oil aioli",
                 "lemon-caper condiment",
-                "meyer lemon cheeks"
+                "meyer lemon cheeks",
+                "portion / grill branzino"
             ],
             "req_prep": [
                 {
@@ -3926,11 +3936,6 @@
                     "purveyor": "dairyland",
                     "ingredient": "capers non pareil",
                     "sku": "GV114"
-                },
-                {
-                    "purveyor": "dairyland",
-                    "ingredient": "prd fig black mission",
-                    "sku": "SW2250"
                 }
             ],
             "menu_items_stations": [],
@@ -4024,8 +4029,8 @@
                 "clean / cut breakfast radish quarters",
                 "clean / cut watermelon radish",
                 "cut sourdough",
-                "tempered butter",
-                "cornichons"
+                "cornichons",
+                "butter sculpture"
             ],
             "req_prep": [
                 {
@@ -4040,8 +4045,8 @@
                 "breakfast radish quarters",
                 "watermelon radish",
                 "cut sourdough",
-                "tempered butter",
-                "cornichons"
+                "cornichons",
+                "butter sculpture"
             ],
             "ingredients": [
                 {
@@ -4110,7 +4115,6 @@
             "prep": [
                 "shaved brussels sprouts",
                 "toasted almonds",
-                "sliced green apple",
                 "shaved manchego",
                 "green goddess dressing",
                 "picked parsley"
@@ -4126,16 +4130,10 @@
             "mise_en_place": [
                 "shaved brussels",
                 "toasted almonds",
-                "sliced green apple",
                 "shaved manchego",
                 "green goddess dressing"
             ],
             "ingredients": [
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "apple granny smith 80-88 ct",
-                    "sku": "AP2"
-                },
                 {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "buttermilk whole 1 qt 6 rb",
@@ -4225,7 +4223,8 @@
                 "cut / marinate heirloom tomatoes",
                 "make / portion / toast cornbread",
                 "baby corn",
-                "grilled stone fruit"
+                "grilled stone fruit",
+                "stone fruit dressing"
             ],
             "req_prep": [
                 {
@@ -4241,7 +4240,8 @@
                 "heirloom tomatoes",
                 "cornbread croutons",
                 "baby corn",
-                "grilled stone fruit"
+                "grilled stone fruit",
+                "stone fruit dressing"
             ],
             "ingredients": [
                 {
@@ -4282,8 +4282,8 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "shallots peeled 5 lb",
-                    "sku": "SH3EA"
+                    "ingredient": "shallots 10 lb",
+                    "sku": "SH1"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -4427,17 +4427,11 @@
             "item_name": "grilled chicken ",
             "category": "station",
             "prep": [
-                "slice garlic",
-                "butcher / brine / grill sasso chickens",
-                "make / pull ginger scallion relish"
+                "chimichurri herbs",
+                "chimichurri base",
+                "butcher / brine / grill sasso chickens"
             ],
             "req_prep": [
-                {
-                    "prep": "ginger-scallion relish",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "entree"
-                },
                 {
                     "prep": "butcher and debone / 6% brine sasso chickens",
                     "am_prep_team": 1,
@@ -4446,8 +4440,9 @@
                 }
             ],
             "mise_en_place": [
-                "grilled sasso chicken",
-                "ginger scallion relish"
+                "chimichurri herbs",
+                "chimichurri base",
+                "grilled sasso chickens"
             ],
             "ingredients": [
                 {
@@ -4485,8 +4480,8 @@
             "category": "sides",
             "prep": [
                 "finely chopped parsley",
-                "sherry vinaigrette / sherry sabayon",
-                "clean / grill mixed mushrooms"
+                "clean / grill mixed mushrooms",
+                "sherry vinaigrette"
             ],
             "req_prep": [
                 {
@@ -4572,11 +4567,6 @@
                 },
                 {
                     "purveyor": "tivoli mushrooms llc",
-                    "ingredient": "maitake mushrooms",
-                    "sku": "110246_XC7724087"
-                },
-                {
-                    "purveyor": "tivoli mushrooms llc",
                     "ingredient": "king oyster mushrooms.",
                     "sku": "110246_XC11859450"
                 },
@@ -4597,16 +4587,6 @@
                 },
                 {
                     "purveyor": "tivoli mushrooms llc",
-                    "ingredient": "oyster mushrooms - black pearl",
-                    "sku": "110246_XC13011433"
-                },
-                {
-                    "purveyor": "tivoli mushrooms llc",
-                    "ingredient": "oyster mushrooms - yellow",
-                    "sku": "110246_XC8349967"
-                },
-                {
-                    "purveyor": "tivoli mushrooms llc",
                     "ingredient": "chestnut mushrooms",
                     "sku": "110246_XC3433686"
                 }
@@ -4616,10 +4596,8 @@
             "item_name": "roasted carrots",
             "category": "stations",
             "prep": [
-                "cook farro",
                 "whipped sheeps milk feta",
                 "cook quinoa",
-                "cook bulgur",
                 "cut / roast mulitcolor carrots",
                 "make / pull almond dukkah",
                 "make / pull carrot vin",
@@ -4634,18 +4612,6 @@
                 },
                 {
                     "prep": "cook quinoa",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cook farro",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cook bulgur",
                     "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
@@ -4672,8 +4638,6 @@
             "mise_en_place": [
                 "roasted carrots",
                 "cooked quinoa",
-                "cooked farro",
-                "cooked bulgur",
                 "whipped feta",
                 "carrot vin",
                 "pitted dates"
@@ -4693,16 +4657,6 @@
                     "purveyor": "dairyland",
                     "ingredient": "quinoa red conventional",
                     "sku": "923567"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "farro semi pearled bag 11 lb",
-                    "sku": "FLOUR1"
-                },
-                {
-                    "purveyor": "dairyland",
-                    "ingredient": "bulgur wheat coarse 10lb",
-                    "sku": "0105WFN17"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -4812,14 +4766,20 @@
                 "portion family style / individual yogurt",
                 "honey"
             ],
-            "req_prep": [ ],
+            "req_prep": [
+                {
+                    "prep": "granola",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "breakfast station"
+                }
+            ],
             "mise_en_place": [
                 "granola",
                 "blueberries",
                 "raspberries",
                 "blackberries",
-                "honey",
-                "individual rocks glass"
+                "honey"
             ],
             "ingredients": [
                 {
@@ -4979,8 +4939,8 @@
             "prep": [
                 "large dice pineapple",
                 "large dice cantaloupe melon",
-                "clean and pick red grapes",
-                "large dice honeydew"
+                "large dice honeydew",
+                "clean and pick grapes"
             ],
             "req_prep": [],
             "mise_en_place": [
@@ -5024,8 +4984,8 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "grapes red 5 lb",
-                    "sku": "GRA4"
+                    "ingredient": "grapes red xfcy lg 16-18 lb",
+                    "sku": "GRA1"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -5088,14 +5048,36 @@
             "mise_en_place": [
                 "assorted whole fruit"
             ],
-            "ingredients": [],
+            "ingredients": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "mandarins kishu seedless 20 lb rising c",
+                    "sku": "OR9F1"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "panta-pack honeycrisp apples",
+                    "sku": "AP34D1"
+                }
+            ],
             "menu_items_stations": [
                 "sweet & savory snacks"
             ],
             "menu_items_category": [
                 "station"
             ],
-            "purchasing": []
+            "purchasing": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "mandarins kishu seedless 20 lb rising c",
+                    "sku": "OR9F1"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "panta-pack honeycrisp apples",
+                    "sku": "AP34D1"
+                }
+            ]
         },
         {
             "item_name": "protein bars",
@@ -5132,10 +5114,10 @@
             ],
             "req_prep": [
                 {
-                    "prep": "",
-                    "am_prep_team": 0,
+                    "prep": "lemon vin",
+                    "am_prep_team": 1,
                     "sous_prep": 0,
-                    "category": ""
+                    "category": "canapes"
                 }
             ],
             "mise_en_place": [
@@ -5231,10 +5213,10 @@
             ],
             "req_prep": [
                 {
-                    "prep": "",
-                    "am_prep_team": 0,
+                    "prep": "lemon vin",
+                    "am_prep_team": 1,
                     "sous_prep": 0,
-                    "category": ""
+                    "category": "canapes"
                 }
             ],
             "mise_en_place": [
@@ -5333,7 +5315,6 @@
                 "pull / clean romaine lettuce",
                 "croutons",
                 "parmiggiano reggiano for grating",
-                "anchovies",
                 "pull / make caesar dressing"
             ],
             "req_prep": [
@@ -5360,7 +5341,6 @@
                 "romaine lettuce",
                 "croutons",
                 "parmiggiano reggiano for grating",
-                "anchovies",
                 "caesar dressing"
             ],
             "ingredients": [
@@ -5381,34 +5361,47 @@
                 }
             ],
             "menu_items_stations": [
-                "a taste of nine orchard",
-                "hearty salads"
+                "hearty salads",
+                "a taste of nine orchard"
             ],
             "menu_items_category": [
                 "plated starter",
                 "family starter",
                 "station"
             ],
-            "purchasing": []
+            "purchasing": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "romaine hearts baby 24 ct",
+                    "sku": "ROM2AA"
+                },
+                {
+                    "purveyor": "dairyland",
+                    "ingredient": "chs parm reggiano 1 4 s",
+                    "sku": "CP112493"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "anchovies in olive oil tin 25 oz",
+                    "sku": "SEA1B"
+                }
+            ]
         },
         {
             "item_name": "grilled hanger steak",
             "category": "station",
             "prep": [
+                "pick micro cilantro",
                 "butcher / grill hanger steaks",
                 "salsa macha"
             ],
             "req_prep": [],
             "mise_en_place": [
+                "pick micro cilantro",
                 "grilled hanger steak",
                 "salsa macha"
             ],
             "ingredients": [
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "cilantro 1 lb",
-                    "sku": "CI1"
-                },
                 {
                     "purveyor": "prime food distributor inc",
                     "ingredient": "beef hanger steak prime 8 oz",
@@ -5416,43 +5409,28 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "oregano leaves 8 oz",
-                    "sku": "SPSPICE99L"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "parsley 1 lb",
-                    "sku": "PDOS1"
+                    "ingredient": "micro cilantro 8 oz",
+                    "sku": "MIC99F"
                 }
             ],
             "menu_items_stations": [
-                "farmer's green market",
+                "grain bowls",
                 "hearty salads",
-                "grain bowls"
+                "farmer's green market"
             ],
             "menu_items_category": [
                 "station"
             ],
             "purchasing": [
                 {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "cilantro 1 lb",
-                    "sku": "CI1"
-                },
-                {
                     "purveyor": "prime food distributor inc",
                     "ingredient": "beef hanger steak prime 8 oz",
                     "sku": "126_XC13046800"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "oregano leaves 8 oz",
-                    "sku": "SPSPICE99L"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "parsley 1 lb",
-                    "sku": "PDOS1"
+                    "ingredient": "micro cilantro 8 oz",
+                    "sku": "MIC99F"
                 }
             ]
         },
@@ -5553,18 +5531,20 @@
             ],
             "mise_en_place": [
                 "fava bean hummus",
-                "breakfast radish quarters",
-                "cucumber batons",
-                "celery batons",
-                "watermelon radish moons",
                 "fire roasted eggplant",
                 "carrot miso",
                 "whipped chive creme fraiche",
                 "cucumber-mint yogurt",
-                "lavash chips",
-                "corn tortilla chips",
-                "potato chips",
-                "grilled pita"
+                "cherry tomatoes",
+                "cut cucumber batons",
+                "cut celery batons",
+                "cut breakfast radish quarters",
+                "cut watermelon radish moons",
+                "cut carrot batons",
+                "cut / fry lavash chips",
+                "cut / fry corn tortilla chips with sumac",
+                "pull potato chips",
+                "cut / grill pita"
             ],
             "ingredients": [
                 {
@@ -5676,6 +5656,11 @@
                     "sku": "EGG2"
                 },
                 {
+                    "purveyor": "natoora",
+                    "ingredient": "radishes red bunch",
+                    "sku": "20120"
+                },
+                {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "yogurt greek plain 5% 6x1 lb fage",
                     "sku": "DAYOGURT2"
@@ -5684,16 +5669,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "cucumber persian 12x1 lb",
                     "sku": "CU5BA"
-                },
-                {
-                    "purveyor": "natoora",
-                    "ingredient": "radishes easter egg bunch",
-                    "sku": "20059"
-                },
-                {
-                    "purveyor": "dairyland",
-                    "ingredient": "tortillas 6 blue corn",
-                    "sku": "F723S"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -5801,7 +5776,8 @@
                 "sautee spinach",
                 "dice / sweat bell peppers",
                 "sweat leeks",
-                "crumble goat cheese"
+                "crumble goat cheese",
+                "shredded mozzarella"
             ],
             "req_prep": [
                 {
@@ -5812,6 +5788,7 @@
                 }
             ],
             "mise_en_place": [
+                "shredded mozzarella",
                 "egg mix",
                 "crumbled goat cheese",
                 "sweated leeks",
@@ -5882,13 +5859,13 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "pepper red 5 lb",
-                    "sku": "PE62"
+                    "ingredient": "pepper fresno red 1 lb",
+                    "sku": "PE9993.1"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "pepper green 5 lb",
-                    "sku": "PE64"
+                    "ingredient": "pepper red 5 lb",
+                    "sku": "PE62"
                 },
                 {
                     "purveyor": "dairyland",
@@ -5918,7 +5895,14 @@
                 "clean and sort blackberries",
                 "portion yogurt"
             ],
-            "req_prep": [],
+            "req_prep": [
+                {
+                    "prep": "granola",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "breakfast station"
+                }
+            ],
             "mise_en_place": [
                 "blueberries",
                 "raspberries",
@@ -5973,14 +5957,7 @@
             "prep": [
                 "tray-out / cook chicken apple sausage"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "chicken apple sausage"
             ],
@@ -6049,10 +6026,8 @@
             "item_name": "ancient grains",
             "category": "station",
             "prep": [
-                "cook farro",
                 "whipped sheeps milk feta",
                 "cook quinoa",
-                "cook bulgur",
                 "cut / roast mulitcolor carrots",
                 "make / pull almond dukkah",
                 "make / pull carrot vin",
@@ -6068,18 +6043,6 @@
                 },
                 {
                     "prep": "cook quinoa",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cook farro",
-                    "am_prep_team": 1,
-                    "sous_prep": 1,
-                    "category": "station salad"
-                },
-                {
-                    "prep": "cook bulgur",
                     "am_prep_team": 1,
                     "sous_prep": 1,
                     "category": "station salad"
@@ -6106,8 +6069,6 @@
             "mise_en_place": [
                 "roasted carrots",
                 "cooked quinoa",
-                "cooked farro",
-                "cooked bulgur",
                 "whipped feta",
                 "carrot vin",
                 "pitted dates"
@@ -6125,11 +6086,6 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "farro semi pearled bag 11 lb",
-                    "sku": "FLOUR1"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
                     "ingredient": "mixed colored baby carrots",
                     "sku": "CAR991D"
                 },
@@ -6137,11 +6093,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "large medjool dates",
                     "sku": "DA4"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "bulgur wheat coarse box 10 lb",
-                    "sku": "FLOUR6"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -6170,11 +6121,6 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "farro semi pearled bag 11 lb",
-                    "sku": "FLOUR1"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
                     "ingredient": "mixed colored baby carrots",
                     "sku": "CAR991D"
                 },
@@ -6182,11 +6128,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "large medjool dates",
                     "sku": "DA4"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "bulgur wheat coarse box 10 lb",
-                    "sku": "FLOUR6"
                 }
             ]
         },
@@ -6249,13 +6190,13 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "parsley 1 lb",
-                    "sku": "PDOS1"
+                    "ingredient": "pepper red 5 lb",
+                    "sku": "PE62"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "pepper red long hot 6.6 lb",
-                    "sku": "PE96"
+                    "ingredient": "parsley 1 lb",
+                    "sku": "PDOS1"
                 }
             ]
         },
@@ -6313,6 +6254,11 @@
                     "sku": "D1"
                 },
                 {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
+                },
+                {
                     "purveyor": "dairyland",
                     "ingredient": "chs cream cheese",
                     "sku": "CC220"
@@ -6321,11 +6267,6 @@
                     "purveyor": "agri exotic trading",
                     "ingredient": "hot house cucumber",
                     "sku": "CU"
-                },
-                {
-                    "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
                 }
             ]
         },
@@ -6333,11 +6274,15 @@
             "item_name": "chicken salad",
             "category": "station",
             "prep": [
+                "finely chopped parsley",
                 "arugula",
                 "slice brioche pullman",
                 "assemble / cut tea sandwiches",
-                "dijon aioli",
-                "chicken salad"
+                "toast slivered almonds",
+                "sliced grapes",
+                "finely chopped tarragon",
+                "finely sliced chives",
+                "make chicken salad"
             ],
             "req_prep": [
                 {
@@ -6401,13 +6346,13 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "grapes red 5 lb",
-                    "sku": "GRA4"
+                    "ingredient": "grapes red xfcy lg 16-18 lb",
+                    "sku": "GRA1"
                 },
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -6426,16 +6371,27 @@
             "category": "station",
             "prep": [
                 "pick dill",
-                "assemble / cut tea sandwiches",
+                "sliced cucumber",
                 "slice rye pullman",
-                "whipped creme fraiche with chives",
-                "smoked salmon"
+                "smoked salmon",
+                "whipped chive cream cheese",
+                "assemble / portion tea sandwiches"
             ],
             "req_prep": [],
             "mise_en_place": [
                 "smoked salmon tea sandwiches"
             ],
             "ingredients": [
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cucumbers hot house 12 ct",
+                    "sku": "CU"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cream cheese loaf 3 lb philade",
+                    "sku": "DACREAM2A"
+                },
                 {
                     "purveyor": "liepper and sons llc",
                     "ingredient": "blue hill smoked salmon",
@@ -6445,11 +6401,6 @@
                     "purveyor": "eli s bread inc",
                     "ingredient": "rye pullman 5x5",
                     "sku": "20627"
-                },
-                {
-                    "purveyor": "dairyland",
-                    "ingredient": "creme fraiche grand reserve",
-                    "sku": "D112"
                 }
             ],
             "menu_items_stations": [
@@ -6460,14 +6411,24 @@
             ],
             "purchasing": [
                 {
-                    "purveyor": "liepper and sons llc",
-                    "ingredient": "blue hill smoked salmon",
-                    "sku": "5851_XC10088817"
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cucumbers hot house 12 ct",
+                    "sku": "CU"
                 },
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "rye pullman 5x5",
-                    "sku": "20627"
+                    "ingredient": "br pullman 5x5",
+                    "sku": "20713"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cream cheese loaf 3 lb philade",
+                    "sku": "DACREAM2A"
+                },
+                {
+                    "purveyor": "liepper and sons llc",
+                    "ingredient": "blue hill smoked salmon",
+                    "sku": "5851_XC10088817"
                 }
             ]
         },
@@ -6476,10 +6437,10 @@
             "category": "station",
             "prep": [
                 "smoked onion aioli",
-                "assemble / cut tea sandwiches",
                 "sliced prosciutto cotto",
                 "sliced cheddar",
-                "slice multigrain pullman"
+                "slice multigrain pullman",
+                "assemble / portion tea sandwiches"
             ],
             "req_prep": [
                 {
@@ -6524,8 +6485,8 @@
             "purchasing": [
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -6543,16 +6504,18 @@
             "item_name": "shrimp salad",
             "category": "station",
             "prep": [
+                "finely chopped parsley",
                 "slice brioche pullman",
                 "cook / cut shrimp",
                 "make shrimp salad",
                 "make chesapeake bay aioli",
-                "assemble tea sandwiches",
-                "cut tea sandwiches"
+                "finely chopped tarragon",
+                "finely sliced chives",
+                "assemble / portion tea sandwiches"
             ],
             "req_prep": [
                 {
-                    "prep": "cook and clean u15 shrimp",
+                    "prep": "cook and clean u15 shrimp no tails",
                     "am_prep_team": 1,
                     "sous_prep": 0,
                     "category": "sandwiches"
@@ -6562,11 +6525,6 @@
                 "shrimp salad tea sandwiches"
             ],
             "ingredients": [
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "scallions iceless 5.5 oz",
-                    "sku": "SC1D"
-                },
                 {
                     "purveyor": "liepper and sons llc",
                     "ingredient": "shrimp u15 shrimp u15",
@@ -6586,19 +6544,14 @@
             ],
             "purchasing": [
                 {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "scallions iceless 5.5 oz",
-                    "sku": "SC1D"
-                },
-                {
                     "purveyor": "liepper and sons llc",
                     "ingredient": "shrimp u15 shrimp u15",
                     "sku": "5851_XC12345796"
                 },
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 }
             ]
         },
@@ -6611,11 +6564,6 @@
                 "sliced mortadella",
                 "sliced bresaola",
                 "slice prosciutto cotto",
-                "cremeux d borgogne",
-                "cabot cheddar",
-                "5 spoke harvest moon",
-                "alp blossom",
-                "challerhocker",
                 "guindillas",
                 "dried fruit",
                 "assorted nuts",
@@ -6625,8 +6573,12 @@
                 "cut assorted crudite veg",
                 "fig jam",
                 "fruit mustard",
-                "beet and white bean spread",
-                "decorative fruits / vegetables"
+                "decorative fruits / vegetables",
+                "soft cheese / brie cheese",
+                "cheddar style cheese",
+                "alpine style cheese",
+                "tomme style cheese",
+                "tete de moine"
             ],
             "req_prep": [
                 {
@@ -6678,11 +6630,6 @@
                 "sliced mortadella",
                 "sliced bresaola",
                 "slice prosciutto cotto",
-                "cremeux d borgogne",
-                "cabot cheddar",
-                "5 spoke harvest moon",
-                "alp blossom",
-                "challerhocker",
                 "guindillas",
                 "dried fruit",
                 "assorted nuts",
@@ -6692,8 +6639,12 @@
                 "cut assorted crudite veg",
                 "fig jam",
                 "fruit mustard",
-                "beet and white bean spread",
-                "decorative fruits / vegetables"
+                "decorative fruits / vegetables",
+                "soft cheese / brie cheese",
+                "cheddar style cheese",
+                "alpine style cheese",
+                "tomme style cheese",
+                "tete de moine"
             ],
             "ingredients": [
                 {
@@ -6930,31 +6881,29 @@
             "item_name": "continental breakfast",
             "category": "station",
             "prep": [
-                "picked dill",
                 "pull granola",
                 "honey",
                 "portion family style yogurt",
                 "clean and sort blueberries",
                 "clean and sort raspberries",
                 "clean and sort blackberries",
-                "smoked salmon",
                 "assorted pastries / viennoiserie",
                 "assorted bagels",
                 "whipped cream cheese",
                 "jams",
                 "butter",
-                "sliced red onion",
-                "sliced tomato",
-                "capers"
+                "whipped scallion cream cheese"
             ],
-            "req_prep": [],
+            "req_prep": [
+                {
+                    "prep": "granola",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "breakfast station"
+                }
+            ],
             "mise_en_place": [
-                "picked dill",
                 "honey",
-                "sliced red onion",
-                "smoked salmon",
-                "capers",
-                "sliced tomato",
                 "pull granola",
                 "clean and sort blueberries",
                 "clean and sort raspberries",
@@ -6964,19 +6913,10 @@
                 "assorted bagels",
                 "whipped cream cheese",
                 "jams",
-                "butter"
+                "butter",
+                "whipped scallion cream cheese"
             ],
             "ingredients": [
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "dill 1 lb",
-                    "sku": "D1"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "tomato beefsteak large 1 lyr 15 lb",
-                    "sku": "TO3C"
-                },
                 {
                     "purveyor": "dairyland",
                     "ingredient": "orange marmalade bonne maman",
@@ -6988,11 +6928,6 @@
                     "sku": "DACREAM2A"
                 },
                 {
-                    "purveyor": "liepper and sons llc",
-                    "ingredient": "blue hill smoked salmon",
-                    "sku": "5851_XC10088817"
-                },
-                {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "blackberries 12x6 oz driscoll",
                     "sku": "BE7"
@@ -7001,16 +6936,6 @@
                     "purveyor": "agri exotic trading",
                     "ingredient": "blueberry 12 x1 2 pt",
                     "sku": "BE4"
-                },
-                {
-                    "purveyor": "agri exotic trading",
-                    "ingredient": "red onions-5lbs",
-                    "sku": "ONR5"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "non pareil capers in brine",
-                    "sku": "SPO22J"
                 },
                 {
                     "purveyor": "dairyland",
@@ -7041,16 +6966,6 @@
             ],
             "purchasing": [
                 {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "dill 1 lb",
-                    "sku": "D1"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "tomato beefsteak large 1 lyr 15 lb",
-                    "sku": "TO3C"
-                },
-                {
                     "purveyor": "dairyland",
                     "ingredient": "orange marmalade bonne maman",
                     "sku": "100028"
@@ -7061,29 +6976,14 @@
                     "sku": "DACREAM2A"
                 },
                 {
-                    "purveyor": "liepper and sons llc",
-                    "ingredient": "blue hill smoked salmon",
-                    "sku": "5851_XC10088817"
-                },
-                {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "blackberries 12x6 oz driscoll",
-                    "sku": "BE7"
+                    "ingredient": "blueberries 12x6 oz driscoll",
+                    "sku": "BE3A"
                 },
                 {
                     "purveyor": "agri exotic trading",
                     "ingredient": "blueberry 12 x1 2 pt",
                     "sku": "BE4"
-                },
-                {
-                    "purveyor": "agri exotic trading",
-                    "ingredient": "red onions-5lbs",
-                    "sku": "ONR5"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "non pareil capers in brine",
-                    "sku": "SPO22J"
                 },
                 {
                     "purveyor": "dairyland",
@@ -7111,22 +7011,26 @@
             "item_name": "scallop ceviche",
             "category": "station",
             "prep": [
-                "brunoise daikon",
                 "clean / dice scallops",
                 "jalapeno brunoise",
                 "citrus vinaigrette",
-                "diced pickled daikon",
-                "pick delfino cilantro"
+                "pick delfino cilantro",
+                "brunoise pickled daikon"
             ],
-            "req_prep": [],
+            "req_prep": [
+                {
+                    "prep": "steam / dice scallops",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "raw bar"
+                }
+            ],
             "mise_en_place": [
-                "brunoise daikon",
-                "diced scallops",
                 "jalapeno brunoise",
                 "citrus vinaigrette",
-                "diced pickled daikon",
                 "pick delfino cilantro",
-                "scallop shells"
+                "clean / dice scallops",
+                "brunoise pickled daikon"
             ],
             "ingredients": [
                 {
@@ -7262,14 +7166,14 @@
                     "sku": "TO3C"
                 },
                 {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
+                },
+                {
                     "purveyor": "pat la frieda",
                     "ingredient": "nueske sliced bacon 10/14",
                     "sku": "PSBNS"
-                },
-                {
-                    "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -7411,13 +7315,13 @@
             "purchasing": [
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "arugula wild baby 4 lb org",
-                    "sku": "ZA6A4"
+                    "ingredient": "eggplant japanese 10 lb",
+                    "sku": "EGG2"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "eggplant 20 lb",
-                    "sku": "EGG1B"
+                    "ingredient": "arugula wild baby 4 lb org",
+                    "sku": "ZA6A4"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -7426,8 +7330,8 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "peppers roasted red and yellow tray 4.2 lb ort",
-                    "sku": "VEG1B4"
+                    "ingredient": "peppers yellow 5 lb",
+                    "sku": "PE63"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -7503,8 +7407,8 @@
             "purchasing": [
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -7564,14 +7468,14 @@
             ],
             "purchasing": [
                 {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "orseradish 5 lb",
+                    "sku": "H"
+                },
+                {
                     "purveyor": "liepper and sons llc",
                     "ingredient": "tuna 1 tuna 1 loin",
                     "sku": "5851_XC2839606"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "horseradish 1 lb",
-                    "sku": "N2A"
                 }
             ]
         },
@@ -7619,8 +7523,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -7638,13 +7542,13 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "parsley 1 lb",
-                    "sku": "PDOS1"
+                    "ingredient": "shallots 10 lb",
+                    "sku": "SH1"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "shallots peeled 5 lb",
-                    "sku": "SH3EA"
+                    "ingredient": "parsley 1 lb",
+                    "sku": "PDOS1"
                 }
             ]
         },
@@ -7708,11 +7612,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "squash patty pan green baby 5",
                     "sku": "SQ9"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "squash patty pan yellow baby 5 lb",
-                    "sku": "SQ8"
                 }
             ]
         },
@@ -7846,7 +7745,7 @@
                 "brunoise shallots",
                 "lemon vin",
                 "lemon-caper condiment",
-                "clean / grill branzino fillet"
+                "portion / grill branzino fillet"
             ],
             "req_prep": [
                 {
@@ -7900,13 +7799,13 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "parsley 1 lb",
-                    "sku": "PDOS1"
+                    "ingredient": "shallots 10 lb",
+                    "sku": "SH1"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "shallots peeled 5 lb",
-                    "sku": "SH3EA"
+                    "ingredient": "parsley 1 lb",
+                    "sku": "PDOS1"
                 }
             ]
         },
@@ -7918,7 +7817,6 @@
                 "cut tri-color cauliflower",
                 "pomegranates",
                 "castelfranco",
-                "purple napa cabbage",
                 "cherry tomatoes on the vine",
                 "seasonal squashes",
                 "decorative leaves / branches"
@@ -7932,7 +7830,13 @@
                 }
             ],
             "mise_en_place": [
-                "grapes"
+                "grapes",
+                "cut tri-color cauliflower",
+                "pomegranates",
+                "castelfranco",
+                "cherry tomatoes on the vine",
+                "seasonal squashes",
+                "decorative leaves / branches"
             ],
             "ingredients": [
                 {
@@ -7963,9 +7867,9 @@
             ],
             "menu_items_stations": [
                 "crudite & mezze",
-                "a taste of nine orchard",
                 "cheese & charcuterie",
-                "farmer's green market"
+                "farmer's green market",
+                "a taste of nine orchard"
             ],
             "menu_items_category": [
                 "station"
@@ -7982,6 +7886,11 @@
                     "sku": "CAU7"
                 },
                 {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "leaves lemon by the bunch",
+                    "sku": "LV"
+                },
+                {
                     "purveyor": "natoora",
                     "ingredient": "winter squash koginut",
                     "sku": "20666"
@@ -7995,11 +7904,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "tomato tri-color bombs squad 8x12 oz sunse",
                     "sku": "TO4BSQ"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "ruskess leaves by the bunch ruskess",
-                    "sku": "LV1"
                 }
             ]
         },
@@ -8009,14 +7913,7 @@
             "prep": [
                 "assorted viennoiseries and pastries"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "assorted viennoiseries and pastries"
             ],
@@ -8171,14 +8068,7 @@
                 "sliced tomato",
                 "capers"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "picked dill",
                 "sliced red onion",
@@ -8287,9 +8177,9 @@
                 }
             ],
             "menu_items_stations": [
-                "sandwiches",
                 "sweet & savory snacks",
-                "chips & dips"
+                "chips & dips",
+                "sandwiches"
             ],
             "menu_items_category": [
                 "station"
@@ -8367,8 +8257,8 @@
                 }
             ],
             "menu_items_stations": [
-                "bar snacks",
-                "sweet & savory snacks"
+                "sweet & savory snacks",
+                "bar snacks"
             ],
             "menu_items_category": [
                 "station"
@@ -8416,8 +8306,8 @@
                 }
             ],
             "menu_items_stations": [
-                "bar snacks",
-                "sweet & savory snacks"
+                "sweet & savory snacks",
+                "bar snacks"
             ],
             "menu_items_category": [
                 "station"
@@ -8467,8 +8357,8 @@
                 }
             ],
             "menu_items_stations": [
-                "bar snacks",
-                "sweet & savory snacks"
+                "sweet & savory snacks",
+                "bar snacks"
             ],
             "menu_items_category": [
                 "station"
@@ -8613,7 +8503,7 @@
                 "pull potato chips",
                 "cut / grill pita",
                 "cut tri-color cauliflower",
-                "cut tri-color carrot batons"
+                "cut tri-color carrots"
             ],
             "req_prep": [
                 {
@@ -8625,17 +8515,18 @@
             ],
             "mise_en_place": [
                 "fava bean hummus",
-                "breakfast radish quarters",
-                "cucumber batons",
-                "celery batons",
-                "watermelon radish moons",
                 "carrot miso",
                 "whipped chive creme fraiche",
-                "lavash chips",
-                "tri-color carrot batons",
-                "tri-color cauliflower",
-                "corn tortilla chips with sumac",
-                "pita"
+                "cut tri-color cauliflower",
+                "cut cucumber batons",
+                "cut celery batons",
+                "cut breakfast radish quarters",
+                "cut watermelon radish moons",
+                "cut / fry lavash chips",
+                "cut / fry corn tortilla chips with sumac",
+                "pull potato chips",
+                "cut / grill pita",
+                "cut tri-color carrots"
             ],
             "ingredients": [
                 {
@@ -8699,13 +8590,13 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "cucumber persian 12x1 lb",
-                    "sku": "CU5BA"
+                    "ingredient": "celery 3 ct",
+                    "sku": "CE01"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "celery 24 ct",
-                    "sku": "CE"
+                    "ingredient": "cucumber persian 12x1 lb",
+                    "sku": "CU5BA"
                 }
             ]
         },
@@ -8713,9 +8604,9 @@
             "item_name": "miso salmon",
             "category": "station",
             "prep": [
+                "pick micro cilantro",
                 "portion / 10% brine steelhead trout fillet no skin 4oz",
-                "make miso marinade",
-                "marinade / roast miso salmon"
+                "make miso marinade"
             ],
             "req_prep": [
                 {
@@ -8726,6 +8617,7 @@
                 }
             ],
             "mise_en_place": [
+                "picked micro cilantro",
                 "miso marinated salmon"
             ],
             "ingredients": [
@@ -8741,8 +8633,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -8766,14 +8658,7 @@
             "prep": [
                 "marinate / roast firm tofu"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "marinated tofu"
             ],
@@ -8790,8 +8675,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -8834,8 +8719,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -8873,8 +8758,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -8894,14 +8779,7 @@
                 "cut broccoli florets",
                 "chili-garlic marinade"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "cut broccoli florets",
                 "chili-garlic marinade"
@@ -8919,8 +8797,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -8958,8 +8836,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9018,8 +8896,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9054,7 +8932,7 @@
                 "slice scallions",
                 "shredded cabbage mix",
                 "grated carrot",
-                "slaw dressing"
+                "tamari-tahini dressing"
             ],
             "req_prep": [
                 {
@@ -9066,7 +8944,7 @@
             ],
             "mise_en_place": [
                 "cabbage slaw salad",
-                "slaw dressing"
+                "tamari-tahini dressing"
             ],
             "ingredients": [
                 {
@@ -9086,8 +8964,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9105,8 +8983,8 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "cabbage red green mix shredded 5 lb",
-                    "sku": "CAB8D"
+                    "ingredient": "cabbage napa shredded 5 lb",
+                    "sku": "CAB9B1"
                 }
             ]
         },
@@ -9116,14 +8994,7 @@
             "prep": [
                 "cut / roast sweet potatoes"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "roasted sweet potatoes"
             ],
@@ -9135,8 +9006,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9174,8 +9045,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9218,8 +9089,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9267,8 +9138,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9316,8 +9187,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9365,8 +9236,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9413,8 +9284,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9461,8 +9332,8 @@
                 }
             ],
             "menu_items_stations": [
-                "hearty salads",
-                "grain bowls"
+                "grain bowls",
+                "hearty salads"
             ],
             "menu_items_category": [
                 "station"
@@ -9575,8 +9446,8 @@
                 },
                 {
                     "purveyor": "dairyland",
-                    "ingredient": "hot sauce st augstine 6 6 0zcs pit 3",
-                    "sku": "10932039N"
+                    "ingredient": "st augustine hot sauce 12 6 0zcs pit 1",
+                    "sku": "10932039"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -9602,19 +9473,24 @@
                     "sku": "SH1"
                 },
                 {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
+                },
+                {
                     "purveyor": "dairyland",
                     "ingredient": "oliv manzanll grn ptd bel aria",
                     "sku": "BC701098"
                 },
                 {
-                    "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
-                },
-                {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "cheddar yellow sliced 192 slices 6x1.5 lb",
                     "sku": "DACHEESE8H"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "celery 3 ct",
+                    "sku": "CE01"
                 },
                 {
                     "purveyor": "agri exotic trading",
@@ -9630,11 +9506,6 @@
                     "purveyor": "dairyland",
                     "ingredient": "prs l isola d or tuna in olive",
                     "sku": "BC702128"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "celery 24 ct",
-                    "sku": "CE"
                 }
             ]
         },
@@ -9667,6 +9538,11 @@
             ],
             "ingredients": [
                 {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "cucumbers kirby 1 2 bsh",
+                    "sku": "CU50"
+                },
+                {
                     "purveyor": "eli s bread inc",
                     "ingredient": "br pullman 5x5",
                     "sku": "20713"
@@ -9675,11 +9551,6 @@
                     "purveyor": "dairyland",
                     "ingredient": "leoncini prosc cotto w/herbs",
                     "sku": "BC604104"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "cucumbers kirby 1 bshi",
-                    "sku": "CU5"
                 },
                 {
                     "purveyor": "dairyland",
@@ -9696,8 +9567,8 @@
             "purchasing": [
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 },
                 {
                     "purveyor": "dairyland",
@@ -9717,17 +9588,10 @@
             "prep": [
                 "sliced cheddar",
                 "sliced gruyere",
-                "caramelized onions",
-                "cut sourdough / light pullman"
+                "cut sourdough / light pullman",
+                "caramelized onion mayo"
             ],
-            "req_prep": [
-                {
-                    "prep": "dijonaise",
-                    "am_prep_team": 1,
-                    "sous_prep": 0,
-                    "category": "sandwiches"
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "assembled cheese sandwiches"
             ],
@@ -9761,6 +9625,11 @@
             ],
             "purchasing": [
                 {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "br pullman 5x5",
+                    "sku": "20713"
+                },
+                {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "cheddar yellow sliced 192 slices 6x1.5 lb",
                     "sku": "DACHEESE8H"
@@ -9769,11 +9638,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "onion sliced thin 1 8in 5 lb",
                     "sku": "ON997C1"
-                },
-                {
-                    "purveyor": "eli s bread inc",
-                    "ingredient": "5x5 light pullman",
-                    "sku": "205635"
                 },
                 {
                     "purveyor": "dairyland",
@@ -9919,14 +9783,7 @@
             "prep": [
                 "jonah crab claws"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "jonah crab claws"
             ],
@@ -9957,14 +9814,7 @@
             "prep": [
                 "alaskan king crab legs"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "alaskan king crab legs"
             ],
@@ -9983,14 +9833,7 @@
             "prep": [
                 "poached lobsters"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "poached lobsters"
             ],
@@ -10142,14 +9985,7 @@
                 "cut / fry corn tortilla chips with sumac",
                 "cut / grill pita"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "lavash chips",
                 "corn tortilla chips with sumac",
@@ -10193,11 +10029,6 @@
                     "purveyor": "dairyland",
                     "ingredient": "lavash bread kontos",
                     "sku": "FB103"
-                },
-                {
-                    "purveyor": "dairyland",
-                    "ingredient": "tortillas 6 blue corn",
-                    "sku": "F723S"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -10357,6 +10188,11 @@
                     "sku": "35422_XC14261302"
                 },
                 {
+                    "purveyor": "dairyland",
+                    "ingredient": "olive whl castelvetrano",
+                    "sku": "75761"
+                },
+                {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "bean gigandes in vinaigrette 4.4 lb",
                     "sku": "BEAN1M"
@@ -10397,11 +10233,6 @@
                     "sku": "CH3"
                 },
                 {
-                    "purveyor": "dairyland",
-                    "ingredient": "olive ptd castelvetrano",
-                    "sku": "929004"
-                },
-                {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "fava beans",
                     "sku": "BEA3"
@@ -10414,14 +10245,7 @@
             "prep": [
                 "assorted pickled vegetables"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "assorted pickled vegetables"
             ],
@@ -10476,24 +10300,17 @@
                 "cut watermelon radish moons",
                 "cherry tomatoes",
                 "cut tri-color cauliflower",
-                "cut tri-color carrot batons"
+                "cut tri-color carrots"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "breakfast radish quarters",
                 "cucumber batons",
                 "celery batons",
                 "watermelon radish moons",
-                "tri-color carrot batons",
                 "tri-color cauliflower",
-                "cherry tomatoes"
+                "cherry tomatoes",
+                "tri-color carrots"
             ],
             "ingredients": [
                 {
@@ -10546,6 +10363,11 @@
             "purchasing": [
                 {
                     "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "tomato cherry flover bombs 8x12 oz",
+                    "sku": "T04B"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
                     "ingredient": "carrot baby tri color peeled 5 lb",
                     "sku": "CAR91C"
                 },
@@ -10565,6 +10387,11 @@
                     "sku": "RA8"
                 },
                 {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "celery 3 ct",
+                    "sku": "CE01"
+                },
+                {
                     "purveyor": "agri exotic trading",
                     "ingredient": "blackberry 8 x18 oz",
                     "sku": "BE51"
@@ -10573,16 +10400,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "cucumber persian 12x1 lb",
                     "sku": "CU5BA"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "celery 24 ct",
-                    "sku": "CE"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "tomato cherry honey bombs 8x12 oz sunset",
-                    "sku": "TO4A"
                 }
             ]
         },
@@ -10595,14 +10412,7 @@
                 "diced piquillo pepper",
                 "crumbled feta"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "blistered corn",
                 "cook farro",
@@ -10709,14 +10519,7 @@
                 "balsamic glaze",
                 "garlic-rosemary marinade"
             ],
-            "req_prep": [
-                {
-                    "prep": "",
-                    "am_prep_team": 0,
-                    "sous_prep": 0,
-                    "category": ""
-                }
-            ],
+            "req_prep": [],
             "mise_en_place": [
                 "arugula",
                 "portabello mushrooms",
@@ -10883,13 +10686,13 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "parsley 1 lb",
-                    "sku": "PDOS1"
+                    "ingredient": "shallots 10 lb",
+                    "sku": "SH1"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "shallots peeled 5 lb",
-                    "sku": "SH3EA"
+                    "ingredient": "parsley 1 lb",
+                    "sku": "PDOS1"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -10922,6 +10725,12 @@
                 "potato chips"
             ],
             "req_prep": [
+                {
+                    "prep": "small dice beef for tartare",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "canapes"
+                },
                 {
                     "prep": "tartare vin",
                     "am_prep_team": 1,
@@ -11000,8 +10809,8 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "shallots peeled 5 lb",
-                    "sku": "SH3EA"
+                    "ingredient": "shallots 10 lb",
+                    "sku": "SH1"
                 }
             ]
         },
@@ -11011,7 +10820,8 @@
             "prep": [
                 "french fries",
                 "dijon aioli",
-                "rosemary salt"
+                "rosemary salt",
+                "ketchup"
             ],
             "req_prep": [
                 {
@@ -11025,18 +10835,25 @@
                     "am_prep_team": 1,
                     "sous_prep": 0,
                     "category": "entree"
+                },
+                {
+                    "prep": "ketchup",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "sides"
                 }
             ],
             "mise_en_place": [
                 "french fries",
                 "rosemary salt",
-                "dijon aioli"
+                "dijon aioli",
+                "ketchup"
             ],
             "ingredients": [
                 {
                     "purveyor": "dairyland",
-                    "ingredient": "ffry reg cut stealth 3/8",
-                    "sku": "F426"
+                    "ingredient": "ffry reg cut crispy s on 3 8",
+                    "sku": "10743684"
                 }
             ],
             "menu_items_stations": [
@@ -11050,8 +10867,8 @@
             "purchasing": [
                 {
                     "purveyor": "dairyland",
-                    "ingredient": "ffry reg cut stealth 3/8",
-                    "sku": "F426"
+                    "ingredient": "ffry reg cut crispy s on 3 8",
+                    "sku": "10743684"
                 }
             ]
         },
@@ -11063,7 +10880,7 @@
                 "egg mix",
                 "sliced cheddar",
                 "brioche buns",
-                "80g hashbrowns"
+                "100g hashbrowns"
             ],
             "req_prep": [
                 {
@@ -11073,7 +10890,7 @@
                     "category": "breakfast station"
                 },
                 {
-                    "prep": "80g hashbrowns",
+                    "prep": "100g hashbrowns",
                     "am_prep_team": 1,
                     "sous_prep": 0,
                     "category": "breakfast station"
@@ -11083,7 +10900,8 @@
                 "egg mix",
                 "sliced cheddar",
                 "cooked applewood smoked bacon",
-                "brioche buns"
+                "brioche buns",
+                "100g hashbrowns"
             ],
             "ingredients": [
                 {
@@ -11108,8 +10926,8 @@
                 }
             ],
             "menu_items_stations": [
-                "breakfast station",
-                "breakfast sandwich station"
+                "breakfast sandwich station",
+                "breakfast station"
             ],
             "menu_items_category": [
                 "station"
@@ -11288,8 +11106,8 @@
                 },
                 {
                     "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
                 },
                 {
                     "purveyor": "dairyland",
@@ -11657,8 +11475,8 @@
                 },
                 {
                     "purveyor": "dairyland",
-                    "ingredient": "almonds slivered blanched",
-                    "sku": "VN160303"
+                    "ingredient": "almonds sliced blanched",
+                    "sku": "NA100"
                 }
             ]
         },
@@ -11815,6 +11633,11 @@
                     "sku": "10359658"
                 },
                 {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "pomegranate 2 lyr",
+                    "sku": "POM2"
+                },
+                {
                     "purveyor": "dairyland",
                     "ingredient": "zaatar spice jordian spice",
                     "sku": "916723"
@@ -11823,11 +11646,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "molasses pomegranite 14.47 oz alwadi",
                     "sku": "MOLAS1"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "pomegranates 1 lyr",
-                    "sku": "POM"
                 }
             ],
             "menu_items_stations": [
@@ -11848,6 +11666,11 @@
                     "sku": "10359658"
                 },
                 {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "pomegranate 2 lyr",
+                    "sku": "POM2"
+                },
+                {
                     "purveyor": "dairyland",
                     "ingredient": "zaatar spice jordian spice",
                     "sku": "916723"
@@ -11856,11 +11679,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "molasses pomegranite 14.47 oz alwadi",
                     "sku": "MOLAS1"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "pomegranates 1 lyr",
-                    "sku": "POM"
                 }
             ]
         },
@@ -12076,8 +11894,7 @@
                 "sliced grapes",
                 "toasted sliced almonds",
                 "pickled red onions",
-                "buttermilk dressing",
-                "crumbled yellow cheddar"
+                "buttermilk dressing"
             ],
             "ingredients": [],
             "menu_items_stations": [
@@ -12236,14 +12053,14 @@
                     "sku": "GV369"
                 },
                 {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
+                },
+                {
                     "purveyor": "agri exotic trading",
                     "ingredient": "celery 12 ct",
                     "sku": "CE12CT"
-                },
-                {
-                    "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -12327,8 +12144,8 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "pepper red long hot 6.6 lb",
-                    "sku": "PE96"
+                    "ingredient": "pepper red 5 lb",
+                    "sku": "PE62"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -12493,8 +12310,8 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "eggplant 20 lb",
-                    "sku": "EGG1B"
+                    "ingredient": "eggplant japanese 10 lb",
+                    "sku": "EGG2"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -12527,6 +12344,11 @@
             "ingredients": [
                 {
                     "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "mozzarella smoked ball 1 lb",
+                    "sku": "DACHEESE4L"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
                     "ingredient": "tomato cherry flavor bombs 8x12 oz sunset",
                     "sku": "TO4B"
                 },
@@ -12534,11 +12356,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "pasta fusilli 4x5 lb dececco",
                     "sku": "PASTADC4"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "mozzarella 1 oaf",
-                    "sku": "DACHEESE4B"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -12555,18 +12372,18 @@
             "purchasing": [
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "tomato cherry flavor bombs 8x12 oz sunset",
-                    "sku": "TO4B"
+                    "ingredient": "tomato cherry flover bombs 8x12 oz",
+                    "sku": "T04B"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "mozzarella smoked ball 1 lb",
+                    "sku": "DACHEESE4L"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "pasta fusilli 4x5 lb dececco",
                     "sku": "PASTADC4"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "mozzarella 1 oaf",
-                    "sku": "DACHEESE4B"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -12759,13 +12576,13 @@
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "parsley 1 lb",
-                    "sku": "PDOS1"
+                    "ingredient": "shallots 10 lb",
+                    "sku": "SH1"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "shallots peeled 5 lb",
-                    "sku": "SH3EA"
+                    "ingredient": "parsley 1 lb",
+                    "sku": "PDOS1"
                 }
             ]
         },
@@ -13001,8 +12818,8 @@
                 }
             ],
             "menu_items_stations": [
-                "breakfast station",
-                "breakfast sandwich station"
+                "breakfast sandwich station",
+                "breakfast station"
             ],
             "menu_items_category": [
                 "station"
@@ -13101,8 +12918,8 @@
                 }
             ],
             "menu_items_stations": [
-                "breakfast station",
-                "breakfast sandwich station"
+                "breakfast sandwich station",
+                "breakfast station"
             ],
             "menu_items_category": [
                 "station"
@@ -14013,14 +13830,14 @@
                     "sku": "CU"
                 },
                 {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "raisin pullman 5x5",
+                    "sku": "20165"
+                },
+                {
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "tomato cherry flover bombs 8x12 oz",
                     "sku": "T04B"
-                },
-                {
-                    "purveyor": "eli s bread inc",
-                    "ingredient": "br pullman 5x5",
-                    "sku": "20713"
                 },
                 {
                     "purveyor": "baldor speciality foods inc.",
@@ -14322,8 +14139,8 @@
                 }
             ],
             "menu_items_stations": [
-                "breakfast station",
-                "breakfast sandwich station"
+                "breakfast sandwich station",
+                "breakfast station"
             ],
             "menu_items_category": [
                 "station"
@@ -14436,8 +14253,8 @@
                 }
             ],
             "menu_items_stations": [
-                "breakfast station",
-                "breakfast sandwich station"
+                "breakfast sandwich station",
+                "breakfast station"
             ],
             "menu_items_category": [
                 "plated breakfast",
@@ -14458,11 +14275,6 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "pepper fresno red 1 lb",
                     "sku": "PE9993.1"
-                },
-                {
-                    "purveyor": "baldor speciality foods inc.",
-                    "ingredient": "pepper red 5 lb",
-                    "sku": "PE62"
                 },
                 {
                     "purveyor": "dairyland",
@@ -14702,9 +14514,9 @@
                 }
             ],
             "menu_items_stations": [
-                "farmer's green market",
+                "grain bowls",
                 "hearty salads",
-                "grain bowls"
+                "farmer's green market"
             ],
             "menu_items_category": [
                 "station"
@@ -15924,6 +15736,60 @@
                     "purveyor": "baldor speciality foods inc.",
                     "ingredient": "daikon radishes",
                     "sku": "RA3AA"
+                }
+            ]
+        },
+        {
+            "item_name": "radish toast",
+            "category": "canapes",
+            "prep": [
+                "toast / cut sourdough planks",
+                "lemons for zest",
+                "whipped caesar butter",
+                "flower cut watermelon radish"
+            ],
+            "req_prep": [
+                {
+                    "prep": "caesar dressing",
+                    "am_prep_team": 1,
+                    "sous_prep": 0,
+                    "category": "station salad"
+                }
+            ],
+            "mise_en_place": [
+                "lemons for zest",
+                "maldon salt",
+                "evoo in squeeze bottle",
+                "toasted sourdough planks",
+                "whipped caesar butter",
+                "flower cut watermelon radish"
+            ],
+            "ingredients": [
+                {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "sf- style sd 1.5 roun",
+                    "sku": "21110"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "radish watermelon 10 lb",
+                    "sku": "RA9"
+                }
+            ],
+            "menu_items_stations": [],
+            "menu_items_category": [
+                "canape"
+            ],
+            "purchasing": [
+                {
+                    "purveyor": "eli s bread inc",
+                    "ingredient": "sf- style sd 1.5 roun",
+                    "sku": "21110"
+                },
+                {
+                    "purveyor": "baldor speciality foods inc.",
+                    "ingredient": "radish watermelon 10 lb",
+                    "sku": "RA9"
                 }
             ]
         }

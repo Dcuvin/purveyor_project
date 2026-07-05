@@ -1,23 +1,38 @@
 
-Event:  Julia Cerra	
-Date:  Sunday, June 28, 2026
+Event:   Apt 122
+Date:  Tuesday, July 14, 2026
 Sales: Julie Garcés	
-Time:  1:00 PM - 4:00 PM
-Contact:  Sydney Wurst	
-Location:  Greenhouse
-Phone:  5165323918	
-Event Type:  Bridal/Baby Shower
-Guests:  30
-Time: 1:00 PM-4:00 PM
+Time:  5:00 AM - 11:00 PM
+Location:  West Room
+Event Type:  Corporate Reception
+Guests:  50
 
 menu_items:
 
-Viennoiserie & pastries, 
-Seasonal berries, 
-Applewood-smoked bacon, 
-Chicken Sausage,
- Hash Browns
+Breakfast Station,
 
-Avocado Toast,
-French Toast,
+Seasonal Fresh Fruit,
+
+Granola,
+
+Viennoiseries & Pastries,
+
+b.e.c,
+
 Frittata,
+
+
+
+Braised Short Rib,
+
+Cacio e Pepe Fritter,
+
+Caviar hash brown, 
+
+Crispy Burrata,
+
+Cucumber Bite,
+
+Mushroom tartlet,
+
+CRUDITES & MEZZE,

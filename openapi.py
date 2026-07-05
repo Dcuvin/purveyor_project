@@ -1,6 +1,7 @@
 import os
 import re
 import sqlite3
+import json
 from openai import OpenAI
 from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu, get_standard_station_menu, fuzzy_match
 
@@ -101,54 +102,113 @@ def get_chatgpt_all_info(db):
               if fuzzy_match(db_station_name[1], station):
                    station_ids.append(db_station_name[0])
 
-    #________________________________________
-    # for items in final_menu_items_choices:
-    #         #print(item)
-    #         try:
-    #             cursor.execute("""
-    #             SELECT menu_item_id
-    #                 FROM menu_items
-    #                 WHERE item_name = ?;
-    #                 """, (item,))
-    #             #fetch the result, a list of tuples
-    #             result = cursor.fetchall()
-    #             #print(result)
-    #             if not result:
-    #                 continue
-    #             else:
-    #                 item_ids.append(result[0][0])
-    #                 final_menu_items.append(item)
-            
-    #         except sqlite3.DatabaseError:
-    #             continue
-
-    # for station in  final_stations_choices:
-    #         #print(item)
-    #         try:
-    #             cursor.execute("""
-    #             SELECT station_id
-    #                 FROM stations
-    #                 WHERE station_name = ?;
-    #                 """, (station,))
-    #             #fetch the result, a list of tuples
-    #             result = cursor.fetchall()
-    #             #print(result)
-    #             if not result:
-    #                 continue
-    #             else:
-    #                 station_ids.append(result[0][0])
-    #                 final_stations.append(station)
-            
-    #         except sqlite3.DatabaseError:
-    #             continue
+    
     conn.close()
     
-    #print(does_it_work)
-    #print(results)
-    print(f"item_ids: {item_ids}")
-    print(final_menu_items)
-    print(f"station_ids: {station_ids}")
+    # print(f"item_ids: {item_ids}")
+    # print(final_menu_items)
+    # print(f"station_ids: {station_ids}")
+    # print(final_stations_choices)
+    # print(f"Time: {event_time}")
+    # print(f"Date: {event_date}")
+    return item_ids, event_name, guest_count, event_time, event_date, event_type, event_location, station_ids
+#-------------------------------------------------------------------------------------------------------------
+
+def get_chatgpt_all_info_2(db):
+     
+     #Check filepath of the txt file that contains the copy and paste BEO 
+    file_path = "prompt_file.txt"
+    if os.path.exists(file_path):
+        print("file_path is correct")
+    else:
+        print("ERROR")
+          
+    # Read the existing content
+    read_file = ""
+    with open("prompt_file.txt", 'r') as file:
+        content = file.read()
+        read_file += content
+
+    
+     # Get the API key from the environment variable
+    client = OpenAI(
+        # This is the default and can be omitted
+        api_key=os.environ.get("OPENAI_API_KEY"),
+    )
+
+    response = client.chat.completions.create(
+                messages=[
+                {"role": "system", "content": """Extract the following from the BEO and return ONLY valid JSON, no prose, no markdown, no backticks:
+                    {
+                    "event_name": "",
+                    "guest_count": "",
+                    "event_time": "",
+                    "event_date": "",
+                    "event_type": "",
+                    "event_location": "",
+                    "menu_items": []
+                    }
+                    If any field is missing, use null."""},
+                { "role": "user","content": read_file,}
+            ],
+            model="gpt-4o",
+    )
+
+    #print(response)
+    raw_response = response.choices[0].message.content
+
+    # Strip markdown fences if model ignored instructions
+    cleaned = raw_response.strip()
+    if cleaned.startswith("```"):
+        cleaned = cleaned.split("```")[1]
+        if cleaned.startswith("json"):
+            cleaned = cleaned[4:]
+        cleaned = cleaned.strip()
+
+    data = json.loads(cleaned)
+    #print(f"data:{data}")
+    event_name = data["event_name"]
+    menu_items = data["menu_items"]
+    guest_count = data["guest_count"]
+    event_time = data["event_time"]
+    event_date =  data["event_date"]
+    event_type = data["event_type"]
+    event_location = data["event_location"]
+
+    choices = get_standard_menu()
+    final_menu_items_choices = []
+    for item in menu_items:
+         final_menu_items_choices.append(match_menu_items(item, choices))
+    print(final_menu_items_choices)
+    
+    station_choices = get_standard_station_menu()
+    final_stations_choices = []
+    for item in menu_items:
+        final_stations_choices.append(match_menu_items(item, station_choices))
     print(final_stations_choices)
-    print(f"Time: {event_time}")
-    print(f"Date: {event_date}")
+
+    item_ids = []
+    station_ids = []
+    final_menu_items = []
+    conn = sqlite3.connect(db)
+    cursor = conn.cursor()
+    cursor.execute("SELECT menu_item_id, item_name FROM menu_items")
+    db_menu_item_names = [menu_item_name for menu_item_name in cursor.fetchall()]
+
+    for db_menu_item_name in db_menu_item_names:
+         for items in final_menu_items_choices:
+              if fuzzy_match(db_menu_item_name[1], items):
+                   item_ids.append(db_menu_item_name[0])
+
+    cursor.execute("SELECT station_id, station_name FROM stations")
+    db_station_names = [station_name for station_name in cursor.fetchall()]
+
+    for db_station_name in db_station_names:
+         for station in final_stations_choices:
+              if fuzzy_match(db_station_name[1], station):
+                   station_ids.append(db_station_name[0])
+
+    
+    conn.close()
+
     return item_ids, event_name, guest_count, event_time, event_date, event_type, event_location, station_ids

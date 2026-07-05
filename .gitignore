@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated output files (these get created at runtime)
+event_financial_reports/
+prep_and_checklists/
+
+# Excel / Office
+*.xlsx
+*.xls
+~$*
+
+# JSON data files (runtime data, not source)
+pulled_db_data*.json
+weekly_data.json
+weekly_invoice.json
+master_db_4.json
+db_input_file*.json
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# Editors
+*.swp
+*.swo
+.vscode/
+.idea/

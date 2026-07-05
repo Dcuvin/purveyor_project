@@ -14,7 +14,7 @@ import openai
 #from docx import Document
 from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2, serveware_pull_sheet
 from database import upload_excel, input_update_data, db_input, excel_file_to_upload, delete_data, get_ingredients, pull_all_data, ingredient_helper, json_editor
-from openapi import get_chatgpt_all_info
+from openapi import get_chatgpt_all_info, get_chatgpt_all_info_2
 from check_file import find_db, find_xlsx_db, find_xlsx_item_library, find_json_files
 from prep_req import req_prep, test_prep_req, req_prep_ver_2
 from beo import update_dropdown_menu_selection
@@ -291,6 +291,13 @@ def main():
         week_folder_path = event_financial_reports_folder / str(year) / month / week_folder
 
         extract_weekly_data(week_folder_path, week_start)
+
+    elif sys.argv[1] == 'get_chatgpt_all_info_2':
+        db = ''
+        db_input = input('Specify which database to query by typing the corresponding number:')
+
+        db = f"purveyor_project_db_{db_input}.db"
+        print(get_chatgpt_all_info_2(db))
     
 #------------------------This code block is for manipulating data prior to adding into a DB-----------------------
 # Creates a JSON template of ingredients ready to copy and paste.
@@ -330,8 +337,8 @@ def main():
 def gpt_prep_list(db):
 
     # Put the function into a variable inorder to access the returned tuple
-    all_info = get_chatgpt_all_info(db)
-
+    #all_info = get_chatgpt_all_info(db)
+    all_info = get_chatgpt_all_info_2(db)
     item_ids = all_info[0]
     event_name = all_info[1]
     guest_count = all_info[2]

@@ -925,38 +925,7 @@ def serveware_pull_sheet(db,excel_folder_path, event_name, event_date, item_ids)
          
     print(f"🍽️ Mise en Place to Requisition: {serveware_list}")
     
-    # for row_idx, serveware_items in enumerate(plates, start=4):   # start=1 → Excel’s first row
-    #     ws.cell(row=row_idx, column=1, value=serveware_items)
-        
-    # for row_idx, serveware_items in enumerate(silverware, start=4):  
-    #     ws.cell(row=row_idx, column=5, value=serveware_items)
-  
-    # for row_idx, serveware_items in enumerate(serving_utensils, start=17):  
-    #     ws.cell(row=row_idx, column=1, value=serveware_items)
-
-    # for row_idx, serveware_items in enumerate(glassware, start=17):  
-    #     ws.cell(row=row_idx, column=5, value=serveware_items)
     
-    # servicewares_cell_count = 26
-    # for row_idx, serveware_items in enumerate(servicewares, start=26):
-    #     if servicewares_cell_count <= 26:
-    #         ws.cell(row=row_idx, column=1, value=serveware_items)    
-    #         servicewares_cell_count += 1
-    #     else:
-    #         ws.cell(row=row_idx, column=5, value=serveware_items) 
-
-    # for row_idx, serveware_items in enumerate(trays, start=46):  
-    #     ws.cell(row=row_idx, column=1, value=serveware_items)
-
-    # for row_idx, serveware_items in enumerate(risers, start=46):  
-    #     ws.cell(row=row_idx, column=5, value=serveware_items)
-    
-    # for row_idx, serveware_items in enumerate(beverage_set, start=54):  
-    #     ws.cell(row=row_idx, column=1, value=serveware_items)
-
-    # for row_idx, serveware_items in enumerate(rentals, start=54):  
-    #     ws.cell(row=row_idx, column=5, value=serveware_items)
-    # Save
     wb.save(f"{dest_dir}/{new_file_name}")
     print("✅ Event Serviceware Pull Sheet Updated!")
     pass
