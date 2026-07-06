@@ -52,6 +52,7 @@ def get_chatgpt_all_info(db):
     event_type = content_list[4]
     event_location = content_list[5]
     menu_items = content_list[6:len(content_list)]
+    print(f"menu items:{menu_items}")
     #menu_items_normalize = [i.normalize() for i in menu_items]
 
 

@@ -337,8 +337,8 @@ def main():
 def gpt_prep_list(db):
 
     # Put the function into a variable inorder to access the returned tuple
-    #all_info = get_chatgpt_all_info(db)
-    all_info = get_chatgpt_all_info_2(db)
+    all_info = get_chatgpt_all_info(db)
+    #all_info = get_chatgpt_all_info_2(db)
     item_ids = all_info[0]
     event_name = all_info[1]
     guest_count = all_info[2]

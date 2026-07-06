@@ -44,4 +44,4 @@ db_input_file*.json
 *.swp
 *.swo
 .vscode/
-.idea/
+.idea/*.db

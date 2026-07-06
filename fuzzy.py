@@ -107,4 +107,32 @@ def fuzzy_match(upload_item, db_item, threshold=85):
     score = fuzz.token_set_ratio(normalized_upload_item, normalized_db_item)
     
     return score >= threshold
-    
+
+#----------------------------------------------------------------------------
+
+def match_menu_items_2(item, choices):
+    normalized_item = normalize(item)
+    normalized_choices = [normalize(choice) for choice in choices]
+    result = process.extractOne(normalized_item, normalized_choices, scorer=fuzz.WRatio)
+
+    if result:
+        matched_normalized = result[0]
+        score = result[1]
+        original_match = choices[normalized_choices.index(matched_normalized)]
+
+        if score >= 95:
+            # auto accept
+            return original_match
+        elif score >= 85:
+            # flag for review
+            review_input= input(f"Do you want to include {original_match} ? y/n")
+            if review_input in ("y", "Y"):
+                return original_match
+            else:
+                        return None
+        else:
+            # rejected
+            return None
+    # no match found
+    return None
+#----------------------------------------------------------------------------

@@ -661,8 +661,6 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
             
     #print(f"menu_item_list: {menu_item_list}")
 
-    
-
 
     # Count how many categories there are and create that many tables in the excel file.
     category_list = []

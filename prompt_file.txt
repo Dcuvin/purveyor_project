@@ -1,38 +1,26 @@
-
-Event:   Apt 122
+Event:  Google	
 Date:  Tuesday, July 14, 2026
 Sales: Julie Garcés	
-Time:  5:00 AM - 11:00 PM
-Location:  West Room
-Event Type:  Corporate Reception
-Guests:  50
+Time:  7:00 PM - 9:00 PM
+Contact:  Melissa Mack	
+Location:  Blue Room
+Phone: 	
+Event Type:  seated dinner
+Planner (POC): 	
+Guests:  24
 
 menu_items:
 
-Breakfast Station,
+Blue Fin Tuna,
 
-Seasonal Fresh Fruit,
+Raw Bar Platter,
 
-Granola,
+Caesar,
 
-Viennoiseries & Pastries,
+Rigatoni alla Vodka,
 
-b.e.c,
+Cauliflower Steak,
 
-Frittata,
+Dry-Aged Ribeye,
 
-
-
-Braised Short Rib,
-
-Cacio e Pepe Fritter,
-
-Caviar hash brown, 
-
-Crispy Burrata,
-
-Cucumber Bite,
-
-Mushroom tartlet,
-
-CRUDITES & MEZZE,
+French Fries
