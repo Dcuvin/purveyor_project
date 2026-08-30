@@ -1,0 +1,12 @@
+{"category_ranking":[
+    {"category":"plated breakfast", "rank":0},   
+    {"category": "canape", "rank":1},
+    {"category":"passed small plates", "rank":2},
+    {"category":"plated starter", "rank":3},
+    {"category":"plated entree", "rank":4},
+    {"category":"family starter", "rank":5},
+    {"category":"family entree", "rank":6},
+    {"category":"station", "rank":7},
+    {"category":" sides", "rank":8}
+
+]}

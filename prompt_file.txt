@@ -1,26 +1,28 @@
-Event:  Google	
-Date:  Tuesday, July 14, 2026
-Sales: Julie Garcés	
-Time:  7:00 PM - 9:00 PM
-Contact:  Melissa Mack	
-Location:  Blue Room
-Phone: 	
-Event Type:  seated dinner
-Planner (POC): 	
-Guests:  24
+t:  Tangle Teezer	
+Date:  Wednesday, September 2, 2026
+Sales: Travis Brown	
+Time:  5:00 PM - 8:00 PM
+Contact:  Cameron Bird	
+Location:  Greenhouse
+Phone:  3109474711	
+Event Type:  Brand Activation
+Planner (POC): 
+Guests:  125
 
 menu_items:
 
-Blue Fin Tuna,
+Cacio e Pepe Fritter,
 
-Raw Bar Platter,
+Caviar & Egg,
 
-Caesar,
+Cucumber Bite,
 
-Rigatoni alla Vodka,
+Green Hummus,
 
-Cauliflower Steak,
+Hamachi Aguachile,
 
-Dry-Aged Ribeye,
+NY Strip Steak,
 
-French Fries
+Poke Cone,
+
+Tomato Tart,

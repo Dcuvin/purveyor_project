@@ -3,7 +3,7 @@ import re
 import sqlite3
 import json
 from openai import OpenAI
-from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu, get_standard_station_menu, fuzzy_match
+from fuzzy import update_standard_menu, normalize, match_menu_items, get_standard_menu, get_standard_station_menu, fuzzy_match, match_menu_items_2
 
 
 def get_chatgpt_all_info(db):
@@ -179,13 +179,21 @@ def get_chatgpt_all_info_2(db):
     choices = get_standard_menu()
     final_menu_items_choices = []
     for item in menu_items:
-         final_menu_items_choices.append(match_menu_items(item, choices))
+        result = match_menu_items_2(item, choices)
+        if result is None:
+            continue
+        else:
+            final_menu_items_choices.append(match_menu_items_2(item, choices))
     print(final_menu_items_choices)
     
     station_choices = get_standard_station_menu()
     final_stations_choices = []
     for item in menu_items:
-        final_stations_choices.append(match_menu_items(item, station_choices))
+        result = match_menu_items_2(item, station_choices)
+        if result is None:
+            continue
+        else:
+            final_stations_choices.append(match_menu_items_2(item, station_choices))
     print(final_stations_choices)
 
     item_ids = []

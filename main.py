@@ -12,7 +12,7 @@ import os #This statement is used to include the functionality of
 from bs4 import BeautifulSoup
 import openai
 #from docx import Document
-from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2, serveware_pull_sheet
+from prep_and_check_list import excel_prep_list, word_checklist, get_order_list, excel_prep_list_ver_2, serveware_pull_sheet, sort_item_id
 from database import upload_excel, input_update_data, db_input, excel_file_to_upload, delete_data, get_ingredients, pull_all_data, ingredient_helper, json_editor
 from openapi import get_chatgpt_all_info, get_chatgpt_all_info_2
 from check_file import find_db, find_xlsx_db, find_xlsx_item_library, find_json_files
@@ -337,8 +337,8 @@ def main():
 def gpt_prep_list(db):
 
     # Put the function into a variable inorder to access the returned tuple
-    all_info = get_chatgpt_all_info(db)
-    #all_info = get_chatgpt_all_info_2(db)
+    #all_info = get_chatgpt_all_info(db)
+    all_info = get_chatgpt_all_info_2(db)
     item_ids = all_info[0]
     event_name = all_info[1]
     guest_count = all_info[2]
@@ -348,6 +348,8 @@ def gpt_prep_list(db):
     event_location = all_info[6]
     station_ids = all_info[7]
     need_by_event_time = event_time.split("-")[0]
+
+
     #print(item_ids)
     print(f"event_type: {event_type}")
     # if event_type is a seated dinner...

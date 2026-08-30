@@ -119,13 +119,14 @@ def match_menu_items_2(item, choices):
         matched_normalized = result[0]
         score = result[1]
         original_match = choices[normalized_choices.index(matched_normalized)]
+        len_diff = abs(len(normalized_item.split()) - len(matched_normalized.split()))
 
-        if score >= 95:
+        if score >= 95 and len_diff < 2:
             # auto accept
             return original_match
-        elif score >= 85:
+        elif score >= 85 and len_diff < 3:
             # flag for review
-            review_input= input(f"Do you want to include {original_match} ? y/n")
+            review_input= input(f"Do you want to include {original_match} ? y/n   ")
             if review_input in ("y", "Y"):
                 return original_match
             else:

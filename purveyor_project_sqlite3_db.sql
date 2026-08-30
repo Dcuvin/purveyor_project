@@ -209,7 +209,7 @@ INSERT OR IGNORE INTO stations (station_name) VALUES
 
 INSERT OR IGNORE INTO categories (category_name) VALUES
 ('silent veg'),
-('canape'),
+('canapes'),
 ('passed small plates'),
 ('plated starter'),
 ('plated entree'),
@@ -218,3 +218,5 @@ INSERT OR IGNORE INTO categories (category_name) VALUES
 ('plated breakfast'),
 ('station'),
 ('sides');
+
+ 

@@ -16,8 +16,55 @@ from collections import defaultdict
 from database import create_df
 import shutil
 from fuzzy import normalize, fuzzy_match
+import json
 
+# Sort item_id based on category so that prep and checklist are listed in order.
+def sort_item_id(item_id, db):
 
+    file_path = "category_ranking.json"
+    if os.path.exists(file_path):
+        print("file_path is correct")
+    else:
+        print("ERROR")
+          
+    # Read the existing content
+    with open(file_path, 'r') as file:
+        #data is a list of dict
+        data = json.load(file)
+
+    category_ranking_file = data["category_ranking"]
+    rank_lookup = {c["category"]: c["rank"] for c in category_ranking_file}
+    print(f"rank_lookup: {rank_lookup}")
+    menu_items = []
+    conn = sqlite3.connect(db)
+    cursor = conn.cursor()
+    results = []
+    for i in item_id:
+        cursor.execute(
+            """
+                SELECT menu_item_id,item_name, category
+                FROM menu_items
+                WHERE menu_item_id = ?;
+            """, (i,)
+
+        )
+        result = cursor.fetchall()
+        for r in result:
+            results.append({"item_id":r[0], "item_name": r[1], "category":r[2], "val": 0})
+
+    for r in results:
+        if rank_lookup.get(r["category"].strip().lower()) is None:
+            continue
+        else:
+            r["val"] = rank_lookup[r["category"]]
+
+    sorted_results =sorted(results, key=lambda d: d["val"])
+    sorted_results_ids = [i["item_id"] for i in sorted_results]
+    #print(f"sorted_results = {sorted_results}")
+    print(f"sorted_results_ids = {sorted_results_ids}")
+
+    return sorted_results_ids
+       
 #----------------------------------------------------------------------------
 def excel_prep_list(item_id, event_name, guest_count, event_start, event_date, event_location, db):
     
@@ -248,6 +295,8 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date, ev
     cursor = conn.cursor()
     current_date = date.today()
     formatted_date = current_date.strftime("%m-%d-%Y")
+    print(f"word_checklist_item_ids: {item_id}")
+    #Create dict {"item_id": 1, "mise_checklist": [], "item_category": ""}; rank order of checklist items based on category
 
     #the updated version will take a list of menu_item_ids
     #It will then query a junction table and pull all procedures associated with the id.          
@@ -295,7 +344,7 @@ def word_checklist(item_id, event_name, guest_count, event_start, event_date, ev
     doc.add_heading(f'{event_name} {event_date}', 0)
     doc.add_heading(f'Guests: {guest_count}', level=2)
     doc.add_heading(f'Start: {event_start}', level=2)
-    doc.add_heading(f'Loction: {event_location}', level = 2)
+    doc.add_heading(f'Location: {event_location}', level = 2)
 
     # Create datetime variable
     current_date = date.today()
@@ -819,12 +868,17 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
         final_ids.append(id)
     #print(f"final_item_ids:{final_ids}")
     final_ids = list(dict.fromkeys(final_ids))
+
+    sorted_final_ids = sort_item_id(final_ids, db)
     # Fill out order_sheet
     get_order_list(final_ids,db,excel_file,event_name,guest_count,event_date)
-    get_order_list_ver_2(final_ids,db,excel_folder,event_name,guest_count,event_date)
+    #get_order_list_ver_2(final_ids,db,excel_folder,event_name,guest_count,event_date)
+    get_order_list_ver_2(sorted_final_ids,db,excel_folder,event_name,guest_count,event_date)
     print("✅ Excel Prep and Order List Created and Reformatted!")
-    return final_ids
-
+    print(f"sorted_final_ids = {sorted_final_ids}")
+    print(f"final_ids = {final_ids}")
+    return sorted_final_ids
+    #return final_ids
     #---------------------------------------------------------------------------------
 
 def serveware_pull_sheet(db,excel_folder_path, event_name, event_date, item_ids):
