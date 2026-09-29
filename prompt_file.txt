@@ -1,28 +1,23 @@
-t:  Tangle Teezer	
-Date:  Wednesday, September 2, 2026
-Sales: Travis Brown	
-Time:  5:00 PM - 8:00 PM
-Contact:  Cameron Bird	
+
+Event:  Lynn & Pete	
+Date:  Thursday, October 1, 2026
+Account:  Lynn Zhang	
+Time:  5:00 PM - 11:00 PM
+Contact:  Lynn Zhang	
 Location:  Greenhouse
-Phone:  3109474711	
-Event Type:  Brand Activation
-Planner (POC): 
+Phone:  2063028044	
+Event Type:  Welcome Party
+Email:  stzhangwedding@gmail.com	
 Guests:  125
+ 	
+Account Owner:  Julie Garcés	
+Phone/Email:  / julie@nineorchard.com
 
 menu_items:
 
-Cacio e Pepe Fritter,
+Green Salad,
 
-Caviar & Egg,
 
-Cucumber Bite,
+Steakhouse,
 
-Green Hummus,
-
-Hamachi Aguachile,
-
-NY Strip Steak,
-
-Poke Cone,
-
-Tomato Tart,
+Halibut,

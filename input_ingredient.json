@@ -5,8 +5,9 @@
             "ingredient_code": "BA9",
             "ingredient_description": "baby bananas",
             "pack_size_unit": "15lb",
-            "purchase_price": "31.75",
-            "ingredient_type": "produce"
+            "purchase_price": 31.75,
+            "ingredient_type": "produce",
+            "grams": 6803.89
         }
     ]
 }

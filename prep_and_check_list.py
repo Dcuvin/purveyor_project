@@ -871,7 +871,7 @@ def excel_prep_list_ver_2(item_id, event_name, guest_count, event_start, event_d
 
     sorted_final_ids = sort_item_id(final_ids, db)
     # Fill out order_sheet
-    get_order_list(final_ids,db,excel_file,event_name,guest_count,event_date)
+    get_order_list(sorted_final_ids,db,excel_file,event_name,guest_count,event_date)
     #get_order_list_ver_2(final_ids,db,excel_folder,event_name,guest_count,event_date)
     get_order_list_ver_2(sorted_final_ids,db,excel_folder,event_name,guest_count,event_date)
     print("✅ Excel Prep and Order List Created and Reformatted!")

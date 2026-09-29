@@ -87,7 +87,7 @@ def input_menu_ingredient(db):
     cursor = conn.cursor()
 
     cursor.execute("""
-                SELECT ingredient_id, purveyor, ingredient_code, ingredient_description, ingredient_name, pack_size_unit, purchase_price, ingredient_type
+                SELECT ingredient_id, purveyor, ingredient_code, ingredient_description, ingredient_name, pack_size_unit, purchase_price, ingredient_type, grams
                 FROM ingredients;
                   """)
     
@@ -100,7 +100,8 @@ def input_menu_ingredient(db):
                      "ingredient_name":result[4] ,
                      "pack_size_unit":result[5], 
                      "purchase_price": result[6], 
-                     "ingredient_type":result[7]} for result in results]
+                     "ingredient_type":result[7],                    
+                     "grams": result[8]} for result in results]
     #print(ingredient_names)
 
     if os.path.exists(file_path):
@@ -119,8 +120,7 @@ def input_menu_ingredient(db):
 
     ingredient_lookup = {
         (normalize(db_ing["purveyor"]),db_ing["ingredient_code"]): db_ing
-        for db_ing in db_ingredients
-        if db_ing["ingredient_code"]
+        for db_ing in db_ingredients if db_ing["ingredient_code"]
         }
 
     ingredient_to_upload = []
@@ -132,7 +132,8 @@ def input_menu_ingredient(db):
                      "ingredient_name":normalize(ing["ingredient_description"]) ,
                      "pack_size_unit":ing["pack_size_unit"], 
                      "purchase_price": ing["purchase_price"], 
-                     "ingredient_type":ing["ingredient_type"]})
+                     "ingredient_type":ing["ingredient_type"],
+                     "grams":ing["grams"]})
 
     for ing in ingredient_to_upload:    
 
@@ -153,7 +154,8 @@ def input_menu_ingredient(db):
                                     ingredient_name        = :name,
                                     pack_size_unit         = :pack,
                                     purchase_price         = :price,
-                                    ingredient_type        = :type
+                                    ingredient_type        = :type,
+                                    grams                  = :grams
                                 WHERE ingredient_id = :id;
                                 """
 
@@ -163,6 +165,7 @@ def input_menu_ingredient(db):
                                     "pack": ing["pack_size_unit"],
                                     "price": ing["purchase_price"],
                                     "type": ing["ingredient_type"],
+                                    "grams": ing["grams"],
                                     "id": match["ingredient_id"],
                                 })
                 conn.commit()  
@@ -410,7 +413,7 @@ def menu_cost(db):
 
 
             total_cost_string = ws.cell(row=sum_row, column=column_E)
-            total_cost_string.value = "TOTAL COST"
+            total_cost_string.value = "MINIMUM PURCHASE COST"
             total_cost_string.border = Border(left=Side(style='thin'),
                         right=Side(style='thin'),
                         top=Side(style='thin'),

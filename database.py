@@ -132,7 +132,7 @@ def get_ingredients(db):
     if os.path.exists(file_path):
         print("✅  file_path is correct; ingredients.json updated")
         cursor.execute("""
-                        SELECT ingredient_id, purveyor, ingredient_code, ingredient_name 
+                        SELECT ingredient_id, purveyor, ingredient_code, ingredient_name, pack_size_unit, purchase_price, grams
                         FROM ingredients
                        """)
 

@@ -74,7 +74,8 @@ CREATE TABLE ingredients (
     ingredient_name TEXT,--normalized ver of ingredient_description
     pack_size_unit TEXT,
     purchase_price REAL NOT NULL DEFAULT 0.0,
-    ingredient_type TEXT
+    ingredient_type TEXT,
+    grams  REAL
 
 );
 
@@ -205,7 +206,8 @@ INSERT OR IGNORE INTO stations (station_name) VALUES
 ('raw bar'),
 ('crudite & mezze'),
 ("farmer's green market"),
-('a taste of nine orchard');
+('a taste of nine orchard'),
+
 
 INSERT OR IGNORE INTO categories (category_name) VALUES
 ('silent veg'),
